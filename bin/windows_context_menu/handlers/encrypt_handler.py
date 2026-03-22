@@ -92,10 +92,16 @@ def encrypt_file(filepath):
         else:
             # Encryption failed
             logger.error(f"Encryption failed: {error_msg}")
-            card_utils.show_error_dialog(
-                f"Encryption failed:\n\n{error_msg}",
-                "Encryption Error"
-            )
+            if "No keys found on card" in error_msg or "generate keys" in error_msg.lower():
+                card_utils.show_error_dialog(
+                    error_msg,
+                    "Keys Not Generated"
+                )
+            else:
+                card_utils.show_error_dialog(
+                    f"Encryption failed:\n\n{error_msg}",
+                    "Encryption Error"
+                )
             logger.log_operation_end("Encryption", False, error_msg)
 
     except Exception as e:

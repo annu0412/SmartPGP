@@ -1,0 +1,2562 @@
+// converted by version  [v3.1.0]
+// on Tue Jul 06 15:18:17 PDT 2021
+
+.package javacardx/framework/nio {
+	.aid 0xA0:0x0:0x0:0x0:0x62:0x2:0x8:0x6;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.8;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x3:0x1 1.0;		//com/sun/javacard/impl
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef int Buffer/capacity;
+		// 1
+		instanceFieldRef short Buffer/elementScale;
+		// 2
+		instanceFieldRef int Buffer/position;
+		// 3
+		instanceFieldRef int Buffer/limit;
+		// 4
+		instanceFieldRef int Buffer/arrayOffset;
+		// 5
+		instanceFieldRef Buffer Buffer/parent;
+		// 6
+		instanceFieldRef short Buffer/flags;
+		// 7
+		instanceFieldRef int Buffer/address;
+		// 8
+		instanceFieldRef byte[] Buffer/data;
+		// 9
+		.classRef 0.4;		// java/lang/IndexOutOfBoundsException
+		// 10
+		.classRef 0.10;		// java/lang/SecurityException
+		// 11
+		staticMethodRef 0.10.0()V;		// java/lang/SecurityException.<init>()V
+		// 12
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 13
+		staticMethodRef 0.4.0()V;		// java/lang/IndexOutOfBoundsException.<init>()V
+		// 14
+		staticMethodRef 1.13.1(S)V;		// javacard/framework/SystemException.throwIt(S)V
+		// 15
+		staticMethodRef Buffer/checkLimits(III)V;
+		// 16
+		.classRef BufferUnderflowException;
+		// 17
+		staticMethodRef BufferUnderflowException/<init>()V;
+		// 18
+		staticMethodRef 2.6.140([BI[BII)V;		// com/sun/javacard/impl/NativeMethods.NioCopyBytes([BI[BII)V
+		// 19
+		virtualMethodRef Buffer/checkNotUnmapped()V;
+		// 20
+		.classRef ReadOnlyBufferException;
+		// 21
+		staticMethodRef ReadOnlyBufferException/<init>()V;
+		// 22
+		.classRef BufferOverflowException;
+		// 23
+		staticMethodRef BufferOverflowException/<init>()V;
+		// 24
+		staticMethodRef 0.3.0()V;		// java/lang/RuntimeException.<init>()V
+		// 25
+		staticFieldRef ByteOrder ByteOrder/BIG_ENDIAN;
+		// 26
+		staticFieldRef ByteOrder ByteOrder/LITTLE_ENDIAN;
+		// 27
+		virtualMethodRef ByteBuffer/isDirect()Z;
+		// 28
+		virtualMethodRef ByteBuffer/arrayOffset()I;
+		// 29
+		staticMethodRef Buffer/<init>(Ljavacardx/framework/nio/Buffer;ILjava/lang/Object;IISS)V;
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		// 30
+		staticMethodRef 1.8.16(B)S;		// javacard/framework/JCSystem.getAvailableMemory(B)S
+		// 31
+		staticMethodRef 2.6.33(Ljava/lang/Object;Z)V;		// com/sun/javacard/impl/NativeMethods.setJCREentry(Ljava/lang/Object;Z)V
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		// 32
+		.classRef ByteBufferImpl;
+		// 33
+		staticMethodRef ByteBufferImpl/<init>(Ljavacardx/framework/nio/Buffer;ILjava/lang/Object;IIS)V;
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		// 34
+		staticMethodRef Buffer/checkLimits(III)V;
+		// 35
+		virtualMethodRef Buffer/position(I)Ljavacardx/framework/nio/Buffer;;
+		// 36
+		virtualMethodRef Buffer/limit(I)Ljavacardx/framework/nio/Buffer;;
+		// 37
+		staticMethodRef ByteBuffer/wrap([BII)Ljavacardx/framework/nio/ByteBuffer;;
+		// 38
+		.classRef ByteBuffer;
+		// 39
+		virtualMethodRef Buffer/remaining()I;
+		// 40
+		virtualMethodRef Buffer/position()I;
+		// 41
+		virtualMethodRef Buffer/limit()I;
+		// 42
+		virtualMethodRef ByteBuffer/get(I)B;
+		// 43
+		staticMethodRef ByteBuffer/min(II)I;
+		// 44
+		virtualMethodRef Buffer/get([BIIIS)V;
+		// 45
+		virtualMethodRef Buffer/put([BIIIS)V;
+		// 46
+		virtualMethodRef ByteBuffer/slice()Ljavacardx/framework/nio/ByteBuffer;;
+		// 47
+		virtualMethodRef ByteBuffer/array()[B;
+		// 48
+		staticMethodRef ByteBuffer/<init>(Ljavacardx/framework/nio/Buffer;ILjava/lang/Object;IIS)V;
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		// 49
+		virtualMethodRef Buffer/get([BIIIS)V;
+		// 50
+		virtualMethodRef Buffer/putBuffer(Ljavacardx/framework/nio/Buffer;)V;
+		// 51
+		virtualMethodRef Buffer/put([BIIIS)V;
+		// 52
+		virtualMethodRef Buffer/remaining()I;
+		// 53
+		virtualMethodRef Buffer/position()I;
+		// 54
+		virtualMethodRef Buffer/limit()I;
+		// 55
+		virtualMethodRef ByteBufferImpl/get(I)B;
+		// 56
+		staticMethodRef ByteBufferImpl/swap_short(S)S;
+		// 57
+		staticMethodRef ByteBufferImpl/swap_int(I)I;
+		// 58
+		virtualMethodRef Buffer/position(I)Ljavacardx/framework/nio/Buffer;;
+		// 59
+		virtualMethodRef Buffer/limit(I)Ljavacardx/framework/nio/Buffer;;
+		// 60
+		virtualMethodRef Buffer/checkNotUnmapped()V;
+		// 61
+		virtualMethodRef Buffer/capacity()I;
+		// 62
+		virtualMethodRef ByteBufferImpl/slice()Ljavacardx/framework/nio/ByteBuffer;;
+		// 63
+		.classRef ByteOrder;
+		// 64
+		staticMethodRef ByteOrder/<init>()V;
+	}
+
+	.class public abstract Buffer 0 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			 byte[] data 0;		// [B
+			 Buffer parent 1;		// Ljavacardx/framework/nio/Buffer;
+			 short flags 2;		// S
+			final int capacity 3;		// I
+			 int limit 5;		// I
+			 int position 7;		// I
+			 int arrayOffset 9;		// I
+			 short elementScale 11;		// S
+			 int address 12;		// I
+			static final short FLAG_BIG_ENDIAN_ORDER = 1;		// S
+			static final short FLAG_DIRECT = 2;		// S
+			static final short FLAG_VIEW = 4;		// S
+			static final short FLAG_READ_ONLY = 8;		// S
+			static final short FLAG_WRITE_ONLY = 16;		// S
+			static final short FLAG_UNMAPPED = 32;		// S
+			static final short FLAG_REGISTERED = 64;		// S
+		}
+
+		.publicMethodTable 1 17 {
+			equals(Ljava/lang/Object;)Z 0;
+			capacity()I 255;
+			position()I 255;
+			position(I)Ljavacardx/framework/nio/Buffer; 255;
+			limit()I 255;
+			limit(I)Ljavacardx/framework/nio/Buffer; 255;
+			clear()Ljavacardx/framework/nio/Buffer; 255;
+			flip()Ljavacardx/framework/nio/Buffer; 255;
+			rewind()Ljavacardx/framework/nio/Buffer; 255;
+			remaining()I 255;
+			hasRemaining()Z 255;
+			isReadOnly()Z 255;
+			hasArray()Z 255;
+			array()Ljava/lang/Object; 255;
+			arrayOffset()I 255;
+			isDirect()Z 255;
+			slice()Ljavacardx/framework/nio/Buffer; 255;
+		}
+
+		.packageMethodTable 0 {
+			checkIndex(II)I;
+			checkIndexShort(I)I;
+			checkIndexInt(I)I;
+			checkNotUnmapped()V;
+			get([BIIIS)V;
+			putBuffer(Ljavacardx/framework/nio/Buffer;)V;
+			put([BIIIS)V;
+		}
+
+		.method public final capacity()I 1 {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_i_this 0;		// int javacardx/framework/nio/Buffer.capacity
+					getfield_s_this 1;		// short javacardx/framework/nio/Buffer.elementScale
+					s2i;
+					ishr;
+					ireturn;
+		}
+
+		.method public final position()I 2 {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					getfield_s_this 1;		// short javacardx/framework/nio/Buffer.elementScale
+					s2i;
+					ishr;
+					ireturn;
+		}
+
+		.method public final position(I)Ljavacardx/framework/nio/Buffer; 3 {
+			.stack 5;
+			.locals 0;
+
+				L0:	iload_1;
+					getfield_s_this 1;		// short javacardx/framework/nio/Buffer.elementScale
+					s2i;
+					ishl;
+					istore_1;
+					iload_1;
+					iconst_0;
+					icmp;
+					iflt L2;
+				L1:	iload_1;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					icmp;
+					ifle L3;
+				L2:	sconst_1;
+					invokestatic 14;		// javacard/framework/SystemException.throwIt(S)V
+				L3:	aload_0;
+					iload_1;
+					getfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					iadd;
+					putfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					aload_0;
+					areturn;
+		}
+
+		.method public final limit()I 4 {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					getfield_s_this 1;		// short javacardx/framework/nio/Buffer.elementScale
+					s2i;
+					ishr;
+					ireturn;
+		}
+
+		.method public final limit(I)Ljavacardx/framework/nio/Buffer; 5 {
+			.stack 4;
+			.locals 0;
+
+				L0:	iload_1;
+					getfield_s_this 1;		// short javacardx/framework/nio/Buffer.elementScale
+					s2i;
+					ishl;
+					istore_1;
+					iload_1;
+					iconst_0;
+					icmp;
+					iflt L2;
+				L1:	iload_1;
+					getfield_i_this 0;		// int javacardx/framework/nio/Buffer.capacity
+					icmp;
+					ifle L3;
+				L2:	sconst_1;
+					invokestatic 14;		// javacard/framework/SystemException.throwIt(S)V
+				L3:	getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					iload_1;
+					icmp;
+					ifle L5;
+				L4:	iload_1;
+					putfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+				L5:	iload_1;
+					putfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					aload_0;
+					areturn;
+		}
+
+		.method public final clear()Ljavacardx/framework/nio/Buffer; 6 {
+			.stack 3;
+			.locals 0;
+
+				L0:	iconst_0;
+					putfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					aload_0;
+					getfield_i_this 0;		// int javacardx/framework/nio/Buffer.capacity
+					putfield_i 3;		// int javacardx/framework/nio/Buffer.limit
+					aload_0;
+					areturn;
+		}
+
+		.method public final flip()Ljavacardx/framework/nio/Buffer; 7 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					putfield_i 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_0;
+					putfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					aload_0;
+					areturn;
+		}
+
+		.method public final rewind()Ljavacardx/framework/nio/Buffer; 8 {
+			.stack 3;
+			.locals 0;
+
+				L0:	iconst_0;
+					putfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					aload_0;
+					areturn;
+		}
+
+		.method public final remaining()I 9 {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					isub;
+					getfield_s_this 1;		// short javacardx/framework/nio/Buffer.elementScale
+					s2i;
+					ishr;
+					ireturn;
+		}
+
+		.method public final hasRemaining()Z 10 {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					icmp;
+					ifge L2;
+				L1:	sconst_1;
+					goto L3;
+				L2:	sconst_0;
+				L3:	sreturn;
+		}
+
+		.method final checkIndex(II)I 128 {
+			.stack 6;
+			.locals 0;
+
+				L0:	iload_1;
+					iconst_0;
+					icmp;
+					iflt L2;
+				L1:	iload_1;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iload_3;
+					isub;
+					icmp;
+					iflt L3;
+				L2:	new 9;		// java/lang/IndexOutOfBoundsException
+					dup;
+					invokespecial 13;		// java/lang/IndexOutOfBoundsException.<init>()V
+					athrow;
+				L3:	iload_1;
+					ireturn;
+		}
+
+		.method final checkIndexShort(I)I 129 {
+			.stack 6;
+			.locals 0;
+
+				L0:	iload_1;
+					bipush 30;
+					ishr;
+					iconst_0;
+					icmp;
+					ifne L3;
+				L1:	iload_1;
+					iconst_1;
+					ishl;
+					dup2;
+					istore_1;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_1;
+					isub;
+					icmp;
+					ifge L3;
+				L2:	iload_1;
+					ireturn;
+				L3:	new 9;		// java/lang/IndexOutOfBoundsException
+					dup;
+					invokespecial 13;		// java/lang/IndexOutOfBoundsException.<init>()V
+					athrow;
+		}
+
+		.method final checkIndexInt(I)I 130 {
+			.stack 6;
+			.locals 0;
+
+				L0:	iload_1;
+					bipush 29;
+					ishr;
+					iconst_0;
+					icmp;
+					ifne L3;
+				L1:	iload_1;
+					iconst_2;
+					ishl;
+					dup2;
+					istore_1;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_3;
+					isub;
+					icmp;
+					ifge L3;
+				L2:	iload_1;
+					ireturn;
+				L3:	new 9;		// java/lang/IndexOutOfBoundsException
+					dup;
+					invokespecial 13;		// java/lang/IndexOutOfBoundsException.<init>()V
+					athrow;
+		}
+
+		.method final checkNotUnmapped()V 131 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_a_this 5;		// reference javacardx/framework/nio/Buffer.parent
+					getfield_s 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 32;
+					sand;
+					ifeq L2;
+				L1:	new 10;		// java/lang/SecurityException
+					dup;
+					invokespecial 11;		// java/lang/SecurityException.<init>()V
+					athrow;
+				L2:	return;
+		}
+
+		.method  <init>(Ljavacardx/framework/nio/Buffer;ILjava/lang/Object;IISS)V {
+			.stack 7;
+			.locals 0;
+
+			.descriptor	Ljava/lang/Object;	0.0;
+
+				L0:	aload_0;
+					invokespecial 12;		// java/lang/Object.<init>()V
+					iconst_0;
+					putfield_i_this 7;		// int javacardx/framework/nio/Buffer.address
+					aload_0;
+					aload_1;
+					ifnonnull L2;
+				L1:	aload_0;
+					goto L3;
+				L2:	aload_1;
+				L3:	putfield_a 5;		// reference javacardx/framework/nio/Buffer.parent
+					aload_0;
+					aload 4;
+					checkcast 11 0;		// T_BYTE
+					putfield_a 8;		// reference javacardx/framework/nio/Buffer.data
+					iload 5;
+					putfield_i_this 7;		// int javacardx/framework/nio/Buffer.address
+					iload 7;
+					putfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					aload_0;
+					iload_2;
+					iconst_1;
+					sload 10;
+					s2i;
+					ishl;
+					iconst_1;
+					isub;
+					iconst_m1;
+					ixor;
+					iand;
+					putfield_i 3;		// int javacardx/framework/nio/Buffer.limit
+					aload_0;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					putfield_i 0;		// int javacardx/framework/nio/Buffer.capacity
+					sload 9;
+					putfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sload 10;
+					putfield_s_this 1;		// short javacardx/framework/nio/Buffer.elementScale
+					return;
+		}
+
+		.method static checkLimits(III)V {
+			.stack 6;
+			.locals 0;
+
+				L0:	iload_0;
+					iconst_0;
+					icmp;
+					iflt L4;
+				L1:	iload_0;
+					iload 4;
+					icmp;
+					ifgt L4;
+				L2:	iload_2;
+					iconst_0;
+					icmp;
+					iflt L4;
+				L3:	iload_2;
+					iload 4;
+					iload_0;
+					isub;
+					icmp;
+					ifle L5;
+				L4:	new 9;		// java/lang/IndexOutOfBoundsException
+					dup;
+					invokespecial 13;		// java/lang/IndexOutOfBoundsException.<init>()V
+					athrow;
+				L5:	return;
+		}
+
+		.method  get([BIIIS)V 132 {
+			.stack 8;
+			.locals 3;
+
+				L0:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 16;
+					sand;
+					ifeq L2;
+				L1:	bspush 6;
+					invokestatic 14;		// javacard/framework/SystemException.throwIt(S)V
+				L2:	iload 4;
+					iload 6;
+					iload_2;
+					invokestatic 15;		// javacardx/framework/nio/Buffer.checkLimits(III)V
+					iload 6;
+					getfield_s_this 1;		// short javacardx/framework/nio/Buffer.elementScale
+					s2i;
+					ishl;
+					istore 6;
+					iload 4;
+					getfield_s_this 1;		// short javacardx/framework/nio/Buffer.elementScale
+					s2i;
+					ishl;
+					istore 4;
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					istore 9;
+				L3:	iload 6;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iload 9;
+					isub;
+					icmp;
+					ifle L5;
+				L4:	new 16;		// javacardx/framework/nio/BufferUnderflowException
+					dup;
+					invokespecial 17;		// javacardx/framework/nio/BufferUnderflowException.<init>()V
+					athrow;
+				L5:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sload 8;
+					sxor;
+					sconst_m1;
+					sxor;
+					sconst_1;
+					sand;
+					ifeq L7;
+				L6:	sconst_1;
+					goto L8;
+				L7:	sconst_0;
+				L8:	sstore 11;
+				L9:	getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					iload 9;
+					iadd;
+					aload_1;
+					iload 4;
+					iload 6;
+					invokestatic 18;		// com/sun/javacard/impl/NativeMethods.NioCopyBytes([BI[BII)V
+					aload_0;
+					iload 9;
+					iload 6;
+					iadd;
+					putfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					return;
+		}
+
+		.method  putBuffer(Ljavacardx/framework/nio/Buffer;)V 133 {
+			.stack 8;
+			.locals 7;
+
+				L0:	aload_1;
+					aload_0;
+					if_acmpne L2;
+				L1:	sconst_1;
+					invokestatic 14;		// javacard/framework/SystemException.throwIt(S)V
+				L2:	aload_0;
+					invokevirtual 19;		// checkNotUnmapped()V
+					aload_1;
+					invokevirtual 19;		// checkNotUnmapped()V
+					getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 8;
+					sand;
+					ifeq L4;
+				L3:	new 20;		// javacardx/framework/nio/ReadOnlyBufferException
+					dup;
+					invokespecial 21;		// javacardx/framework/nio/ReadOnlyBufferException.<init>()V
+					athrow;
+				L4:	aload_1;
+					getfield_s 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 16;
+					sand;
+					ifeq L6;
+				L5:	bspush 6;
+					invokestatic 14;		// javacard/framework/SystemException.throwIt(S)V
+				L6:	aload_1;
+					getfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					istore_2;
+				L7:	getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					istore 4;
+				L8:	aload_1;
+					getfield_i 3;		// int javacardx/framework/nio/Buffer.limit
+					iload_2;
+					isub;
+					istore 6;
+				L9:	iload 6;
+					iconst_0;
+					icmp;
+					ifne L11;
+				L10:	return;
+				L11:	iload 6;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iload 4;
+					isub;
+					icmp;
+					ifle L13;
+				L12:	new 22;		// javacardx/framework/nio/BufferOverflowException
+					dup;
+					invokespecial 23;		// javacardx/framework/nio/BufferOverflowException.<init>()V
+					athrow;
+				L13:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					aload_1;
+					getfield_s 6;		// short javacardx/framework/nio/Buffer.flags
+					sxor;
+					sconst_m1;
+					sxor;
+					sconst_1;
+					sand;
+					ifeq L15;
+				L14:	sconst_1;
+					goto L16;
+				L15:	sconst_0;
+				L16:	sstore 8;
+				L17:	aload_1;
+					getfield_a 8;		// reference javacardx/framework/nio/Buffer.data
+					aload_1;
+					getfield_i 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					iload_2;
+					iadd;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					iload 4;
+					iadd;
+					iload 6;
+					invokestatic 18;		// com/sun/javacard/impl/NativeMethods.NioCopyBytes([BI[BII)V
+					aload_1;
+					iload_2;
+					iload 6;
+					iadd;
+					putfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					aload_0;
+					iload 4;
+					iload 6;
+					iadd;
+					putfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					return;
+		}
+
+		.method  put([BIIIS)V 134 {
+			.stack 8;
+			.locals 3;
+
+				L0:	iload 4;
+					iload 6;
+					iload_2;
+					invokestatic 15;		// javacardx/framework/nio/Buffer.checkLimits(III)V
+					aload_0;
+					invokevirtual 19;		// checkNotUnmapped()V
+					iload 6;
+					getfield_s_this 1;		// short javacardx/framework/nio/Buffer.elementScale
+					s2i;
+					ishl;
+					istore 6;
+					iload 4;
+					getfield_s_this 1;		// short javacardx/framework/nio/Buffer.elementScale
+					s2i;
+					ishl;
+					istore 4;
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					istore 9;
+				L1:	iload 6;
+					iconst_0;
+					icmp;
+					ifne L3;
+				L2:	return;
+				L3:	iload 6;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iload 9;
+					isub;
+					icmp;
+					ifle L5;
+				L4:	new 22;		// javacardx/framework/nio/BufferOverflowException
+					dup;
+					invokespecial 23;		// javacardx/framework/nio/BufferOverflowException.<init>()V
+					athrow;
+				L5:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 8;
+					sand;
+					ifeq L7;
+				L6:	new 20;		// javacardx/framework/nio/ReadOnlyBufferException
+					dup;
+					invokespecial 21;		// javacardx/framework/nio/ReadOnlyBufferException.<init>()V
+					athrow;
+				L7:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sload 8;
+					sxor;
+					sconst_m1;
+					sxor;
+					sconst_1;
+					sand;
+					ifeq L9;
+				L8:	sconst_1;
+					goto L10;
+				L9:	sconst_0;
+				L10:	sstore 11;
+				L11:	aload_1;
+					iload 4;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					iload 9;
+					iadd;
+					iload 6;
+					invokestatic 18;		// com/sun/javacard/impl/NativeMethods.NioCopyBytes([BI[BII)V
+					aload_0;
+					iload 9;
+					iload 6;
+					iadd;
+					putfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					return;
+		}
+
+		.method public abstract isReadOnly()Z 11 {
+		}
+
+		.method public abstract hasArray()Z 12 {
+		}
+
+		.method public abstract array()Ljava/lang/Object; 13 {
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		}
+
+		.method public abstract arrayOffset()I 14 {
+		}
+
+		.method public abstract isDirect()Z 15 {
+		}
+
+		.method public abstract slice()Ljavacardx/framework/nio/Buffer; 16 {
+		}
+
+	}
+
+	.class public BufferOverflowException 1 extends 0.3 {		// extends java/lang/RuntimeException
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 24;		// java/lang/RuntimeException.<init>()V
+					return;
+		}
+
+	}
+
+	.class public BufferUnderflowException 2 extends 0.3 {		// extends java/lang/RuntimeException
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 24;		// java/lang/RuntimeException.<init>()V
+					return;
+		}
+
+	}
+
+	.class public abstract ByteBuffer 3 extends Buffer {
+
+		.publicMethodTable 0 41 {
+			equals(Ljava/lang/Object;)Z 0;
+			capacity()I 1;
+			position()I 2;
+			position(I)Ljavacardx/framework/nio/Buffer; 3;
+			limit()I 4;
+			limit(I)Ljavacardx/framework/nio/Buffer; 5;
+			clear()Ljavacardx/framework/nio/Buffer; 6;
+			flip()Ljavacardx/framework/nio/Buffer; 7;
+			rewind()Ljavacardx/framework/nio/Buffer; 8;
+			remaining()I 9;
+			hasRemaining()Z 10;
+			isReadOnly()Z 11;
+			hasArray()Z 12;
+			array()Ljava/lang/Object; 13;
+			arrayOffset()I 14;
+			isDirect()Z 15;
+			slice()Ljavacardx/framework/nio/Buffer; 16;
+			order()Ljavacardx/framework/nio/ByteOrder; 255;
+			order(Ljavacardx/framework/nio/ByteOrder;)Ljavacardx/framework/nio/ByteBuffer; 255;
+			array()[B 255;
+			compareTo(Ljavacardx/framework/nio/ByteBuffer;)I 255;
+			get([BII)Ljavacardx/framework/nio/ByteBuffer; 255;
+			get([B)Ljavacardx/framework/nio/ByteBuffer; 255;
+			put(Ljavacardx/framework/nio/ByteBuffer;)Ljavacardx/framework/nio/ByteBuffer; 255;
+			put([B)Ljavacardx/framework/nio/ByteBuffer; 255;
+			put([BII)Ljavacardx/framework/nio/ByteBuffer; 255;
+			get()B 255;
+			put(B)Ljavacardx/framework/nio/ByteBuffer; 255;
+			get(I)B 255;
+			put(IB)Ljavacardx/framework/nio/ByteBuffer; 255;
+			getShort()S 255;
+			putShort(S)Ljavacardx/framework/nio/ByteBuffer; 255;
+			getShort(I)S 255;
+			putShort(IS)Ljavacardx/framework/nio/ByteBuffer; 255;
+			getInt()I 255;
+			putInt(I)Ljavacardx/framework/nio/ByteBuffer; 255;
+			getInt(I)I 255;
+			putInt(II)Ljavacardx/framework/nio/ByteBuffer; 255;
+			asReadOnlyBuffer()Ljavacardx/framework/nio/ByteBuffer; 255;
+			compact()Ljavacardx/framework/nio/ByteBuffer; 255;
+			slice()Ljavacardx/framework/nio/ByteBuffer; 255;
+		}
+
+		.packageMethodTable 7 {
+			checkIndex(II)I;
+			checkIndexShort(I)I;
+			checkIndexInt(I)I;
+			checkNotUnmapped()V;
+			get([BIIIS)V;
+			putBuffer(Ljavacardx/framework/nio/Buffer;)V;
+			put([BIIIS)V;
+		}
+
+		.method public final order()Ljavacardx/framework/nio/ByteOrder; 17 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_1;
+					sand;
+					ifeq L2;
+				L1:	getstatic_a 25;		// reference javacardx/framework/nio/ByteOrder.BIG_ENDIAN
+					goto L3;
+				L2:	getstatic_a 26;		// reference javacardx/framework/nio/ByteOrder.LITTLE_ENDIAN
+				L3:	areturn;
+		}
+
+		.method public final order(Ljavacardx/framework/nio/ByteOrder;)Ljavacardx/framework/nio/ByteBuffer; 18 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_1;
+					getstatic_a 25;		// reference javacardx/framework/nio/ByteOrder.BIG_ENDIAN
+					if_acmpne L2;
+				L1:	aload_0;
+					dup;
+					getfield_s 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_1;
+					sor;
+					putfield_s 6;		// short javacardx/framework/nio/Buffer.flags
+					goto L3;
+				L2:	aload_0;
+					dup;
+					getfield_s 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush -2;
+					sand;
+					putfield_s 6;		// short javacardx/framework/nio/Buffer.flags
+				L3:	aload_0;
+					areturn;
+		}
+
+		.method public final hasArray()Z 12 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokevirtual 27;		// isDirect()Z
+					ifne L3;
+				L1:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 8;
+					sand;
+					ifne L3;
+				L2:	sconst_1;
+					goto L4;
+				L3:	sconst_0;
+				L4:	sreturn;
+		}
+
+		.method public final array()[B 19 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokevirtual 28;		// arrayOffset()I
+					pop2;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					areturn;
+		}
+
+		.method public final arrayOffset()I 14 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokevirtual 27;		// isDirect()Z
+					ifeq L2;
+				L1:	bspush 6;
+					invokestatic 14;		// javacard/framework/SystemException.throwIt(S)V
+				L2:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 8;
+					sand;
+					ifeq L4;
+				L3:	new 20;		// javacardx/framework/nio/ReadOnlyBufferException
+					dup;
+					invokespecial 21;		// javacardx/framework/nio/ReadOnlyBufferException.<init>()V
+					athrow;
+				L4:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 16;
+					sand;
+					ifeq L6;
+				L5:	bspush 6;
+					invokestatic 14;		// javacard/framework/SystemException.throwIt(S)V
+				L6:	getfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					ireturn;
+		}
+
+		.method  <init>(Ljavacardx/framework/nio/Buffer;ILjava/lang/Object;IIS)V {
+			.stack 11;
+			.locals 0;
+
+			.descriptor	Ljava/lang/Object;	0.0;
+
+				L0:	aload_0;
+					aload_1;
+					iload_2;
+					aload 4;
+					iload 5;
+					iload 7;
+					sload 9;
+					sconst_0;
+					invokespecial 29;		// javacardx/framework/nio/Buffer.<init>(Ljavacardx/framework/nio/Buffer;ILjava/lang/Object;IISS)V
+					return;
+		}
+
+		.method public static allocateDirect(I)Ljavacardx/framework/nio/ByteBuffer; 0 {
+			.stack 11;
+			.locals 3;
+
+				L0:	iload_0;
+					iconst_0;
+					icmp;
+					ifge L2;
+				L1:	sconst_1;
+					invokestatic 14;		// javacard/framework/SystemException.throwIt(S)V
+				L2:	sconst_0;
+					invokestatic 30;		// javacard/framework/JCSystem.getAvailableMemory(B)S
+					sstore_2;
+				L3:	iload_0;
+					sload_2;
+					s2i;
+					icmp;
+					iflt L5;
+				L4:	sconst_5;
+					invokestatic 14;		// javacard/framework/SystemException.throwIt(S)V
+				L5:	sconst_3;
+					sstore_3;
+				L6:	iload_0;
+					i2s;
+					newarray 11;
+					astore 4;
+				L7:	aload 4;
+					sconst_0;
+					invokestatic 31;		// com/sun/javacard/impl/NativeMethods.setJCREentry(Ljava/lang/Object;Z)V
+					new 32;		// javacardx/framework/nio/ByteBufferImpl
+					dup;
+					aconst_null;
+					iload_0;
+					aload 4;
+					iconst_0;
+					iconst_0;
+					sload_3;
+					invokespecial 33;		// javacardx/framework/nio/ByteBufferImpl.<init>(Ljavacardx/framework/nio/Buffer;ILjava/lang/Object;IIS)V
+					areturn;
+		}
+
+		.method public static wrap([BII)Ljavacardx/framework/nio/ByteBuffer; 1 {
+			.stack 11;
+			.locals 1;
+
+				L0:	iload_1;
+					iload_3;
+					aload_0;
+					arraylength;
+					s2i;
+					invokestatic 34;		// javacardx/framework/nio/Buffer.checkLimits(III)V
+					new 32;		// javacardx/framework/nio/ByteBufferImpl
+					dup;
+					aconst_null;
+					aload_0;
+					arraylength;
+					s2i;
+					aload_0;
+					iconst_0;
+					iconst_0;
+					sconst_1;
+					invokespecial 33;		// javacardx/framework/nio/ByteBufferImpl.<init>(Ljavacardx/framework/nio/Buffer;ILjava/lang/Object;IIS)V
+					dup;
+					astore 5;
+				L1:	iload_1;
+					invokevirtual 35;		// position(I)Ljavacardx/framework/nio/Buffer;
+					iload_1;
+					iload_3;
+					iadd;
+					invokevirtual 36;		// limit(I)Ljavacardx/framework/nio/Buffer;
+					pop;
+					aload 5;
+					areturn;
+		}
+
+		.method public static wrap([B)Ljavacardx/framework/nio/ByteBuffer; 2 {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_0;
+					iconst_0;
+					aload_0;
+					arraylength;
+					s2i;
+					invokestatic 37;		// javacardx/framework/nio/ByteBuffer.wrap([BII)Ljavacardx/framework/nio/ByteBuffer;
+					areturn;
+		}
+
+		.method public equals(Ljava/lang/Object;)Z 0 {
+			.stack 4;
+			.locals 9;
+
+			.descriptor	Ljava/lang/Object;	0.0;
+
+				L0:	aload_0;
+					aload_1;
+					if_acmpne L2;
+				L1:	sconst_1;
+					sreturn;
+				L2:	aload_1;
+					instanceof 0 38;		// T_CLASSORINTERFACE javacardx/framework/nio/ByteBuffer
+					ifne L4;
+				L3:	sconst_0;
+					sreturn;
+				L4:	aload_1;
+					checkcast 0 38;		// T_CLASSORINTERFACE javacardx/framework/nio/ByteBuffer
+					astore_2;
+				L5:	aload_0;
+					invokevirtual 39;		// remaining()I
+					aload_2;
+					invokevirtual 39;		// remaining()I
+					icmp;
+					ifeq L7;
+				L6:	sconst_0;
+					sreturn;
+				L7:	aload_0;
+					invokevirtual 40;		// position()I
+					istore_3;
+				L8:	aload_0;
+					invokevirtual 41;		// limit()I
+					iconst_1;
+					isub;
+					istore 5;
+				L9:	aload_2;
+					invokevirtual 41;		// limit()I
+					iconst_1;
+					isub;
+					istore 7;
+				L10:	iload 5;
+					iload_3;
+					icmp;
+					iflt L16;
+				L11:	aload_0;
+					iload 5;
+					invokevirtual 42;		// get(I)B
+					sstore 9;
+				L12:	aload_2;
+					iload 7;
+					invokevirtual 42;		// get(I)B
+					sstore 10;
+				L13:	sload 9;
+					sload 10;
+					if_scmpeq L15;
+				L14:	sconst_0;
+					sreturn;
+				L15:	iinc 5 -1;
+					iinc 7 -1;
+					goto L10;
+				L16:	sconst_1;
+					sreturn;
+		}
+
+		.method public compareTo(Ljavacardx/framework/nio/ByteBuffer;)I 20 {
+			.stack 6;
+			.locals 8;
+
+				L0:	aload_0;
+					invokevirtual 40;		// position()I
+					aload_0;
+					invokevirtual 39;		// remaining()I
+					aload_1;
+					invokevirtual 39;		// remaining()I
+					invokestatic 43;		// javacardx/framework/nio/ByteBuffer.min(II)I
+					iadd;
+					istore_2;
+				L1:	aload_0;
+					invokevirtual 40;		// position()I
+					istore 4;
+				L2:	aload_1;
+					invokevirtual 40;		// position()I
+					istore 6;
+				L3:	iload 4;
+					iload_2;
+					icmp;
+					ifge L12;
+				L4:	aload_0;
+					iload 4;
+					invokevirtual 42;		// get(I)B
+					sstore 8;
+				L5:	aload_1;
+					iload 6;
+					invokevirtual 42;		// get(I)B
+					sstore 9;
+				L6:	sload 8;
+					sload 9;
+					if_scmpne L8;
+				L7:	goto L11;
+				L8:	sload 8;
+					sload 9;
+					if_scmpge L10;
+				L9:	iconst_m1;
+					ireturn;
+				L10:	iconst_1;
+					ireturn;
+				L11:	iinc 4 1;
+					iinc 6 1;
+					goto L3;
+				L12:	aload_0;
+					invokevirtual 39;		// remaining()I
+					aload_1;
+					invokevirtual 39;		// remaining()I
+					isub;
+					ireturn;
+		}
+
+		.method public get([BII)Ljavacardx/framework/nio/ByteBuffer; 21 {
+			.stack 9;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_1;
+					aload_1;
+					arraylength;
+					s2i;
+					iload_2;
+					iload 4;
+					getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					invokevirtual 44;		// get([BIIIS)V
+					aload_0;
+					areturn;
+		}
+
+		.method public get([B)Ljavacardx/framework/nio/ByteBuffer; 22 {
+			.stack 1;
+			.locals 0;
+
+				L0:	bspush 6;
+					invokestatic 14;		// javacard/framework/SystemException.throwIt(S)V
+					aconst_null;
+					areturn;
+		}
+
+		.method public put(Ljavacardx/framework/nio/ByteBuffer;)Ljavacardx/framework/nio/ByteBuffer; 23 {
+			.stack 1;
+			.locals 0;
+
+				L0:	bspush 6;
+					invokestatic 14;		// javacard/framework/SystemException.throwIt(S)V
+					aconst_null;
+					areturn;
+		}
+
+		.method public put([B)Ljavacardx/framework/nio/ByteBuffer; 24 {
+			.stack 9;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_1;
+					aload_1;
+					arraylength;
+					s2i;
+					iconst_0;
+					aload_1;
+					arraylength;
+					s2i;
+					getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					invokevirtual 45;		// put([BIIIS)V
+					aload_0;
+					areturn;
+		}
+
+		.method public put([BII)Ljavacardx/framework/nio/ByteBuffer; 25 {
+			.stack 1;
+			.locals 0;
+
+				L0:	bspush 6;
+					invokestatic 14;		// javacard/framework/SystemException.throwIt(S)V
+					aconst_null;
+					areturn;
+		}
+
+		.method private static min(II)I {
+			.stack 4;
+			.locals 0;
+
+				L0:	iload_0;
+					iload_2;
+					icmp;
+					ifgt L2;
+				L1:	iload_0;
+					goto L3;
+				L2:	iload_2;
+				L3:	ireturn;
+		}
+
+		.method public slice()Ljavacardx/framework/nio/Buffer; 16 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokevirtual 46;		// slice()Ljavacardx/framework/nio/ByteBuffer;
+					areturn;
+		}
+
+		.method public array()Ljava/lang/Object; 13 {
+			.stack 1;
+			.locals 0;
+
+			.descriptor	Ljava/lang/Object;	0.0;
+
+				L0:	aload_0;
+					invokevirtual 47;		// array()[B
+					areturn;
+		}
+
+		.method public abstract isDirect()Z 15 {
+		}
+
+		.method public abstract get()B 26 {
+		}
+
+		.method public abstract put(B)Ljavacardx/framework/nio/ByteBuffer; 27 {
+		}
+
+		.method public abstract get(I)B 28 {
+		}
+
+		.method public abstract put(IB)Ljavacardx/framework/nio/ByteBuffer; 29 {
+		}
+
+		.method public abstract getShort()S 30 {
+		}
+
+		.method public abstract putShort(S)Ljavacardx/framework/nio/ByteBuffer; 31 {
+		}
+
+		.method public abstract getShort(I)S 32 {
+		}
+
+		.method public abstract putShort(IS)Ljavacardx/framework/nio/ByteBuffer; 33 {
+		}
+
+		.method public abstract getInt()I 34 {
+		}
+
+		.method public abstract putInt(I)Ljavacardx/framework/nio/ByteBuffer; 35 {
+		}
+
+		.method public abstract getInt(I)I 36 {
+		}
+
+		.method public abstract putInt(II)Ljavacardx/framework/nio/ByteBuffer; 37 {
+		}
+
+		.method public abstract asReadOnlyBuffer()Ljavacardx/framework/nio/ByteBuffer; 38 {
+		}
+
+		.method public abstract compact()Ljavacardx/framework/nio/ByteBuffer; 39 {
+		}
+
+		.method public abstract slice()Ljavacardx/framework/nio/ByteBuffer; 40 {
+		}
+
+	}
+
+	.class  ByteBufferImpl extends ByteBuffer {
+
+		.publicMethodTable 0 41 {
+			equals(Ljava/lang/Object;)Z 0;
+			capacity()I 1;
+			position()I 2;
+			position(I)Ljavacardx/framework/nio/Buffer; 3;
+			limit()I 4;
+			limit(I)Ljavacardx/framework/nio/Buffer; 5;
+			clear()Ljavacardx/framework/nio/Buffer; 6;
+			flip()Ljavacardx/framework/nio/Buffer; 7;
+			rewind()Ljavacardx/framework/nio/Buffer; 8;
+			remaining()I 9;
+			hasRemaining()Z 10;
+			isReadOnly()Z 11;
+			hasArray()Z 12;
+			array()Ljava/lang/Object; 13;
+			arrayOffset()I 14;
+			isDirect()Z 15;
+			slice()Ljavacardx/framework/nio/Buffer; 16;
+			order()Ljavacardx/framework/nio/ByteOrder; 17;
+			order(Ljavacardx/framework/nio/ByteOrder;)Ljavacardx/framework/nio/ByteBuffer; 18;
+			array()[B 19;
+			compareTo(Ljavacardx/framework/nio/ByteBuffer;)I 20;
+			get([BII)Ljavacardx/framework/nio/ByteBuffer; 21;
+			get([B)Ljavacardx/framework/nio/ByteBuffer; 22;
+			put(Ljavacardx/framework/nio/ByteBuffer;)Ljavacardx/framework/nio/ByteBuffer; 23;
+			put([B)Ljavacardx/framework/nio/ByteBuffer; 24;
+			put([BII)Ljavacardx/framework/nio/ByteBuffer; 25;
+			get()B 26;
+			put(B)Ljavacardx/framework/nio/ByteBuffer; 27;
+			get(I)B 28;
+			put(IB)Ljavacardx/framework/nio/ByteBuffer; 29;
+			getShort()S 30;
+			putShort(S)Ljavacardx/framework/nio/ByteBuffer; 31;
+			getShort(I)S 32;
+			putShort(IS)Ljavacardx/framework/nio/ByteBuffer; 33;
+			getInt()I 34;
+			putInt(I)Ljavacardx/framework/nio/ByteBuffer; 35;
+			getInt(I)I 36;
+			putInt(II)Ljavacardx/framework/nio/ByteBuffer; 37;
+			asReadOnlyBuffer()Ljavacardx/framework/nio/ByteBuffer; 38;
+			compact()Ljavacardx/framework/nio/ByteBuffer; 39;
+			slice()Ljavacardx/framework/nio/ByteBuffer; 40;
+		}
+
+		.packageMethodTable 7 {
+			checkIndex(II)I;
+			checkIndexShort(I)I;
+			checkIndexInt(I)I;
+			checkNotUnmapped()V;
+			get([BIIIS)V;
+			putBuffer(Ljavacardx/framework/nio/Buffer;)V;
+			put([BIIIS)V;
+		}
+
+		.method  <init>(Ljavacardx/framework/nio/Buffer;ILjava/lang/Object;IIS)V {
+			.stack 10;
+			.locals 0;
+
+			.descriptor	Ljava/lang/Object;	0.0;
+
+				L0:	aload_0;
+					aload_1;
+					iload_2;
+					aload 4;
+					iload 5;
+					iload 7;
+					sload 9;
+					invokespecial 48;		// javacardx/framework/nio/ByteBuffer.<init>(Ljavacardx/framework/nio/Buffer;ILjava/lang/Object;IIS)V
+					sload 9;
+					bspush 6;
+					sand;
+					sconst_2;
+					if_scmpne L3;
+				L1:	iload_2;
+					iconst_0;
+					icmp;
+					ifne L3;
+				L2:	aload_0;
+					dup;
+					getfield_s 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_4;
+					sor;
+					putfield_s 6;		// short javacardx/framework/nio/Buffer.flags
+				L3:	return;
+		}
+
+		.method public slice()Ljavacardx/framework/nio/ByteBuffer; 40 {
+			.stack 12;
+			.locals 2;
+
+				L0:	getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					istore_1;
+				L1:	new 32;		// javacardx/framework/nio/ByteBufferImpl
+					dup;
+					getfield_a_this 5;		// reference javacardx/framework/nio/Buffer.parent
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iload_1;
+					isub;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 7;		// int javacardx/framework/nio/Buffer.address
+					getfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					iload_1;
+					iadd;
+					getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_4;
+					sor;
+					sconst_1;
+					sor;
+					invokespecial 33;		// javacardx/framework/nio/ByteBufferImpl.<init>(Ljavacardx/framework/nio/Buffer;ILjava/lang/Object;IIS)V
+					areturn;
+		}
+
+		.method public get()B 26 {
+			.stack 6;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore_1;
+				L1:	getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_1;
+					isub;
+					icmp;
+					ifle L3;
+				L2:	new 16;		// javacardx/framework/nio/BufferUnderflowException
+					dup;
+					invokespecial 17;		// javacardx/framework/nio/BufferUnderflowException.<init>()V
+					athrow;
+				L3:	getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					getfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					iadd;
+					i2s;
+					baload;
+					sstore_1;
+					aload_0;
+					dup;
+					getfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					iconst_1;
+					iadd;
+					putfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					sload_1;
+					sreturn;
+		}
+
+		.method public put(B)Ljavacardx/framework/nio/ByteBuffer; 27 {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 8;
+					sand;
+					ifeq L2;
+				L1:	new 20;		// javacardx/framework/nio/ReadOnlyBufferException
+					dup;
+					invokespecial 21;		// javacardx/framework/nio/ReadOnlyBufferException.<init>()V
+					athrow;
+				L2:	getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_1;
+					isub;
+					icmp;
+					ifle L4;
+				L3:	new 22;		// javacardx/framework/nio/BufferOverflowException
+					dup;
+					invokespecial 23;		// javacardx/framework/nio/BufferOverflowException.<init>()V
+					athrow;
+				L4:	getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					getfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					iadd;
+					i2s;
+					sload_1;
+					bastore;
+					aload_0;
+					dup;
+					getfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					iconst_1;
+					iadd;
+					putfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					aload_0;
+					areturn;
+		}
+
+		.method public get(I)B 28 {
+			.stack 6;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore_3;
+				L1:	iload_1;
+					iconst_0;
+					icmp;
+					iflt L3;
+				L2:	iload_1;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_1;
+					isub;
+					icmp;
+					ifle L4;
+				L3:	new 9;		// java/lang/IndexOutOfBoundsException
+					dup;
+					invokespecial 13;		// java/lang/IndexOutOfBoundsException.<init>()V
+					athrow;
+				L4:	getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					iload_1;
+					getfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					iadd;
+					i2s;
+					baload;
+					sstore_3;
+					sload_3;
+					sreturn;
+		}
+
+		.method public put(IB)Ljavacardx/framework/nio/ByteBuffer; 29 {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 8;
+					sand;
+					ifeq L2;
+				L1:	new 20;		// javacardx/framework/nio/ReadOnlyBufferException
+					dup;
+					invokespecial 21;		// javacardx/framework/nio/ReadOnlyBufferException.<init>()V
+					athrow;
+				L2:	iload_1;
+					iconst_0;
+					icmp;
+					iflt L4;
+				L3:	iload_1;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_1;
+					isub;
+					icmp;
+					ifle L5;
+				L4:	new 9;		// java/lang/IndexOutOfBoundsException
+					dup;
+					invokespecial 13;		// java/lang/IndexOutOfBoundsException.<init>()V
+					athrow;
+				L5:	getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					iload_1;
+					getfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					iadd;
+					i2s;
+					sload_3;
+					bastore;
+					aload_0;
+					areturn;
+		}
+
+		.method public get([BII)Ljavacardx/framework/nio/ByteBuffer; 21 {
+			.stack 9;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_1;
+					aload_1;
+					arraylength;
+					s2i;
+					iload_2;
+					iload 4;
+					getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					invokevirtual 49;		// get([BIIIS)V
+					aload_0;
+					areturn;
+		}
+
+		.method public get([B)Ljavacardx/framework/nio/ByteBuffer; 22 {
+			.stack 9;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_1;
+					aload_1;
+					arraylength;
+					s2i;
+					iconst_0;
+					aload_1;
+					arraylength;
+					s2i;
+					getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					invokevirtual 49;		// get([BIIIS)V
+					aload_0;
+					areturn;
+		}
+
+		.method public put(Ljavacardx/framework/nio/ByteBuffer;)Ljavacardx/framework/nio/ByteBuffer; 23 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_1;
+					invokevirtual 50;		// putBuffer(Ljavacardx/framework/nio/Buffer;)V
+					aload_0;
+					areturn;
+		}
+
+		.method public put([BII)Ljavacardx/framework/nio/ByteBuffer; 25 {
+			.stack 9;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_1;
+					aload_1;
+					arraylength;
+					s2i;
+					iload_2;
+					iload 4;
+					getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					invokevirtual 51;		// put([BIIIS)V
+					aload_0;
+					areturn;
+		}
+
+		.method public isDirect()Z 15 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_2;
+					sand;
+					ifeq L2;
+				L1:	sconst_1;
+					goto L3;
+				L2:	sconst_0;
+				L3:	sreturn;
+		}
+
+		.method public equals(Ljava/lang/Object;)Z 0 {
+			.stack 4;
+			.locals 7;
+
+			.descriptor	Ljava/lang/Object;	0.0;
+
+				L0:	aload_1;
+					instanceof 0 38;		// T_CLASSORINTERFACE javacardx/framework/nio/ByteBuffer
+					ifne L2;
+				L1:	sconst_0;
+					sreturn;
+				L2:	aload_1;
+					checkcast 0 38;		// T_CLASSORINTERFACE javacardx/framework/nio/ByteBuffer
+					astore_2;
+				L3:	aload_0;
+					invokevirtual 52;		// remaining()I
+					aload_2;
+					invokevirtual 39;		// remaining()I
+					icmp;
+					ifeq L5;
+				L4:	sconst_0;
+					sreturn;
+				L5:	aload_0;
+					invokevirtual 53;		// position()I
+					istore_3;
+				L6:	aload_0;
+					invokevirtual 54;		// limit()I
+					iconst_1;
+					isub;
+					istore 5;
+				L7:	aload_2;
+					invokevirtual 41;		// limit()I
+					iconst_1;
+					isub;
+					istore 7;
+				L8:	iload 5;
+					iload_3;
+					icmp;
+					iflt L12;
+				L9:	aload_0;
+					iload 5;
+					invokevirtual 55;		// get(I)B
+					aload_2;
+					iload 7;
+					invokevirtual 42;		// get(I)B
+					if_scmpeq L11;
+				L10:	sconst_0;
+					sreturn;
+				L11:	iinc 5 -1;
+					iinc 7 -1;
+					goto L8;
+				L12:	sconst_1;
+					sreturn;
+		}
+
+		.method public compareTo(Ljavacardx/framework/nio/ByteBuffer;)I 20 {
+			.stack 6;
+			.locals 8;
+
+				L0:	aload_0;
+					invokevirtual 53;		// position()I
+					aload_0;
+					invokevirtual 52;		// remaining()I
+					aload_1;
+					invokevirtual 39;		// remaining()I
+					icmp;
+					ifle L2;
+				L1:	aload_1;
+					invokevirtual 39;		// remaining()I
+					goto L3;
+				L2:	aload_0;
+					invokevirtual 52;		// remaining()I
+				L3:	iadd;
+					istore_2;
+				L4:	aload_0;
+					invokevirtual 53;		// position()I
+					istore 4;
+				L5:	aload_1;
+					invokevirtual 40;		// position()I
+					istore 6;
+				L6:	iload 4;
+					iload_2;
+					icmp;
+					ifge L14;
+				L7:	aload_0;
+					iload 4;
+					invokevirtual 55;		// get(I)B
+					s2i;
+					aload_1;
+					iload 6;
+					invokevirtual 42;		// get(I)B
+					s2i;
+					isub;
+					istore 8;
+				L8:	iload 8;
+					iconst_0;
+					icmp;
+					ifne L10;
+				L9:	goto L13;
+				L10:	iload 8;
+					iconst_0;
+					icmp;
+					ifge L12;
+				L11:	iconst_m1;
+					ireturn;
+				L12:	iconst_1;
+					ireturn;
+				L13:	iinc 4 1;
+					iinc 6 1;
+					goto L6;
+				L14:	aload_0;
+					invokevirtual 52;		// remaining()I
+					aload_1;
+					invokevirtual 39;		// remaining()I
+					isub;
+					ireturn;
+		}
+
+		.method public getShort()S 30 {
+			.stack 6;
+			.locals 2;
+
+				L0:	sconst_0;
+					sstore_1;
+				L1:	getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_2;
+					isub;
+					icmp;
+					ifle L3;
+				L2:	new 16;		// javacardx/framework/nio/BufferUnderflowException
+					dup;
+					invokespecial 17;		// javacardx/framework/nio/BufferUnderflowException.<init>()V
+					athrow;
+				L3:	sconst_0;
+					sstore_2;
+				L4:	sload_2;
+					sconst_2;
+					if_scmpge L6;
+				L5:	sload_1;
+					bspush 8;
+					sshl;
+					sstore_1;
+					sload_1;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					sload_2;
+					s2i;
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					iadd;
+					i2s;
+					baload;
+					sspush 255;
+					sand;
+					sor;
+					sstore_1;
+					sload_2;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_2;
+					goto L4;
+				L6:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_1;
+					sand;
+					ifne L8;
+				L7:	aload_0;
+					sload_1;
+					invokespecial 56;		// javacardx/framework/nio/ByteBufferImpl.swap_short(S)S
+					sstore_1;
+				L8:	aload_0;
+					dup;
+					getfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					iconst_2;
+					iadd;
+					putfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					sload_1;
+					sreturn;
+		}
+
+		.method public putShort(S)Ljavacardx/framework/nio/ByteBuffer; 31 {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 8;
+					sand;
+					ifeq L2;
+				L1:	new 20;		// javacardx/framework/nio/ReadOnlyBufferException
+					dup;
+					invokespecial 21;		// javacardx/framework/nio/ReadOnlyBufferException.<init>()V
+					athrow;
+				L2:	getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_2;
+					isub;
+					icmp;
+					ifle L4;
+				L3:	new 22;		// javacardx/framework/nio/BufferOverflowException
+					dup;
+					invokespecial 23;		// javacardx/framework/nio/BufferOverflowException.<init>()V
+					athrow;
+				L4:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_1;
+					sand;
+					ifne L6;
+				L5:	aload_0;
+					sload_1;
+					invokespecial 56;		// javacardx/framework/nio/ByteBufferImpl.swap_short(S)S
+					sstore_1;
+				L6:	getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					i2s;
+					sload_1;
+					s2i;
+					iipush 65280;
+					iand;
+					bipush 8;
+					ishr;
+					i2b;
+					bastore;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					iconst_1;
+					iadd;
+					i2s;
+					sload_1;
+					sspush 255;
+					sand;
+					sconst_0;
+					sshr;
+					s2b;
+					bastore;
+					aload_0;
+					dup;
+					getfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					iconst_2;
+					iadd;
+					putfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					aload_0;
+					areturn;
+		}
+
+		.method public getShort(I)S 32 {
+			.stack 6;
+			.locals 2;
+
+				L0:	sconst_0;
+					sstore_3;
+				L1:	iload_1;
+					iconst_0;
+					icmp;
+					ifge L3;
+				L2:	new 9;		// java/lang/IndexOutOfBoundsException
+					dup;
+					invokespecial 13;		// java/lang/IndexOutOfBoundsException.<init>()V
+					athrow;
+				L3:	iload_1;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_2;
+					isub;
+					icmp;
+					ifle L5;
+				L4:	new 9;		// java/lang/IndexOutOfBoundsException
+					dup;
+					invokespecial 13;		// java/lang/IndexOutOfBoundsException.<init>()V
+					athrow;
+				L5:	sconst_0;
+					sstore 4;
+				L6:	sload 4;
+					sconst_2;
+					if_scmpge L8;
+				L7:	sload_3;
+					bspush 8;
+					sshl;
+					sstore_3;
+					sload_3;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					sload 4;
+					s2i;
+					iload_1;
+					iadd;
+					i2s;
+					baload;
+					sspush 255;
+					sand;
+					sor;
+					sstore_3;
+					sload 4;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 4;
+					goto L6;
+				L8:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_1;
+					sand;
+					ifne L10;
+				L9:	aload_0;
+					sload_3;
+					invokespecial 56;		// javacardx/framework/nio/ByteBufferImpl.swap_short(S)S
+					sstore_3;
+				L10:	sload_3;
+					sreturn;
+		}
+
+		.method public putShort(IS)Ljavacardx/framework/nio/ByteBuffer; 33 {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 8;
+					sand;
+					ifeq L2;
+				L1:	new 20;		// javacardx/framework/nio/ReadOnlyBufferException
+					dup;
+					invokespecial 21;		// javacardx/framework/nio/ReadOnlyBufferException.<init>()V
+					athrow;
+				L2:	iload_1;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_2;
+					isub;
+					icmp;
+					ifle L4;
+				L3:	new 9;		// java/lang/IndexOutOfBoundsException
+					dup;
+					invokespecial 13;		// java/lang/IndexOutOfBoundsException.<init>()V
+					athrow;
+				L4:	iload_1;
+					iconst_0;
+					icmp;
+					ifge L6;
+				L5:	new 9;		// java/lang/IndexOutOfBoundsException
+					dup;
+					invokespecial 13;		// java/lang/IndexOutOfBoundsException.<init>()V
+					athrow;
+				L6:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_1;
+					sand;
+					ifne L8;
+				L7:	aload_0;
+					sload_3;
+					invokespecial 56;		// javacardx/framework/nio/ByteBufferImpl.swap_short(S)S
+					sstore_3;
+				L8:	getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					iload_1;
+					i2s;
+					sload_3;
+					s2i;
+					iipush 65280;
+					iand;
+					bipush 8;
+					ishr;
+					i2b;
+					bastore;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					iload_1;
+					iconst_1;
+					iadd;
+					i2s;
+					sload_3;
+					sspush 255;
+					sand;
+					sconst_0;
+					sshr;
+					s2b;
+					bastore;
+					aload_0;
+					areturn;
+		}
+
+		.method public getInt()I 34 {
+			.stack 7;
+			.locals 3;
+
+				L0:	iconst_0;
+					istore_1;
+				L1:	getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_4;
+					isub;
+					icmp;
+					ifle L3;
+				L2:	new 16;		// javacardx/framework/nio/BufferUnderflowException
+					dup;
+					invokespecial 17;		// javacardx/framework/nio/BufferUnderflowException.<init>()V
+					athrow;
+				L3:	sconst_0;
+					sstore_3;
+				L4:	sload_3;
+					sconst_4;
+					if_scmpge L6;
+				L5:	iload_1;
+					bipush 8;
+					ishl;
+					istore_1;
+					iload_1;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					sload_3;
+					s2i;
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					iadd;
+					i2s;
+					baload;
+					s2i;
+					sipush 255;
+					iand;
+					ior;
+					istore_1;
+					sload_3;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_3;
+					goto L4;
+				L6:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_1;
+					sand;
+					ifne L8;
+				L7:	aload_0;
+					iload_1;
+					invokespecial 57;		// javacardx/framework/nio/ByteBufferImpl.swap_int(I)I
+					istore_1;
+				L8:	aload_0;
+					dup;
+					getfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					iconst_4;
+					iadd;
+					putfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					iload_1;
+					ireturn;
+		}
+
+		.method public putInt(I)Ljavacardx/framework/nio/ByteBuffer; 35 {
+			.stack 6;
+			.locals 0;
+
+				L0:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 8;
+					sand;
+					ifeq L2;
+				L1:	new 20;		// javacardx/framework/nio/ReadOnlyBufferException
+					dup;
+					invokespecial 21;		// javacardx/framework/nio/ReadOnlyBufferException.<init>()V
+					athrow;
+				L2:	getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_4;
+					isub;
+					icmp;
+					ifle L4;
+				L3:	new 22;		// javacardx/framework/nio/BufferOverflowException
+					dup;
+					invokespecial 23;		// javacardx/framework/nio/BufferOverflowException.<init>()V
+					athrow;
+				L4:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_1;
+					sand;
+					ifne L6;
+				L5:	aload_0;
+					iload_1;
+					invokespecial 57;		// javacardx/framework/nio/ByteBufferImpl.swap_int(I)I
+					istore_1;
+				L6:	getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					i2s;
+					iload_1;
+					iipush -16777216;
+					iand;
+					bipush 24;
+					ishr;
+					i2b;
+					bastore;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					iconst_1;
+					iadd;
+					i2s;
+					iload_1;
+					iipush 16711680;
+					iand;
+					bipush 16;
+					ishr;
+					i2b;
+					bastore;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					iconst_2;
+					iadd;
+					i2s;
+					iload_1;
+					iipush 65280;
+					iand;
+					bipush 8;
+					ishr;
+					i2b;
+					bastore;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 2;		// int javacardx/framework/nio/Buffer.position
+					iconst_3;
+					iadd;
+					i2s;
+					iload_1;
+					sipush 255;
+					iand;
+					iconst_0;
+					ishr;
+					i2b;
+					bastore;
+					aload_0;
+					dup;
+					getfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					iconst_4;
+					iadd;
+					putfield_i 2;		// int javacardx/framework/nio/Buffer.position
+					aload_0;
+					areturn;
+		}
+
+		.method public getInt(I)I 36 {
+			.stack 7;
+			.locals 3;
+
+				L0:	iconst_0;
+					istore_3;
+				L1:	iload_1;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_4;
+					isub;
+					icmp;
+					ifle L3;
+				L2:	new 9;		// java/lang/IndexOutOfBoundsException
+					dup;
+					invokespecial 13;		// java/lang/IndexOutOfBoundsException.<init>()V
+					athrow;
+				L3:	iload_1;
+					iconst_0;
+					icmp;
+					ifge L5;
+				L4:	new 9;		// java/lang/IndexOutOfBoundsException
+					dup;
+					invokespecial 13;		// java/lang/IndexOutOfBoundsException.<init>()V
+					athrow;
+				L5:	sconst_0;
+					sstore 5;
+				L6:	sload 5;
+					sconst_4;
+					if_scmpge L8;
+				L7:	iload_3;
+					bipush 8;
+					ishl;
+					istore_3;
+					iload_3;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					sload 5;
+					s2i;
+					iload_1;
+					iadd;
+					i2s;
+					baload;
+					s2i;
+					sipush 255;
+					iand;
+					ior;
+					istore_3;
+					sload 5;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 5;
+					goto L6;
+				L8:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_1;
+					sand;
+					ifne L10;
+				L9:	aload_0;
+					iload_3;
+					invokespecial 57;		// javacardx/framework/nio/ByteBufferImpl.swap_int(I)I
+					istore_3;
+				L10:	iload_3;
+					ireturn;
+		}
+
+		.method public putInt(II)Ljavacardx/framework/nio/ByteBuffer; 37 {
+			.stack 6;
+			.locals 0;
+
+				L0:	iload_1;
+					iconst_0;
+					icmp;
+					iflt L2;
+				L1:	iload_1;
+					getfield_i_this 3;		// int javacardx/framework/nio/Buffer.limit
+					iconst_4;
+					isub;
+					icmp;
+					ifle L3;
+				L2:	new 9;		// java/lang/IndexOutOfBoundsException
+					dup;
+					invokespecial 13;		// java/lang/IndexOutOfBoundsException.<init>()V
+					athrow;
+				L3:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 8;
+					sand;
+					ifeq L5;
+				L4:	new 20;		// javacardx/framework/nio/ReadOnlyBufferException
+					dup;
+					invokespecial 21;		// javacardx/framework/nio/ReadOnlyBufferException.<init>()V
+					athrow;
+				L5:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_1;
+					sand;
+					ifne L7;
+				L6:	aload_0;
+					iload_3;
+					invokespecial 57;		// javacardx/framework/nio/ByteBufferImpl.swap_int(I)I
+					istore_3;
+				L7:	getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					iload_1;
+					i2s;
+					iload_3;
+					iipush -16777216;
+					iand;
+					bipush 24;
+					ishr;
+					i2b;
+					bastore;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					iload_1;
+					iconst_1;
+					iadd;
+					i2s;
+					iload_3;
+					iipush 16711680;
+					iand;
+					bipush 16;
+					ishr;
+					i2b;
+					bastore;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					iload_1;
+					iconst_2;
+					iadd;
+					i2s;
+					iload_3;
+					iipush 65280;
+					iand;
+					bipush 8;
+					ishr;
+					i2b;
+					bastore;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					iload_1;
+					iconst_3;
+					iadd;
+					i2s;
+					iload_3;
+					sipush 255;
+					iand;
+					iconst_0;
+					ishr;
+					i2b;
+					bastore;
+					aload_0;
+					areturn;
+		}
+
+		.method public asReadOnlyBuffer()Ljavacardx/framework/nio/ByteBuffer; 38 {
+			.stack 12;
+			.locals 1;
+
+				L0:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 16;
+					sand;
+					ifeq L2;
+				L1:	bspush 6;
+					invokestatic 14;		// javacard/framework/SystemException.throwIt(S)V
+				L2:	new 32;		// javacardx/framework/nio/ByteBufferImpl
+					dup;
+					getfield_a_this 5;		// reference javacardx/framework/nio/Buffer.parent
+					getfield_i_this 0;		// int javacardx/framework/nio/Buffer.capacity
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 7;		// int javacardx/framework/nio/Buffer.address
+					getfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					sconst_4;
+					sor;
+					bspush 8;
+					sor;
+					sconst_1;
+					sor;
+					invokespecial 33;		// javacardx/framework/nio/ByteBufferImpl.<init>(Ljavacardx/framework/nio/Buffer;ILjava/lang/Object;IIS)V
+					astore_1;
+				L3:	aload_1;
+					aload_0;
+					invokevirtual 53;		// position()I
+					invokevirtual 58;		// position(I)Ljavacardx/framework/nio/Buffer;
+					pop;
+					aload_1;
+					aload_0;
+					invokevirtual 54;		// limit()I
+					invokevirtual 59;		// limit(I)Ljavacardx/framework/nio/Buffer;
+					pop;
+					aload_1;
+					areturn;
+		}
+
+		.method public isReadOnly()Z 11 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 8;
+					sand;
+					ifeq L2;
+				L1:	sconst_1;
+					goto L3;
+				L2:	sconst_0;
+				L3:	sreturn;
+		}
+
+		.method public compact()Ljavacardx/framework/nio/ByteBuffer; 39 {
+			.stack 8;
+			.locals 4;
+
+				L0:	aload_0;
+					invokevirtual 60;		// checkNotUnmapped()V
+					getfield_s_this 6;		// short javacardx/framework/nio/Buffer.flags
+					bspush 8;
+					sand;
+					ifeq L2;
+				L1:	new 20;		// javacardx/framework/nio/ReadOnlyBufferException
+					dup;
+					invokespecial 21;		// javacardx/framework/nio/ReadOnlyBufferException.<init>()V
+					athrow;
+				L2:	aload_0;
+					invokevirtual 53;		// position()I
+					istore_1;
+				L3:	aload_0;
+					invokevirtual 54;		// limit()I
+					iload_1;
+					isub;
+					istore_3;
+				L4:	iload_3;
+					iconst_0;
+					icmp;
+					ifle L6;
+				L5:	getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					iload_1;
+					iadd;
+					getfield_a_this 8;		// reference javacardx/framework/nio/Buffer.data
+					getfield_i_this 4;		// int javacardx/framework/nio/Buffer.arrayOffset
+					iconst_0;
+					iadd;
+					iload_3;
+					invokestatic 18;		// com/sun/javacard/impl/NativeMethods.NioCopyBytes([BI[BII)V
+				L6:	aload_0;
+					iload_3;
+					invokevirtual 58;		// position(I)Ljavacardx/framework/nio/Buffer;
+					pop;
+					aload_0;
+					aload_0;
+					invokevirtual 61;		// capacity()I
+					invokevirtual 59;		// limit(I)Ljavacardx/framework/nio/Buffer;
+					pop;
+					aload_0;
+					areturn;
+		}
+
+		.method private swap_short(S)S {
+			.stack 3;
+			.locals 0;
+
+				L0:	sload_1;
+					sspush 255;
+					sand;
+					bspush 8;
+					sshl;
+					sload_1;
+					bspush 8;
+					sshr;
+					sspush 255;
+					sand;
+					sor;
+					sreturn;
+		}
+
+		.method private swap_int(I)I {
+			.stack 6;
+			.locals 0;
+
+				L0:	iload_1;
+					sipush 255;
+					iand;
+					bipush 24;
+					ishl;
+					iload_1;
+					iipush 65280;
+					iand;
+					bipush 8;
+					ishl;
+					ior;
+					iload_1;
+					iipush 16711680;
+					iand;
+					bipush 8;
+					ishr;
+					ior;
+					iload_1;
+					bipush 24;
+					ishr;
+					sipush 255;
+					iand;
+					ior;
+					ireturn;
+		}
+
+		.method public slice()Ljavacardx/framework/nio/Buffer; 16 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokevirtual 62;		// slice()Ljavacardx/framework/nio/ByteBuffer;
+					areturn;
+		}
+
+	}
+
+	.class public final ByteOrder 4 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final ByteOrder BIG_ENDIAN 0 = 0 ;		// Ljavacardx/framework/nio/ByteOrder;
+			public static final ByteOrder LITTLE_ENDIAN 1 = 0 ;		// Ljavacardx/framework/nio/ByteOrder;
+		}
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method private <init>()V {
+			.stack 2;
+			.locals 2;
+
+				L0:	aload_0;
+					invokespecial 12;		// java/lang/Object.<init>()V
+					new 63;		// javacardx/framework/nio/ByteOrder
+					dup;
+					invokespecial 64;		// javacardx/framework/nio/ByteOrder.<init>()V
+					astore_1;
+				L1:	aload_1;
+					sconst_0;
+					invokestatic 31;		// com/sun/javacard/impl/NativeMethods.setJCREentry(Ljava/lang/Object;Z)V
+					new 63;		// javacardx/framework/nio/ByteOrder
+					dup;
+					invokespecial 64;		// javacardx/framework/nio/ByteOrder.<init>()V
+					astore_2;
+				L2:	aload_2;
+					sconst_0;
+					invokestatic 31;		// com/sun/javacard/impl/NativeMethods.setJCREentry(Ljava/lang/Object;Z)V
+					return;
+		}
+
+	}
+
+	.class public ReadOnlyBufferException 5 extends 0.3 {		// extends java/lang/RuntimeException
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 24;		// java/lang/RuntimeException.<init>()V
+					return;
+		}
+
+	}
+
+}

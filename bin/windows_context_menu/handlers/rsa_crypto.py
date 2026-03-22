@@ -54,7 +54,7 @@ def encrypt_file_with_card_key(input_file, output_file):
     """
     try:
         from card_utils import find_aepgp_card
-        from card_key_reader import read_public_key_from_card, extract_rsa_public_key_components
+        from card_key_reader import read_public_key_from_card, extract_rsa_public_key_components, NoKeyOnCardError
         import struct
 
         logger.info(f"Starting file encryption: {input_file}")
@@ -200,6 +200,9 @@ def encrypt_file_with_card_key(input_file, output_file):
 
         return True, None
 
+    except NoKeyOnCardError as e:
+        logger.error(f"Encryption aborted — no key on card: {e}")
+        return False, str(e)
     except Exception as e:
         logger.error(f"Encryption failed with exception: {e}", e)
         import traceback

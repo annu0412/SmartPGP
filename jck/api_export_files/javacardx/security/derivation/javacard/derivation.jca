@@ -1,0 +1,399 @@
+// converted by version  [v3.1.0]
+// on Tue Jul 06 15:18:07 PDT 2021
+
+.package javacardx/security/derivation {
+	.aid 0xA0:0x0:0x0:0x0:0x62:0x2:0x5:0x2;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.7;		//javacard/security
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef DerivationFunction DerivationFunction$OneShot/actual;
+		// 1
+		staticMethodRef 1.12.1(S)V;		// javacard/security/CryptoException.throwIt(S)V
+		// 2
+		staticMethodRef DerivationFunction/<init>()V;
+		// 3
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 4
+		virtualMethodRef DerivationFunction/init(Ljavacard/security/AlgorithmParameterSpec;)V;
+			.descriptor	Ljavacard/security/AlgorithmParameterSpec;	1.34;
+
+		// 5
+		virtualMethodRef DerivationFunction/getAlgorithm()S;
+		// 6
+		virtualMethodRef DerivationFunction/lastBytes([BSS)S;
+		// 7
+		virtualMethodRef DerivationFunction/lastBytes(Ljavacard/security/SecretKey;)S;
+			.descriptor	Ljavacard/security/SecretKey;	1.4;
+
+	}
+
+	.interface public abstract KDFAnsiX963Spec 0 {
+
+		.superInterfaces {
+			1.34;		// javacard/security/AlgorithmParameterSpec
+		}
+
+		.method public abstract getAlgorithm()B 0 {
+		}
+
+		.method public abstract getSecret()[B 1 {
+		}
+
+		.method public abstract getSharedInfo()[B 2 {
+		}
+
+		.method public abstract getOutputLength()S 3 {
+		}
+
+	}
+
+	.interface public abstract KDFCounterModeSpec 1 {
+
+		.superInterfaces {
+			1.34;		// javacard/security/AlgorithmParameterSpec
+		}
+
+		.method public abstract getAlgorithm()B 0 {
+		}
+
+		.method public abstract getSecret()Ljavacard/security/SecretKey; 1 {
+			.descriptor	Ljavacard/security/SecretKey;	1.4;
+
+		}
+
+		.method public abstract getInputDataBeforeCounter()[B 2 {
+		}
+
+		.method public abstract getInputDataAfterCounter()[B 3 {
+		}
+
+		.method public abstract getOutputLength()S 4 {
+		}
+
+		.method public abstract getCounterLength()S 5 {
+		}
+
+	}
+
+	.interface public abstract KDFDoublePipelineIterationModeSpec 2 {
+
+		.superInterfaces {
+			1.34;		// javacard/security/AlgorithmParameterSpec
+		}
+
+		.method public abstract getAlgorithm()B 0 {
+		}
+
+		.method public abstract getSecret()Ljavacard/security/SecretKey; 1 {
+			.descriptor	Ljavacard/security/SecretKey;	1.4;
+
+		}
+
+		.method public abstract getInputData()[B 2 {
+		}
+
+		.method public abstract getOutputLength()S 3 {
+		}
+
+		.method public abstract getCounterLength()S 4 {
+		}
+
+	}
+
+	.interface public abstract KDFFeedbackModeSpec 3 {
+
+		.superInterfaces {
+			1.34;		// javacard/security/AlgorithmParameterSpec
+		}
+
+		.method public abstract getAlgorithm()B 0 {
+		}
+
+		.method public abstract getSecret()Ljavacard/security/SecretKey; 1 {
+			.descriptor	Ljavacard/security/SecretKey;	1.4;
+
+		}
+
+		.method public abstract getInputData()[B 2 {
+		}
+
+		.method public abstract getIV()[B 3 {
+		}
+
+		.method public abstract getOutputLength()S 4 {
+		}
+
+		.method public abstract getCounterLength()S 5 {
+		}
+
+	}
+
+	.interface public abstract KDFHmacSpec 4 {
+
+		.superInterfaces {
+			1.34;		// javacard/security/AlgorithmParameterSpec
+		}
+
+		.method public abstract getAlgorithm()B 0 {
+		}
+
+		.method public abstract getSecret()[B 1 {
+		}
+
+		.method public abstract getInfo()[B 2 {
+		}
+
+		.method public abstract getSalt()[B 3 {
+		}
+
+		.method public abstract getOutputLength()S 4 {
+		}
+
+	}
+
+	.interface public abstract KDFIcaoMrtdSpec 5 {
+
+		.superInterfaces {
+			1.34;		// javacard/security/AlgorithmParameterSpec
+		}
+
+		.method public abstract getAlgorithm()B 0 {
+		}
+
+		.method public abstract getSecret()[B 1 {
+		}
+
+		.method public abstract getCounter()[B 2 {
+		}
+
+	}
+
+	.interface public abstract KDFIeee1363Spec 6 {
+
+		.superInterfaces {
+			1.34;		// javacard/security/AlgorithmParameterSpec
+		}
+
+		.method public abstract getAlgorithm()B 0 {
+		}
+
+		.method public abstract getSecret()[B 1 {
+		}
+
+		.method public abstract getParameters()[B 2 {
+		}
+
+	}
+
+	.interface public abstract TLSPseudoRandomFunctionSpec 7 {
+
+		.superInterfaces {
+			1.34;		// javacard/security/AlgorithmParameterSpec
+		}
+
+		.method public abstract getSecret()Ljavacard/security/SecretKey; 0 {
+			.descriptor	Ljavacard/security/SecretKey;	1.4;
+
+		}
+
+		.method public abstract getSeed()[B 1 {
+		}
+
+	}
+
+	.class public abstract DerivationFunction 8 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final short ALG_KDF_COUNTER_MODE = 1;		// S
+			public static final short ALG_KDF_DPI_MODE = 2;		// S
+			public static final short ALG_KDF_FEEDBACK_MODE = 3;		// S
+			public static final short ALG_PRF_TLS11 = 4;		// S
+			public static final short ALG_PRF_TLS12 = 5;		// S
+			public static final short ALG_KDF_IEEE_1363 = 6;		// S
+			public static final short ALG_KDF_ICAO_MRTD = 7;		// S
+			public static final short ALG_KDF_ANSI_X9_63 = 8;		// S
+			public static final short ALG_KDF_HKDF = 9;		// S
+		}
+
+		.publicMethodTable 1 7 {
+			equals(Ljava/lang/Object;)Z 0;
+			init(Ljavacard/security/AlgorithmParameterSpec;)V 255;
+			getAlgorithm()S 255;
+			nextBytes([BSS)S 255;
+			nextBytes(Ljavacard/security/SecretKey;)S 255;
+			lastBytes([BSS)S 255;
+			lastBytes(Ljavacard/security/SecretKey;)S 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method protected <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 3;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static getInstance(SZ)Ljavacardx/security/derivation/DerivationFunction; 1 {
+			.stack 1;
+			.locals 0;
+
+				L0:	sconst_3;
+					invokestatic 1;		// javacard/security/CryptoException.throwIt(S)V
+					aconst_null;
+					areturn;
+		}
+
+		.method public abstract init(Ljavacard/security/AlgorithmParameterSpec;)V 1 {
+			.descriptor	Ljavacard/security/AlgorithmParameterSpec;	1.34;
+
+		}
+
+		.method public abstract getAlgorithm()S 2 {
+		}
+
+		.method public abstract nextBytes([BSS)S 3 {
+		}
+
+		.method public abstract nextBytes(Ljavacard/security/SecretKey;)S 4 {
+			.descriptor	Ljavacard/security/SecretKey;	1.4;
+
+		}
+
+		.method public abstract lastBytes([BSS)S 5 {
+		}
+
+		.method public abstract lastBytes(Ljavacard/security/SecretKey;)S 6 {
+			.descriptor	Ljavacard/security/SecretKey;	1.4;
+
+		}
+
+	}
+
+	.class public final DerivationFunction$OneShot 9 extends DerivationFunction {
+
+		.fields {
+			private final DerivationFunction actual 0;		// Ljavacardx/security/derivation/DerivationFunction;
+		}
+
+		.publicMethodTable 1 8 {
+			equals(Ljava/lang/Object;)Z 0;
+			init(Ljavacard/security/AlgorithmParameterSpec;)V 1;
+			getAlgorithm()S 2;
+			nextBytes([BSS)S 3;
+			nextBytes(Ljavacard/security/SecretKey;)S 4;
+			lastBytes([BSS)S 5;
+			lastBytes(Ljavacard/security/SecretKey;)S 6;
+			close()V 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public static final open(B)Ljavacardx/security/derivation/DerivationFunction$OneShot; 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	sconst_3;
+					invokestatic 1;		// javacard/security/CryptoException.throwIt(S)V
+					aconst_null;
+					areturn;
+		}
+
+		.method private <init>(Ljavacardx/security/derivation/DerivationFunction;)V {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 2;		// javacardx/security/derivation/DerivationFunction.<init>()V
+					aload_1;
+					putfield_a_this 0;		// reference javacardx/security/derivation/DerivationFunction$OneShot.actual
+					return;
+		}
+
+		.method public close()V 7 {
+			.stack 0;
+			.locals 0;
+
+				L0:	return;
+		}
+
+		.method public init(Ljavacard/security/AlgorithmParameterSpec;)V 1 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/security/AlgorithmParameterSpec;	1.34;
+
+				L0:	getfield_a_this 0;		// reference javacardx/security/derivation/DerivationFunction$OneShot.actual
+					aload_1;
+					invokevirtual 4;		// init(Ljavacard/security/AlgorithmParameterSpec;)V
+					return;
+		}
+
+		.method public getAlgorithm()S 2 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/security/derivation/DerivationFunction$OneShot.actual
+					invokevirtual 5;		// getAlgorithm()S
+					sreturn;
+		}
+
+		.method public nextBytes([BSS)S 3 {
+			.stack 1;
+			.locals 0;
+
+				L0:	sconst_5;
+					invokestatic 1;		// javacard/security/CryptoException.throwIt(S)V
+					sconst_0;
+					sreturn;
+		}
+
+		.method public nextBytes(Ljavacard/security/SecretKey;)S 4 {
+			.stack 1;
+			.locals 0;
+
+			.descriptor	Ljavacard/security/SecretKey;	1.4;
+
+				L0:	sconst_5;
+					invokestatic 1;		// javacard/security/CryptoException.throwIt(S)V
+					sconst_0;
+					sreturn;
+		}
+
+		.method public lastBytes([BSS)S 5 {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/security/derivation/DerivationFunction$OneShot.actual
+					aload_1;
+					sload_2;
+					sload_3;
+					invokevirtual 6;		// lastBytes([BSS)S
+					sreturn;
+		}
+
+		.method public lastBytes(Ljavacard/security/SecretKey;)S 6 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/security/SecretKey;	1.4;
+
+				L0:	getfield_a_this 0;		// reference javacardx/security/derivation/DerivationFunction$OneShot.actual
+					aload_1;
+					invokevirtual 7;		// lastBytes(Ljavacard/security/SecretKey;)S
+					sreturn;
+		}
+
+	}
+
+}

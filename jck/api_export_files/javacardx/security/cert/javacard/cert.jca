@@ -1,0 +1,4044 @@
+// converted by version  [v3.1.0]
+// on Tue Jul 06 15:18:16 PDT 2021
+
+.package javacardx/security/cert {
+	.aid 0xA0:0x0:0x0:0x0:0x62:0x2:0x5:0x1;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x2 1.7;		//javacard/security
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.8;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x3:0x1 1.0;		//com/sun/javacard/impl
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x1 1.7;		//javacardx/crypto
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef byte[] ExtensionHolder/oid;
+		// 1
+		instanceFieldRef boolean ExtensionHolder/crit;
+		// 2
+		instanceFieldRef byte[] ExtensionHolder/der;
+		// 3
+		instanceFieldRef byte[] ExtensionHolder/value;
+		// 4
+		instanceFieldRef short CertificateParserImpl/idx;
+		// 5
+		instanceFieldRef byte[] CertificateParserImpl/encoded;
+		// 6
+		instanceFieldRef short CertificateParserImpl/length;
+		// 7
+		instanceFieldRef CertificateParser$ParserHandler CertificateParserImpl/handler;
+		// 8
+		instanceFieldRef 1.3 CertificateParserImpl/publickey;
+		// 9
+		instanceFieldRef X509CertificateImpl CertificateParserImpl/cert;
+		// 10
+		instanceFieldRef byte[] CertificateParserImpl/sharedBuffer;
+		// 11
+		instanceFieldRef byte[] CertificateParserImpl/fp;
+		// 12
+		instanceFieldRef 1.3 CertificateParserImpl/pubKey;
+		// 13
+		instanceFieldRef short CertificateParserImpl/TBSStart;
+		// 14
+		instanceFieldRef short CertificateParserImpl/TBSLen;
+		// 15
+		instanceFieldRef byte CertificateParserImpl/sigAlg;
+		// 16
+		instanceFieldRef byte[] CertificateParserImpl/signature;
+		// 17
+		instanceFieldRef byte[] CertificateParserImpl/TBSCertHash;
+		// 18
+		instanceFieldRef boolean CertificateParserImpl/badExt;
+		// 19
+		instanceFieldRef boolean CertificateParserImpl/hasBC;
+		// 20
+		instanceFieldRef boolean CertificateParserImpl/isCA;
+		// 21
+		instanceFieldRef short CertificateParserImpl/pLenConstr;
+		// 22
+		instanceFieldRef short CertificateParserImpl/keyUsage;
+		// 23
+		instanceFieldRef short CertificateParserImpl/extKeyUsage;
+		// 24
+		instanceFieldRef boolean CertificateParserImpl/build;
+		// 25
+		instanceFieldRef byte CertificateParserImpl/type;
+		// 26
+		instanceFieldRef byte[] X509CertificateImpl/encoded;
+		// 27
+		instanceFieldRef byte[] X509CertificateImpl/sharedBuffer;
+		// 28
+		instanceFieldRef byte CertificateParserImpl/pssHashFunc;
+		// 29
+		instanceFieldRef byte X509CertificateImpl/pssHashFunc;
+		// 30
+		instanceFieldRef byte CertificateParserImpl/pssMaskGenHashFunc;
+		// 31
+		instanceFieldRef short CertificateParserImpl/pssSaltLength;
+		// 32
+		instanceFieldRef short X509CertificateImpl/pssSaltLength;
+		// 33
+		instanceFieldRef short CertificateParserImpl/pssTrailerField;
+		// 34
+		instanceFieldRef 0.0[] X509CertificateImpl/extHolder;
+		// 35
+		instanceFieldRef short X509CertificateImpl/extCounter;
+		// 36
+		instanceFieldRef short X509CertificateImpl/keyUsage;
+		// 37
+		instanceFieldRef short X509CertificateImpl/extKeyUsage;
+		// 38
+		instanceFieldRef boolean X509CertificateImpl/pubKeyException;
+		// 39
+		instanceFieldRef 1.3 X509CertificateImpl/pubKey;
+		// 40
+		instanceFieldRef short X509CertificateImpl/TBSStart;
+		// 41
+		instanceFieldRef short X509CertificateImpl/TBSLen;
+		// 42
+		instanceFieldRef byte X509CertificateImpl/version;
+		// 43
+		instanceFieldRef byte[] CertificateParserImpl/issuer;
+		// 44
+		instanceFieldRef byte[] CertificateParserImpl/subject;
+		// 45
+		instanceFieldRef byte X509CertificateImpl/sigAlg;
+		// 46
+		instanceFieldRef boolean X509CertificateImpl/sigAlgException;
+		// 47
+		instanceFieldRef byte[] X509CertificateImpl/TBSCertHash;
+		// 48
+		instanceFieldRef byte[] X509CertificateImpl/signature;
+		// 49
+		instanceFieldRef boolean CertificateParserImpl/selfSigned;
+		// 50
+		instanceFieldRef byte[] X509CertificateImpl/tlvVersion;
+		// 51
+		instanceFieldRef byte[] X509CertificateImpl/tlvCertificate;
+		// 52
+		instanceFieldRef byte[] X509CertificateImpl/fp;
+		// 53
+		instanceFieldRef byte[] X509CertificateImpl/from;
+		// 54
+		instanceFieldRef byte[] X509CertificateImpl/until;
+		// 55
+		instanceFieldRef byte[] X509CertificateImpl/tlvPubKeyAsn1;
+		// 56
+		instanceFieldRef byte[] X509CertificateImpl/tlvTBSSigAlg;
+		// 57
+		instanceFieldRef byte[] X509CertificateImpl/tlvCertSigAlg;
+		// 58
+		instanceFieldRef byte[] X509CertificateImpl/tlvSignature;
+		// 59
+		instanceFieldRef byte X509CertificateImpl/type;
+		// 60
+		instanceFieldRef byte[] X509CertificateImpl/tlvSerialNumber;
+		// 61
+		instanceFieldRef byte[] X509CertificateImpl/tlvIssuer;
+		// 62
+		instanceFieldRef byte[] X509CertificateImpl/tlvSubject;
+		// 63
+		virtualMethodRef 2.5.2(S)V;		// setReason(S)V
+		// 64
+		staticMethodRef CertificateException/throwIt(S)V;
+		// 65
+		staticMethodRef CertificateParserImpl/parseDERInteger()S;
+		// 66
+		staticMethodRef CertificateParserImpl/_nameAttrCopy(S[BS)S;
+		// 67
+		staticMethodRef CertificateParserImpl/_hexEncode([BSS[BS)S;
+		// 68
+		staticMethodRef CertificateParserImpl/_bytesCopy(S[BS)S;
+		// 69
+		.classRef 0.2;		// java/lang/Exception
+		// 70
+		staticMethodRef CertificateParserImpl/createObjectArray(S)[Ljava/lang/Object;;
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		// 71
+		.classRef CertificateParserImpl;
+		// 72
+		.classRef X509Certificate$ExtensionHandler;
+		// 73
+		staticMethodRef CertificateParserImpl/createByteAV([BSS)[B;
+		// 74
+		staticMethodRef CertificateParserImpl/<init>()V;
+		// 75
+		.classRef ExtensionHolder;
+		// 76
+		staticMethodRef ExtensionHolder/<init>([BZ[B[B)V;
+		// 77
+		staticMethodRef CertificateParser/<init>()V;
+		// 78
+		.classRef 1.3;		// javacard/security/PublicKey
+		// 79
+		.classRef 1.12;		// javacard/security/CryptoException
+		// 80
+		staticMethodRef CertificateParserImpl/match(S[BS)S;
+		// 81
+		virtualMethodRef CertificateParserImpl/buildCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;Ljavacard/security/PublicKey;)Ljavacardx/security/cert/Certificate;;
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+		// 82
+		.classRef CertificateParser$KeyHandler;
+		// 83
+		staticMethodRef 1.13.0(BSZ)Ljavacard/security/Key;;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 84
+		.classRef 1.9;		// javacard/security/RSAPublicKey
+		// 85
+		.classRef 0.10;		// java/lang/SecurityException
+		// 86
+		.classRef 0.4;		// java/lang/IndexOutOfBoundsException
+		// 87
+		staticMethodRef CertificateParserImpl/cleanParser()V;
+		// 88
+		staticMethodRef CertificateParserImpl/createByteArrayAndCopy([BSS)[B;
+		// 89
+		staticMethodRef CertificateParserImpl/parseAlgAndSig(Z)V;
+		// 90
+		virtualMethodRef X509CertificateImpl/_verify(Ljavacard/security/PublicKey;)Z;
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+		// 91
+		.classRef X509CertificateImpl;
+		// 92
+		staticMethodRef CertificateParserImpl/parseAlgorithm(SZ)B;
+		// 93
+		staticMethodRef CertificateParserImpl/parseName(S)[B;
+		// 94
+		staticMethodRef X509CertificateImpl/<init>()V;
+		// 95
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 96
+		staticMethodRef CertificateParserImpl/parsePublicKey()V;
+		// 97
+		staticMethodRef CertificateParserImpl/parseExtensions(S)V;
+		// 98
+		staticMethodRef 2.16.0([BS[BSS)B;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+		// 99
+		staticMethodRef 1.11.0(BZ)Ljavacard/security/MessageDigest;;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+			.descriptor	Ljavacard/security/MessageDigest;	1.11;
+
+		// 100
+		staticMethodRef 1.12.1(S)V;		// javacard/security/CryptoException.throwIt(S)V
+		// 101
+		virtualMethodRef 1.12.1()S;		// getReason()S
+		// 102
+		virtualMethodRef 1.11.3()B;		// getLength()B
+		// 103
+		virtualMethodRef 1.11.1([BSS[BS)S;		// doFinal([BSS[BS)S
+		// 104
+		staticMethodRef CertificateParserImpl/parse()V;
+		// 105
+		staticMethodRef 2.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 106
+		virtualMethodRef CertificateParserImpl/parseCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;Ljavacard/security/PublicKey;)Z;
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+		// 107
+		staticMethodRef 3.6.133(S[BS)S;		// com/sun/javacard/impl/NativeMethods.certificateByteMatch(S[BS)S
+		// 108
+		staticMethodRef 3.6.134(S[BS)S;		// com/sun/javacard/impl/NativeMethods.certificateBytesCopy(S[BS)S
+		// 109
+		staticMethodRef 3.6.135(S[BS)S;		// com/sun/javacard/impl/NativeMethods.certificateNameAttrCopy(S[BS)S
+		// 110
+		.classRef X509Certificate$FieldHandler;
+		// 111
+		virtualMethodRef X509CertificateImpl/setField(S[B)V;
+		// 112
+		.classRef 2.2;		// javacard/framework/Shareable
+		// 113
+		staticMethodRef 2.8.23(Ljava/lang/Object;SSSLjavacard/framework/Shareable;)Ljava/lang/Object;;		// javacard/framework/JCSystem.makeArrayView(Ljava/lang/Object;SSSLjavacard/framework/Shareable;)Ljava/lang/Object;
+			.descriptor	Ljava/lang/Object;	0.0;
+			.descriptor	Ljavacard/framework/Shareable;	2.2;
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		// 114
+		.classRef 2.13;		// javacard/framework/SystemException
+		// 115
+		staticMethodRef 2.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 116
+		staticMethodRef 2.8.14(SB)[Ljava/lang/Object;;		// javacard/framework/JCSystem.makeTransientObjectArray(SB)[Ljava/lang/Object;
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		// 117
+		.classRef 0.0;		// java/lang/Object
+		// 118
+		staticMethodRef 3.6.113()V;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+		// 119
+		virtualMethodRef 2.5.1()S;		// getReason()S
+		// 120
+		staticMethodRef 3.6.110()V;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+		// 121
+		staticMethodRef 3.6.109()V;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanTrue()V
+		// 122
+		staticMethodRef CertificateParserImpl/parseOptDERTypeLength(B)S;
+		// 123
+		.classRef 0.5;		// java/lang/ArrayIndexOutOfBoundsException
+		// 124
+		staticMethodRef CertificateParserImpl/parseDERTypeLength(B)S;
+		// 125
+		staticMethodRef CertificateParserImpl/getTLVLength()S;
+		// 126
+		staticMethodRef CertificateParserImpl/createTLVCopyAndNotifyHandler(SSS)V;
+		// 127
+		staticMethodRef CertificateParserImpl/_byteMatch(S[BS)S;
+		// 128
+		staticMethodRef 2.5.0(S)V;		// javacard/framework/CardRuntimeException.<init>(S)V
+		// 129
+		staticMethodRef X509CertificateImpl/createROByteAV([B)[B;
+		// 130
+		staticFieldRef CertificateException CertificateException/systemInstance;
+		// 131
+		.classRef CertificateException;
+		// 132
+		staticMethodRef CertificateException/<init>(S)V;
+		// 133
+		virtualMethodRef ExtensionHolder/isExt([BSS)Z;
+		// 134
+		staticMethodRef 1.15.2(BBBZ)Ljavacard/security/Signature;;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+			.descriptor	Ljavacard/security/Signature;	1.15;
+
+		// 135
+		virtualMethodRef 1.15.4(Ljavacard/security/Key;B[BSS)V;		// init(Ljavacard/security/Key;B[BSS)V
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 136
+		virtualMethodRef 1.15.7([BSS[BSS)Z;		// verify([BSS[BSS)Z
+		// 137
+		staticMethodRef 4.1.2(BBZ)Ljavacardx/crypto/Cipher;;		// javacardx/crypto/Cipher.getInstance(BBZ)Ljavacardx/crypto/Cipher;
+			.descriptor	Ljavacardx/crypto/Cipher;	4.1;
+
+		// 138
+		virtualMethodRef 4.1.3(Ljavacard/security/Key;B)V;		// init(Ljavacard/security/Key;B)V
+			.descriptor	Ljavacard/security/Key;	1.0;
+
+		// 139
+		virtualMethodRef 4.1.1([BSS[BS)S;		// doFinal([BSS[BS)S
+		// 140
+		staticMethodRef X509CertificateImpl/_byteMatch(S[BS)S;
+	}
+
+	.interface public abstract Certificate 0 {
+
+		.method public abstract getType()S 0 {
+		}
+
+		.method public abstract getPublicKey()Ljavacard/security/PublicKey; 1 {
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+		}
+
+		.method public abstract verify(Ljavacard/security/PublicKey;)Z 2 {
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+		}
+
+	}
+
+	.interface public abstract CertificateParser$ParserHandler 1 {
+
+	}
+
+	.interface public abstract CertificateParser$KeyHandler 2 {
+
+		.superInterfaces {
+			CertificateParser$ParserHandler;
+		}
+
+		.method public abstract onKey(BS)Ljavacard/security/PublicKey; 0 {
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+		}
+
+	}
+
+	.interface public abstract X509Certificate$ExtensionHandler 3 {
+
+		.superInterfaces {
+			CertificateParser$ParserHandler;
+		}
+
+		.method public abstract onExtension([BZ[B)Z 0 {
+		}
+
+	}
+
+	.interface public abstract X509Certificate$FieldHandler 4 {
+
+		.superInterfaces {
+			CertificateParser$ParserHandler;
+		}
+
+		.method public abstract onField(S[B)Z 0 {
+		}
+
+	}
+
+	.interface public abstract X509Certificate 5 {
+
+		.superInterfaces {
+			Certificate;
+		}
+
+		.fields {
+			public static final short FIELD_TBS_VERSION = 1;		// S
+			public static final short FIELD_TBS_SERIAL_NUMBER = 2;		// S
+			public static final short FIELD_TBS_SIGNATURE_ALG = 4;		// S
+			public static final short FIELD_TBS_ISSUER = 8;		// S
+			public static final short FIELD_TBS_NOT_AFTER = 16;		// S
+			public static final short FIELD_TBS_NOT_BEFORE = 32;		// S
+			public static final short FIELD_TBS_SUBJECT = 64;		// S
+			public static final short FIELD_TBS_PUBLIC_KEY_INFO = 128;		// S
+			public static final short FIELD_TBS_ISSUER_UID = 256;		// S
+			public static final short FIELD_TBS_SUBJECT_UID = 512;		// S
+			public static final short FIELD_CERTIFICATE_TBS = 1024;		// S
+			public static final short FIELD_CERTIFICATE_SIGNATURE_ALG = 2048;		// S
+			public static final short FIELD_CERTIFICATE_SIGNATURE = 4096;		// S
+		}
+
+		.method public abstract getType()S 0 {
+		}
+
+		.method public abstract getPublicKey()Ljavacard/security/PublicKey; 1 {
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+		}
+
+		.method public abstract verify(Ljavacard/security/PublicKey;)Z 2 {
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+		}
+
+		.method public abstract getVersion()S 3 {
+		}
+
+		.method public abstract getField(S)[B 4 {
+		}
+
+		.method public abstract getExtension([BSS)[B 5 {
+		}
+
+		.method public abstract getExtensions(Ljavacardx/security/cert/X509Certificate$ExtensionHandler;)V 6 {
+		}
+
+	}
+
+	.class  ExtensionHolder extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			 byte[] oid 0;		// [B
+			 byte[] der 1;		// [B
+			 byte[] value 2;		// [B
+			 boolean crit 3;		// Z
+		}
+
+		.publicMethodTable 1 2 {
+			equals(Ljava/lang/Object;)Z 0;
+			isExt([BSS)Z 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>([BZ[B[B)V 0 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 95;		// java/lang/Object.<init>()V
+					aload_1;
+					putfield_a_this 0;		// reference javacardx/security/cert/ExtensionHolder.oid
+					sload_2;
+					putfield_b_this 1;		// boolean javacardx/security/cert/ExtensionHolder.crit
+					aload_3;
+					putfield_a_this 2;		// reference javacardx/security/cert/ExtensionHolder.der
+					aload 4;
+					putfield_a_this 3;		// reference javacardx/security/cert/ExtensionHolder.value
+					return;
+		}
+
+		.method public isExt([BSS)Z 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_1;
+					ifnull L5;
+				L1:	getfield_a_this 0;		// reference javacardx/security/cert/ExtensionHolder.oid
+					sconst_0;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokestatic 98;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifne L3;
+				L2:	sconst_1;
+					goto L4;
+				L3:	sconst_0;
+				L4:	sreturn;
+				L5:	sconst_0;
+					sreturn;
+		}
+
+	}
+
+	.class public CertificateException 6 extends 2.5 {		// extends javacard/framework/CardRuntimeException
+
+		.fields {
+			public static final short INVALID_ENCODING = 1;		// S
+			public static final short INVALID_PARAM = 2;		// S
+			public static final short MISSING_DATA = 3;		// S
+			public static final short INVALID_SIGNATURE = 4;		// S
+			public static final short PARSER_HANDLER_EXCEPTION = 5;		// S
+			public static final short PARSER_HANDLER_INVALID_KEY = 6;		// S
+			private static CertificateException systemInstance;		// Ljavacardx/security/cert/CertificateException;
+		}
+
+		.publicMethodTable 3 3 {
+			equals(Ljava/lang/Object;)Z 0;
+			getReason()S 1;
+			setReason(S)V 2;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(S)V 0 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					invokespecial 128;		// javacard/framework/CardRuntimeException.<init>(S)V
+					getstatic_a 130;		// reference javacardx/security/cert/CertificateException.systemInstance
+					ifnonnull L2;
+				L1:	aload_0;
+					putstatic_a 130;		// reference javacardx/security/cert/CertificateException.systemInstance
+				L2:	return;
+		}
+
+		.method public static throwIt(S)V 1 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getstatic_a 130;		// reference javacardx/security/cert/CertificateException.systemInstance
+					ifnonnull L2;
+				L1:	new 131;		// javacardx/security/cert/CertificateException
+					dup;
+					sconst_0;
+					invokespecial 132;		// javacardx/security/cert/CertificateException.<init>(S)V
+					pop;
+				L2:	getstatic_a 130;		// reference javacardx/security/cert/CertificateException.systemInstance
+					sload_0;
+					invokevirtual 63;		// setReason(S)V
+					getstatic_a 130;		// reference javacardx/security/cert/CertificateException.systemInstance
+					athrow;
+		}
+
+	}
+
+	.class public abstract CertificateParser 7 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final short TYPE_X509_DER = 1;		// S
+		}
+
+		.publicMethodTable 1 5 {
+			equals(Ljava/lang/Object;)Z 0;
+			buildCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;)Ljavacardx/security/cert/Certificate; 255;
+			buildCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;Ljavacard/security/PublicKey;)Ljavacardx/security/cert/Certificate; 255;
+			parseCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;)V 255;
+			parseCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;Ljavacard/security/PublicKey;)Z 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method  <init>()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 95;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static getInstance(S)Ljavacardx/security/cert/CertificateParser; 0 {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_0;
+					sconst_1;
+					if_scmpeq L2;
+				L1:	sconst_2;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L2:	new 71;		// javacardx/security/cert/CertificateParserImpl
+					dup;
+					invokespecial 74;		// javacardx/security/cert/CertificateParserImpl.<init>()V
+					areturn;
+		}
+
+		.method public abstract buildCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;)Ljavacardx/security/cert/Certificate; 1 {
+		}
+
+		.method public abstract buildCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;Ljavacard/security/PublicKey;)Ljavacardx/security/cert/Certificate; 2 {
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+		}
+
+		.method public abstract parseCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;)V 3 {
+		}
+
+		.method public abstract parseCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;Ljavacard/security/PublicKey;)Z 4 {
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+		}
+
+	}
+
+	.class  CertificateParserImpl extends CertificateParser {
+
+		.fields {
+			private byte[] encoded 0;		// [B
+			private CertificateParser$ParserHandler handler 1;		// Ljavacardx/security/cert/CertificateParser$ParserHandler;
+			private 1.3 publickey 2;		// Ljavacard/security/PublicKey;
+			private X509CertificateImpl cert 3;		// Ljavacardx/security/cert/X509CertificateImpl;
+			private byte[] sharedBuffer 4;		// [B
+			private byte[] fp 5;		// [B
+			private byte[] subject 6;		// [B
+			private byte[] issuer 7;		// [B
+			private 1.3 pubKey 8;		// Ljavacard/security/PublicKey;
+			private byte[] signature 9;		// [B
+			private byte[] TBSCertHash 10;		// [B
+			private short idx 11;		// S
+			private short length 12;		// S
+			private boolean selfSigned 13;		// Z
+			private short TBSStart 14;		// S
+			private short TBSLen 15;		// S
+			private byte sigAlg 16;		// B
+			private boolean badExt 17;		// Z
+			private boolean hasBC 18;		// Z
+			private boolean isCA 19;		// Z
+			private short pLenConstr 20;		// S
+			private short keyUsage 21;		// S
+			private short extKeyUsage 22;		// S
+			private short pssSaltLength 23;		// S
+			private byte pssHashFunc 24;		// B
+			private byte pssMaskGenHashFunc 25;		// B
+			private short pssTrailerField 26;		// S
+			private final byte type 27;		// B
+			private boolean build 28;		// Z
+			public static final short MISSING_PATH_LENGTH_CONSTRAINT = -1;		// S
+			public static final short UNLIMITED_CERT_CHAIN_LENGTH = -2;		// S
+			public static final short CERT_SIGN_KEY_USAGE = 32;		// S
+			private static final short MAX_NAME_LENGTH = 300;		// S
+			private static final byte ANY_STRING_TYPE = 0;		// B
+			private static final byte INTEGER_TYPE = 2;		// B
+			private static final byte BITSTRING_TYPE = 3;		// B
+			private static final byte OCTETSTR_TYPE = 4;		// B
+			private static final byte OID_TYPE = 6;		// B
+			private static final byte UTF8STR_TYPE = 12;		// B
+			private static final byte UNIVSTR_TYPE = 18;		// B
+			private static final byte PRINTSTR_TYPE = 19;		// B
+			private static final byte TELETEXSTR_TYPE = 20;		// B
+			private static final byte IA5STR_TYPE = 22;		// B
+			private static final byte SEQUENCE_TYPE = 48;		// B
+			private static final byte SET_TYPE = 49;		// B
+			private static final short UTC_LENGTH = 13;		// S
+			private static final short BYTES_EMAIL_ATTR_LABEL = 1;		// S
+			private static final short BYTES_EMAIL_ATTR_OID = 2;		// S
+			private static final short BYTES_PKCS1_SEQ = 3;		// S
+			private static final short BYTES_PKCS1_OID = 5;		// S
+			private static final short BYTES_ECDSA_WITH_SHA1_OID = 6;		// S
+			private static final short BYTES_EC_PUBLIC_KEY_OID = 7;		// S
+			private static final short BYTES_SECG_OID = 8;		// S
+			private static final short BYTES_ANSIX962_OID = 9;		// S
+			private static final byte NONE = -1;		// B
+			private static final byte RSA_ENCRYPTION = 1;		// B
+			private static final byte MD5_RSA = 4;		// B
+			private static final byte SHA1_RSA = 5;		// B
+			private static final byte SHA256_RSA = 11;		// B
+			private static final byte SHA384_RSA = 12;		// B
+			private static final byte SHA512_RSA = 13;		// B
+			private static final byte SHA224_RSA = 14;		// B
+			private static final byte RSASSA_PSS = 10;		// B
+			private static final byte ID_MGF1 = 8;		// B
+			private static final short BYTES_ID_SHA1 = 32;		// S
+			private static final byte SHA1_HASH_FUNC = 26;		// B
+			private static final byte SHA224_HASH_FUNC = 4;		// B
+			private static final byte SHA256_HASH_FUNC = 1;		// B
+			private static final byte SHA384_HASH_FUNC = 2;		// B
+			private static final byte SHA512_HASH_FUNC = 3;		// B
+			private static final short BYTES_ID_HASH_FUNC_SEQ = 33;		// S
+			private static final short BYTES_PREFIX_MD5 = 11;		// S
+			private static final short BYTES_PREFIX_SHA1 = 12;		// S
+			private static final short BYTES_PREFIX_SHA224 = 13;		// S
+			private static final short BYTES_PREFIX_SHA256 = 14;		// S
+			private static final short BYTES_PREFIX_SHA384 = 15;		// S
+			private static final short BYTES_PREFIX_SHA512 = 16;		// S
+			private static final short BYTES_NULL_SEQ = 17;		// S
+			private static final short BYTES_VALIDITY_SEQ = 18;		// S
+			private static final short BYTES_UTC_SEQ = 19;		// S
+			private static final short BYTES_ID_KP = 20;		// S
+			private static final short BYTES_ID_AIA = 21;		// S
+		}
+
+		.publicMethodTable 1 5 {
+			equals(Ljava/lang/Object;)Z 0;
+			buildCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;)Ljavacardx/security/cert/Certificate; 1;
+			buildCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;Ljavacard/security/PublicKey;)Ljavacardx/security/cert/Certificate; 2;
+			parseCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;)V 3;
+			parseCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;Ljavacard/security/PublicKey;)Z 4;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method  <init>()V {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 77;		// javacardx/security/cert/CertificateParser.<init>()V
+					sconst_0;
+					putfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					aconst_null;
+					putfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sconst_0;
+					putfield_s_this 6;		// short javacardx/security/cert/CertificateParserImpl.length
+					aconst_null;
+					putfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					aconst_null;
+					putfield_a_this 8;		// reference javacardx/security/cert/CertificateParserImpl.publickey
+					aconst_null;
+					putfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					aconst_null;
+					putfield_a_this 10;		// reference javacardx/security/cert/CertificateParserImpl.sharedBuffer
+					aconst_null;
+					putfield_a_this 11;		// reference javacardx/security/cert/CertificateParserImpl.fp
+					aconst_null;
+					putfield_a_this 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					sconst_0;
+					putfield_s_this 13;		// short javacardx/security/cert/CertificateParserImpl.TBSStart
+					sconst_0;
+					putfield_s_this 14;		// short javacardx/security/cert/CertificateParserImpl.TBSLen
+					sconst_m1;
+					putfield_b_this 15;		// byte javacardx/security/cert/CertificateParserImpl.sigAlg
+					aconst_null;
+					putfield_a_this 16;		// reference javacardx/security/cert/CertificateParserImpl.signature
+					aconst_null;
+					putfield_a_this 17;		// reference javacardx/security/cert/CertificateParserImpl.TBSCertHash
+					sconst_0;
+					putfield_b_this 18;		// boolean javacardx/security/cert/CertificateParserImpl.badExt
+					sconst_0;
+					putfield_b_this 19;		// boolean javacardx/security/cert/CertificateParserImpl.hasBC
+					sconst_0;
+					putfield_b_this 20;		// boolean javacardx/security/cert/CertificateParserImpl.isCA
+					sconst_m1;
+					putfield_s_this 21;		// short javacardx/security/cert/CertificateParserImpl.pLenConstr
+					sconst_m1;
+					putfield_s_this 22;		// short javacardx/security/cert/CertificateParserImpl.keyUsage
+					sconst_m1;
+					putfield_s_this 23;		// short javacardx/security/cert/CertificateParserImpl.extKeyUsage
+					sconst_0;
+					putfield_b_this 24;		// boolean javacardx/security/cert/CertificateParserImpl.build
+					sconst_1;
+					putfield_b_this 25;		// byte javacardx/security/cert/CertificateParserImpl.type
+					aload_0;
+					sspush 384;
+					newarray 11;
+					putfield_a 10;		// reference javacardx/security/cert/CertificateParserImpl.sharedBuffer
+					return;
+		}
+
+		.method public buildCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;)Ljavacardx/security/cert/Certificate; 1 {
+			.stack 6;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_1;
+					sload_2;
+					sload_3;
+					aload 4;
+					aconst_null;
+					checkcast 0 78;		// T_CLASSORINTERFACE javacard/security/PublicKey
+					invokevirtual 81;		// buildCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;Ljavacard/security/PublicKey;)Ljavacardx/security/cert/Certificate;
+					areturn;
+		}
+
+		.method public buildCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;Ljavacard/security/PublicKey;)Ljavacardx/security/cert/Certificate; 2 {
+			.stack 5;
+			.locals 1;
+
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+				L0:	aload_0;
+					invokespecial 87;		// javacardx/security/cert/CertificateParserImpl.cleanParser()V
+					sconst_1;
+					putfield_b_this 24;		// boolean javacardx/security/cert/CertificateParserImpl.build
+					sload_3;
+					iflt L2;
+				L1:	sload_2;
+					sload_3;
+					sadd;
+					aload_1;
+					arraylength;
+					if_scmple L3;
+				L2:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L3:	sload_2;
+					putfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					putfield_s_this 6;		// short javacardx/security/cert/CertificateParserImpl.length
+				L4:	aload_1;
+					putfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+				L5:	goto L8;
+				L6:	astore 6;
+				L7:	aload_0;
+					aload_0;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokespecial 88;		// javacardx/security/cert/CertificateParserImpl.createByteArrayAndCopy([BSS)[B
+					putfield_a 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sconst_0;
+					putfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+				L8:	aload 4;
+					putfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					aload 5;
+					putfield_a_this 8;		// reference javacardx/security/cert/CertificateParserImpl.publickey
+					aload_0;
+					new 91;		// javacardx/security/cert/X509CertificateImpl
+					dup;
+					invokespecial 94;		// javacardx/security/cert/X509CertificateImpl.<init>()V
+					putfield_a 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					putfield_a 26;		// reference javacardx/security/cert/X509CertificateImpl.encoded
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_a_this 10;		// reference javacardx/security/cert/CertificateParserImpl.sharedBuffer
+					putfield_a 27;		// reference javacardx/security/cert/X509CertificateImpl.sharedBuffer
+					aload 5;
+					ifnull L11;
+				L9:	aload 5;
+					invokeinterface 1 78 3;		// javacard/security/PublicKey
+					ifne L11;
+				L10:	sconst_2;
+					invokestatic 100;		// javacard/security/CryptoException.throwIt(S)V
+					aconst_null;
+					areturn;
+				L11:	aload_0;
+					invokespecial 104;		// javacardx/security/cert/CertificateParserImpl.parse()V
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					areturn;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L4 L5 L6 85;
+			}
+		}
+
+		.method public parseCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;)V 3 {
+			.stack 6;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_1;
+					sload_2;
+					sload_3;
+					aload 4;
+					aconst_null;
+					checkcast 0 78;		// T_CLASSORINTERFACE javacard/security/PublicKey
+					invokevirtual 106;		// parseCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;Ljavacard/security/PublicKey;)Z
+					pop;
+					return;
+		}
+
+		.method public parseCert([BSSLjavacardx/security/cert/CertificateParser$ParserHandler;Ljavacard/security/PublicKey;)Z 4 {
+			.stack 5;
+			.locals 1;
+
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+				L0:	invokestatic 118;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+					aload_0;
+					invokespecial 87;		// javacardx/security/cert/CertificateParserImpl.cleanParser()V
+					sconst_0;
+					putfield_b_this 24;		// boolean javacardx/security/cert/CertificateParserImpl.build
+					sload_3;
+					iflt L2;
+				L1:	sload_2;
+					sload_3;
+					sadd;
+					aload_1;
+					arraylength;
+					if_scmple L3;
+				L2:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L3:	sload_2;
+					putfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					putfield_s_this 6;		// short javacardx/security/cert/CertificateParserImpl.length
+				L4:	aload_1;
+					putfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+				L5:	goto L8;
+				L6:	astore 6;
+				L7:	aload_0;
+					aload_0;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokespecial 88;		// javacardx/security/cert/CertificateParserImpl.createByteArrayAndCopy([BSS)[B
+					putfield_a 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sconst_0;
+					putfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+				L8:	aload 4;
+					putfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					aload 5;
+					putfield_a_this 8;		// reference javacardx/security/cert/CertificateParserImpl.publickey
+					aconst_null;
+					putfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					aload 5;
+					ifnull L11;
+				L9:	aload 5;
+					invokeinterface 1 78 3;		// javacard/security/PublicKey
+					ifne L11;
+				L10:	sconst_2;
+					invokestatic 100;		// javacard/security/CryptoException.throwIt(S)V
+					sconst_0;
+					sreturn;
+				L11:	aload 5;
+					ifnull L13;
+				L12:	aload_0;
+					new 91;		// javacardx/security/cert/X509CertificateImpl
+					dup;
+					invokespecial 94;		// javacardx/security/cert/X509CertificateImpl.<init>()V
+					putfield_a 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					putfield_a 26;		// reference javacardx/security/cert/X509CertificateImpl.encoded
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_a_this 10;		// reference javacardx/security/cert/CertificateParserImpl.sharedBuffer
+					putfield_a 27;		// reference javacardx/security/cert/X509CertificateImpl.sharedBuffer
+				L13:	aload_0;
+					invokespecial 104;		// javacardx/security/cert/CertificateParserImpl.parse()V
+				L14:	goto L19;
+				L15:	astore 6;
+				L16:	aload 6;
+					invokevirtual 119;		// getReason()S
+					sconst_4;
+					if_scmpne L18;
+				L17:	invokestatic 120;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+					sconst_0;
+					sreturn;
+				L18:	aload 6;
+					athrow;
+				L19:	invokestatic 121;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanTrue()V
+					sconst_1;
+					sreturn;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L4 L5 L6 85;
+				L13 L14 L15 131;
+			}
+		}
+
+		.method private parseDERTypeLength(B)S {
+			.stack 2;
+			.locals 1;
+
+				L0:	aload_0;
+					sload_1;
+					invokespecial 122;		// javacardx/security/cert/CertificateParserImpl.parseOptDERTypeLength(B)S
+					sstore_2;
+				L1:	sload_2;
+					iflt L3;
+				L2:	sload_2;
+					sreturn;
+				L3:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+					sconst_0;
+					sreturn;
+		}
+
+		.method private getTLVLength()S {
+			.stack 5;
+			.locals 3;
+
+				L0:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore_1;
+				L1:	sinc 1 1;
+				L2:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_1;
+					sinc 1 1;
+					baload;
+					sspush 255;
+					sand;
+					sstore_2;
+				L3:	sload_2;
+					sspush 128;
+					if_scmplt L12;
+				L4:	sload_2;
+					sspush 128;
+					ssub;
+					sstore_3;
+				L5:	sload_3;
+					sconst_2;
+					if_scmpgt L7;
+				L6:	sload_1;
+					sload_3;
+					sadd;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					arraylength;
+					if_scmple L9;
+				L7:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+					sconst_0;
+				L8:	sreturn;
+				L9:	sconst_0;
+					sstore_2;
+				L10:	sload_3;
+					ifle L12;
+				L11:	sload_2;
+					bspush 8;
+					sshl;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_1;
+					sinc 1 1;
+					baload;
+					sspush 255;
+					sand;
+					sadd;
+					sstore_2;
+					sinc 3 -1;
+					goto L10;
+				L12:	sload_1;
+					sload_2;
+					sadd;
+					sstore_1;
+					sload_1;
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					ssub;
+				L13:	sreturn;
+				L14:	astore_2;
+				L15:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+					sconst_0;
+					sreturn;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L2 L8 L14 123;
+				L9 L13 L14 123;
+			}
+		}
+
+		.method private parseOptDERTypeLength(B)S {
+			.stack 5;
+			.locals 3;
+
+				L0:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore_2;
+				L1:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					baload;
+					sload_1;
+					if_scmpeq L8;
+				L2:	sload_1;
+					ifne_w L18;
+				L3:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					baload;
+					bspush 19;
+					if_scmpeq L8;
+				L4:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					baload;
+					bspush 20;
+					if_scmpeq L8;
+				L5:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					baload;
+					bspush 12;
+					if_scmpeq L8;
+				L6:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					baload;
+					bspush 22;
+					if_scmpeq L8;
+				L7:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					baload;
+					bspush 18;
+					if_scmpne L18;
+				L8:	sinc 2 1;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					sinc 2 1;
+					baload;
+					sspush 255;
+					sand;
+					sstore_3;
+				L9:	sload_3;
+					sspush 128;
+					if_scmplt L17;
+				L10:	sload_3;
+					sspush 128;
+					ssub;
+					sstore 4;
+				L11:	sload 4;
+					sconst_2;
+					if_scmpgt L13;
+				L12:	sload_2;
+					sload 4;
+					sadd;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					arraylength;
+					if_scmple L14;
+				L13:	sconst_m1;
+					sreturn;
+				L14:	sconst_0;
+					sstore_3;
+				L15:	sload 4;
+					ifle L17;
+				L16:	sload_3;
+					bspush 8;
+					sshl;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					sinc 2 1;
+					baload;
+					sspush 255;
+					sand;
+					sadd;
+					sstore_3;
+					sinc 4 -1;
+					goto L15;
+				L17:	sload_2;
+					putfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					sreturn;
+				L18:	sconst_m1;
+					sreturn;
+		}
+
+		.method private parseDERInteger()S {
+			.stack 4;
+			.locals 3;
+
+				L0:	aload_0;
+					sconst_2;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore_1;
+				L1:	sconst_0;
+					sstore_2;
+				L2:	sconst_0;
+					sstore_3;
+				L3:	sload_3;
+					sload_1;
+					if_scmpge L5;
+				L4:	sload_2;
+					bspush 8;
+					sshl;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					sadd;
+					baload;
+					sspush 255;
+					sand;
+					sadd;
+					sstore_2;
+					sinc 3 1;
+					goto L3;
+				L5:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_2;
+					sreturn;
+		}
+
+		.method private parseAlgorithm(SZ)B {
+			.stack 6;
+			.locals 7;
+
+				L0:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 4;
+				L1:	aload_0;
+					invokespecial 125;		// javacardx/security/cert/CertificateParserImpl.getTLVLength()S
+					sstore 5;
+				L2:	aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					aload_0;
+					bspush 6;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 6;
+				L3:	sload_2;
+					ifeq L5;
+				L4:	aload_0;
+					sload_1;
+					sload 4;
+					sload 5;
+					invokespecial 126;		// javacardx/security/cert/CertificateParserImpl.createTLVCopyAndNotifyHandler(SSS)V
+				L5:	sconst_5;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					dup;
+					sstore_3;
+				L6:	ifle_w L47;
+				L7:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					sstore 7;
+				L8:	sload 7;
+					bspush 10;
+					if_scmpne_w L44;
+				L9:	bspush 26;
+					putfield_b_this 28;		// byte javacardx/security/cert/CertificateParserImpl.pssHashFunc
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L11;
+				L10:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_b_this 28;		// byte javacardx/security/cert/CertificateParserImpl.pssHashFunc
+					putfield_b 29;		// byte javacardx/security/cert/X509CertificateImpl.pssHashFunc
+				L11:	bspush 26;
+					putfield_b_this 30;		// byte javacardx/security/cert/CertificateParserImpl.pssMaskGenHashFunc
+					bspush 20;
+					putfield_s_this 31;		// short javacardx/security/cert/CertificateParserImpl.pssSaltLength
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L13;
+				L12:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_s_this 31;		// short javacardx/security/cert/CertificateParserImpl.pssSaltLength
+					putfield_s 32;		// short javacardx/security/cert/X509CertificateImpl.pssSaltLength
+				L13:	sconst_1;
+					putfield_s_this 33;		// short javacardx/security/cert/CertificateParserImpl.pssTrailerField
+					aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 8;
+				L14:	sload 8;
+					ifle_w L43;
+				L15:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 8;
+					sadd;
+					sstore 9;
+				L16:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 9;
+					if_scmpge_w L43;
+				L17:	aload_0;
+					bspush -96;
+					invokespecial 122;		// javacardx/security/cert/CertificateParserImpl.parseOptDERTypeLength(B)S
+					sstore 8;
+					sload 8;
+					iflt_w L27;
+				L18:	aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					aload_0;
+					bspush 6;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					bspush 33;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					dup;
+					sstore_3;
+					ifle L21;
+				L19:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					aload_0;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					putfield_b 28;		// byte javacardx/security/cert/CertificateParserImpl.pssHashFunc
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L25;
+				L20:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_b_this 28;		// byte javacardx/security/cert/CertificateParserImpl.pssHashFunc
+					putfield_b 29;		// byte javacardx/security/cert/X509CertificateImpl.pssHashFunc
+					goto L25;
+				L21:	bspush 32;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					dup;
+					sstore_3;
+					ifle L24;
+				L22:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					bspush 26;
+					putfield_b_this 28;		// byte javacardx/security/cert/CertificateParserImpl.pssHashFunc
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L25;
+				L23:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_b_this 28;		// byte javacardx/security/cert/CertificateParserImpl.pssHashFunc
+					putfield_b 29;		// byte javacardx/security/cert/X509CertificateImpl.pssHashFunc
+					goto L25;
+				L24:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L25:	bspush 17;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					dup;
+					sstore_3;
+					ifle L27;
+				L26:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+				L27:	aload_0;
+					bspush -95;
+					invokespecial 122;		// javacardx/security/cert/CertificateParserImpl.parseOptDERTypeLength(B)S
+					sstore 8;
+					sload 8;
+					iflt_w L38;
+				L28:	aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					aload_0;
+					bspush 6;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					sconst_5;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					dup;
+					sstore_3;
+					iflt L30;
+				L29:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					sadd;
+					baload;
+					bspush 8;
+					if_scmpeq L31;
+				L30:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L31:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					sconst_1;
+					sadd;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					aload_0;
+					bspush 6;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					bspush 33;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					dup;
+					sstore_3;
+					ifle L33;
+				L32:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					aload_0;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					putfield_b 30;		// byte javacardx/security/cert/CertificateParserImpl.pssMaskGenHashFunc
+					goto L36;
+				L33:	bspush 32;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					dup;
+					sstore_3;
+					ifle L35;
+				L34:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					bspush 26;
+					putfield_b_this 30;		// byte javacardx/security/cert/CertificateParserImpl.pssMaskGenHashFunc
+					goto L36;
+				L35:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L36:	bspush 17;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					dup;
+					sstore_3;
+					ifle L38;
+				L37:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+				L38:	aload_0;
+					bspush -94;
+					invokespecial 122;		// javacardx/security/cert/CertificateParserImpl.parseOptDERTypeLength(B)S
+					sstore 8;
+					sload 8;
+					iflt L41;
+				L39:	aload_0;
+					aload_0;
+					invokespecial 65;		// javacardx/security/cert/CertificateParserImpl.parseDERInteger()S
+					putfield_s 31;		// short javacardx/security/cert/CertificateParserImpl.pssSaltLength
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L41;
+				L40:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_s_this 31;		// short javacardx/security/cert/CertificateParserImpl.pssSaltLength
+					putfield_s 32;		// short javacardx/security/cert/X509CertificateImpl.pssSaltLength
+				L41:	aload_0;
+					bspush -93;
+					invokespecial 122;		// javacardx/security/cert/CertificateParserImpl.parseOptDERTypeLength(B)S
+					sstore 8;
+					sload 8;
+					iflt_w L16;
+				L42:	aload_0;
+					aload_0;
+					invokespecial 65;		// javacardx/security/cert/CertificateParserImpl.parseDERInteger()S
+					putfield_s 33;		// short javacardx/security/cert/CertificateParserImpl.pssTrailerField
+					goto_w L16;
+				L43:	goto L46;
+				L44:	bspush 17;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					dup;
+					sstore_3;
+					ifle L46;
+				L45:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_3;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+				L46:	sload 7;
+					sreturn;
+				L47:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 6;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sconst_m1;
+					sreturn;
+		}
+
+		.method private parseName(S)[B {
+			.stack 7;
+			.locals 9;
+
+				L0:	getfield_a_this 10;		// reference javacardx/security/cert/CertificateParserImpl.sharedBuffer
+					astore_2;
+				L1:	sconst_0;
+					sstore_3;
+				L2:	sconst_0;
+					sstore 8;
+				L3:	sconst_0;
+					sstore 9;
+				L4:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_1;
+					if_scmpge_w L36;
+				L5:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					bspush 49;
+					if_scmpne L7;
+				L6:	aload_0;
+					bspush 49;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 8;
+					sconst_0;
+					sstore 9;
+					goto L4;
+				L7:	sload 8;
+					ifle L10;
+				L8:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					bspush 48;
+					if_scmpne L10;
+				L9:	aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 9;
+					goto L4;
+				L10:	sload 8;
+					ifle_w L35;
+				L11:	sload 9;
+					ifle_w L35;
+				L12:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					bspush 6;
+					if_scmpne_w L35;
+				L13:	sload_3;
+					ifeq L15;
+				L14:	aload_2;
+					sload_3;
+					sinc 3 1;
+					bspush 59;
+					bastore;
+				L15:	aload_0;
+					bspush 6;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 6;
+				L16:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 5;
+				L17:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 6;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 6;
+					sconst_3;
+					if_scmpne L26;
+				L18:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 5;
+					baload;
+					bspush 85;
+					if_scmpne L26;
+				L19:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 5;
+					sconst_1;
+					sadd;
+					baload;
+					sconst_4;
+					if_scmpne L26;
+				L20:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 5;
+					sconst_2;
+					sadd;
+					baload;
+					sstore 7;
+				L21:	sload 7;
+					aload_2;
+					sload_3;
+					invokestatic 66;		// javacardx/security/cert/CertificateParserImpl._nameAttrCopy(S[BS)S
+					sstore 10;
+				L22:	sload 10;
+					ifne L24;
+				L23:	sload_3;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 5;
+					sload 6;
+					aload_2;
+					sload_3;
+					invokestatic 67;		// javacardx/security/cert/CertificateParserImpl._hexEncode([BSS[BS)S
+					sadd;
+					sstore_3;
+					goto L25;
+				L24:	sload_3;
+					sload 10;
+					sadd;
+					sstore_3;
+				L25:	goto L29;
+				L26:	sconst_2;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 5;
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					ifle L28;
+				L27:	sload_3;
+					sconst_1;
+					aload_2;
+					sload_3;
+					invokestatic 68;		// javacardx/security/cert/CertificateParserImpl._bytesCopy(S[BS)S
+					sadd;
+					sstore_3;
+					goto L29;
+				L28:	sload_3;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 5;
+					sload 6;
+					aload_2;
+					sload_3;
+					invokestatic 67;		// javacardx/security/cert/CertificateParserImpl._hexEncode([BSS[BS)S
+					sadd;
+					sstore_3;
+				L29:	aload_2;
+					sload_3;
+					sinc 3 1;
+					bspush 61;
+					bastore;
+					aload_0;
+					sconst_0;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 4;
+				L30:	sload 4;
+					ifle L34;
+				L31:	sconst_0;
+					sstore 10;
+				L32:	sload 10;
+					sload 4;
+					if_scmpge L34;
+				L33:	aload_2;
+					sload_3;
+					sinc 3 1;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					bastore;
+					sinc 10 1;
+					goto L32;
+				L34:	sconst_0;
+					sstore 9;
+					goto_w L4;
+				L35:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+					goto_w L4;
+				L36:	aload_2;
+					areturn;
+		}
+
+		.method private static parseInteger([BS)S {
+			.stack 3;
+			.locals 2;
+
+				L0:	aload_0;
+					sload_1;
+					baload;
+					sstore_2;
+				L1:	aload_0;
+					sload_1;
+					sconst_1;
+					sadd;
+					baload;
+					sstore_3;
+				L2:	sload_2;
+					bspush 48;
+					if_scmplt L6;
+				L3:	sload_2;
+					bspush 57;
+					if_scmpgt L6;
+				L4:	sload_3;
+					bspush 48;
+					if_scmplt L6;
+				L5:	sload_3;
+					bspush 57;
+					if_scmple L7;
+				L6:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L7:	sload_2;
+					bspush 48;
+					ssub;
+					bspush 10;
+					smul;
+					sload_3;
+					bspush 48;
+					ssub;
+					sadd;
+					sreturn;
+		}
+
+		.method private parseExtensions(S)V {
+			.stack 8;
+			.locals 19;
+
+				L0:	sconst_1;
+					sstore 15;
+				L1:	aload_0;
+					bspush -93;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L3;
+				L2:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					aload_0;
+					bspush 15;
+					invokespecial 70;		// javacardx/security/cert/CertificateParserImpl.createObjectArray(S)[Ljava/lang/Object;
+					putfield_a 34;		// reference javacardx/security/cert/X509CertificateImpl.extHolder
+				L3:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_1;
+					if_scmpge_w L103;
+				L4:	sconst_0;
+					sstore_2;
+				L5:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 9;
+				L6:	aload_0;
+					invokespecial 125;		// javacardx/security/cert/CertificateParserImpl.getTLVLength()S
+					sstore 10;
+				L7:	aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 11;
+				L8:	aload_0;
+					invokespecial 125;		// javacardx/security/cert/CertificateParserImpl.getTLVLength()S
+					sstore 12;
+				L9:	aload_0;
+					bspush 6;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 4;
+				L10:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore_3;
+				L11:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 4;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sconst_0;
+					sstore 5;
+				L12:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					sconst_1;
+					if_scmpne L18;
+				L13:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sconst_1;
+					sadd;
+					baload;
+					sconst_1;
+					if_scmpne L18;
+				L14:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sconst_2;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					sconst_m1;
+					if_scmpne L16;
+				L15:	sconst_1;
+					goto L17;
+				L16:	sconst_0;
+				L17:	sstore 5;
+				L18:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 13;
+				L19:	aload_0;
+					invokespecial 125;		// javacardx/security/cert/CertificateParserImpl.getTLVLength()S
+					sstore 14;
+				L20:	aload_0;
+					sconst_4;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 7;
+				L21:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 6;
+				L22:	sconst_1;
+					sstore 15;
+					getfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					ifnull L24;
+				L23:	getfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					instanceof 0 72;		// T_CLASSORINTERFACE javacardx/security/cert/X509Certificate$ExtensionHandler
+					ifne L26;
+				L24:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull_w L41;
+				L25:	getfield_b_this 24;		// boolean javacardx/security/cert/CertificateParserImpl.build
+					ifeq_w L41;
+				L26:	getfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					ifnull L34;
+				L27:	getfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					instanceof 0 72;		// T_CLASSORINTERFACE javacardx/security/cert/X509Certificate$ExtensionHandler
+					ifeq L34;
+				L28:	aload_0;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 11;
+					sload 12;
+					invokespecial 73;		// javacardx/security/cert/CertificateParserImpl.createByteAV([BSS)[B
+					astore 16;
+				L29:	aload_0;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 13;
+					sload 14;
+					invokespecial 73;		// javacardx/security/cert/CertificateParserImpl.createByteAV([BSS)[B
+					astore 17;
+				L30:	getfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					checkcast 0 72;		// T_CLASSORINTERFACE javacardx/security/cert/X509Certificate$ExtensionHandler
+					aload 16;
+					sload 5;
+					aload 17;
+					invokeinterface 4 72 0;		// javacardx/security/cert/X509Certificate$ExtensionHandler
+					sstore 15;
+				L31:	goto L34;
+				L32:	astore 16;
+				L33:	sconst_5;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L34:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L41;
+				L35:	getfield_b_this 24;		// boolean javacardx/security/cert/CertificateParserImpl.build
+					ifeq L41;
+				L36:	sload 15;
+					ifeq L41;
+				L37:	aload_0;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 11;
+					sload 12;
+					invokespecial 88;		// javacardx/security/cert/CertificateParserImpl.createByteArrayAndCopy([BSS)[B
+					astore 16;
+				L38:	aload_0;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 13;
+					sload 14;
+					invokespecial 88;		// javacardx/security/cert/CertificateParserImpl.createByteArrayAndCopy([BSS)[B
+					astore 17;
+				L39:	aload_0;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 9;
+					sload 10;
+					invokespecial 88;		// javacardx/security/cert/CertificateParserImpl.createByteArrayAndCopy([BSS)[B
+					astore 18;
+				L40:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_a 34;		// reference javacardx/security/cert/X509CertificateImpl.extHolder
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					dup;
+					getfield_s 35;		// short javacardx/security/cert/X509CertificateImpl.extCounter
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 35;		// short javacardx/security/cert/X509CertificateImpl.extCounter
+					new 75;		// javacardx/security/cert/ExtensionHolder
+					dup;
+					aload 16;
+					sload 5;
+					aload 18;
+					aload 17;
+					invokespecial 76;		// javacardx/security/cert/ExtensionHolder.<init>([BZ[B[B)V
+					aastore;
+				L41:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_3;
+					baload;
+					bspush 85;
+					if_scmpne_w L95;
+				L42:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_3;
+					sconst_1;
+					sadd;
+					baload;
+					bspush 29;
+					if_scmpne_w L95;
+				L43:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_3;
+					sconst_2;
+					sadd;
+					baload;
+					slookupswitch L94 5 14 L92 15 L44 17 L59 19 L60 37 L71;
+				L44:	sconst_1;
+					sstore_2;
+					getfield_s_this 22;		// short javacardx/security/cert/CertificateParserImpl.keyUsage
+					sconst_m1;
+					if_scmpne L46;
+				L45:	sconst_0;
+					putfield_s_this 22;		// short javacardx/security/cert/CertificateParserImpl.keyUsage
+				L46:	aload_0;
+					sconst_3;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sconst_1;
+					ssub;
+					sstore 8;
+				L47:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					sstore 16;
+				L48:	sconst_0;
+					sstore 17;
+				L49:	sconst_0;
+					sstore 18;
+				L50:	sload 18;
+					sload 8;
+					sconst_3;
+					sshl;
+					sload 16;
+					ssub;
+					if_scmpge L56;
+				L51:	sload 18;
+					bspush 8;
+					srem;
+					ifne L53;
+				L52:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					sstore 17;
+				L53:	sload 17;
+					bspush -128;
+					sand;
+					ifeq L55;
+				L54:	aload_0;
+					dup;
+					getfield_s 22;		// short javacardx/security/cert/CertificateParserImpl.keyUsage
+					sconst_1;
+					sload 18;
+					sshl;
+					sor;
+					putfield_s 22;		// short javacardx/security/cert/CertificateParserImpl.keyUsage
+				L55:	sload 17;
+					sconst_1;
+					sshl;
+					s2b;
+					sstore 17;
+					sinc 18 1;
+					goto L50;
+				L56:	sload 15;
+					ifeq_w L99;
+				L57:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull_w L99;
+				L58:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_s_this 22;		// short javacardx/security/cert/CertificateParserImpl.keyUsage
+					putfield_s 36;		// short javacardx/security/cert/X509CertificateImpl.keyUsage
+					goto_w L99;
+				L59:	sconst_1;
+					sstore_2;
+					goto_w L99;
+				L60:	sconst_1;
+					putfield_b_this 19;		// boolean javacardx/security/cert/CertificateParserImpl.hasBC
+					sconst_1;
+					sstore_2;
+					aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 8;
+				L61:	sload 8;
+					ifne L63;
+				L62:	goto_w L99;
+				L63:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					sconst_1;
+					if_scmpne L67;
+				L64:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sconst_1;
+					sadd;
+					baload;
+					sconst_1;
+					if_scmpne L67;
+				L65:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sconst_2;
+					sadd;
+					baload;
+					sconst_m1;
+					if_scmpne L67;
+				L66:	sconst_1;
+					putfield_b_this 20;		// boolean javacardx/security/cert/CertificateParserImpl.isCA
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sconst_3;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+				L67:	aload_0;
+					sconst_2;
+					invokespecial 122;		// javacardx/security/cert/CertificateParserImpl.parseOptDERTypeLength(B)S
+					sstore 8;
+					sload 8;
+					iflt L69;
+				L68:	sload 8;
+					putfield_s_this 21;		// short javacardx/security/cert/CertificateParserImpl.pLenConstr
+					goto_w L99;
+				L69:	getfield_b_this 20;		// boolean javacardx/security/cert/CertificateParserImpl.isCA
+					ifeq_w L99;
+				L70:	bspush -2;
+					putfield_s_this 21;		// short javacardx/security/cert/CertificateParserImpl.pLenConstr
+					goto_w L99;
+				L71:	sconst_1;
+					sstore_2;
+					getfield_s_this 23;		// short javacardx/security/cert/CertificateParserImpl.extKeyUsage
+					sconst_m1;
+					if_scmpne L73;
+				L72:	sconst_0;
+					putfield_s_this 23;		// short javacardx/security/cert/CertificateParserImpl.extKeyUsage
+				L73:	aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					sconst_0;
+					sstore 19;
+				L74:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 6;
+					sload 7;
+					sadd;
+					if_scmpge L86;
+				L75:	aload_0;
+					bspush 6;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 18;
+				L76:	bspush 20;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					dup;
+					sstore 20;
+				L77:	ifle L82;
+				L78:	sload 18;
+					sload 20;
+					sconst_1;
+					sadd;
+					if_scmpne L82;
+				L79:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 20;
+					sadd;
+					baload;
+					ifle L82;
+				L80:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 20;
+					sadd;
+					baload;
+					bspush 9;
+					if_scmpgt L82;
+				L81:	aload_0;
+					dup;
+					getfield_s 23;		// short javacardx/security/cert/CertificateParserImpl.extKeyUsage
+					sconst_1;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 20;
+					sadd;
+					baload;
+					sshl;
+					sor;
+					putfield_s 23;		// short javacardx/security/cert/CertificateParserImpl.extKeyUsage
+					goto L84;
+				L82:	sconst_1;
+					sstore 19;
+					sload 5;
+					ifeq L84;
+				L83:	sconst_1;
+					putfield_b_this 18;		// boolean javacardx/security/cert/CertificateParserImpl.badExt
+				L84:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 18;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+				L85:	goto L74;
+				L86:	sload 5;
+					ifne L89;
+				L87:	sload 19;
+					ifeq L89;
+				L88:	sconst_m1;
+					putfield_s_this 23;		// short javacardx/security/cert/CertificateParserImpl.extKeyUsage
+				L89:	sload 15;
+					ifeq L99;
+				L90:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L99;
+				L91:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_s_this 23;		// short javacardx/security/cert/CertificateParserImpl.extKeyUsage
+					putfield_s 37;		// short javacardx/security/cert/X509CertificateImpl.extKeyUsage
+					goto L99;
+				L92:	sconst_1;
+					sstore_2;
+					aload_0;
+					sconst_4;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 20;
+				L93:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 20;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					goto L99;
+				L94:	goto L99;
+				L95:	bspush 21;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_3;
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					dup;
+					sstore 16;
+				L96:	ifle L99;
+				L97:	sload_1;
+					sload_3;
+					ssub;
+					sload 16;
+					if_scmple L99;
+				L98:	sconst_1;
+					sstore_2;
+				L99:	sload_2;
+					ifne L102;
+				L100:	sload 5;
+					ifeq L102;
+				L101:	sconst_1;
+					putfield_b_this 18;		// boolean javacardx/security/cert/CertificateParserImpl.badExt
+				L102:	aload_0;
+					sload 6;
+					sload 7;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					goto_w L3;
+				L103:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_1;
+					if_scmpeq L105;
+				L104:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L105:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L28 L31 L32 69;
+			}
+		}
+
+		.method private parsePublicKey()V {
+			.stack 6;
+			.locals 12;
+
+				L0:	sconst_m1;
+					sstore_1;
+				L1:	aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					aload_0;
+					bspush 6;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 8;
+				L2:	sconst_5;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					sstore 9;
+				L3:	sload 9;
+					ifle L7;
+				L4:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 9;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 8;
+					sload 9;
+					sconst_1;
+					sadd;
+					if_scmpne L6;
+				L5:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					sstore_1;
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					aload_0;
+					bspush 17;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokespecial 80;		// javacardx/security/cert/CertificateParserImpl.match(S[BS)S
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					goto L10;
+				L6:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+					goto L10;
+				L7:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L9;
+				L8:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					sconst_1;
+					putfield_b 38;		// boolean javacardx/security/cert/X509CertificateImpl.pubKeyException
+				L9:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 8;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					return;
+				L10:	aload_0;
+					sconst_3;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					ifeq L12;
+				L11:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L12:	aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					pop;
+					aload_0;
+					sconst_2;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 8;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					ifne L14;
+				L13:	sinc 8 -1;
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+				L14:	sload_1;
+					slookupswitch L56 1 1 L15;
+				L15:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore_2;
+				L16:	sload 8;
+					sstore_3;
+				L17:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 8;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					aload_0;
+					sconst_2;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore 8;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					ifne L19;
+				L18:	sinc 8 -1;
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+				L19:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 4;
+				L20:	sload 8;
+					sstore 5;
+				L21:	aconst_null;
+					astore 10;
+				L22:	sconst_1;
+					sstore 11;
+				L23:	getfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					ifnull_w L46;
+				L24:	getfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					instanceof 0 82;		// T_CLASSORINTERFACE javacardx/security/cert/CertificateParser$KeyHandler
+					ifeq_w L46;
+				L25:	aload_0;
+					sconst_4;
+					sload_3;
+					sconst_3;
+					sshl;
+					sconst_0;
+					invokestatic 83;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 84;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					putfield_a 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					getfield_a_this 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					checkcast 0 84;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					sload_3;
+					invokeinterface 4 84 7;		// javacard/security/RSAPublicKey
+					getfield_a_this 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					checkcast 0 84;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 4;
+					sload 5;
+					invokeinterface 4 84 6;		// javacard/security/RSAPublicKey
+				L26:	goto L31;
+				L27:	astore 12;
+				L28:	aconst_null;
+					putfield_a_this 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L30;
+				L29:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					sconst_1;
+					putfield_b 38;		// boolean javacardx/security/cert/X509CertificateImpl.pubKeyException
+				L30:	sconst_0;
+					sstore 11;
+				L31:	getfield_a_this 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					ifnull L46;
+				L32:	getfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					checkcast 0 82;		// T_CLASSORINTERFACE javacardx/security/cert/CertificateParser$KeyHandler
+					sconst_4;
+					sload_3;
+					sconst_3;
+					sshl;
+					invokeinterface 3 82 0;		// javacardx/security/cert/CertificateParser$KeyHandler
+					astore 10;
+				L33:	goto L36;
+				L34:	astore 12;
+				L35:	sconst_5;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L36:	aload 10;
+					ifnull L45;
+				L37:	aload 10;
+					invokeinterface 1 78 2;		// javacard/security/PublicKey
+					sconst_4;
+					if_scmpne L39;
+				L38:	aload 10;
+					invokeinterface 1 78 1;		// javacard/security/PublicKey
+					sload_3;
+					sconst_3;
+					sshl;
+					if_scmpeq L40;
+				L39:	bspush 6;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L40:	aload 10;
+					invokeinterface 1 78 3;		// javacard/security/PublicKey
+					ifne L45;
+				L41:	aload 10;
+					checkcast 0 84;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					sload_3;
+					invokeinterface 4 84 7;		// javacard/security/RSAPublicKey
+					aload 10;
+					checkcast 0 84;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 4;
+					sload 5;
+					invokeinterface 4 84 6;		// javacard/security/RSAPublicKey
+				L42:	goto L45;
+				L43:	astore 12;
+				L44:	bspush 6;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L45:	aload 10;
+					putfield_a_this 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					sconst_0;
+					sstore 11;
+				L46:	getfield_a_this 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					ifnonnull L53;
+				L47:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L53;
+				L48:	sload 11;
+					ifeq L53;
+				L49:	aload_0;
+					sconst_4;
+					sload_3;
+					sconst_3;
+					sshl;
+					sconst_0;
+					invokestatic 83;		// javacard/security/KeyBuilder.buildKey(BSZ)Ljavacard/security/Key;
+					checkcast 0 84;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					putfield_a 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					getfield_a_this 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					checkcast 0 84;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					sload_3;
+					invokeinterface 4 84 7;		// javacard/security/RSAPublicKey
+					getfield_a_this 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					checkcast 0 84;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload 4;
+					sload 5;
+					invokeinterface 4 84 6;		// javacard/security/RSAPublicKey
+				L50:	goto L53;
+				L51:	astore 12;
+				L52:	aconst_null;
+					putfield_a_this 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					sconst_1;
+					putfield_b 38;		// boolean javacardx/security/cert/X509CertificateImpl.pubKeyException
+				L53:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L55;
+				L54:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_a_this 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					putfield_a 39;		// reference javacardx/security/cert/X509CertificateImpl.pubKey
+				L55:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 8;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					goto L59;
+				L56:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L58;
+				L57:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					sconst_1;
+					putfield_b 38;		// boolean javacardx/security/cert/X509CertificateImpl.pubKeyException
+				L58:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 8;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+				L59:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L25 L26 L27 79;
+				L32 L33 L34 69;
+				L41 L42 L43 79;
+				L49 L50 L51 79;
+			}
+		}
+
+		.method private parse()V {
+			.stack 6;
+			.locals 10;
+
+				L0:	aconst_null;
+					astore 4;
+				L1:	sconst_0;
+					sstore 5;
+				L2:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 8;
+				L3:	aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore_1;
+				L4:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 8;
+					ssub;
+					sload_1;
+					sadd;
+					getfield_s_this 6;		// short javacardx/security/cert/CertificateParserImpl.length
+					if_scmpeq L6;
+				L5:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L6:	aload_0;
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					putfield_s 13;		// short javacardx/security/cert/CertificateParserImpl.TBSStart
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 6;
+				L7:	aload_0;
+					invokespecial 125;		// javacardx/security/cert/CertificateParserImpl.getTLVLength()S
+					sstore 7;
+				L8:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L10;
+				L9:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_s_this 13;		// short javacardx/security/cert/CertificateParserImpl.TBSStart
+					putfield_s 40;		// short javacardx/security/cert/X509CertificateImpl.TBSStart
+				L10:	aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore_1;
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_1;
+					sadd;
+					sstore 9;
+				L11:	aload_0;
+					sload 9;
+					getfield_s_this 13;		// short javacardx/security/cert/CertificateParserImpl.TBSStart
+					ssub;
+					putfield_s 14;		// short javacardx/security/cert/CertificateParserImpl.TBSLen
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L13;
+				L12:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_s_this 14;		// short javacardx/security/cert/CertificateParserImpl.TBSLen
+					putfield_s 41;		// short javacardx/security/cert/X509CertificateImpl.TBSLen
+				L13:	getfield_a_this 8;		// reference javacardx/security/cert/CertificateParserImpl.publickey
+					ifnull L19;
+				L14:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L19;
+				L15:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 8;
+					sload 9;
+					putfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					aload_0;
+					sconst_0;
+					invokespecial 89;		// javacardx/security/cert/CertificateParserImpl.parseAlgAndSig(Z)V
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_a_this 8;		// reference javacardx/security/cert/CertificateParserImpl.publickey
+					invokevirtual 90;		// _verify(Ljavacard/security/PublicKey;)Z
+					ifne L18;
+				L16:	sconst_4;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L17:	return;
+				L18:	sload 8;
+					putfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+				L19:	aload_0;
+					sspush 1024;
+					sload 6;
+					sload 7;
+					invokespecial 126;		// javacardx/security/cert/CertificateParserImpl.createTLVCopyAndNotifyHandler(SSS)V
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					bspush -16;
+					sand;
+					bspush -96;
+					if_scmpne L25;
+				L20:	aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					sspush 255;
+					sand;
+					sstore_1;
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_1;
+					sadd;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					arraylength;
+					if_scmple L22;
+				L21:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L22:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 6;
+					aload_0;
+					invokespecial 125;		// javacardx/security/cert/CertificateParserImpl.getTLVLength()S
+					sstore 7;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_1;
+					sconst_1;
+					ssub;
+					sadd;
+					baload;
+					sstore 5;
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L24;
+				L23:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					sload 5;
+					putfield_b 42;		// byte javacardx/security/cert/X509CertificateImpl.version
+				L24:	aload_0;
+					sconst_1;
+					sload 6;
+					sload 7;
+					invokespecial 126;		// javacardx/security/cert/CertificateParserImpl.createTLVCopyAndNotifyHandler(SSS)V
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					goto L26;
+				L25:	sconst_0;
+					sstore 5;
+				L26:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 6;
+					aload_0;
+					invokespecial 125;		// javacardx/security/cert/CertificateParserImpl.getTLVLength()S
+					sstore 7;
+					aload_0;
+					sconst_2;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore_1;
+					aload_0;
+					sconst_2;
+					sload 6;
+					sload 7;
+					invokespecial 126;		// javacardx/security/cert/CertificateParserImpl.createTLVCopyAndNotifyHandler(SSS)V
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					aload_0;
+					sconst_4;
+					sconst_1;
+					invokespecial 92;		// javacardx/security/cert/CertificateParserImpl.parseAlgorithm(SZ)B
+					pop;
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 6;
+					aload_0;
+					invokespecial 125;		// javacardx/security/cert/CertificateParserImpl.getTLVLength()S
+					sstore 7;
+					aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore_1;
+					aload_0;
+					bspush 8;
+					sload 6;
+					sload 7;
+					invokespecial 126;		// javacardx/security/cert/CertificateParserImpl.createTLVCopyAndNotifyHandler(SSS)V
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_1;
+					sadd;
+					sstore 10;
+				L27:	aload_0;
+					aload_0;
+					sload 10;
+					invokespecial 93;		// javacardx/security/cert/CertificateParserImpl.parseName(S)[B
+					putfield_a 43;		// reference javacardx/security/cert/CertificateParserImpl.issuer
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					aload_0;
+					bspush 18;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokespecial 80;		// javacardx/security/cert/CertificateParserImpl.match(S[BS)S
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 6;
+					aload_0;
+					invokespecial 125;		// javacardx/security/cert/CertificateParserImpl.getTLVLength()S
+					sstore 7;
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					aload_0;
+					bspush 19;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokespecial 80;		// javacardx/security/cert/CertificateParserImpl.match(S[BS)S
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					aload_0;
+					bspush 32;
+					sload 6;
+					sload 7;
+					invokespecial 126;		// javacardx/security/cert/CertificateParserImpl.createTLVCopyAndNotifyHandler(SSS)V
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					bspush 13;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 6;
+					aload_0;
+					invokespecial 125;		// javacardx/security/cert/CertificateParserImpl.getTLVLength()S
+					sstore 7;
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					aload_0;
+					bspush 19;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					invokespecial 80;		// javacardx/security/cert/CertificateParserImpl.match(S[BS)S
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					aload_0;
+					bspush 16;
+					sload 6;
+					sload 7;
+					invokespecial 126;		// javacardx/security/cert/CertificateParserImpl.createTLVCopyAndNotifyHandler(SSS)V
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					bspush 13;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 6;
+					aload_0;
+					invokespecial 125;		// javacardx/security/cert/CertificateParserImpl.getTLVLength()S
+					sstore 7;
+					aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore_1;
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload_1;
+					sadd;
+					sstore 10;
+					sload_1;
+					ifeq L29;
+				L28:	aload_0;
+					aload_0;
+					sload 10;
+					invokespecial 93;		// javacardx/security/cert/CertificateParserImpl.parseName(S)[B
+					putfield_a 44;		// reference javacardx/security/cert/CertificateParserImpl.subject
+				L29:	aload_0;
+					bspush 64;
+					sload 6;
+					sload 7;
+					invokespecial 126;		// javacardx/security/cert/CertificateParserImpl.createTLVCopyAndNotifyHandler(SSS)V
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 6;
+					aload_0;
+					invokespecial 125;		// javacardx/security/cert/CertificateParserImpl.getTLVLength()S
+					sstore 7;
+					aload_0;
+					bspush 48;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore_2;
+				L30:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore_3;
+				L31:	aload_0;
+					invokespecial 96;		// javacardx/security/cert/CertificateParserImpl.parsePublicKey()V
+					aload_0;
+					sspush 128;
+					sload 6;
+					sload 7;
+					invokespecial 126;		// javacardx/security/cert/CertificateParserImpl.createTLVCopyAndNotifyHandler(SSS)V
+					aload_0;
+					sload_3;
+					sload_2;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sload 9;
+					if_scmpeq L35;
+				L32:	sload 5;
+					sconst_2;
+					if_scmpge L34;
+				L33:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+					goto L35;
+				L34:	aload_0;
+					sload 9;
+					invokespecial 97;		// javacardx/security/cert/CertificateParserImpl.parseExtensions(S)V
+				L35:	aload_0;
+					sconst_1;
+					invokespecial 89;		// javacardx/security/cert/CertificateParserImpl.parseAlgAndSig(Z)V
+				L36:	goto L39;
+				L37:	astore_1;
+				L38:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L39:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L0 L17 L37 86;
+				L18 L36 L37 86;
+			}
+		}
+
+		.method private parseAlgAndSig(Z)V {
+			.stack 6;
+			.locals 5;
+
+				L0:	aconst_null;
+					astore_2;
+				L1:	aload_0;
+					aload_0;
+					sspush 2048;
+					sload_1;
+					invokespecial 92;		// javacardx/security/cert/CertificateParserImpl.parseAlgorithm(SZ)B
+					putfield_b 15;		// byte javacardx/security/cert/CertificateParserImpl.sigAlg
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L3;
+				L2:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_b_this 15;		// byte javacardx/security/cert/CertificateParserImpl.sigAlg
+					putfield_b 45;		// byte javacardx/security/cert/X509CertificateImpl.sigAlg
+				L3:	aconst_null;
+					astore_2;
+				L4:	getfield_b_this 15;		// byte javacardx/security/cert/CertificateParserImpl.sigAlg
+					stableswitch L28 4 14 L5 L6 L28 L28 L28 L28 L11 L8 L9 L10 L7;
+				L5:	sconst_2;
+					sconst_0;
+					invokestatic 99;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+					astore_2;
+					goto_w L30;
+				L6:	sconst_1;
+					sconst_0;
+					invokestatic 99;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+					astore_2;
+					goto_w L30;
+				L7:	bspush 7;
+					sconst_0;
+					invokestatic 99;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+					astore_2;
+					goto L30;
+				L8:	sconst_4;
+					sconst_0;
+					invokestatic 99;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+					astore_2;
+					goto L30;
+				L9:	sconst_5;
+					sconst_0;
+					invokestatic 99;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+					astore_2;
+					goto L30;
+				L10:	bspush 6;
+					sconst_0;
+					invokestatic 99;		// javacard/security/MessageDigest.getInstance(BZ)Ljavacard/security/MessageDigest;
+					astore_2;
+					goto L30;
+				L11:	getfield_b_this 28;		// byte javacardx/security/cert/CertificateParserImpl.pssHashFunc
+					getfield_b_this 30;		// byte javacardx/security/cert/CertificateParserImpl.pssMaskGenHashFunc
+					if_scmpne L28;
+				L12:	getfield_b_this 30;		// byte javacardx/security/cert/CertificateParserImpl.pssMaskGenHashFunc
+					slookupswitch L23 5 1 L17 2 L19 3 L21 4 L15 26 L13;
+				L13:	bspush 20;
+					sstore 6;
+				L14:	goto L24;
+				L15:	bspush 28;
+					sstore 6;
+				L16:	goto L24;
+				L17:	bspush 32;
+					sstore 6;
+				L18:	goto L24;
+				L19:	bspush 48;
+					sstore 6;
+				L20:	goto L24;
+				L21:	bspush 64;
+					sstore 6;
+				L22:	goto L24;
+				L23:	sconst_0;
+					sstore 6;
+				L24:	sload 6;
+					ifeq L28;
+				L25:	sload 6;
+					getfield_s_this 31;		// short javacardx/security/cert/CertificateParserImpl.pssSaltLength
+					if_scmpne L28;
+				L26:	getfield_s_this 33;		// short javacardx/security/cert/CertificateParserImpl.pssTrailerField
+					sconst_1;
+					if_scmpne L28;
+				L27:	goto L30;
+				L28:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L30;
+				L29:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					sconst_1;
+					putfield_b 46;		// boolean javacardx/security/cert/X509CertificateImpl.sigAlgException
+				L30:	goto L36;
+				L31:	astore 6;
+				L32:	aload 6;
+					invokevirtual 101;		// getReason()S
+					sconst_3;
+					if_scmpeq L34;
+				L33:	aload 6;
+					athrow;
+				L34:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L36;
+				L35:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					sconst_1;
+					putfield_b 46;		// boolean javacardx/security/cert/X509CertificateImpl.sigAlgException
+				L36:	aload_2;
+					ifnull L39;
+				L37:	aload_0;
+					aload_2;
+					invokevirtual 102;		// getLength()B
+					newarray 11;
+					putfield_a 17;		// reference javacardx/security/cert/CertificateParserImpl.TBSCertHash
+					aload_2;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 13;		// short javacardx/security/cert/CertificateParserImpl.TBSStart
+					getfield_s_this 14;		// short javacardx/security/cert/CertificateParserImpl.TBSLen
+					getfield_a_this 17;		// reference javacardx/security/cert/CertificateParserImpl.TBSCertHash
+					sconst_0;
+					invokevirtual 103;		// doFinal([BSS[BS)S
+					pop;
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L39;
+				L38:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_a_this 17;		// reference javacardx/security/cert/CertificateParserImpl.TBSCertHash
+					putfield_a 47;		// reference javacardx/security/cert/X509CertificateImpl.TBSCertHash
+				L39:	getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					sstore 4;
+				L40:	aload_0;
+					invokespecial 125;		// javacardx/security/cert/CertificateParserImpl.getTLVLength()S
+					sstore 5;
+				L41:	aload_0;
+					sconst_3;
+					invokespecial 124;		// javacardx/security/cert/CertificateParserImpl.parseDERTypeLength(B)S
+					sstore_3;
+				L42:	getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					aload_0;
+					dup;
+					getfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					dup_x 18;
+					sconst_1;
+					sadd;
+					putfield_s 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					baload;
+					ifeq L44;
+				L43:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L44:	sload_1;
+					ifeq L46;
+				L45:	aload_0;
+					sspush 4096;
+					sload 4;
+					sload 5;
+					invokespecial 126;		// javacardx/security/cert/CertificateParserImpl.createTLVCopyAndNotifyHandler(SSS)V
+				L46:	sload_3;
+					sconst_1;
+					ssub;
+					bspush 7;
+					sadd;
+					sconst_3;
+					sushr;
+					sconst_3;
+					sshl;
+					sstore 6;
+				L47:	aload_0;
+					sload 6;
+					newarray 11;
+					putfield_a 16;		// reference javacardx/security/cert/CertificateParserImpl.signature
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					getfield_s_this 4;		// short javacardx/security/cert/CertificateParserImpl.idx
+					getfield_a_this 16;		// reference javacardx/security/cert/CertificateParserImpl.signature
+					sload 6;
+					sload_3;
+					sconst_1;
+					ssub;
+					ssub;
+					sload_3;
+					sconst_1;
+					ssub;
+					invokestatic 105;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L49;
+				L48:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					getfield_a_this 16;		// reference javacardx/security/cert/CertificateParserImpl.signature
+					putfield_a 48;		// reference javacardx/security/cert/X509CertificateImpl.signature
+				L49:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L4 L30 L31 79;
+			}
+		}
+
+		.method private match(S[BS)S {
+			.stack 3;
+			.locals 1;
+
+				L0:	sload_1;
+					aload_2;
+					sload_3;
+					invokestatic 127;		// javacardx/security/cert/CertificateParserImpl._byteMatch(S[BS)S
+					sstore 4;
+				L1:	sload 4;
+					iflt L3;
+				L2:	sload 4;
+					sreturn;
+				L3:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+					sconst_0;
+					sreturn;
+		}
+
+		.method private static _byteMatch(S[BS)S {
+			.stack 3;
+			.locals 0;
+
+				L0:	sload_0;
+					aload_1;
+					sload_2;
+					invokestatic 107;		// com/sun/javacard/impl/NativeMethods.certificateByteMatch(S[BS)S
+					sreturn;
+		}
+
+		.method private static _bytesCopy(S[BS)S {
+			.stack 3;
+			.locals 0;
+
+				L0:	sload_0;
+					aload_1;
+					sload_2;
+					invokestatic 108;		// com/sun/javacard/impl/NativeMethods.certificateBytesCopy(S[BS)S
+					sreturn;
+		}
+
+		.method private static _nameAttrCopy(S[BS)S {
+			.stack 3;
+			.locals 0;
+
+				L0:	sload_0;
+					aload_1;
+					sload_2;
+					invokestatic 109;		// com/sun/javacard/impl/NativeMethods.certificateNameAttrCopy(S[BS)S
+					sreturn;
+		}
+
+		.method private static _hexEncode([BSS[BS)S {
+			.stack 5;
+			.locals 3;
+
+				L0:	sload 4;
+					sstore 5;
+				L1:	sconst_0;
+					sstore 6;
+				L2:	sload 6;
+					sload_2;
+					if_scmpge L13;
+				L3:	sload 6;
+					sload_1;
+					sadd;
+					sstore 7;
+				L4:	aload_3;
+					sload 5;
+					aload_0;
+					sload 7;
+					baload;
+					sconst_4;
+					sshr;
+					bspush 15;
+					sand;
+					bastore;
+					aload_3;
+					sload 5;
+					dup2;
+					baload;
+					aload_3;
+					sload 5;
+					baload;
+					bspush 10;
+					if_scmpge L6;
+				L5:	bspush 48;
+					goto L7;
+				L6:	bspush 55;
+				L7:	sadd;
+					s2b;
+					bastore;
+					sinc 5 1;
+					aload_3;
+					sload 5;
+					aload_0;
+					sload 7;
+					baload;
+					bspush 15;
+					sand;
+					bastore;
+					aload_3;
+					sload 5;
+					dup2;
+					baload;
+					aload_3;
+					sload 5;
+					baload;
+					bspush 10;
+					if_scmpge L9;
+				L8:	bspush 48;
+					goto L10;
+				L9:	bspush 55;
+				L10:	sadd;
+					s2b;
+					bastore;
+					sload 6;
+					sconst_1;
+					sadd;
+					sload_2;
+					if_scmpge L12;
+				L11:	aload_3;
+					sinc 5 1;
+					sload 5;
+					bspush 58;
+					bastore;
+				L12:	sinc 6 1;
+					goto L2;
+				L13:	sload_2;
+					sreturn;
+		}
+
+		.method private createTLVCopyAndNotifyHandler(SSS)V {
+			.stack 4;
+			.locals 1;
+
+				L0:	getfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					ifnull L11;
+				L1:	getfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					instanceof 0 110;		// T_CLASSORINTERFACE javacardx/security/cert/X509Certificate$FieldHandler
+					ifeq L11;
+				L2:	aload_0;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					sload_3;
+					invokespecial 73;		// javacardx/security/cert/CertificateParserImpl.createByteAV([BSS)[B
+					astore 4;
+				L3:	getfield_a_this 7;		// reference javacardx/security/cert/CertificateParserImpl.handler
+					checkcast 0 110;		// T_CLASSORINTERFACE javacardx/security/cert/X509Certificate$FieldHandler
+					sload_1;
+					aload 4;
+					invokeinterface 3 110 0;		// javacardx/security/cert/X509Certificate$FieldHandler
+					ifeq L7;
+				L4:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L7;
+				L5:	getfield_b_this 24;		// boolean javacardx/security/cert/CertificateParserImpl.build
+					ifeq L7;
+				L6:	aload_0;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					sload_3;
+					invokespecial 88;		// javacardx/security/cert/CertificateParserImpl.createByteArrayAndCopy([BSS)[B
+					astore 4;
+					getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					sload_1;
+					aload 4;
+					invokevirtual 111;		// setField(S[B)V
+				L7:	goto L15;
+				L8:	astore 4;
+				L9:	sconst_5;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L10:	goto L15;
+				L11:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					ifnull L15;
+				L12:	getfield_b_this 24;		// boolean javacardx/security/cert/CertificateParserImpl.build
+					ifeq L15;
+				L13:	aload_0;
+					getfield_a_this 5;		// reference javacardx/security/cert/CertificateParserImpl.encoded
+					sload_2;
+					sload_3;
+					invokespecial 88;		// javacardx/security/cert/CertificateParserImpl.createByteArrayAndCopy([BSS)[B
+					astore 4;
+				L14:	getfield_a_this 9;		// reference javacardx/security/cert/CertificateParserImpl.cert
+					sload_1;
+					aload 4;
+					invokevirtual 111;		// setField(S[B)V
+				L15:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L2 L7 L8 69;
+			}
+		}
+
+		.method private createByteAV([BSS)[B {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_1;
+					sload_2;
+					sload_3;
+					sconst_1;
+					aconst_null;
+					checkcast 0 112;		// T_CLASSORINTERFACE javacard/framework/Shareable
+					invokestatic 113;		// javacard/framework/JCSystem.makeArrayView(Ljava/lang/Object;SSSLjavacard/framework/Shareable;)Ljava/lang/Object;
+					checkcast 11 0;		// T_BYTE
+					areturn;
+		}
+
+		.method private createByteArrayAndCopy([BSS)[B {
+			.stack 5;
+			.locals 2;
+
+				L0:	aconst_null;
+					astore 4;
+				L1:	sload_3;
+					sconst_1;
+					invokestatic 115;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					astore 4;
+				L2:	goto L5;
+				L3:	astore 5;
+				L4:	sload_3;
+					newarray 11;
+					astore 4;
+				L5:	aload_1;
+					sload_2;
+					aload 4;
+					sconst_0;
+					sload_3;
+					invokestatic 105;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload 4;
+					areturn;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L2 L3 114;
+			}
+		}
+
+		.method private createObjectArray(S)[Ljava/lang/Object; {
+			.stack 2;
+			.locals 2;
+
+			.descriptor	Ljava/lang/Object;	0.0;
+
+				L0:	aconst_null;
+					astore_2;
+				L1:	sload_1;
+					sconst_1;
+					invokestatic 116;		// javacard/framework/JCSystem.makeTransientObjectArray(SB)[Ljava/lang/Object;
+					astore_2;
+				L2:	goto L5;
+				L3:	astore_3;
+				L4:	sload_1;
+					anewarray 117;		// java/lang/Object
+					astore_2;
+				L5:	aload_2;
+					areturn;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L2 L3 114;
+			}
+		}
+
+		.method private cleanParser()V {
+			.stack 7;
+			.locals 0;
+
+				L0:	aload_0;
+					aload_0;
+					aload_0;
+					aload_0;
+					sconst_0;
+					dup_x 18;
+					putfield_b 20;		// boolean javacardx/security/cert/CertificateParserImpl.isCA
+					dup_x 18;
+					putfield_b 19;		// boolean javacardx/security/cert/CertificateParserImpl.hasBC
+					dup_x 18;
+					putfield_b 18;		// boolean javacardx/security/cert/CertificateParserImpl.badExt
+					putfield_b 49;		// boolean javacardx/security/cert/CertificateParserImpl.selfSigned
+					aload_0;
+					aload_0;
+					aload_0;
+					aload_0;
+					sconst_0;
+					dup_x 18;
+					putfield_s 33;		// short javacardx/security/cert/CertificateParserImpl.pssTrailerField
+					dup_x 18;
+					putfield_s 31;		// short javacardx/security/cert/CertificateParserImpl.pssSaltLength
+					dup_x 18;
+					putfield_s 14;		// short javacardx/security/cert/CertificateParserImpl.TBSLen
+					putfield_s 13;		// short javacardx/security/cert/CertificateParserImpl.TBSStart
+					aload_0;
+					aload_0;
+					aload_0;
+					aload_0;
+					aload_0;
+					aconst_null;
+					dup_x 18;
+					putfield_a 17;		// reference javacardx/security/cert/CertificateParserImpl.TBSCertHash
+					dup_x 18;
+					putfield_a 16;		// reference javacardx/security/cert/CertificateParserImpl.signature
+					dup_x 18;
+					putfield_a 43;		// reference javacardx/security/cert/CertificateParserImpl.issuer
+					dup_x 18;
+					putfield_a 44;		// reference javacardx/security/cert/CertificateParserImpl.subject
+					putfield_a 11;		// reference javacardx/security/cert/CertificateParserImpl.fp
+					aconst_null;
+					putfield_a_this 12;		// reference javacardx/security/cert/CertificateParserImpl.pubKey
+					sconst_m1;
+					putfield_b_this 15;		// byte javacardx/security/cert/CertificateParserImpl.sigAlg
+					sconst_m1;
+					putfield_s_this 21;		// short javacardx/security/cert/CertificateParserImpl.pLenConstr
+					aload_0;
+					aload_0;
+					sconst_m1;
+					dup_x 18;
+					putfield_s 23;		// short javacardx/security/cert/CertificateParserImpl.extKeyUsage
+					putfield_s 22;		// short javacardx/security/cert/CertificateParserImpl.keyUsage
+					aload_0;
+					aload_0;
+					sconst_0;
+					dup_x 18;
+					putfield_b 30;		// byte javacardx/security/cert/CertificateParserImpl.pssMaskGenHashFunc
+					putfield_b 28;		// byte javacardx/security/cert/CertificateParserImpl.pssHashFunc
+					return;
+		}
+
+	}
+
+	.class  X509CertificateImpl extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			 byte[] sharedBuffer 0;		// [B
+			 byte[] tlvVersion 1;		// [B
+			 byte[] tlvCertificate 2;		// [B
+			private byte[] fp 3;		// [B
+			 byte[] tlvSerialNumber 4;		// [B
+			 byte[] tlvSubject 5;		// [B
+			 byte[] tlvIssuer 6;		// [B
+			 byte[] from 7;		// [B
+			 byte[] until 8;		// [B
+			 1.3 pubKey 9;		// Ljavacard/security/PublicKey;
+			 byte[] tlvPubKeyAsn1 10;		// [B
+			 byte[] encoded 11;		// [B
+			 byte[] tlvTBSSigAlg 12;		// [B
+			 byte[] tlvCertSigAlg 13;		// [B
+			 byte[] signature 14;		// [B
+			 byte[] tlvSignature 15;		// [B
+			 byte[] TBSCertHash 16;		// [B
+			 0.0[] extHolder 17;		// [Ljava/lang/Object;
+			 byte version 18;		// B
+			 boolean pubKeyException 19;		// Z
+			 short TBSStart 20;		// S
+			 short TBSLen 21;		// S
+			 byte sigAlg 22;		// B
+			 boolean sigAlgException 23;		// Z
+			 short keyUsage 24;		// S
+			 short extKeyUsage 25;		// S
+			 short pssSaltLength 26;		// S
+			 byte pssHashFunc 27;		// B
+			private final byte type 28;		// B
+			 short extCounter 29;		// S
+			private static final byte OID_TYPE = 6;		// B
+			private static final byte NONE = -1;		// B
+			private static final byte RSA_ENCRYPTION = 1;		// B
+			private static final byte MD5_RSA = 4;		// B
+			private static final byte SHA1_RSA = 5;		// B
+			private static final byte SHA256_RSA = 11;		// B
+			private static final byte SHA384_RSA = 12;		// B
+			private static final byte SHA512_RSA = 13;		// B
+			private static final byte SHA224_RSA = 14;		// B
+			private static final byte RSASSA_PSS = 10;		// B
+			private static final byte ID_MGF1 = 8;		// B
+			private static final short BYTES_ID_SHA1 = 32;		// S
+			private static final byte SHA1_HASH_FUNC = 26;		// B
+			private static final byte SHA224_HASH_FUNC = 4;		// B
+			private static final byte SHA256_HASH_FUNC = 1;		// B
+			private static final byte SHA384_HASH_FUNC = 2;		// B
+			private static final byte SHA512_HASH_FUNC = 3;		// B
+			private static final short BYTES_ID_HASH_FUNC_SEQ = 33;		// S
+			private static final short BYTES_PREFIX_MD5 = 11;		// S
+			private static final short BYTES_PREFIX_SHA1 = 12;		// S
+			private static final short BYTES_PREFIX_SHA224 = 13;		// S
+			private static final short BYTES_PREFIX_SHA256 = 14;		// S
+			private static final short BYTES_PREFIX_SHA384 = 15;		// S
+			private static final short BYTES_PREFIX_SHA512 = 16;		// S
+			private static final short BYTES_NULL_SEQ = 17;		// S
+			private static final short BYTES_VALIDITY_SEQ = 18;		// S
+			private static final short BYTES_UTC_SEQ = 19;		// S
+			private static final short BYTES_ID_KP = 20;		// S
+			private static final short BYTES_ID_AIA = 21;		// S
+		}
+
+		.publicMethodTable 1 8 {
+			equals(Ljava/lang/Object;)Z 0;
+			getType()S 255;
+			getPublicKey()Ljavacard/security/PublicKey; 255;
+			getVersion()S 255;
+			getField(S)[B 255;
+			getExtension([BSS)[B 255;
+			getExtensions(Ljavacardx/security/cert/X509Certificate$ExtensionHandler;)V 255;
+			verify(Ljavacard/security/PublicKey;)Z 255;
+		}
+
+		.packageMethodTable 0 {
+			_verify(Ljavacard/security/PublicKey;)Z;
+			setField(S[B)V;
+		}
+
+		.implementedInterfaceInfoTable { 
+			.interface Certificate { 
+				1;		// getType()S
+				2;		// getPublicKey()Ljavacard/security/PublicKey;
+				7;		// verify(Ljavacard/security/PublicKey;)Z
+			}
+
+			.interface X509Certificate { 
+				1;		// getType()S
+				2;		// getPublicKey()Ljavacard/security/PublicKey;
+				7;		// verify(Ljavacard/security/PublicKey;)Z
+				3;		// getVersion()S
+				4;		// getField(S)[B
+				5;		// getExtension([BSS)[B
+				6;		// getExtensions(Ljavacardx/security/cert/X509Certificate$ExtensionHandler;)V
+			}
+
+		}
+
+		.method  <init>()V {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 95;		// java/lang/Object.<init>()V
+					aconst_null;
+					putfield_a_this 27;		// reference javacardx/security/cert/X509CertificateImpl.sharedBuffer
+					aconst_null;
+					putfield_a_this 50;		// reference javacardx/security/cert/X509CertificateImpl.tlvVersion
+					sconst_0;
+					putfield_b_this 42;		// byte javacardx/security/cert/X509CertificateImpl.version
+					aconst_null;
+					putfield_a_this 51;		// reference javacardx/security/cert/X509CertificateImpl.tlvCertificate
+					aconst_null;
+					putfield_a_this 52;		// reference javacardx/security/cert/X509CertificateImpl.fp
+					aconst_null;
+					putfield_a_this 53;		// reference javacardx/security/cert/X509CertificateImpl.from
+					aconst_null;
+					putfield_a_this 54;		// reference javacardx/security/cert/X509CertificateImpl.until
+					aconst_null;
+					putfield_a_this 39;		// reference javacardx/security/cert/X509CertificateImpl.pubKey
+					sconst_0;
+					putfield_b_this 38;		// boolean javacardx/security/cert/X509CertificateImpl.pubKeyException
+					aconst_null;
+					putfield_a_this 55;		// reference javacardx/security/cert/X509CertificateImpl.tlvPubKeyAsn1
+					aconst_null;
+					putfield_a_this 26;		// reference javacardx/security/cert/X509CertificateImpl.encoded
+					sconst_0;
+					putfield_s_this 40;		// short javacardx/security/cert/X509CertificateImpl.TBSStart
+					sconst_0;
+					putfield_s_this 41;		// short javacardx/security/cert/X509CertificateImpl.TBSLen
+					sconst_m1;
+					putfield_b_this 45;		// byte javacardx/security/cert/X509CertificateImpl.sigAlg
+					sconst_0;
+					putfield_b_this 46;		// boolean javacardx/security/cert/X509CertificateImpl.sigAlgException
+					aconst_null;
+					putfield_a_this 56;		// reference javacardx/security/cert/X509CertificateImpl.tlvTBSSigAlg
+					aconst_null;
+					putfield_a_this 57;		// reference javacardx/security/cert/X509CertificateImpl.tlvCertSigAlg
+					aconst_null;
+					putfield_a_this 48;		// reference javacardx/security/cert/X509CertificateImpl.signature
+					aconst_null;
+					putfield_a_this 58;		// reference javacardx/security/cert/X509CertificateImpl.tlvSignature
+					aconst_null;
+					putfield_a_this 47;		// reference javacardx/security/cert/X509CertificateImpl.TBSCertHash
+					sconst_m1;
+					putfield_s_this 36;		// short javacardx/security/cert/X509CertificateImpl.keyUsage
+					sconst_m1;
+					putfield_s_this 37;		// short javacardx/security/cert/X509CertificateImpl.extKeyUsage
+					aconst_null;
+					putfield_a_this 34;		// reference javacardx/security/cert/X509CertificateImpl.extHolder
+					sconst_0;
+					putfield_s_this 35;		// short javacardx/security/cert/X509CertificateImpl.extCounter
+					sconst_1;
+					putfield_b_this 59;		// byte javacardx/security/cert/X509CertificateImpl.type
+					return;
+		}
+
+		.method public getType()S 1 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_b_this 59;		// byte javacardx/security/cert/X509CertificateImpl.type
+					sreturn;
+		}
+
+		.method public getPublicKey()Ljavacard/security/PublicKey; 2 {
+			.stack 1;
+			.locals 0;
+
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+				L0:	getfield_b_this 38;		// boolean javacardx/security/cert/X509CertificateImpl.pubKeyException
+					ifeq L2;
+				L1:	sconst_3;
+					invokestatic 100;		// javacard/security/CryptoException.throwIt(S)V
+				L2:	getfield_a_this 39;		// reference javacardx/security/cert/X509CertificateImpl.pubKey
+					areturn;
+		}
+
+		.method public getVersion()S 3 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_b_this 42;		// byte javacardx/security/cert/X509CertificateImpl.version
+					sconst_1;
+					sadd;
+					sreturn;
+		}
+
+		.method public getField(S)[B 4 {
+			.stack 2;
+			.locals 1;
+
+				L0:	aconst_null;
+					astore_2;
+				L1:	sload_1;
+					slookupswitch L14 13 1 L3 2 L4 4 L5 8 L7 16 L8 32 L9 64 L10 128 L11 256 L13 512 L13 1024 L2 2048 L6 4096 L12;
+				L2:	aload_0;
+					getfield_a_this 51;		// reference javacardx/security/cert/X509CertificateImpl.tlvCertificate
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					areturn;
+				L3:	aload_0;
+					getfield_a_this 50;		// reference javacardx/security/cert/X509CertificateImpl.tlvVersion
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					areturn;
+				L4:	aload_0;
+					getfield_a_this 60;		// reference javacardx/security/cert/X509CertificateImpl.tlvSerialNumber
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					areturn;
+				L5:	aload_0;
+					getfield_a_this 56;		// reference javacardx/security/cert/X509CertificateImpl.tlvTBSSigAlg
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					areturn;
+				L6:	aload_0;
+					getfield_a_this 57;		// reference javacardx/security/cert/X509CertificateImpl.tlvCertSigAlg
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					areturn;
+				L7:	aload_0;
+					getfield_a_this 61;		// reference javacardx/security/cert/X509CertificateImpl.tlvIssuer
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					areturn;
+				L8:	aload_0;
+					getfield_a_this 54;		// reference javacardx/security/cert/X509CertificateImpl.until
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					areturn;
+				L9:	aload_0;
+					getfield_a_this 53;		// reference javacardx/security/cert/X509CertificateImpl.from
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					areturn;
+				L10:	aload_0;
+					getfield_a_this 62;		// reference javacardx/security/cert/X509CertificateImpl.tlvSubject
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					areturn;
+				L11:	aload_0;
+					getfield_a_this 55;		// reference javacardx/security/cert/X509CertificateImpl.tlvPubKeyAsn1
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					areturn;
+				L12:	aload_0;
+					getfield_a_this 58;		// reference javacardx/security/cert/X509CertificateImpl.tlvSignature
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					areturn;
+				L13:	aconst_null;
+					areturn;
+				L14:	sconst_2;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+					aconst_null;
+					areturn;
+		}
+
+		.method private createROByteAV([B)[B {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_1;
+					ifnonnull L2;
+				L1:	aconst_null;
+					checkcast 11 0;		// T_BYTE
+					goto L3;
+				L2:	aload_1;
+					sconst_0;
+					aload_1;
+					arraylength;
+					sconst_1;
+					aconst_null;
+					checkcast 0 112;		// T_CLASSORINTERFACE javacard/framework/Shareable
+					invokestatic 113;		// javacard/framework/JCSystem.makeArrayView(Ljava/lang/Object;SSSLjavacard/framework/Shareable;)Ljava/lang/Object;
+					checkcast 11 0;		// T_BYTE
+				L3:	areturn;
+		}
+
+		.method public getExtension([BSS)[B 5 {
+			.stack 5;
+			.locals 3;
+
+				L0:	sload_2;
+					sstore 4;
+				L1:	sload_2;
+					sload_3;
+					sadd;
+					aload_1;
+					arraylength;
+					if_scmple L3;
+				L2:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+					aconst_null;
+					checkcast 11 0;		// T_BYTE
+					areturn;
+				L3:	aload_1;
+					sload 4;
+					sinc 4 1;
+					baload;
+					bspush 6;
+					if_scmpeq L6;
+				L4:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+					aconst_null;
+					checkcast 11 0;		// T_BYTE
+				L5:	areturn;
+				L6:	aload_1;
+					sload 4;
+					sinc 4 1;
+					baload;
+					sspush 255;
+					sand;
+					sstore 5;
+				L7:	sload 5;
+					sspush 128;
+					if_scmplt L16;
+				L8:	sload 5;
+					sspush 128;
+					ssub;
+					sstore 6;
+				L9:	sload 6;
+					sconst_2;
+					if_scmpgt L11;
+				L10:	sload 4;
+					sload 6;
+					sadd;
+					aload_1;
+					arraylength;
+					if_scmple L13;
+				L11:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+					aconst_null;
+					checkcast 11 0;		// T_BYTE
+				L12:	areturn;
+				L13:	sconst_0;
+					sstore 5;
+				L14:	sload 6;
+					ifle L16;
+				L15:	sload 5;
+					bspush 8;
+					sshl;
+					aload_1;
+					sload 4;
+					sinc 4 1;
+					baload;
+					sspush 255;
+					sand;
+					sadd;
+					sstore 5;
+					sinc 6 -1;
+					goto L14;
+				L16:	sload 4;
+					sload 5;
+					sadd;
+					sstore 4;
+					sload 4;
+					sload_3;
+					sload_2;
+					sadd;
+					if_scmple L19;
+				L17:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+					aconst_null;
+					checkcast 11 0;		// T_BYTE
+				L18:	areturn;
+				L19:	goto L22;
+				L20:	astore 5;
+				L21:	sconst_1;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+					aconst_null;
+					checkcast 11 0;		// T_BYTE
+					areturn;
+				L22:	sconst_0;
+					sstore 5;
+				L23:	sload 5;
+					getfield_s_this 35;		// short javacardx/security/cert/X509CertificateImpl.extCounter
+					if_scmpge L27;
+				L24:	getfield_a_this 34;		// reference javacardx/security/cert/X509CertificateImpl.extHolder
+					sload 5;
+					aaload;
+					checkcast 0 75;		// T_CLASSORINTERFACE javacardx/security/cert/ExtensionHolder
+					aload_1;
+					sload_2;
+					sload_3;
+					invokevirtual 133;		// isExt([BSS)Z
+					ifeq L26;
+				L25:	aload_0;
+					getfield_a_this 34;		// reference javacardx/security/cert/X509CertificateImpl.extHolder
+					sload 5;
+					aaload;
+					checkcast 0 75;		// T_CLASSORINTERFACE javacardx/security/cert/ExtensionHolder
+					getfield_a 2;		// reference javacardx/security/cert/ExtensionHolder.der
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					areturn;
+				L26:	sinc 5 1;
+					goto L23;
+				L27:	aconst_null;
+					checkcast 11 0;		// T_BYTE
+					areturn;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L3 L5 L20 123;
+				L6 L12 L20 123;
+				L13 L18 L20 123;
+			}
+		}
+
+		.method public getExtensions(Ljavacardx/security/cert/X509Certificate$ExtensionHandler;)V 6 {
+			.stack 5;
+			.locals 3;
+
+				L0:	sconst_0;
+					sstore_2;
+				L1:	sload_2;
+					getfield_s_this 35;		// short javacardx/security/cert/X509CertificateImpl.extCounter
+					if_scmpge L8;
+				L2:	getfield_a_this 34;		// reference javacardx/security/cert/X509CertificateImpl.extHolder
+					sload_2;
+					aaload;
+					checkcast 0 75;		// T_CLASSORINTERFACE javacardx/security/cert/ExtensionHolder
+					astore_3;
+				L3:	aload_1;
+					aload_0;
+					aload_3;
+					getfield_a 0;		// reference javacardx/security/cert/ExtensionHolder.oid
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					aload_3;
+					getfield_b 1;		// boolean javacardx/security/cert/ExtensionHolder.crit
+					aload_0;
+					aload_3;
+					getfield_a 3;		// reference javacardx/security/cert/ExtensionHolder.value
+					invokespecial 129;		// javacardx/security/cert/X509CertificateImpl.createROByteAV([B)[B
+					invokeinterface 4 72 0;		// javacardx/security/cert/X509Certificate$ExtensionHandler
+					pop;
+				L4:	goto L7;
+				L5:	astore 4;
+				L6:	sconst_5;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L7:	sinc 2 1;
+					goto L1;
+				L8:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L3 L4 L5 69;
+			}
+		}
+
+		.method public verify(Ljavacard/security/PublicKey;)Z 7 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+				L0:	invokestatic 118;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+					getfield_a_this 58;		// reference javacardx/security/cert/X509CertificateImpl.tlvSignature
+					ifnull L2;
+				L1:	getfield_a_this 57;		// reference javacardx/security/cert/X509CertificateImpl.tlvCertSigAlg
+					ifnonnull L3;
+				L2:	sconst_3;
+					invokestatic 64;		// javacardx/security/cert/CertificateException.throwIt(S)V
+				L3:	aload_0;
+					aload_1;
+					invokevirtual 90;		// _verify(Ljavacard/security/PublicKey;)Z
+					ifeq L5;
+				L4:	invokestatic 121;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanTrue()V
+					sconst_1;
+					sreturn;
+				L5:	invokestatic 120;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+					sconst_0;
+					sreturn;
+		}
+
+		.method  _verify(Ljavacard/security/PublicKey;)Z 128 {
+			.stack 7;
+			.locals 5;
+
+			.descriptor	Ljavacard/security/PublicKey;	1.3;
+
+				L0:	aconst_null;
+					astore_2;
+				L1:	aload_1;
+					invokeinterface 1 78 3;		// javacard/security/PublicKey
+					ifne L3;
+				L2:	sconst_2;
+					invokestatic 100;		// javacard/security/CryptoException.throwIt(S)V
+					sconst_0;
+					sreturn;
+				L3:	getfield_b_this 46;		// boolean javacardx/security/cert/X509CertificateImpl.sigAlgException
+					ifeq L5;
+				L4:	sconst_3;
+					invokestatic 100;		// javacard/security/CryptoException.throwIt(S)V
+					sconst_0;
+					sreturn;
+				L5:	aload_1;
+					instanceof 0 84;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					ifne L7;
+				L6:	sconst_1;
+					invokestatic 100;		// javacard/security/CryptoException.throwIt(S)V
+					sconst_0;
+					sreturn;
+				L7:	aload_1;
+					checkcast 0 84;		// T_CLASSORINTERFACE javacard/security/RSAPublicKey
+					astore_2;
+					getfield_b_this 45;		// byte javacardx/security/cert/X509CertificateImpl.sigAlg
+					bspush 10;
+					if_scmpne_w L31;
+				L8:	aconst_null;
+					astore_3;
+				L9:	getfield_b_this 29;		// byte javacardx/security/cert/X509CertificateImpl.pssHashFunc
+					bspush 26;
+					if_scmpne L11;
+				L10:	sconst_1;
+					sconst_3;
+					bspush 8;
+					sconst_0;
+					invokestatic 134;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+					astore_3;
+					goto L19;
+				L11:	getfield_b_this 29;		// byte javacardx/security/cert/X509CertificateImpl.pssHashFunc
+					sconst_4;
+					if_scmpne L13;
+				L12:	bspush 7;
+					sconst_3;
+					bspush 8;
+					sconst_0;
+					invokestatic 134;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+					astore_3;
+					goto L19;
+				L13:	getfield_b_this 29;		// byte javacardx/security/cert/X509CertificateImpl.pssHashFunc
+					sconst_1;
+					if_scmpne L15;
+				L14:	sconst_4;
+					sconst_3;
+					bspush 8;
+					sconst_0;
+					invokestatic 134;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+					astore_3;
+					goto L19;
+				L15:	getfield_b_this 29;		// byte javacardx/security/cert/X509CertificateImpl.pssHashFunc
+					sconst_2;
+					if_scmpne L17;
+				L16:	sconst_5;
+					sconst_3;
+					bspush 8;
+					sconst_0;
+					invokestatic 134;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+					astore_3;
+					goto L19;
+				L17:	getfield_b_this 29;		// byte javacardx/security/cert/X509CertificateImpl.pssHashFunc
+					sconst_3;
+					if_scmpne L19;
+				L18:	bspush 6;
+					sconst_3;
+					bspush 8;
+					sconst_0;
+					invokestatic 134;		// javacard/security/Signature.getInstance(BBBZ)Ljavacard/security/Signature;
+					astore_3;
+				L19:	aload_3;
+					ifnull L26;
+				L20:	getfield_a_this 27;		// reference javacardx/security/cert/X509CertificateImpl.sharedBuffer
+					astore 4;
+				L21:	aload 4;
+					sconst_0;
+					getfield_s_this 32;		// short javacardx/security/cert/X509CertificateImpl.pssSaltLength
+					bspush 8;
+					sshr;
+					s2b;
+					bastore;
+					aload 4;
+					sconst_1;
+					getfield_s_this 32;		// short javacardx/security/cert/X509CertificateImpl.pssSaltLength
+					s2b;
+					bastore;
+					aload_3;
+					aload_2;
+					sconst_2;
+					aload 4;
+					sconst_0;
+					sconst_2;
+					invokevirtual 135;		// init(Ljavacard/security/Key;B[BSS)V
+					aload_3;
+					getfield_a_this 26;		// reference javacardx/security/cert/X509CertificateImpl.encoded
+					getfield_s_this 40;		// short javacardx/security/cert/X509CertificateImpl.TBSStart
+					getfield_s_this 41;		// short javacardx/security/cert/X509CertificateImpl.TBSLen
+					getfield_a_this 48;		// reference javacardx/security/cert/X509CertificateImpl.signature
+					sconst_0;
+					getfield_a_this 48;		// reference javacardx/security/cert/X509CertificateImpl.signature
+					arraylength;
+					invokevirtual 136;		// verify([BSS[BSS)Z
+					ifeq L24;
+				L22:	sconst_1;
+				L23:	sreturn;
+				L24:	sconst_0;
+				L25:	sreturn;
+				L26:	goto_w L62;
+				L27:	astore_3;
+				L28:	aload_3;
+					invokevirtual 101;		// getReason()S
+					sconst_5;
+					if_scmpne L30;
+				L29:	sconst_0;
+					sreturn;
+				L30:	aload_3;
+					athrow;
+				L31:	getfield_a_this 47;		// reference javacardx/security/cert/X509CertificateImpl.TBSCertHash
+					ifnonnull L33;
+				L32:	sconst_1;
+					invokestatic 100;		// javacard/security/CryptoException.throwIt(S)V
+				L33:	getfield_a_this 27;		// reference javacardx/security/cert/X509CertificateImpl.sharedBuffer
+					astore_3;
+				L34:	bspush 7;
+					bspush 7;
+					sconst_0;
+					invokestatic 137;		// javacardx/crypto/Cipher.getInstance(BBZ)Ljavacardx/crypto/Cipher;
+					astore 5;
+				L35:	aload 5;
+					aload_2;
+					sconst_1;
+					invokevirtual 138;		// init(Ljavacard/security/Key;B)V
+					aload 5;
+					getfield_a_this 48;		// reference javacardx/security/cert/X509CertificateImpl.signature
+					sconst_0;
+					getfield_a_this 48;		// reference javacardx/security/cert/X509CertificateImpl.signature
+					arraylength;
+					aload_3;
+					sconst_0;
+					invokevirtual 139;		// doFinal([BSS[BS)S
+					sstore 4;
+				L36:	goto L41;
+				L37:	astore 5;
+				L38:	aload 5;
+					invokevirtual 101;		// getReason()S
+					sconst_5;
+					if_scmpne L40;
+				L39:	sconst_0;
+					sreturn;
+				L40:	aload 5;
+					athrow;
+				L41:	getfield_b_this 45;		// byte javacardx/security/cert/X509CertificateImpl.sigAlg
+					stableswitch L54 4 14 L42 L44 L54 L54 L54 L54 L54 L48 L50 L52 L46;
+				L42:	bspush 11;
+					sstore 5;
+				L43:	goto L55;
+				L44:	bspush 12;
+					sstore 5;
+				L45:	goto L55;
+				L46:	bspush 13;
+					sstore 5;
+				L47:	goto L55;
+				L48:	bspush 14;
+					sstore 5;
+				L49:	goto L55;
+				L50:	bspush 15;
+					sstore 5;
+				L51:	goto L55;
+				L52:	bspush 16;
+					sstore 5;
+				L53:	goto L55;
+				L54:	sconst_m1;
+					sstore 5;
+				L55:	sload 5;
+					iflt L62;
+				L56:	sload 5;
+					aload_3;
+					sconst_0;
+					invokestatic 140;		// javacardx/security/cert/X509CertificateImpl._byteMatch(S[BS)S
+					dup;
+					sstore 6;
+				L57:	ifle L61;
+				L58:	sload 4;
+					sload 6;
+					getfield_a_this 47;		// reference javacardx/security/cert/X509CertificateImpl.TBSCertHash
+					arraylength;
+					sadd;
+					if_scmpne L61;
+				L59:	aload_3;
+					sload 6;
+					getfield_a_this 47;		// reference javacardx/security/cert/X509CertificateImpl.TBSCertHash
+					sconst_0;
+					getfield_a_this 47;		// reference javacardx/security/cert/X509CertificateImpl.TBSCertHash
+					arraylength;
+					invokestatic 98;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifne L61;
+				L60:	sconst_1;
+					sreturn;
+				L61:	sconst_0;
+					sreturn;
+				L62:	sconst_3;
+					invokestatic 100;		// javacard/security/CryptoException.throwIt(S)V
+					sconst_0;
+					sreturn;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L8 L23 L27 79;
+				L24 L25 L27 79;
+				L34 L36 L37 79;
+			}
+		}
+
+		.method private static _byteMatch(S[BS)S {
+			.stack 3;
+			.locals 0;
+
+				L0:	sload_0;
+					aload_1;
+					sload_2;
+					invokestatic 107;		// com/sun/javacard/impl/NativeMethods.certificateByteMatch(S[BS)S
+					sreturn;
+		}
+
+		.method  setField(S[B)V 129 {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_1;
+					slookupswitch L12 13 1 L2 2 L3 4 L4 8 L6 16 L7 32 L8 64 L9 128 L10 256 L12 512 L12 1024 L1 2048 L5 4096 L11;
+				L1:	aload_2;
+					putfield_a_this 51;		// reference javacardx/security/cert/X509CertificateImpl.tlvCertificate
+					goto L12;
+				L2:	aload_2;
+					putfield_a_this 50;		// reference javacardx/security/cert/X509CertificateImpl.tlvVersion
+					goto L12;
+				L3:	aload_2;
+					putfield_a_this 60;		// reference javacardx/security/cert/X509CertificateImpl.tlvSerialNumber
+					goto L12;
+				L4:	aload_2;
+					putfield_a_this 56;		// reference javacardx/security/cert/X509CertificateImpl.tlvTBSSigAlg
+					goto L12;
+				L5:	aload_2;
+					putfield_a_this 57;		// reference javacardx/security/cert/X509CertificateImpl.tlvCertSigAlg
+					goto L12;
+				L6:	aload_2;
+					putfield_a_this 61;		// reference javacardx/security/cert/X509CertificateImpl.tlvIssuer
+					goto L12;
+				L7:	aload_2;
+					putfield_a_this 54;		// reference javacardx/security/cert/X509CertificateImpl.until
+					goto L12;
+				L8:	aload_2;
+					putfield_a_this 53;		// reference javacardx/security/cert/X509CertificateImpl.from
+					goto L12;
+				L9:	aload_2;
+					putfield_a_this 62;		// reference javacardx/security/cert/X509CertificateImpl.tlvSubject
+					goto L12;
+				L10:	aload_2;
+					putfield_a_this 55;		// reference javacardx/security/cert/X509CertificateImpl.tlvPubKeyAsn1
+					goto L12;
+				L11:	aload_2;
+					putfield_a_this 58;		// reference javacardx/security/cert/X509CertificateImpl.tlvSignature
+					goto L12;
+				L12:	return;
+		}
+
+	}
+
+}

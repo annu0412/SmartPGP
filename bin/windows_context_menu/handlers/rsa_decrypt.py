@@ -134,8 +134,18 @@ def decrypt_file_with_card(input_file, output_file, pin=None):
                 print("PIN verified")
             elif sw1 == 0x63:
                 retries = sw2 & 0x0F
-                error_msg = f"Wrong PIN. {retries} retries remaining"
+                error_msg = f"Wrong PIN. {retries} retries remaining.\n\nDefault User PIN is 123456 (not the Admin PIN)."
                 logger.error(error_msg)
+                return False, error_msg
+            elif sw1 == 0x69 and sw2 == 0x82:
+                # SmartPGP returns SW=6982 (Security Status Not Satisfied) for a
+                # wrong PIN — non-standard but confirmed in processVerify source.
+                error_msg = "Wrong PIN.\n\nDefault User PIN is 123456 (not the Admin PIN 12345678)."
+                logger.error(f"Wrong PIN (SW=6982): {error_msg}")
+                return False, error_msg
+            elif sw1 == 0x69 and sw2 == 0x83:
+                error_msg = "User PIN is blocked (too many wrong attempts).\n\nUse the Admin PIN to reset it via 'Change PIN'."
+                logger.error(f"PIN blocked (SW=6983)")
                 return False, error_msg
             else:
                 error_msg = f"PIN verification failed: SW={sw1:02X}{sw2:02X}"
@@ -161,7 +171,14 @@ def decrypt_file_with_card(input_file, output_file, pin=None):
             response, sw1, sw2 = card.connection.transmit(decipher_cmd)
             card._log_apdu(decipher_cmd, response, sw1, sw2)
 
-            if sw1 != 0x90 or sw2 != 0x00:
+            if sw1 == 0x6A and sw2 == 0x88:
+                error_msg = (
+                    "No decryption key found on card.\n\n"
+                    "Please generate keys first using the 'Generate Keys in Card' option."
+                )
+                logger.error(f"No key on card (SW=6A88): {error_msg}")
+                return False, error_msg
+            elif sw1 != 0x90 or sw2 != 0x00:
                 error_msg = f"Decryption failed: SW={sw1:02X}{sw2:02X}"
                 logger.error(error_msg)
                 return False, error_msg

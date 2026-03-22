@@ -131,6 +131,11 @@ def decrypt_file(filepath):
                     f"AEPGP card not found:\n\n{error_msg}\n\n"
                     f"Please insert your AEPGP card and try again."
                 )
+            elif "No decryption key found on card" in error_msg or "generate keys" in error_msg.lower():
+                error_display = error_msg
+                card_utils.show_error_dialog(error_display, "Keys Not Generated")
+                logger.log_operation_end("Decryption", False, error_msg)
+                return
             else:
                 error_display = f"Decryption failed:\n\n{error_msg}"
 

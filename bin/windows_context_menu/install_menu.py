@@ -172,15 +172,11 @@ def install_cascading_menu_for_all_files(launcher):
     Raises TypeError if a legacy handlers-tuple is passed instead of a
     launcher path string (guards against callers using the old signature).
     """
-<<<<<<< HEAD
     if isinstance(launcher, (list, tuple)):
         raise TypeError(
             "install_cascading_menu_for_all_files() no longer accepts a handlers "
             "tuple. Pass the launcher script path string from get_launcher_path()."
         )
-=======
-    encrypt_handler, decrypt_handler, generate_keys_handler, delete_keys_handler, change_pin_handler, _ = handlers
->>>>>>> 66da2242921db5be6c4019aa8bce0de7123f4cdf
 
     try:
         python_exe = sys.executable.replace("python.exe", "pythonw.exe")
@@ -294,15 +290,11 @@ def install_cascading_menu_for_desktop(launcher):
     Raises TypeError if a legacy handlers-tuple is passed instead of a
     launcher path string (guards against callers using the old signature).
     """
-<<<<<<< HEAD
     if isinstance(launcher, (list, tuple)):
         raise TypeError(
             "install_cascading_menu_for_desktop() no longer accepts a handlers "
             "tuple. Pass the launcher script path string from get_launcher_path()."
         )
-=======
-    _, _, generate_keys_handler, delete_keys_handler, change_pin_handler, _ = handlers
->>>>>>> 66da2242921db5be6c4019aa8bce0de7123f4cdf
 
     try:
         python_exe = sys.executable.replace("python.exe", "pythonw.exe")
@@ -545,20 +537,8 @@ def main():
 
     # Locate the launcher script and verify all handlers are present.
     try:
-<<<<<<< HEAD
         launcher = get_launcher_path()
         print(f"\nFound launcher: {launcher}")
-=======
-        handlers = get_script_paths()
-        encrypt_handler, decrypt_handler, generate_keys_handler, delete_keys_handler, change_pin_handler, watcher_script = handlers
-        print(f"\nFound encrypt handler: {encrypt_handler}")
-        print(f"Found decrypt handler: {decrypt_handler}")
-        print(f"Found generate keys handler: {generate_keys_handler}")
-        print(f"Found delete keys handler: {delete_keys_handler}")
-        # print(f"Found import PFX handler: {import_pfx_handler}")  # DISABLED
-        print(f"Found change PIN handler: {change_pin_handler}")
-        print(f"Found visibility watcher: {watcher_script}")
->>>>>>> 66da2242921db5be6c4019aa8bce0de7123f4cdf
     except FileNotFoundError as e:
         print(f"\nERROR: {e}")
         print("\nPress Enter to exit...")
@@ -583,6 +563,7 @@ def main():
     create_debug_log()
 
     # Install visibility watcher startup entry
+    watcher_script = os.path.join(os.path.dirname(os.path.abspath(__file__)), "visibility_watcher.py")
     watcher_ok = install_visibility_watcher_startup(watcher_script)
 
     # Store version information
@@ -595,7 +576,6 @@ def main():
         print("Installation completed successfully! ✓")
         print(f"\nInstalled version: {CURRENT_VERSION}")
         print("\nHow to use:")
-<<<<<<< HEAD
         print("  Right-click any file → AEPGP →")
         print("    • Encrypt File")
         print("    • Decrypt File")
@@ -635,19 +615,6 @@ def main():
             if not com_ok:
                 print("\nNOTE: On Windows 11, AEPGP appears in 'Show more options'")
                 print("      (COM extension install failed — shell-verb fallback active)")
-=======
-        print("  1. Right-click any file → AEPGP → Choose action")
-        print("  2. Right-click Desktop → AEPGP → Generate Keys or Change PIN")
-        print("\nAvailable actions in AEPGP submenu:")
-        print("  • Encrypt File")
-        print("  • Decrypt File")
-        print("  • Generate Keys in Card")
-        print("  • Change Card PIN")
-        if not watcher_ok:
-            print("\nNote: Visibility watcher could not be installed at startup.")
-        print("\nNOTE: On Windows 11, AEPGP appears in 'Show more options'")
-        print("      (or you can use SHIFT+Right-click)")
->>>>>>> 66da2242921db5be6c4019aa8bce0de7123f4cdf
     else:
         print("Installation completed with errors.")
         print("Some context menu items may not have been installed.")

@@ -19,6 +19,28 @@ Usage (called by Windows shell):
 import sys
 import os
 
+# ---------------------------------------------------------------------------
+# Remote debugging support (VSCode / debugpy)
+# Set the environment variable AEPGP_DEBUG=1 before triggering the context
+# menu, then attach VSCode using the "Attach to AEPGP" launch config.
+# ---------------------------------------------------------------------------
+if os.environ.get("AEPGP_DEBUG") == "1":
+    try:
+        import debugpy
+        debugpy.listen(("localhost", 5678))
+        # Show a message box so you know when to click "Attach" in VSCode
+        import ctypes
+        ctypes.windll.user32.MessageBoxW(
+            None,
+            "AEPGP debug mode: waiting for VSCode debugger on port 5678.\n\n"
+            "Switch to VSCode and press F5 with 'Attach to AEPGP' selected.",
+            "AEPGP Debug",
+            0x40,  # MB_ICONINFORMATION
+        )
+        debugpy.wait_for_client()
+    except ImportError:
+        pass  # debugpy not installed — run normally
+
 # Resolve the handlers directory relative to this file — never hardcode paths.
 HANDLERS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "handlers")
 sys.path.insert(0, HANDLERS_DIR)

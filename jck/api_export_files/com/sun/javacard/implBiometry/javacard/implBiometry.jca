@@ -1,0 +1,1562 @@
+// converted by version  [v3.1.0]
+// on Tue Jul 06 15:18:09 PDT 2021
+
+.package com/sun/javacard/implBiometry {
+	.aid 0xA0:0x0:0x0:0x0:0x62:0x3:0x1:0xE;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.8;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x2 1.3;		//javacardx/biometry
+		0xA0:0x0:0x0:0x0:0x62:0x3:0x1 1.0;		//com/sun/javacard/impl
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x4 1.0;		//javacardx/biometry1toN
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef byte[] PasswordBioImpl/tryLimit;
+		// 1
+		instanceFieldRef byte PasswordBioImpl/origTryLimit;
+		// 2
+		instanceFieldRef boolean PasswordBioImpl/initialized;
+		// 3
+		instanceFieldRef boolean[] PasswordBioImpl/validatedAndInitCalled;
+		// 4
+		instanceFieldRef byte[] PasswordBioImpl/matchDataLen;
+		// 5
+		instanceFieldRef byte[] PasswordBioImpl/passwd;
+		// 6
+		instanceFieldRef byte PasswordBioImpl/dataLenEnrolled;
+		// 7
+		instanceFieldRef 4.1[] PasswordBioMatcherImpl/templates;
+		// 8
+		instanceFieldRef byte PasswordBioMatcherImpl/origTryLimit;
+		// 9
+		instanceFieldRef boolean PasswordBioMatcherImpl/initialized;
+		// 10
+		instanceFieldRef byte[] PasswordBioMatcherImpl/tryLimit;
+		// 11
+		instanceFieldRef boolean[] PasswordBioMatcherImpl/validatedAndInitCalled;
+		// 12
+		instanceFieldRef short[] PasswordBioMatcherImpl/lastMatchedIndex;
+		// 13
+		instanceFieldRef short[] PasswordBioMatcherImpl/lastLength;
+		// 14
+		instanceFieldRef boolean PasswordBioTemplateDataImpl/initialized;
+		// 15
+		instanceFieldRef boolean[] PasswordBioTemplateDataImpl/initCalled;
+		// 16
+		instanceFieldRef byte[] PasswordBioTemplateDataImpl/passwd;
+		// 17
+		instanceFieldRef byte[] PasswordBioTemplateDataImpl/publicData;
+		// 18
+		instanceFieldRef byte PasswordBioTemplateDataImpl/dataLenEnrolled;
+		// 19
+		staticMethodRef 1.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 20
+		staticMethodRef 3.6.80([BSS)V;		// com/sun/javacard/impl/NativeMethods.checkArraySrc([BSS)V
+		// 21
+		staticMethodRef 1.16.0([BS[BSS)B;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+		// 22
+		staticMethodRef 3.6.109()V;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanTrue()V
+		// 23
+		staticMethodRef 3.6.110()V;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+		// 24
+		.classRef 4.3;		// javacardx/biometry1toN/OwnerBioTemplateData
+		// 25
+		staticMethodRef 1.8.12(SB)[Z;		// javacard/framework/JCSystem.makeTransientBooleanArray(SB)[Z
+		// 26
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 27
+		staticMethodRef 2.3.1(S)V;		// javacardx/biometry/BioException.throwIt(S)V
+		// 28
+		staticMethodRef 3.6.78([BSS)V;		// com/sun/javacard/impl/NativeMethods.checkArrayArgs([BSS)V
+		// 29
+		staticMethodRef 1.8.17()Z;		// javacard/framework/JCSystem.isObjectDeletionSupported()Z
+		// 30
+		staticMethodRef 1.8.15(SB)[S;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+		// 31
+		staticMethodRef 1.8.18()V;		// javacard/framework/JCSystem.requestObjectDeletion()V
+		// 32
+		staticMethodRef 1.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 33
+		staticMethodRef 4.7.1(S)V;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+		// 34
+		staticMethodRef 1.8.1()V;		// javacard/framework/JCSystem.beginTransaction()V
+		// 35
+		staticMethodRef 1.8.2()V;		// javacard/framework/JCSystem.commitTransaction()V
+		// 36
+		.classRef 4.1;		// javacardx/biometry1toN/BioTemplateData
+		// 37
+		.classRef InternalSharedPasswordBioTemplateData;
+		// 38
+		virtualMethodRef PasswordBioMatcherImpl/getBioTemplateData(S)Ljavacardx/biometry1toN/OwnerBioTemplateData;;
+			.descriptor	Ljavacardx/biometry1toN/OwnerBioTemplateData;	4.3;
+
+		// 39
+		staticMethodRef 1.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 40
+		staticMethodRef 3.6.79([BSS)V;		// com/sun/javacard/impl/NativeMethods.checkArrayDest([BSS)V
+		// 41
+		virtualMethodRef PasswordBioImpl/getVersion([BS)S;
+		// 42
+		staticMethodRef 3.6.111(S)V;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+		// 43
+		staticMethodRef 3.6.113()V;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+	}
+
+	.interface public abstract InternalSharedPasswordBioTemplateData 0 {
+
+		.shareable;
+
+		.superInterfaces {
+			1.2;		// javacard/framework/Shareable
+		}
+
+		.method public abstract match([BSSS)S 0 {
+		}
+
+	}
+
+	.class public PasswordBioImpl 1 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private byte[] passwd 0;		// [B
+			private byte[] tryLimit 1;		// [B
+			private boolean[] validatedAndInitCalled 2;		// [Z
+			private byte[] matchDataLen 3;		// [B
+			private byte origTryLimit 4;		// B
+			private byte dataLenEnrolled 5;		// B
+			private boolean initialized 6;		// Z
+			public static final byte MIN_PASSWD_LEN = 5;		// B
+			public static final byte MAX_PASSWD_LEN = 50;		// B
+		}
+
+		.publicMethodTable 1 14 {
+			equals(Ljava/lang/Object;)Z 0;
+			init([BSS)V 255;
+			update([BSS)V 255;
+			doFinal()V 255;
+			getBioType()B 255;
+			getVersion([BS)S 255;
+			getPublicTemplateData(S[BSS)S 255;
+			getTriesRemaining()B 255;
+			initMatch([BSS)S 255;
+			isInitialized()Z 255;
+			isValidated()Z 255;
+			match([BSS)S 255;
+			reset()V 255;
+			resetUnblockAndSetTryLimit(B)V 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.implementedInterfaceInfoTable { 
+			.interface 2.0 { 		// javacardx/biometry/BioTemplate
+				10;		// isValidated()Z
+				9;		// isInitialized()Z
+				6;		// getPublicTemplateData(S[BSS)S
+				4;		// getBioType()B
+				5;		// getVersion([BS)S
+				12;		// reset()V
+				7;		// getTriesRemaining()B
+				8;		// initMatch([BSS)S
+				11;		// match([BSS)S
+			}
+
+			.interface 2.1 { 		// javacardx/biometry/OwnerBioTemplate
+				10;		// isValidated()Z
+				9;		// isInitialized()Z
+				6;		// getPublicTemplateData(S[BSS)S
+				4;		// getBioType()B
+				5;		// getVersion([BS)S
+				12;		// reset()V
+				7;		// getTriesRemaining()B
+				8;		// initMatch([BSS)S
+				11;		// match([BSS)S
+				1;		// init([BSS)V
+				2;		// update([BSS)V
+				3;		// doFinal()V
+				13;		// resetUnblockAndSetTryLimit(B)V
+			}
+
+		}
+
+		.method public <init>(B)V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 26;		// java/lang/Object.<init>()V
+					aload_0;
+					sconst_1;
+					newarray 11;
+					putfield_a 0;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.tryLimit
+					getfield_a_this 0;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.tryLimit
+					sconst_0;
+					sload_1;
+					bastore;
+					sload_1;
+					putfield_b_this 1;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.origTryLimit
+					sconst_0;
+					putfield_b_this 2;		// boolean com/sun/javacard/implBiometry/PasswordBioImpl.initialized
+					aload_0;
+					sconst_3;
+					sconst_1;
+					invokestatic 25;		// javacard/framework/JCSystem.makeTransientBooleanArray(SB)[Z
+					putfield_a 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_0;
+					bastore;
+					getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_1;
+					sconst_0;
+					bastore;
+					getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_2;
+					sconst_0;
+					bastore;
+					aload_0;
+					sconst_1;
+					sconst_1;
+					invokestatic 39;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 4;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.matchDataLen
+					aload_0;
+					bspush 50;
+					newarray 11;
+					putfield_a 5;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.passwd
+					return;
+		}
+
+		.method public init([BSS)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	sload_3;
+					iflt L2;
+				L1:	sload_3;
+					bspush 50;
+					if_scmple L3;
+				L2:	sconst_2;
+					invokestatic 27;		// javacardx/biometry/BioException.throwIt(S)V
+				L3:	aload_1;
+					sload_2;
+					sload_3;
+					invokestatic 28;		// com/sun/javacard/impl/NativeMethods.checkArrayArgs([BSS)V
+					sconst_0;
+					putfield_b_this 2;		// boolean com/sun/javacard/implBiometry/PasswordBioImpl.initialized
+					getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_0;
+					bastore;
+					getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_1;
+					sconst_1;
+					bastore;
+					getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_2;
+					sconst_0;
+					bastore;
+					getfield_a_this 5;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.passwd
+					ifnull L6;
+				L4:	invokestatic 29;		// javacard/framework/JCSystem.isObjectDeletionSupported()Z
+					ifeq L6;
+				L5:	invokestatic 31;		// javacard/framework/JCSystem.requestObjectDeletion()V
+				L6:	aload_1;
+					sload_2;
+					getfield_a_this 5;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.passwd
+					sconst_0;
+					sload_3;
+					invokestatic 32;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					sload_3;
+					s2b;
+					putfield_b 6;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.dataLenEnrolled
+					return;
+		}
+
+		.method public update([BSS)V 2 {
+			.stack 5;
+			.locals 0;
+
+				L0:	getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_1;
+					baload;
+					ifne L2;
+				L1:	sconst_5;
+					invokestatic 27;		// javacardx/biometry/BioException.throwIt(S)V
+				L2:	getfield_b_this 6;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.dataLenEnrolled
+					sload_3;
+					s2b;
+					sadd;
+					bspush 50;
+					if_scmple L4;
+				L3:	sconst_2;
+					invokestatic 27;		// javacardx/biometry/BioException.throwIt(S)V
+				L4:	aload_1;
+					sload_2;
+					getfield_a_this 5;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.passwd
+					getfield_b_this 6;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.dataLenEnrolled
+					sload_3;
+					invokestatic 32;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					dup;
+					getfield_b 6;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.dataLenEnrolled
+					sload_3;
+					sadd;
+					s2b;
+					putfield_b 6;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.dataLenEnrolled
+					return;
+		}
+
+		.method public doFinal()V 3 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_1;
+					baload;
+					ifne L2;
+				L1:	sconst_5;
+					invokestatic 27;		// javacardx/biometry/BioException.throwIt(S)V
+				L2:	getfield_b_this 6;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.dataLenEnrolled
+					sconst_5;
+					if_scmpge L4;
+				L3:	sconst_2;
+					invokestatic 27;		// javacardx/biometry/BioException.throwIt(S)V
+				L4:	getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_1;
+					sconst_0;
+					bastore;
+					sconst_1;
+					putfield_b_this 2;		// boolean com/sun/javacard/implBiometry/PasswordBioImpl.initialized
+					return;
+		}
+
+		.method public getBioType()B 4 {
+			.stack 1;
+			.locals 0;
+
+				L0:	bspush 31;
+					sreturn;
+		}
+
+		.method public getVersion([BS)S 5 {
+			.stack 4;
+			.locals 0;
+
+				L0:	aload_1;
+					sload_2;
+					sconst_3;
+					invokestatic 40;		// com/sun/javacard/impl/NativeMethods.checkArrayDest([BSS)V
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					sconst_1;
+					bastore;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					sconst_0;
+					bastore;
+					aload_1;
+					sload_2;
+					sconst_0;
+					bastore;
+					sconst_3;
+					sreturn;
+		}
+
+		.method public getPublicTemplateData(S[BSS)S 6 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getfield_b_this 2;		// boolean com/sun/javacard/implBiometry/PasswordBioImpl.initialized
+					ifne L2;
+				L1:	sconst_4;
+					invokestatic 27;		// javacardx/biometry/BioException.throwIt(S)V
+				L2:	sload 4;
+					sconst_4;
+					if_scmpge L4;
+				L3:	sconst_1;
+					invokestatic 27;		// javacardx/biometry/BioException.throwIt(S)V
+				L4:	aload_2;
+					sload_3;
+					sconst_4;
+					invokestatic 40;		// com/sun/javacard/impl/NativeMethods.checkArrayDest([BSS)V
+					aload_0;
+					aload_2;
+					sload_3;
+					invokevirtual 41;		// getVersion([BS)S
+					pop;
+					aload_2;
+					sload_3;
+					sconst_3;
+					sadd;
+					getfield_a_this 5;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.passwd
+					arraylength;
+					s2b;
+					bastore;
+					sconst_4;
+					sreturn;
+		}
+
+		.method public getTriesRemaining()B 7 {
+			.stack 2;
+			.locals 1;
+
+				L0:	getfield_b_this 2;		// boolean com/sun/javacard/implBiometry/PasswordBioImpl.initialized
+					ifne L2;
+				L1:	sconst_4;
+					invokestatic 27;		// javacardx/biometry/BioException.throwIt(S)V
+				L2:	getfield_a_this 0;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.tryLimit
+					sconst_0;
+					baload;
+					sstore_1;
+				L3:	sload_1;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload_1;
+					sreturn;
+		}
+
+		.method public initMatch([BSS)S 8 {
+			.stack 5;
+			.locals 1;
+
+				L0:	invokestatic 43;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+					getfield_b_this 2;		// boolean com/sun/javacard/implBiometry/PasswordBioImpl.initialized
+					ifne L2;
+				L1:	sconst_4;
+					invokestatic 27;		// javacardx/biometry/BioException.throwIt(S)V
+				L2:	getfield_a_this 0;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.tryLimit
+					sconst_0;
+					baload;
+					ifne L4;
+				L3:	sconst_5;
+					invokestatic 27;		// javacardx/biometry/BioException.throwIt(S)V
+				L4:	getfield_a_this 0;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.tryLimit
+					sconst_0;
+					sconst_1;
+					getfield_a_this 0;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.tryLimit
+					sconst_0;
+					baload;
+					sconst_1;
+					ssub;
+					s2b;
+					invokestatic 19;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokestatic 20;		// com/sun/javacard/impl/NativeMethods.checkArraySrc([BSS)V
+					getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_0;
+					bastore;
+					sload_3;
+					getfield_b_this 6;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.dataLenEnrolled
+					if_scmple L6;
+				L5:	sconst_0;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sconst_0;
+					sreturn;
+				L6:	getfield_a_this 4;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.matchDataLen
+					sconst_0;
+					sload_3;
+					s2b;
+					bastore;
+					getfield_a_this 5;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.passwd
+					sconst_0;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokestatic 21;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifeq L8;
+				L7:	sconst_0;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sconst_0;
+					sreturn;
+				L8:	sload_3;
+					getfield_b_this 6;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.dataLenEnrolled
+					if_scmpge L11;
+				L9:	getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_2;
+					sconst_1;
+					bastore;
+					sconst_m1;
+					sstore 4;
+				L10:	sload 4;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload 4;
+					sreturn;
+				L11:	getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_1;
+					bastore;
+					getfield_a_this 0;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.tryLimit
+					sconst_0;
+					sconst_1;
+					getfield_b_this 1;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.origTryLimit
+					invokestatic 19;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					sspush 16384;
+					sstore 4;
+				L12:	sload 4;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload 4;
+					sreturn;
+		}
+
+		.method public isInitialized()Z 9 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_b_this 2;		// boolean com/sun/javacard/implBiometry/PasswordBioImpl.initialized
+					sreturn;
+		}
+
+		.method public isValidated()Z 10 {
+			.stack 2;
+			.locals 1;
+
+				L0:	getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_0;
+					baload;
+					sstore_1;
+				L1:	sload_1;
+					ifeq L3;
+				L2:	invokestatic 22;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanTrue()V
+					goto L4;
+				L3:	invokestatic 23;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+				L4:	sload_1;
+					sreturn;
+		}
+
+		.method public match([BSS)S 11 {
+			.stack 5;
+			.locals 1;
+
+				L0:	invokestatic 43;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+					getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_2;
+					baload;
+					ifne L2;
+				L1:	sconst_5;
+					invokestatic 27;		// javacardx/biometry/BioException.throwIt(S)V
+				L2:	getfield_a_this 4;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.matchDataLen
+					sconst_0;
+					baload;
+					s2i;
+					sload_3;
+					s2i;
+					iadd;
+					getfield_b_this 6;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.dataLenEnrolled
+					s2i;
+					icmp;
+					ifle L4;
+				L3:	getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_2;
+					sconst_0;
+					bastore;
+					sconst_0;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sconst_0;
+					sreturn;
+				L4:	getfield_a_this 5;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.passwd
+					getfield_a_this 4;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.matchDataLen
+					sconst_0;
+					baload;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokestatic 21;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifeq L6;
+				L5:	getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_2;
+					sconst_0;
+					bastore;
+					sconst_0;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sconst_0;
+					sreturn;
+				L6:	getfield_a_this 4;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.matchDataLen
+					sconst_0;
+					baload;
+					s2i;
+					sload_3;
+					s2i;
+					iadd;
+					getfield_b_this 6;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.dataLenEnrolled
+					s2i;
+					icmp;
+					ifne L9;
+				L7:	getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_1;
+					bastore;
+					getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_2;
+					sconst_0;
+					bastore;
+					getfield_a_this 0;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.tryLimit
+					sconst_0;
+					sconst_1;
+					getfield_b_this 1;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.origTryLimit
+					invokestatic 19;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					sspush 16384;
+					sstore 4;
+				L8:	sload 4;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload 4;
+					sreturn;
+				L9:	getfield_a_this 4;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.matchDataLen
+					sconst_0;
+					dup2;
+					baload;
+					sload_3;
+					sadd;
+					s2b;
+					bastore;
+					sconst_m1;
+					sstore 4;
+				L10:	sload 4;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload 4;
+					sreturn;
+		}
+
+		.method public reset()V 12 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_0;
+					bastore;
+					return;
+		}
+
+		.method public resetUnblockAndSetTryLimit(B)V 13 {
+			.stack 3;
+			.locals 0;
+
+				L0:	sload_1;
+					sconst_1;
+					if_scmpge L2;
+				L1:	sconst_1;
+					invokestatic 27;		// javacardx/biometry/BioException.throwIt(S)V
+				L2:	getfield_a_this 3;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_0;
+					bastore;
+					getfield_a_this 0;		// reference com/sun/javacard/implBiometry/PasswordBioImpl.tryLimit
+					sconst_0;
+					sload_1;
+					bastore;
+					sload_1;
+					putfield_b_this 1;		// byte com/sun/javacard/implBiometry/PasswordBioImpl.origTryLimit
+					return;
+		}
+
+	}
+
+	.class public PasswordBioMatcherImpl 2 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private 4.1[] templates 0;		// [Ljavacardx/biometry1toN/BioTemplateData;
+			private byte[] tryLimit 1;		// [B
+			private boolean[] validatedAndInitCalled 2;		// [Z
+			private short[] lastMatchedIndex 3;		// [S
+			private short[] lastLength 4;		// [S
+			private byte origTryLimit 5;		// B
+			private boolean initialized 6;		// Z
+			public static final short MAX_NUMBER_OF_TEMPLATES = 50;		// S
+		}
+
+		.publicMethodTable 1 15 {
+			equals(Ljava/lang/Object;)Z 0;
+			putBioTemplateData(SLjavacardx/biometry1toN/BioTemplateData;)V 255;
+			resetUnblockAndSetTryLimit(B)V 255;
+			getIndexOfLastMatchingBioTemplateData()S 255;
+			getBioTemplateData(S)Ljavacardx/biometry1toN/OwnerBioTemplateData; 255;
+			isInitialized()Z 255;
+			isValidated()Z 255;
+			reset()V 255;
+			getTriesRemaining()B 255;
+			getBioType()B 255;
+			getVersion([BS)S 255;
+			initMatch([BSS)S 255;
+			match([BSS)S 255;
+			getMaxNbOfBioTemplateData()S 255;
+			getBioTemplateData(S)Ljavacardx/biometry1toN/BioTemplateData; 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.implementedInterfaceInfoTable { 
+			.interface 4.0 { 		// javacardx/biometry1toN/BioMatcher
+				5;		// isInitialized()Z
+				6;		// isValidated()Z
+				7;		// reset()V
+				8;		// getTriesRemaining()B
+				9;		// getBioType()B
+				10;		// getVersion([BS)S
+				11;		// initMatch([BSS)S
+				12;		// match([BSS)S
+				13;		// getMaxNbOfBioTemplateData()S
+				3;		// getIndexOfLastMatchingBioTemplateData()S
+				14;		// getBioTemplateData(S)Ljavacardx/biometry1toN/BioTemplateData;
+			}
+
+			.interface 4.2 { 		// javacardx/biometry1toN/OwnerBioMatcher
+				5;		// isInitialized()Z
+				6;		// isValidated()Z
+				7;		// reset()V
+				8;		// getTriesRemaining()B
+				9;		// getBioType()B
+				10;		// getVersion([BS)S
+				11;		// initMatch([BSS)S
+				12;		// match([BSS)S
+				13;		// getMaxNbOfBioTemplateData()S
+				3;		// getIndexOfLastMatchingBioTemplateData()S
+				14;		// getBioTemplateData(S)Ljavacardx/biometry1toN/BioTemplateData;
+				1;		// putBioTemplateData(SLjavacardx/biometry1toN/BioTemplateData;)V
+				2;		// resetUnblockAndSetTryLimit(B)V
+				4;		// getBioTemplateData(S)Ljavacardx/biometry1toN/OwnerBioTemplateData;
+			}
+
+		}
+
+		.method public <init>(SB)V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 26;		// java/lang/Object.<init>()V
+					aload_0;
+					sload_1;
+					anewarray 24;		// javacardx/biometry1toN/OwnerBioTemplateData
+					putfield_a 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					sload_2;
+					putfield_b_this 8;		// byte com/sun/javacard/implBiometry/PasswordBioMatcherImpl.origTryLimit
+					sconst_0;
+					putfield_b_this 9;		// boolean com/sun/javacard/implBiometry/PasswordBioMatcherImpl.initialized
+					aload_0;
+					sconst_1;
+					sconst_1;
+					invokestatic 39;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 10;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.tryLimit
+					aload_0;
+					sconst_2;
+					sconst_1;
+					invokestatic 25;		// javacard/framework/JCSystem.makeTransientBooleanArray(SB)[Z
+					putfield_a 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					aload_0;
+					sconst_1;
+					sconst_1;
+					invokestatic 30;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putfield_a 12;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.lastMatchedIndex
+					aload_0;
+					sconst_1;
+					sconst_1;
+					invokestatic 30;		// javacard/framework/JCSystem.makeTransientShortArray(SB)[S
+					putfield_a 13;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.lastLength
+					getfield_a_this 10;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.tryLimit
+					sconst_0;
+					getfield_b_this 8;		// byte com/sun/javacard/implBiometry/PasswordBioMatcherImpl.origTryLimit
+					bastore;
+					getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_0;
+					bastore;
+					getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_1;
+					sconst_0;
+					bastore;
+					return;
+		}
+
+		.method public putBioTemplateData(SLjavacardx/biometry1toN/BioTemplateData;)V 1 {
+			.stack 3;
+			.locals 1;
+
+			.descriptor	Ljavacardx/biometry1toN/BioTemplateData;	4.1;
+
+				L0:	sload_1;
+					getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					arraylength;
+					if_scmpgt L2;
+				L1:	sload_1;
+					sconst_1;
+					if_scmpge L3;
+				L2:	sconst_1;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L3:	aload_2;
+					ifnonnull L13;
+				L4:	invokestatic 34;		// javacard/framework/JCSystem.beginTransaction()V
+					getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					sload_1;
+					sconst_1;
+					ssub;
+					aconst_null;
+					aastore;
+					getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_0;
+					baload;
+					ifeq L7;
+				L5:	getfield_a_this 12;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.lastMatchedIndex
+					sconst_0;
+					saload;
+					sload_1;
+					s2b;
+					if_scmpne L7;
+				L6:	getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_0;
+					bastore;
+					getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_1;
+					sconst_0;
+					bastore;
+				L7:	sconst_0;
+					putfield_b_this 9;		// boolean com/sun/javacard/implBiometry/PasswordBioMatcherImpl.initialized
+					sconst_0;
+					sstore_3;
+				L8:	sload_3;
+					getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					arraylength;
+					if_scmpge L12;
+				L9:	getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					sload_3;
+					aaload;
+					ifnull L11;
+				L10:	sconst_1;
+					putfield_b_this 9;		// boolean com/sun/javacard/implBiometry/PasswordBioMatcherImpl.initialized
+					goto L12;
+				L11:	sinc 3 1;
+					goto L8;
+				L12:	invokestatic 35;		// javacard/framework/JCSystem.commitTransaction()V
+					return;
+				L13:	aload_2;
+					invokeinterface 1 36 1;		// javacardx/biometry1toN/BioTemplateData
+					ifne L15;
+				L14:	sconst_4;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L15:	aload_2;
+					invokeinterface 1 36 0;		// javacardx/biometry1toN/BioTemplateData
+					bspush 31;
+					if_scmpeq L17;
+				L16:	bspush 7;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L17:	aload_2;
+					instanceof 0 37;		// T_CLASSORINTERFACE com/sun/javacard/implBiometry/InternalSharedPasswordBioTemplateData
+					ifne L19;
+				L18:	bspush 7;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L19:	getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					sload_1;
+					sconst_1;
+					ssub;
+					aload_2;
+					aastore;
+					sconst_1;
+					putfield_b_this 9;		// boolean com/sun/javacard/implBiometry/PasswordBioMatcherImpl.initialized
+					return;
+		}
+
+		.method public resetUnblockAndSetTryLimit(B)V 2 {
+			.stack 3;
+			.locals 0;
+
+				L0:	sload_1;
+					sconst_1;
+					if_scmpge L2;
+				L1:	sconst_1;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L2:	getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_0;
+					bastore;
+					getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_1;
+					sconst_0;
+					bastore;
+					getfield_a_this 10;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.tryLimit
+					sconst_0;
+					sload_1;
+					bastore;
+					sload_1;
+					putfield_b_this 8;		// byte com/sun/javacard/implBiometry/PasswordBioMatcherImpl.origTryLimit
+					return;
+		}
+
+		.method public getIndexOfLastMatchingBioTemplateData()S 3 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_b_this 9;		// boolean com/sun/javacard/implBiometry/PasswordBioMatcherImpl.initialized
+					ifeq L2;
+				L1:	getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_0;
+					baload;
+					ifne L3;
+				L2:	sconst_5;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L3:	getfield_a_this 12;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.lastMatchedIndex
+					sconst_0;
+					saload;
+					sreturn;
+		}
+
+		.method public getBioTemplateData(S)Ljavacardx/biometry1toN/OwnerBioTemplateData; 4 {
+			.stack 3;
+			.locals 0;
+
+			.descriptor	Ljavacardx/biometry1toN/OwnerBioTemplateData;	4.3;
+
+				L0:	sload_1;
+					getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					arraylength;
+					if_scmpgt L2;
+				L1:	sload_1;
+					sconst_1;
+					if_scmpge L3;
+				L2:	aconst_null;
+					areturn;
+				L3:	getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					sload_1;
+					sconst_1;
+					ssub;
+					aaload;
+					checkcast 0 24;		// T_CLASSORINTERFACE javacardx/biometry1toN/OwnerBioTemplateData
+					areturn;
+		}
+
+		.method public isInitialized()Z 5 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_b_this 9;		// boolean com/sun/javacard/implBiometry/PasswordBioMatcherImpl.initialized
+					sreturn;
+		}
+
+		.method public isValidated()Z 6 {
+			.stack 2;
+			.locals 1;
+
+				L0:	getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_0;
+					baload;
+					sstore_1;
+				L1:	sload_1;
+					ifeq L3;
+				L2:	invokestatic 22;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanTrue()V
+					goto L4;
+				L3:	invokestatic 23;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+				L4:	sload_1;
+					sreturn;
+		}
+
+		.method public reset()V 7 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_0;
+					bastore;
+					return;
+		}
+
+		.method public getTriesRemaining()B 8 {
+			.stack 2;
+			.locals 1;
+
+				L0:	getfield_b_this 9;		// boolean com/sun/javacard/implBiometry/PasswordBioMatcherImpl.initialized
+					ifne L2;
+				L1:	sconst_4;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L2:	getfield_a_this 10;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.tryLimit
+					sconst_0;
+					baload;
+					sstore_1;
+				L3:	sload_1;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload_1;
+					sreturn;
+		}
+
+		.method public getBioType()B 9 {
+			.stack 1;
+			.locals 0;
+
+				L0:	bspush 31;
+					sreturn;
+		}
+
+		.method public getVersion([BS)S 10 {
+			.stack 4;
+			.locals 0;
+
+				L0:	aload_1;
+					sload_2;
+					sconst_3;
+					invokestatic 28;		// com/sun/javacard/impl/NativeMethods.checkArrayArgs([BSS)V
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					sconst_1;
+					bastore;
+					aload_1;
+					sload_2;
+					sinc 2 1;
+					sconst_0;
+					bastore;
+					aload_1;
+					sload_2;
+					sconst_0;
+					bastore;
+					sconst_3;
+					sreturn;
+		}
+
+		.method public initMatch([BSS)S 11 {
+			.stack 5;
+			.locals 2;
+
+				L0:	invokestatic 43;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+					getfield_b_this 9;		// boolean com/sun/javacard/implBiometry/PasswordBioMatcherImpl.initialized
+					ifne L2;
+				L1:	sconst_4;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L2:	getfield_a_this 10;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.tryLimit
+					sconst_0;
+					baload;
+					ifne L4;
+				L3:	sconst_0;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sconst_0;
+					sreturn;
+				L4:	getfield_a_this 10;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.tryLimit
+					sconst_0;
+					sconst_1;
+					getfield_a_this 10;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.tryLimit
+					sconst_0;
+					baload;
+					sconst_1;
+					ssub;
+					s2b;
+					invokestatic 19;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokestatic 20;		// com/sun/javacard/impl/NativeMethods.checkArraySrc([BSS)V
+					getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_0;
+					bastore;
+					getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_1;
+					sconst_0;
+					bastore;
+					sconst_0;
+					sstore 4;
+				L5:	sload 4;
+					getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					arraylength;
+					if_scmpge L14;
+				L6:	getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					sload 4;
+					aaload;
+					ifnull L13;
+				L7:	getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					sload 4;
+					aaload;
+					invokeinterface 1 36 1;		// javacardx/biometry1toN/BioTemplateData
+					ifeq L13;
+				L8:	getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					sload 4;
+					aaload;
+					checkcast 0 37;		// T_CLASSORINTERFACE com/sun/javacard/implBiometry/InternalSharedPasswordBioTemplateData
+					aload_1;
+					sload_2;
+					sload_3;
+					sconst_0;
+					invokeinterface 5 37 0;		// com/sun/javacard/implBiometry/InternalSharedPasswordBioTemplateData
+					sstore 5;
+				L9:	sload 5;
+					sspush 16384;
+					if_scmpne L11;
+				L10:	getfield_a_this 10;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.tryLimit
+					sconst_0;
+					sconst_1;
+					getfield_b_this 8;		// byte com/sun/javacard/implBiometry/PasswordBioMatcherImpl.origTryLimit
+					invokestatic 19;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_1;
+					bastore;
+					getfield_a_this 12;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.lastMatchedIndex
+					sconst_0;
+					sload 4;
+					sconst_1;
+					sadd;
+					sastore;
+					sspush 16384;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sspush 16384;
+					sreturn;
+				L11:	sload 5;
+					sconst_m1;
+					if_scmpne L13;
+				L12:	getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_1;
+					sconst_1;
+					bastore;
+				L13:	sinc 4 1;
+					goto L5;
+				L14:	getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_1;
+					baload;
+					ifeq L16;
+				L15:	getfield_a_this 13;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.lastLength
+					sconst_0;
+					sload_3;
+					sastore;
+					sconst_m1;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sconst_m1;
+					sreturn;
+				L16:	sconst_0;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sconst_0;
+					sreturn;
+		}
+
+		.method public match([BSS)S 12 {
+			.stack 6;
+			.locals 2;
+
+				L0:	invokestatic 43;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+					getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_1;
+					baload;
+					ifne L2;
+				L1:	sconst_5;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L2:	getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_1;
+					sconst_0;
+					bastore;
+					sconst_0;
+					sstore 4;
+				L3:	sload 4;
+					getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					arraylength;
+					if_scmpge L12;
+				L4:	getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					sload 4;
+					aaload;
+					ifnull L11;
+				L5:	getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					sload 4;
+					aaload;
+					invokeinterface 1 36 1;		// javacardx/biometry1toN/BioTemplateData
+					ifeq L11;
+				L6:	getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					sload 4;
+					aaload;
+					checkcast 0 37;		// T_CLASSORINTERFACE com/sun/javacard/implBiometry/InternalSharedPasswordBioTemplateData
+					aload_1;
+					sload_2;
+					sload_3;
+					getfield_a_this 13;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.lastLength
+					sconst_0;
+					saload;
+					invokeinterface 5 37 0;		// com/sun/javacard/implBiometry/InternalSharedPasswordBioTemplateData
+					sstore 5;
+				L7:	sload 5;
+					sspush 16384;
+					if_scmpne L9;
+				L8:	getfield_a_this 10;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.tryLimit
+					sconst_0;
+					sconst_1;
+					getfield_b_this 8;		// byte com/sun/javacard/implBiometry/PasswordBioMatcherImpl.origTryLimit
+					invokestatic 19;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_0;
+					sconst_1;
+					bastore;
+					getfield_a_this 12;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.lastMatchedIndex
+					sconst_0;
+					sload 4;
+					sconst_1;
+					sadd;
+					sastore;
+					sspush 16384;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sspush 16384;
+					sreturn;
+				L9:	sload 5;
+					sconst_m1;
+					if_scmpne L11;
+				L10:	getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_1;
+					sconst_1;
+					bastore;
+				L11:	sinc 4 1;
+					goto L3;
+				L12:	getfield_a_this 11;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.validatedAndInitCalled
+					sconst_1;
+					baload;
+					ifeq L14;
+				L13:	getfield_a_this 13;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.lastLength
+					sconst_0;
+					getfield_a_this 13;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.lastLength
+					sconst_0;
+					saload;
+					sload_3;
+					sadd;
+					sastore;
+					sconst_m1;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sconst_m1;
+					sreturn;
+				L14:	sconst_0;
+					invokestatic 42;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sconst_0;
+					sreturn;
+		}
+
+		.method public getMaxNbOfBioTemplateData()S 13 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 7;		// reference com/sun/javacard/implBiometry/PasswordBioMatcherImpl.templates
+					arraylength;
+					sreturn;
+		}
+
+		.method public getBioTemplateData(S)Ljavacardx/biometry1toN/BioTemplateData; 14 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacardx/biometry1toN/BioTemplateData;	4.1;
+
+				L0:	aload_0;
+					sload_1;
+					invokevirtual 38;		// getBioTemplateData(S)Ljavacardx/biometry1toN/OwnerBioTemplateData;
+					areturn;
+		}
+
+	}
+
+	.class public PasswordBioTemplateDataImpl 3 extends 0.0 {		// extends java/lang/Object
+
+		.shareable;
+
+		.fields {
+			private byte[] passwd 0;		// [B
+			private boolean[] initCalled 1;		// [Z
+			private byte[] publicData 2;		// [B
+			private byte dataLenEnrolled 3;		// B
+			private boolean initialized 4;		// Z
+			public static final byte MIN_PASSWD_LEN = 5;		// B
+			public static final byte MAX_PASSWD_LEN = 50;		// B
+		}
+
+		.publicMethodTable 1 8 {
+			equals(Ljava/lang/Object;)Z 0;
+			init([BSS)V 255;
+			update([BSS)V 255;
+			doFinal()V 255;
+			getBioType()B 255;
+			isInitialized()Z 255;
+			getPublicData(S[BSS)S 255;
+			match([BSSS)S 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.implementedInterfaceInfoTable { 
+			.interface 4.1 { 		// javacardx/biometry1toN/BioTemplateData
+				4;		// getBioType()B
+				5;		// isInitialized()Z
+				6;		// getPublicData(S[BSS)S
+			}
+
+			.interface 4.3 { 		// javacardx/biometry1toN/OwnerBioTemplateData
+				4;		// getBioType()B
+				5;		// isInitialized()Z
+				6;		// getPublicData(S[BSS)S
+				1;		// init([BSS)V
+				2;		// update([BSS)V
+				3;		// doFinal()V
+			}
+
+			.interface 1.2 { 		// javacard/framework/Shareable
+			}
+
+			.interface InternalSharedPasswordBioTemplateData { 
+				7;		// match([BSSS)S
+			}
+
+		}
+
+		.method public <init>()V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 26;		// java/lang/Object.<init>()V
+					sconst_0;
+					putfield_b_this 14;		// boolean com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.initialized
+					aload_0;
+					sconst_1;
+					sconst_1;
+					invokestatic 25;		// javacard/framework/JCSystem.makeTransientBooleanArray(SB)[Z
+					putfield_a 15;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.initCalled
+					aload_0;
+					bspush 50;
+					newarray 11;
+					putfield_a 16;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.passwd
+					aload_0;
+					sconst_4;
+					newarray 11;
+					putfield_a 17;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.publicData
+					getfield_a_this 17;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.publicData
+					sconst_0;
+					sconst_1;
+					bastore;
+					getfield_a_this 17;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.publicData
+					sconst_1;
+					sconst_0;
+					bastore;
+					getfield_a_this 17;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.publicData
+					sconst_2;
+					sconst_0;
+					bastore;
+					getfield_a_this 17;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.publicData
+					sconst_3;
+					bspush 50;
+					bastore;
+					return;
+		}
+
+		.method public init([BSS)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	sload_3;
+					iflt L2;
+				L1:	sload_3;
+					bspush 50;
+					if_scmple L3;
+				L2:	sconst_2;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L3:	aload_1;
+					sload_2;
+					sload_3;
+					invokestatic 28;		// com/sun/javacard/impl/NativeMethods.checkArrayArgs([BSS)V
+					sconst_0;
+					putfield_b_this 14;		// boolean com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.initialized
+					getfield_a_this 16;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.passwd
+					ifnull L6;
+				L4:	invokestatic 29;		// javacard/framework/JCSystem.isObjectDeletionSupported()Z
+					ifeq L6;
+				L5:	invokestatic 31;		// javacard/framework/JCSystem.requestObjectDeletion()V
+				L6:	aload_1;
+					sload_2;
+					getfield_a_this 16;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.passwd
+					sconst_0;
+					sload_3;
+					invokestatic 32;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					sload_3;
+					s2b;
+					putfield_b 18;		// byte com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.dataLenEnrolled
+					getfield_a_this 15;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.initCalled
+					sconst_0;
+					sconst_1;
+					bastore;
+					return;
+		}
+
+		.method public update([BSS)V 2 {
+			.stack 5;
+			.locals 0;
+
+				L0:	getfield_a_this 15;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.initCalled
+					sconst_0;
+					baload;
+					ifne L2;
+				L1:	sconst_5;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L2:	getfield_b_this 18;		// byte com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.dataLenEnrolled
+					sload_3;
+					s2b;
+					sadd;
+					bspush 50;
+					if_scmple L4;
+				L3:	sconst_2;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L4:	aload_1;
+					sload_2;
+					getfield_a_this 16;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.passwd
+					getfield_b_this 18;		// byte com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.dataLenEnrolled
+					sload_3;
+					invokestatic 32;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					aload_0;
+					dup;
+					getfield_b 18;		// byte com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.dataLenEnrolled
+					sload_3;
+					sadd;
+					s2b;
+					putfield_b 18;		// byte com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.dataLenEnrolled
+					return;
+		}
+
+		.method public doFinal()V 3 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getfield_a_this 15;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.initCalled
+					sconst_0;
+					baload;
+					ifne L2;
+				L1:	sconst_5;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L2:	getfield_b_this 18;		// byte com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.dataLenEnrolled
+					sconst_5;
+					if_scmpge L4;
+				L3:	sconst_2;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L4:	getfield_a_this 15;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.initCalled
+					sconst_0;
+					sconst_0;
+					bastore;
+					sconst_1;
+					putfield_b_this 14;		// boolean com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.initialized
+					return;
+		}
+
+		.method public getBioType()B 4 {
+			.stack 1;
+			.locals 0;
+
+				L0:	bspush 31;
+					sreturn;
+		}
+
+		.method public isInitialized()Z 5 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_b_this 14;		// boolean com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.initialized
+					sreturn;
+		}
+
+		.method public getPublicData(S[BSS)S 6 {
+			.stack 5;
+			.locals 1;
+
+				L0:	getfield_b_this 14;		// boolean com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.initialized
+					ifne L2;
+				L1:	sconst_4;
+					invokestatic 33;		// javacardx/biometry1toN/Bio1toNException.throwIt(S)V
+				L2:	sload_1;
+					getfield_a_this 17;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.publicData
+					arraylength;
+					if_scmplt L4;
+				L3:	sconst_0;
+					sreturn;
+				L4:	getfield_a_this 17;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.publicData
+					arraylength;
+					sload_1;
+					ssub;
+					sstore 5;
+				L5:	sload 4;
+					sload 5;
+					if_scmpge L7;
+				L6:	sload 4;
+					goto L8;
+				L7:	sload 5;
+				L8:	sstore 5;
+					aload_2;
+					sload_3;
+					sload 5;
+					invokestatic 28;		// com/sun/javacard/impl/NativeMethods.checkArrayArgs([BSS)V
+					getfield_a_this 17;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.publicData
+					sload_1;
+					sload 5;
+					invokestatic 28;		// com/sun/javacard/impl/NativeMethods.checkArrayArgs([BSS)V
+					getfield_a_this 17;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.publicData
+					sload_1;
+					aload_2;
+					sload_3;
+					sload 5;
+					invokestatic 32;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sload 5;
+					sreturn;
+		}
+
+		.method public match([BSSS)S 7 {
+			.stack 5;
+			.locals 0;
+
+				L0:	getfield_b_this 14;		// boolean com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.initialized
+					ifne L2;
+				L1:	sconst_0;
+					sreturn;
+				L2:	sload 4;
+					s2i;
+					sload_3;
+					s2i;
+					iadd;
+					getfield_b_this 18;		// byte com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.dataLenEnrolled
+					s2i;
+					icmp;
+					ifle L4;
+				L3:	sconst_0;
+					sreturn;
+				L4:	getfield_a_this 16;		// reference com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.passwd
+					sload 4;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokestatic 21;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifeq L6;
+				L5:	sconst_0;
+					sreturn;
+				L6:	sload 4;
+					s2i;
+					sload_3;
+					s2i;
+					iadd;
+					getfield_b_this 18;		// byte com/sun/javacard/implBiometry/PasswordBioTemplateDataImpl.dataLenEnrolled
+					s2i;
+					icmp;
+					ifge L8;
+				L7:	sconst_m1;
+					sreturn;
+				L8:	sspush 16384;
+					sreturn;
+		}
+
+	}
+
+}

@@ -1,0 +1,22 @@
+{
+    "recommendations": [
+        // Core Android Development
+        "anan.android-dev-ext", // Android IDE - comprehensive support
+        "fwcd.kotlin", // Kotlin language support
+        "vscjava.vscode-gradle", // Gradle build tools
+        "vincentjames501.vscode-adb", // ADB device management
+        // Code Quality
+        "redhat.java", // Java language support
+        "vscjava.vscode-java-pack", // Java extension pack
+        // XML & Resources
+        "dotjoshjohnson.xml", // XML tools for layouts
+        "formulahendry.auto-rename-tag", // Auto rename paired tags
+        // Git & Utilities
+        "eamodio.gitlens", // Enhanced Git support
+        "usernamehw.errorlens", // Inline error display
+        "streetsidesoftware.code-spell-checker", // Spell checker
+        // Productivity
+        "christian-kohler.path-intellisense", // Path autocomplete
+        "visualstudioexptteam.vscodeintellicode" // AI-assisted IntelliSense
+    ]
+}

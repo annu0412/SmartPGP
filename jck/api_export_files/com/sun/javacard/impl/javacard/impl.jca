@@ -1,0 +1,6453 @@
+// converted by version  [v3.1.0]
+// on Tue Jul 06 15:18:07 PDT 2021
+
+.package com/sun/javacard/impl {
+	.aid 0xA0:0x0:0x0:0x0:0x62:0x3:0x1;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.8;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x4 1.0;		//javacardx/biometry1toN
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x2 1.3;		//javacardx/biometry
+		0xA0:0x0:0x0:0x0:0x62:0x2:0x8:0x3 1.0;		//javacardx/framework/tlv
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1:0x1 1.0;		//javacard/framework/service
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef 1.6 BundlePackageEntry/pkgAID;
+		// 1
+		instanceFieldRef byte BundlePackageEntry/pkgMajor;
+		// 2
+		instanceFieldRef byte BundlePackageEntry/pkgMinor;
+		// 3
+		instanceFieldRef byte BundlePackageEntry/pkgNamelength;
+		// 4
+		instanceFieldRef byte[] BundlePackageEntry/pkgName;
+		// 5
+		instanceFieldRef 1.6 AppletInfo/theClassAID;
+		// 6
+		instanceFieldRef short AppletInfo/installMethodAddr;
+		// 7
+		instanceFieldRef byte AppletInfo/installMethodBlock;
+		// 8
+		instanceFieldRef short PackageEntry/pkgStaticReferenceCount;
+		// 9
+		instanceFieldRef byte PackageEntry/appletCount;
+		// 10
+		instanceFieldRef byte AppTableEntry/theContext;
+		// 11
+		instanceFieldRef 1.6 AppTableEntry/theAID;
+		// 12
+		instanceFieldRef AppletInfo[] PackageEntry/applets;
+		// 13
+		instanceFieldRef 1.3 AppTableEntry/theApplet;
+		// 14
+		instanceFieldRef byte[] OwnerPINxImpl/flags;
+		// 15
+		instanceFieldRef byte[] OwnerPINxImpl/triesLeft;
+		// 16
+		instanceFieldRef byte OwnerPINxImpl/tryLimit;
+		// 17
+		instanceFieldRef byte[] OwnerPINxImpl/pinValue;
+		// 18
+		instanceFieldRef byte OwnerPINxImpl/pinSize;
+		// 19
+		instanceFieldRef byte OwnerPINxImpl/maxPINSize;
+		// 20
+		instanceFieldRef byte[] OwnerPINxWithPredecrementImpl/flags;
+		// 21
+		instanceFieldRef byte[] OwnerPINxWithPredecrementImpl/triesLeft;
+		// 22
+		instanceFieldRef byte OwnerPINxWithPredecrementImpl/tryLimit;
+		// 23
+		instanceFieldRef byte[] OwnerPINxWithPredecrementImpl/pinValue;
+		// 24
+		instanceFieldRef byte OwnerPINxWithPredecrementImpl/pinSize;
+		// 25
+		instanceFieldRef byte OwnerPINxWithPredecrementImpl/maxPINSize;
+		// 26
+		instanceFieldRef byte PackageEntry/bundlePackageCount;
+		// 27
+		instanceFieldRef byte PackageEntry/appCount;
+		// 28
+		instanceFieldRef 1.6 PackageEntry/pkgAID;
+		// 29
+		instanceFieldRef BundlePackageEntry[] PackageEntry/bundlePackages;
+		// 30
+		instanceFieldRef byte PackageEntry/pkgMajor;
+		// 31
+		instanceFieldRef byte PackageEntry/pkgMinor;
+		// 32
+		instanceFieldRef byte PackageEntry/importCount;
+		// 33
+		instanceFieldRef short[] PackageEntry/importedPackages;
+		// 34
+		instanceFieldRef byte PackageEntry/pkgNamelength;
+		// 35
+		instanceFieldRef byte[] PackageEntry/pkgName;
+		// 36
+		instanceFieldRef StaticResourceEntry[] PackageEntry/staticResources;
+		// 37
+		instanceFieldRef short[] StaticResourceEntry/data;
+		// 38
+		instanceFieldRef 1.23 PackageEntry/resources;
+		// 39
+		instanceFieldRef byte[] PackedBoolean/container;
+		// 40
+		instanceFieldRef byte PackedBoolean/nextId;
+		// 41
+		instanceFieldRef short StaticResourceEntry/id;
+		// 42
+		instanceFieldRef boolean StaticResourceEntry/halfWord;
+		// 43
+		staticMethodRef GarbageCollector/startGC()Z;
+		// 44
+		staticFieldRef byte PackageMgr/g_packageInProcess;
+		// 45
+		staticMethodRef NativeMethods/removePackage(BB)B;
+		// 46
+		staticMethodRef GarbageCollector/cleanupTables(B)V;
+		// 47
+		staticMethodRef GarbageCollector/initPackageDeletion(B)V;
+		// 48
+		staticMethodRef GarbageCollector/deleteApplets([BB)V;
+		// 49
+		staticMethodRef GarbageCollector/deletePackage(B)V;
+		// 50
+		staticMethodRef NativeMethods/conversionPreProcessor([BSS[BSS)S;
+		// 51
+		staticMethodRef NativeMethods/mathHelper([BSSB[B[BS)V;
+		// 52
+		staticMethodRef NativeMethods/mathHelperSigned([BBSSB[BBS[BS)V;
+		// 53
+		staticFieldRef boolean AppletMgr/installTransactionFlag;
+		// 54
+		.classRef AppTableEntry;
+		// 55
+		staticFieldRef byte[] AppletMgr/theAppState;
+		// 56
+		staticMethodRef 1.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 57
+		staticFieldRef byte[] AppletMgr/AppletMgrBuffer;
+		// 58
+		staticFieldRef byte[] AppletMgr/currentAppAID;
+		// 59
+		staticMethodRef NativeMethods/setJCREentry(Ljava/lang/Object;Z)V;
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		// 60
+		staticMethodRef NativeMethods/getCardInterfaceCount()B;
+		// 61
+		staticFieldRef byte[] AppletMgr/defaultApplets;
+		// 62
+		staticMethodRef 1.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 63
+		staticMethodRef AppTableEntry/<init>()V;
+		// 64
+		staticFieldRef byte GarbageCollector/GCRequested;
+		// 65
+		staticFieldRef byte AppletMgr/appInProcess;
+		// 66
+		.classRef 0.1;		// java/lang/Throwable
+		// 67
+		staticMethodRef NativeMethods/getActiveInterface()B;
+		// 68
+		staticMethodRef AppletMgr/addAppletEntry(B)B;
+		// 69
+		staticMethodRef NativeMethods/getCurrentlySelectedChannel()B;
+		// 70
+		staticMethodRef PrivAccess/getContextId(B)B;
+		// 71
+		staticMethodRef NativeMethods/getChannelContext(BB)B;
+		// 72
+		staticMethodRef NativeMethods/getChannelStatus(BB)B;
+		// 73
+		staticMethodRef PackageMgr/getAppletInfo([BSBB)S;
+		// 74
+		staticMethodRef NativeMethods/getContextStatus(B)B;
+		// 75
+		staticMethodRef NativeMethods/clearTransientObjs(BBB)V;
+		// 76
+		staticMethodRef NativeMethods/setChannelContext(BBBZ)Z;
+		// 77
+		staticMethodRef PackageMgr/getPkgIdForContext(B)B;
+		// 78
+		staticMethodRef NativeMethods/callInstall(SB[BSBB)V;
+		// 79
+		staticMethodRef 1.8.7()B;		// javacard/framework/JCSystem.getTransactionDepth()B
+		// 80
+		staticMethodRef NativeMethods/clearInvalidTransientReferences()V;
+		// 81
+		virtualMethodRef PrivAccess/getAID(B)Ljavacard/framework/AID;;
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+		// 82
+		staticFieldRef boolean GarbageCollector/sweepStarted;
+		// 83
+		virtualMethodRef 1.6.2([BSB)Z;		// equals([BSB)Z
+		// 84
+		virtualMethodRef 1.6.0(Ljava/lang/Object;)Z;		// equals(Ljava/lang/Object;)Z
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		// 85
+		staticMethodRef PrivAccess/getPreviousAppID()B;
+		// 86
+		staticMethodRef 1.13.1(S)V;		// javacard/framework/SystemException.throwIt(S)V
+		// 87
+		staticFieldRef PackageEntry PackageMgr/g_newPackage;
+		// 88
+		staticFieldRef short[] GarbageCollector/RMIExpObjArray;
+		// 89
+		staticFieldRef byte AppletMgr/currentAppletIndex;
+		// 90
+		staticMethodRef AppletMgr/findApplet(Ljavacard/framework/AID;)B;
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+		// 91
+		staticMethodRef GarbageCollector/markObjects()Z;
+		// 92
+		staticMethodRef AppletMgr/commit(B)V;
+		// 93
+		staticMethodRef PackageMgr/commit()V;
+		// 94
+		staticMethodRef 1.10.6()B;		// javacard/framework/APDU.getCLAChannel()B
+		// 95
+		.classRef 1.18;		// javacard/framework/AppletEvent
+		// 96
+		.classRef 1.17;		// javacard/framework/MultiSelectable
+		// 97
+		.classRef 0.2;		// java/lang/Exception
+		// 98
+		virtualMethodRef 1.10.1()[B;		// getBuffer()[B
+		// 99
+		virtualMethodRef 1.10.6()S;		// setIncomingAndReceive()S
+		// 100
+		staticMethodRef AppletMgr/findApplet([BSB)B;
+		// 101
+		virtualMethodRef 1.10.3(S)S;		// receiveBytes(S)S
+		// 102
+		staticMethodRef 1.16.2([BS[BSS)S;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+		// 103
+		staticMethodRef AppletMgr/callUninstallMethods([BB)V;
+		// 104
+		staticMethodRef NativeMethods/startSweepCycle()V;
+		// 105
+		staticMethodRef 1.16.7([BSSB)S;		// javacard/framework/Util.arrayFill([BSSB)S
+		// 106
+		staticMethodRef GarbageCollector/cleanupExportedObjectsArray()V;
+		// 107
+		.classRef 1.13;		// javacard/framework/SystemException
+		// 108
+		staticMethodRef 1.11.1(S)V;		// javacard/framework/PINException.throwIt(S)V
+		// 109
+		staticMethodRef PrivAccess/getPrivAccess()Lcom/sun/javacard/impl/PrivAccess;;
+		// 110
+		virtualMethodRef PrivAccess/isGarbageCollectionRequested()Z;
+		// 111
+		virtualMethodRef PrivAccess/setGCRequestedFlag(Z)V;
+		// 112
+		staticMethodRef OwnerPINxImpl/resetTriesRemaining()V;
+		// 113
+		staticMethodRef OwnerPINxImpl/setValidatedFlag(Z)V;
+		// 114
+		staticMethodRef NativeMethods/sensitiveResultSet(S)V;
+		// 115
+		staticMethodRef OwnerPINxImpl/setValidatedFlagNT(Z)V;
+		// 116
+		virtualMethodRef OwnerPINxImpl/getTriesRemaining()B;
+		// 117
+		staticMethodRef OwnerPINxImpl/decrementTriesRemainingNT()V;
+		// 118
+		staticMethodRef NativeMethods/sensitiveResultSetBooleanFalse()V;
+		// 119
+		staticMethodRef 1.16.0([BS[BSS)B;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+		// 120
+		staticMethodRef OwnerPINxImpl/resetTriesRemainingNT()V;
+		// 121
+		staticMethodRef NativeMethods/sensitiveResultSetBooleanTrue()V;
+		// 122
+		staticMethodRef OwnerPINxImpl/getValidatedFlag()Z;
+		// 123
+		virtualMethodRef OwnerPINxImpl/isValidated()Z;
+		// 124
+		virtualMethodRef OwnerPINxImpl/resetAndUnblock()V;
+		// 125
+		staticMethodRef NativeMethods/initializeGC()V;
+		// 126
+		staticMethodRef 1.7.1(S)V;		// javacard/framework/ISOException.throwIt(S)V
+		// 127
+		staticFieldRef AppTableEntry[] AppletMgr/theAppTable;
+		// 128
+		staticMethodRef NativeMethods/markAppletRoots(Ljava/lang/Object;)B;
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		// 129
+		staticFieldRef PackageEntry[] PackageMgr/f_pkgTable;
+		// 130
+		staticMethodRef 1.16.1([BS[BSS)S;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+		// 131
+		staticMethodRef OwnerPINxWithPredecrementImpl/resetTriesRemaining()V;
+		// 132
+		staticMethodRef OwnerPINxWithPredecrementImpl/setValidatedFlag(Z)V;
+		// 133
+		staticMethodRef OwnerPINxWithPredecrementImpl/setPredecrementedFlag(Z)V;
+		// 134
+		staticMethodRef OwnerPINxWithPredecrementImpl/setValidatedFlagNT(Z)V;
+		// 135
+		staticMethodRef OwnerPINxWithPredecrementImpl/setPredecrementedFlagNT(Z)V;
+		// 136
+		staticMethodRef OwnerPINxWithPredecrementImpl/resetTriesRemainingNT()V;
+		// 137
+		staticMethodRef OwnerPINxWithPredecrementImpl/getValidatedFlag()Z;
+		// 138
+		virtualMethodRef OwnerPINxWithPredecrementImpl/isValidated()Z;
+		// 139
+		virtualMethodRef OwnerPINxWithPredecrementImpl/resetAndUnblock()V;
+		// 140
+		staticMethodRef OwnerPINxWithPredecrementImpl/decrementTriesRemainingInternalNT()V;
+		// 141
+		virtualMethodRef OwnerPINxWithPredecrementImpl/getTriesRemaining()B;
+		// 142
+		staticFieldRef boolean GarbageCollector/deletingPackage;
+		// 143
+		staticFieldRef byte GarbageCollector/packageBeingDeleted;
+		// 144
+		staticMethodRef NativeMethods/markStaticRoots(BS)B;
+		// 145
+		.classRef BundlePackageEntry;
+		// 146
+		staticMethodRef NativeMethods/markNonRootObjects()Z;
+		// 147
+		staticMethodRef NativeMethods/cleanupExportedObjectsArray([S)V;
+		// 148
+		.classRef 1.7;		// javacard/framework/ISOException
+		// 149
+		.classRef 1.6;		// javacard/framework/AID
+		// 150
+		staticMethodRef 1.6.0([BSB)V;		// javacard/framework/AID.<init>([BSB)V
+		// 151
+		staticMethodRef BundlePackageEntry/<init>(Ljavacard/framework/AID;BB)V;
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+		// 152
+		staticMethodRef NativeMethods/initializeAppletDeletion([BB)V;
+		// 153
+		staticMethodRef 1.8.1()V;		// javacard/framework/JCSystem.beginTransaction()V
+		// 154
+		.classRef AppletInfo;
+		// 155
+		staticMethodRef AppletInfo/<init>(Ljavacard/framework/AID;SB)V;
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+		// 156
+		staticMethodRef AppletMgr/removeApplet(B)V;
+		// 157
+		staticMethodRef 1.8.0()V;		// javacard/framework/JCSystem.abortTransaction()V
+		// 158
+		.classRef StaticResourceEntry;
+		// 159
+		virtualMethodRef 1.7.1()S;		// getReason()S
+		// 160
+		staticMethodRef StaticResourceEntry/<init>(SSZ)V;
+		// 161
+		staticMethodRef 1.8.2()V;		// javacard/framework/JCSystem.commitTransaction()V
+		// 162
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 163
+		staticFieldRef byte PackageMgr/CAPInProcessMinorVersion;
+		// 164
+		staticFieldRef int PackageMgr/g_tempMemoryAddress;
+		// 165
+		staticFieldRef int PackageMgr/g_tempMemorySize;
+		// 166
+		staticFieldRef byte PackageMgr/g_newPackageIdentifier;
+		// 167
+		.classRef PackageEntry;
+		// 168
+		staticMethodRef PackageEntry/<init>(Ljavacard/framework/AID;BBBB)V;
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+		// 169
+		staticMethodRef NativeMethods/getMaxPackageIdentifier()B;
+		// 170
+		staticFieldRef byte PackageMgr/f_firstEEPkgID;
+		// 171
+		staticMethodRef PackageMgr/restore()V;
+		// 172
+		.classRef 1.14;		// javacard/framework/TransactionException
+		// 173
+		staticMethodRef PackageMgr/freeTempMemory()V;
+		// 174
+		staticMethodRef NativeMethods/freeHeap(II)V;
+		// 175
+		staticMethodRef PackageMgr/findPkgID([BSBZZ)B;
+		// 176
+		staticMethodRef AppletMgr/getAppletsForPackage([BBB)B;
+		// 177
+		staticMethodRef PackageMgr/removePackage(B)V;
+		// 178
+		staticMethodRef PackageMgr/removePackageAndApplets(B[BB)V;
+		// 179
+		staticMethodRef PackageMgr/getBundlePkgIndex(B[BSBBB)B;
+		// 180
+		staticMethodRef PackageMgr/findBundlePkgIndex(B[BSB)B;
+		// 181
+		staticMethodRef NativeMethods/getPackageExportComponent(B)I;
+		// 182
+		staticMethodRef NativeMethods/getPkgIDForAddress(I)B;
+		// 183
+		virtualMethodRef PackageEntry/getPackageName([BB)V;
+		// 184
+		staticMethodRef PackageMgr/checkDependencies(B)B;
+		// 185
+		staticMethodRef GarbageCollector/deletePackageAndApplets(B[BB)V;
+		// 186
+		virtualMethodRef PackageEntry/getAppletInstallMethodAddress([BSB)S;
+		// 187
+		staticFieldRef byte[] PackageMgr/packageContextTable;
+		// 188
+		staticMethodRef PackageMgr/getPkgContext(B)B;
+		// 189
+		virtualMethodRef PackedBoolean/access(BB)Z;
+		// 190
+		staticMethodRef AppletMgr/register(Ljavacard/framework/Applet;Ljavacard/framework/AID;)V;
+			.descriptor	Ljavacard/framework/Applet;	1.3;
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+		// 191
+		staticFieldRef PrivAccess PrivAccess/thePrivAccess;
+		// 192
+		staticFieldRef PackedBoolean PrivAccess/thePackedBoolean;
+		// 193
+		.classRef PackedBoolean;
+		// 194
+		staticMethodRef PackedBoolean/<init>(B)V;
+		// 195
+		staticFieldRef byte PrivAccess/selectingAppletFlag;
+		// 196
+		virtualMethodRef PackedBoolean/set(B)V;
+		// 197
+		virtualMethodRef PackedBoolean/reset(B)V;
+		// 198
+		staticFieldRef byte PrivAccess/processMethodFlag;
+		// 199
+		staticMethodRef PrivAccess/getSelectedAppID(BB)B;
+		// 200
+		staticMethodRef NativeMethods/channelManage(BBB)B;
+		// 201
+		staticMethodRef PrivAccess/selectDefaultApplet(BB)V;
+		// 202
+		staticMethodRef PrivAccess/deselectOnly(BB)V;
+		// 203
+		staticMethodRef PrivAccess/selectOnly(BBB)V;
+		// 204
+		staticMethodRef NativeMethods/getMaxChannels()B;
+		// 205
+		staticMethodRef PrivAccess/setSelectingAppletFlag()V;
+		// 206
+		staticMethodRef NativeMethods/setCurrentlySelectedChannel(BB)V;
+		// 207
+		staticMethodRef PrivAccess/getSelectedApplet(BB)Ljavacard/framework/Applet;;
+			.descriptor	Ljavacard/framework/Applet;	1.3;
+
+		// 208
+		virtualMethodRef 1.3.6()Z;		// select()Z
+		// 209
+		staticFieldRef byte PrivAccess/appCurrentlySelected;
+		// 210
+		virtualMethodRef 1.13.1()S;		// getReason()S
+		// 211
+		virtualMethodRef 1.3.4()V;		// deselect()V
+		// 212
+		staticFieldRef byte PrivAccess/newAppBeingSelected;
+		// 213
+		staticFieldRef byte PrivAccess/newAppBeingSelectedOnInterface;
+		// 214
+		staticFieldRef byte PrivAccess/newAppBeingSelectedOnChannel;
+		// 215
+		staticFieldRef boolean PrivAccess/deselectionInProgress;
+		// 216
+		staticMethodRef NativeMethods/getCurrentContext()B;
+		// 217
+		staticMethodRef NativeMethods/getPreviousContext()B;
+		// 218
+		staticMethodRef PackageMgr/init()V;
+		// 219
+		staticMethodRef PrivAccess/getPackedBoolean()Lcom/sun/javacard/impl/PackedBoolean;;
+		// 220
+		virtualMethodRef PackedBoolean/allocate()B;
+		// 221
+		staticMethodRef PrivAccess/createRomizedAppInstance(BBLjavacard/framework/APDU;)V;
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+		// 222
+		virtualMethodRef 1.6.3([BS)B;		// getBytes([BS)B
+		// 223
+		staticMethodRef AppletMgr/createApplet([BSBB)Ljavacard/framework/AID;;
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+		// 224
+		staticMethodRef PrivAccess/setAppState(Ljavacard/framework/AID;B)V;
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+		// 225
+		virtualMethodRef PackedBoolean/get(B)Z;
+		// 226
+		staticMethodRef SecurityExceptionHelper/throwSE()V;
+		// 227
+		virtualMethodRef 1.3.5(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;;		// getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;
+			.descriptor	Ljavacard/framework/AID;	1.6;
+			.descriptor	Ljavacard/framework/Shareable;	1.2;
+
+		// 228
+		virtualMethodRef PackageEntry/getStaticResources()[Lcom/sun/javacard/impl/StaticResourceEntry;;
+		// 229
+		virtualMethodRef PackageEntry/getResourceObject()Ljavacard/framework/Resources;;
+			.descriptor	Ljavacard/framework/Resources;	1.23;
+
+		// 230
+		virtualMethodRef PackageEntry/setResourceObject(Ljavacard/framework/Resources;)V;
+			.descriptor	Ljavacard/framework/Resources;	1.23;
+
+		// 231
+		staticMethodRef PackageMgr/getPkgIDForAddress(I)B;
+		// 232
+		staticMethodRef PackageMgr/getPkgNameForClass(I[BB)B;
+		// 233
+		.classRef 2.7;		// javacardx/biometry1toN/Bio1toNException
+		// 234
+		staticMethodRef 2.7.0(S)V;		// javacardx/biometry1toN/Bio1toNException.<init>(S)V
+		// 235
+		.classRef 3.3;		// javacardx/biometry/BioException
+		// 236
+		staticMethodRef 3.3.0(S)V;		// javacardx/biometry/BioException.<init>(S)V
+		// 237
+		.classRef 4.6;		// javacardx/framework/tlv/TLVException
+		// 238
+		staticMethodRef 4.6.0(S)V;		// javacardx/framework/tlv/TLVException.<init>(S)V
+		// 239
+		.classRef 5.7;		// javacard/framework/service/ServiceException
+		// 240
+		staticMethodRef 5.7.0(S)V;		// javacard/framework/service/ServiceException.<init>(S)V
+		// 241
+		staticMethodRef GarbageCollector/setExpObjArray([S)V;
+		// 242
+		staticFieldRef 0.10 SecurityExceptionHelper/se;
+		// 243
+		staticFieldRef byte PackageMgr/appletPkgCount;
+		// 244
+		staticMethodRef GarbageCollector/resetPackageDeletion()V;
+		// 245
+		staticMethodRef 1.8.23(Ljava/lang/Object;SSSLjavacard/framework/Shareable;)Ljava/lang/Object;;		// javacard/framework/JCSystem.makeArrayView(Ljava/lang/Object;SSSLjavacard/framework/Shareable;)Ljava/lang/Object;
+			.descriptor	Ljava/lang/Object;	0.0;
+			.descriptor	Ljavacard/framework/Shareable;	1.2;
+			.descriptor	Ljava/lang/Object;	0.0;
+
+	}
+
+	.interface public abstract Constants 0 {
+
+		.fields {
+			public static final short APDU_BUFFER_LENGTH = 133;		// S
+			public static final short SERIAL_BUFFER_LENGTH = 100;		// S
+		}
+
+	}
+
+	.interface public abstract Errors 1 {
+
+		.fields {
+			public static final short CAP_MAGIC = 25602;		// S
+			public static final short CAP_MINOR = 25603;		// S
+			public static final short CAP_MAJOR = 25604;		// S
+			public static final short INTEGER_UNSUPPORTED = 25611;		// S
+			public static final short DUP_PKG_AID = 25612;		// S
+			public static final short DUP_APPLET_AID = 25613;		// S
+			public static final short ABORTED = 25615;		// S
+			public static final short ERROR_STATE = 25633;		// S
+			public static final short COMP_ORDER = 25634;		// S
+			public static final short EXCEPTION = 25636;		// S
+			public static final short COMMAND_ORDER = 25637;		// S
+			public static final short COMP_TAG = 25640;		// S
+			public static final short INSTRUCTION = 25654;		// S
+			public static final short ON_CARD_PKG_MAX_EXCEEDED = 25655;		// S
+			public static final short IMPORT_NOT_FOUND = 25656;		// S
+			public static final short PKG_ID = 25657;		// S
+			public static final short ON_CARD_APPLET_PKG_MAX_EXCEEDED = 25658;		// S
+			public static final short PKG_METHOD_MAX_EXCEEDED = 25666;		// S
+			public static final short APPLET_NOT_FOUND = 25667;		// S
+			public static final short APPLET_CREATION = 25668;		// S
+			public static final short INSTANCE_MAX_EXCEEDED = 25669;		// S
+			public static final short ALLOCATE_FAILURE = 25670;		// S
+			public static final short IMPORT_CLASS_NOT_FOUND = 25671;		// S
+			public static final short DEPENDENCIES_ON_APPLET = 25672;		// S
+			public static final short MEMORY_CONSTRAINTS = 25673;		// S
+			public static final short PACKAGE_NOT_FOUND = 25675;		// S
+			public static final short DEPENDENCIES_ON_PACKAGE = 25676;		// S
+			public static final short APPLETS_PRESENT = 25677;		// S
+			public static final short PACKAGE_IS_ROM_PACKAGE = 25678;		// S
+			public static final short PACKAGE_NAME_LENGTH_EXCEEDED = 25679;		// S
+			public static final short APPLET_ACTIVE = 25681;		// S
+			public static final short ACTIVE_APPLET_FROM_SAME_PACKAGE = 25682;		// S
+			public static final short TRANSACTION_ERROR_DURING_PKG_REMOVAL = 25683;		// S
+			public static final short INVALID_CHANNEL = 25684;		// S
+			public static final short INCOMPATIBLE_CLASS = 25685;		// S
+		}
+
+	}
+
+	.interface public abstract Options 2 {
+
+		.fields {
+			public static final boolean APDU_PROTOCOL_T0 = 1;		// Z
+			public static final boolean APDU_PROTOCOL_T1 = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_DES_TRANSIENT_RESET = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_DES_TRANSIENT_DESELECT = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_DES = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_RSA_PUBLIC = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_RSA_PRIVATE = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_RSA_CRT_PRIVATE = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_DSA_PUBLIC = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_DSA_PRIVATE = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_EC_F2M_PUBLIC = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_EC_F2M_PRIVATE = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_EC_FP_PUBLIC = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_EC_FP_PRIVATE = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_FF_PLAIN_PUBLIC = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_FF_PLAIN_PRIVATE = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_AES_TRANSIENT_RESET = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_AES_TRANSIENT_DESELECT = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_AES = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_KOREAN_SEED_TRANSIENT_RESET = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_KOREAN_SEED_TRANSIENT_DESELECT = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_KOREAN_SEED = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_HMAC_TRANSIENT_RESET = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_HMAC_TRANSIENT_DESELECT = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_HMAC = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_GENERIC_SECRET_TRANSIENT_RESET = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_GENERIC_SECRET_TRANSIENT_DESELECT = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_GENERIC_SECRET = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_RSA_PRIVATE_TRANSIENT_RESET = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_RSA_PRIVATE_TRANSIENT_DESELECT = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_RSA_CRT_PRIVATE_TRANSIENT_RESET = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_RSA_CRT_PRIVATE_TRANSIENT_DESELECT = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_DSA_PRIVATE_TRANSIENT_RESET = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_DSA_PRIVATE_TRANSIENT_DESELECT = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_EC_F2M_PRIVATE_TRANSIENT_RESET = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_EC_F2M_PRIVATE_TRANSIENT_DESELECT = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_EC_FP_PRIVATE_TRANSIENT_RESET = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_EC_FP_PRIVATE_TRANSIENT_DESELECT = 1;		// Z
+			public static final boolean KEYBUILDER_TYPE_EC_FP_PARAMETERS = 1;		// Z
+			public static final boolean KEYPAIR_ALG_RSA = 1;		// Z
+			public static final boolean KEYPAIR_ALG_RSA_CRT = 1;		// Z
+			public static final boolean KEYPAIR_ALG_DSA = 1;		// Z
+			public static final boolean KEYPAIR_ALG_EC_F2M = 1;		// Z
+			public static final boolean KEYPAIR_ALG_EC_FP = 1;		// Z
+			public static final boolean KEYPAIR_ALG_FF_PLAIN = 1;		// Z
+			public static final boolean SIGNATURE_ALG_DES_MAC4_NOPAD = 1;		// Z
+			public static final boolean SIGNATURE_ALG_DES_MAC8_NOPAD = 1;		// Z
+			public static final boolean SIGNATURE_ALG_DES_MAC4_ISO9797_M1 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_DES_MAC8_ISO9797_M1 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_DES_MAC4_ISO9797_M2 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_DES_MAC8_ISO9797_M2 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_DES_MAC4_PKCS5 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_DES_MAC8_PKCS5 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_SHA_ISO9796 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_SHA_PKCS1 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_MD5_PKCS1 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_RIPEMD160_ISO9796 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_RIPEMD160_PKCS1 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_DSA_SHA = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_SHA_RFC2409 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_MD5_RFC2409 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_ECDSA_SHA = 1;		// Z
+			public static final boolean SIGNATURE_ALG_AES_MAC_128_NOPAD = 1;		// Z
+			public static final boolean SIGNATURE_ALG_AES_CMAC_128 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_DES_MAC4_ISO9797_1_M2_ALG3 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_DES_MAC8_ISO9797_1_M2_ALG3 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_SHA_PKCS1_PSS = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_MD5_PKCS1_PSS = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_RIPEMD160_PKCS1_PSS = 1;		// Z
+			public static final boolean SIGNATURE_ALG_HMAC_SHA1 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_HMAC_SHA_256 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_HMAC_SHA_384 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_HMAC_SHA_512 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_HMAC_MD5 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_HMAC_RIPEMD160 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_SHA_ISO9796_MR = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_RIPEMD160_ISO9796_MR = 1;		// Z
+			public static final boolean SIGNATURE_ALG_KOREAN_SEED_MAC_NOPAD = 1;		// Z
+			public static final boolean SIGNATURE_ALG_ECDSA_SHA_256 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_ECDSA_SHA_384 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_AES_MAC_192_NOPAD = 1;		// Z
+			public static final boolean SIGNATURE_ALG_AES_MAC_256_NOPAD = 1;		// Z
+			public static final boolean SIGNATURE_ALG_ECDSA_SHA_224 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_ECDSA_SHA_512 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_SHA_224_PKCS1 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_SHA_256_PKCS1 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_SHA_384_PKCS1 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_SHA_512_PKCS1 = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_SHA_224_PKCS1_PSS = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_SHA_256_PKCS1_PSS = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_SHA_384_PKCS1_PSS = 1;		// Z
+			public static final boolean SIGNATURE_ALG_RSA_SHA_512_PKCS1_PSS = 1;		// Z
+			public static final boolean CHECKSUM_ALG_ISO3309_CRC16 = 1;		// Z
+			public static final boolean CHECKSUM_ALG_ISO3309_CRC32 = 1;		// Z
+			public static final boolean RANDOMDATA_ALG_PSEUDO_RANDOM = 1;		// Z
+			public static final boolean RANDOMDATA_ALG_SECURE_RANDOM = 1;		// Z
+			public static final boolean MESSAGEDIGEST_ALG_SHA = 1;		// Z
+			public static final boolean MESSAGEDIGEST_ALG_MD5 = 1;		// Z
+			public static final boolean MESSAGEDIGEST_ALG_RIPEMD160 = 1;		// Z
+			public static final boolean MESSAGEDIGEST_ALG_SHA_256 = 1;		// Z
+			public static final boolean MESSAGEDIGEST_ALG_SHA_384 = 1;		// Z
+			public static final boolean MESSAGEDIGEST_ALG_SHA_512 = 1;		// Z
+			public static final boolean MESSAGEDIGEST_ALG_SHA_224 = 1;		// Z
+			public static final boolean KEYAGREEMENT_ALG_FF_SVDP_DH = 1;		// Z
+			public static final boolean KEYAGREEMENT_ALG_EC_SVDP_DH = 1;		// Z
+			public static final boolean KEYAGREEMENT_ALG_EC_SVDP_DH_KDF = 1;		// Z
+			public static final boolean KEYAGREEMENT_ALG_EC_SVDP_DHC = 1;		// Z
+			public static final boolean KEYAGREEMENT_ALG_EC_PACE_GM = 1;		// Z
+			public static final boolean KEYAGREEMENT_ALG_EC_SVDP_DH_PLAIN_XY = 1;		// Z
+			public static final boolean KEYAGREEMENT_ALG_EC_SVDP_DHC_KDF = 1;		// Z
+			public static final boolean KEYAGREEMENT_ALG_EC_SVDP_DH_PLAIN = 1;		// Z
+			public static final boolean KEYAGREEMENT_ALG_EC_SVDP_DHC_PLAIN = 1;		// Z
+			public static final boolean CIPHER_ALG_DES_CBC_NOPAD = 1;		// Z
+			public static final boolean CIPHER_ALG_DES_CBC_ISO9797_M1 = 1;		// Z
+			public static final boolean CIPHER_ALG_DES_CBC_ISO9797_M2 = 1;		// Z
+			public static final boolean CIPHER_ALG_DES_CBC_PKCS5 = 1;		// Z
+			public static final boolean CIPHER_ALG_DES_ECB_NOPAD = 1;		// Z
+			public static final boolean CIPHER_ALG_DES_ECB_ISO9797_M1 = 1;		// Z
+			public static final boolean CIPHER_ALG_DES_ECB_ISO9797_M2 = 1;		// Z
+			public static final boolean CIPHER_ALG_DES_ECB_PKCS5 = 1;		// Z
+			public static final boolean CIPHER_ALG_RSA_ISO14888 = 1;		// Z
+			public static final boolean CIPHER_ALG_RSA_PKCS1 = 1;		// Z
+			public static final boolean CIPHER_ALG_RSA_ISO9796 = 1;		// Z
+			public static final boolean CIPHER_ALG_RSA_NOPAD = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_BLOCK_128_CBC_NOPAD = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_BLOCK_128_ECB_NOPAD = 1;		// Z
+			public static final boolean CIPHER_ALG_RSA_PKCS1_OAEP = 1;		// Z
+			public static final boolean CIPHER_ALG_KOREAN_SEED_ECB_NOPAD = 1;		// Z
+			public static final boolean CIPHER_ALG_KOREAN_SEED_CBC_NOPAD = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_BLOCK_192_CBC_NOPAD = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_BLOCK_192_ECB_NOPAD = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_BLOCK_256_CBC_NOPAD = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_BLOCK_256_ECB_NOPAD = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_CBC_ISO9797_M1 = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_CBC_ISO9797_M2 = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_CBC_PKCS5 = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_ECB_ISO9797_M1 = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_ECB_ISO9797_M2 = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_ECB_PKCS5 = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_CCM = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_GCM = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_XTS = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_CFB = 1;		// Z
+			public static final boolean CIPHER_ALG_AES_BLOCK_128_CFB_NOPAD = 1;		// Z
+		}
+
+	}
+
+	.class public BundlePackageEntry 3 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			 1.6 pkgAID 0;		// Ljavacard/framework/AID;
+			 byte[] pkgName 1;		// [B
+			 byte pkgMinor 2;		// B
+			 byte pkgMajor 3;		// B
+			 byte pkgNamelength 4;		// B
+		}
+
+		.publicMethodTable 1 3 {
+			equals(Ljava/lang/Object;)Z 0;
+			setPkgNameAndLength([BB)V 255;
+			getPackageName([BB)V 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(Ljavacard/framework/AID;BB)V 0 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					aload_1;
+					putfield_a_this 0;		// reference com/sun/javacard/impl/BundlePackageEntry.pkgAID
+					sload_2;
+					putfield_b_this 1;		// byte com/sun/javacard/impl/BundlePackageEntry.pkgMajor
+					sload_3;
+					putfield_b_this 2;		// byte com/sun/javacard/impl/BundlePackageEntry.pkgMinor
+					return;
+		}
+
+		.method public setPkgNameAndLength([BB)V 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	sload_2;
+					putfield_b_this 3;		// byte com/sun/javacard/impl/BundlePackageEntry.pkgNamelength
+					aload_0;
+					aload_1;
+					arraylength;
+					newarray 11;
+					putfield_a 4;		// reference com/sun/javacard/impl/BundlePackageEntry.pkgName
+					aload_1;
+					sconst_0;
+					getfield_a_this 4;		// reference com/sun/javacard/impl/BundlePackageEntry.pkgName
+					sconst_0;
+					aload_1;
+					arraylength;
+					invokestatic 130;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					return;
+		}
+
+		.method public getPackageName([BB)V 2 {
+			.stack 4;
+			.locals 1;
+
+				L0:	getfield_a_this 4;		// reference com/sun/javacard/impl/BundlePackageEntry.pkgName
+					ifnull L4;
+				L1:	sconst_0;
+					sstore_3;
+				L2:	sload_3;
+					getfield_b_this 3;		// byte com/sun/javacard/impl/BundlePackageEntry.pkgNamelength
+					if_scmpge L4;
+				L3:	aload_1;
+					sload_2;
+					sload_3;
+					sadd;
+					getfield_a_this 4;		// reference com/sun/javacard/impl/BundlePackageEntry.pkgName
+					sload_3;
+					baload;
+					bastore;
+					sload_3;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_3;
+					goto L2;
+				L4:	return;
+		}
+
+	}
+
+	.class  ComponentInfo extends 0.0 {		// extends java/lang/Object
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(SS)V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					return;
+		}
+
+	}
+
+	.class  AppTableEntry extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			 1.3 theApplet 0;		// Ljavacard/framework/Applet;
+			 1.6 theAID 1;		// Ljavacard/framework/AID;
+			 byte theContext 2;		// B
+		}
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method  <init>()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					return;
+		}
+
+	}
+
+	.class public CryptoInit 4 extends 0.0 {		// extends java/lang/Object
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static initCryptoStorage()V 1 {
+			.stack 0;
+			.locals 0;
+
+				L0:	return;
+		}
+
+	}
+
+	.class  AppletInfo extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			 1.6 theClassAID 0;		// Ljavacard/framework/AID;
+			 short installMethodAddr 1;		// S
+			 byte installMethodBlock 2;		// B
+		}
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(Ljavacard/framework/AID;SB)V 0 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					aload_1;
+					putfield_a_this 5;		// reference com/sun/javacard/impl/AppletInfo.theClassAID
+					sload_2;
+					putfield_s_this 6;		// short com/sun/javacard/impl/AppletInfo.installMethodAddr
+					sload_3;
+					putfield_b_this 7;		// byte com/sun/javacard/impl/AppletInfo.installMethodBlock
+					return;
+		}
+
+	}
+
+	.class public GarbageCollector 5 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			static byte GCRequested = -1;		// B
+			static boolean deletingPackage;		// Z
+			static boolean sweepStarted;		// Z
+			static byte packageBeingDeleted = -1;		// B
+			static short[] RMIExpObjArray;		// [S
+		}
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static setGCRequested(B)V 1 {
+			.stack 1;
+			.locals 0;
+
+				L0:	sload_0;
+					putstatic_b 64;		// byte com/sun/javacard/impl/GarbageCollector.GCRequested
+					return;
+		}
+
+		.method public static getSweepStarted()Z 2 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_b 82;		// boolean com/sun/javacard/impl/GarbageCollector.sweepStarted
+					sreturn;
+		}
+
+		.method public static setExpObjArray([S)V 3 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					putstatic_a 88;		// reference com/sun/javacard/impl/GarbageCollector.RMIExpObjArray
+					return;
+		}
+
+		.method public static startGC()Z 4 {
+			.stack 1;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore_0;
+				L1:	invokestatic 91;		// com/sun/javacard/impl/GarbageCollector.markObjects()Z
+					ifne L3;
+				L2:	sconst_0;
+					sreturn;
+				L3:	sconst_1;
+					putstatic_b 82;		// boolean com/sun/javacard/impl/GarbageCollector.sweepStarted
+					invokestatic 104;		// com/sun/javacard/impl/NativeMethods.startSweepCycle()V
+					sconst_0;
+					putstatic_b 82;		// boolean com/sun/javacard/impl/GarbageCollector.sweepStarted
+					invokestatic 106;		// com/sun/javacard/impl/GarbageCollector.cleanupExportedObjectsArray()V
+					sconst_1;
+					sreturn;
+		}
+
+		.method private static markObjects()Z {
+			.stack 2;
+			.locals 3;
+
+				L0:	invokestatic 109;		// com/sun/javacard/impl/PrivAccess.getPrivAccess()Lcom/sun/javacard/impl/PrivAccess;
+					invokevirtual 110;		// isGarbageCollectionRequested()Z
+					sstore_0;
+				L1:	invokestatic 109;		// com/sun/javacard/impl/PrivAccess.getPrivAccess()Lcom/sun/javacard/impl/PrivAccess;
+					sconst_0;
+					invokevirtual 111;		// setGCRequestedFlag(Z)V
+				L2:	invokestatic 125;		// com/sun/javacard/impl/NativeMethods.initializeGC()V
+				L3:	goto L8;
+				L4:	astore_1;
+				L5:	sload_0;
+					ifne L7;
+				L6:	sspush 25673;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+					goto L8;
+				L7:	sconst_0;
+					sreturn;
+				L8:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					invokestatic 128;		// com/sun/javacard/impl/NativeMethods.markAppletRoots(Ljava/lang/Object;)B
+					pop;
+					getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					ifnull L20;
+				L9:	sconst_0;
+					sstore_1;
+				L10:	sload_1;
+					bspush 50;
+					if_scmpge L20;
+				L11:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_1;
+					aaload;
+					ifnull L19;
+				L12:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_1;
+					aaload;
+					getfield_s 8;		// short com/sun/javacard/impl/PackageEntry.pkgStaticReferenceCount
+					sstore_2;
+				L13:	getstatic_b 142;		// boolean com/sun/javacard/impl/GarbageCollector.deletingPackage
+					ifeq L15;
+				L14:	getstatic_b 143;		// byte com/sun/javacard/impl/GarbageCollector.packageBeingDeleted
+					sload_1;
+					if_scmpeq L19;
+				L15:	sload_2;
+					ifne L17;
+				L16:	goto L19;
+				L17:	sload_1;
+					sload_2;
+					invokestatic 144;		// com/sun/javacard/impl/NativeMethods.markStaticRoots(BS)B
+					ifne L19;
+				L18:	sconst_0;
+					sreturn;
+				L19:	sload_1;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_1;
+					goto L10;
+				L20:	invokestatic 146;		// com/sun/javacard/impl/NativeMethods.markNonRootObjects()Z
+					ifne L22;
+				L21:	sconst_0;
+					sreturn;
+				L22:	sconst_1;
+					sreturn;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L2 L3 L4 107;
+			}
+		}
+
+		.method private static cleanupExportedObjectsArray()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 88;		// reference com/sun/javacard/impl/GarbageCollector.RMIExpObjArray
+					ifnull L2;
+				L1:	getstatic_a 88;		// reference com/sun/javacard/impl/GarbageCollector.RMIExpObjArray
+					invokestatic 147;		// com/sun/javacard/impl/NativeMethods.cleanupExportedObjectsArray([S)V
+				L2:	return;
+		}
+
+		.method public static deleteApplets([BB)V 5 {
+			.stack 2;
+			.locals 2;
+
+				L0:	sconst_0;
+					sstore_2;
+				L1:	aload_0;
+					sload_1;
+					invokestatic 152;		// com/sun/javacard/impl/NativeMethods.initializeAppletDeletion([BB)V
+					invokestatic 153;		// javacard/framework/JCSystem.beginTransaction()V
+					sconst_0;
+					sstore_3;
+				L2:	sload_3;
+					sload_1;
+					if_scmpge L4;
+				L3:	aload_0;
+					sload_3;
+					baload;
+					bspush 15;
+					sand;
+					invokestatic 156;		// com/sun/javacard/impl/AppletMgr.removeApplet(B)V
+					sload_3;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_3;
+					goto L2;
+				L4:	invokestatic 91;		// com/sun/javacard/impl/GarbageCollector.markObjects()Z
+					sstore_2;
+				L5:	goto L8;
+				L6:	astore_3;
+				L7:	invokestatic 157;		// javacard/framework/JCSystem.abortTransaction()V
+					aload_3;
+					invokevirtual 159;		// getReason()S
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L8:	sload_2;
+					ifne L10;
+				L9:	invokestatic 157;		// javacard/framework/JCSystem.abortTransaction()V
+					sspush 25672;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	invokestatic 161;		// javacard/framework/JCSystem.commitTransaction()V
+					invokestatic 104;		// com/sun/javacard/impl/NativeMethods.startSweepCycle()V
+					invokestatic 106;		// com/sun/javacard/impl/GarbageCollector.cleanupExportedObjectsArray()V
+					return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L4 L5 L6 148;
+			}
+		}
+
+		.method public static initPackageDeletion(B)V 6 {
+			.stack 1;
+			.locals 0;
+
+				L0:	sconst_1;
+					putstatic_b 142;		// boolean com/sun/javacard/impl/GarbageCollector.deletingPackage
+					sload_0;
+					putstatic_b 143;		// byte com/sun/javacard/impl/GarbageCollector.packageBeingDeleted
+					return;
+		}
+
+		.method public static resetPackageDeletion()V 7 {
+			.stack 1;
+			.locals 0;
+
+				L0:	sconst_m1;
+					putstatic_b 143;		// byte com/sun/javacard/impl/GarbageCollector.packageBeingDeleted
+					sconst_0;
+					putstatic_b 142;		// boolean com/sun/javacard/impl/GarbageCollector.deletingPackage
+					return;
+		}
+
+		.method public static cleanupTables(B)V 8 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_0;
+					aaload;
+					ifnonnull L2;
+				L1:	return;
+				L2:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_0;
+					aaload;
+					getfield_b 9;		// byte com/sun/javacard/impl/PackageEntry.appletCount
+					ifle L4;
+				L3:	getstatic_a 187;		// reference com/sun/javacard/impl/PackageMgr.packageContextTable
+					sload_0;
+					invokestatic 188;		// com/sun/javacard/impl/PackageMgr.getPkgContext(B)B
+					sconst_m1;
+					bastore;
+					getstatic_b 243;		// byte com/sun/javacard/impl/PackageMgr.appletPkgCount
+					sconst_1;
+					ssub;
+					s2b;
+					putstatic_b 243;		// byte com/sun/javacard/impl/PackageMgr.appletPkgCount
+				L4:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_0;
+					aconst_null;
+					aastore;
+					invokestatic 244;		// com/sun/javacard/impl/GarbageCollector.resetPackageDeletion()V
+					invokestatic 43;		// com/sun/javacard/impl/GarbageCollector.startGC()Z
+					pop;
+					return;
+		}
+
+		.method public static deletePackage(B)V 9 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					sconst_m1;
+					if_scmpne L2;
+				L1:	sload_0;
+					putstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+				L2:	sload_0;
+					sconst_0;
+					invokestatic 45;		// com/sun/javacard/impl/NativeMethods.removePackage(BB)B
+					pop;
+					invokestatic 153;		// javacard/framework/JCSystem.beginTransaction()V
+					sload_0;
+					invokestatic 46;		// com/sun/javacard/impl/GarbageCollector.cleanupTables(B)V
+					invokestatic 161;		// javacard/framework/JCSystem.commitTransaction()V
+					return;
+		}
+
+		.method public static deletePackageAndApplets(B[BB)V 10 {
+			.stack 2;
+			.locals 1;
+
+				L0:	sload_0;
+					putstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					sload_0;
+					invokestatic 47;		// com/sun/javacard/impl/GarbageCollector.initPackageDeletion(B)V
+					sload_2;
+					ifeq L5;
+				L1:	aload_1;
+					sload_2;
+					invokestatic 48;		// com/sun/javacard/impl/GarbageCollector.deleteApplets([BB)V
+				L2:	goto L5;
+				L3:	astore_3;
+				L4:	sconst_m1;
+					putstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					invokestatic 244;		// com/sun/javacard/impl/GarbageCollector.resetPackageDeletion()V
+					aload_3;
+					invokevirtual 159;		// getReason()S
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	sload_0;
+					invokestatic 49;		// com/sun/javacard/impl/GarbageCollector.deletePackage(B)V
+					return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L1 L2 L3 148;
+			}
+		}
+
+	}
+
+	.class public NativeMethods 6 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final short FORMAT_BCD = 1;		// S
+			public static final short FORMAT_HEX = 2;		// S
+			public static final short ADD_NUMBERS = 1;		// S
+			public static final short MULTIPLY_NUMBERS = 2;		// S
+			public static final short SUBTRACT_NUMBERS = 3;		// S
+			public static final short ADD_SIGNED_NUMBERS = 4;		// S
+			public static final short MULTIPLY_SIGNED_NUMBERS = 5;		// S
+			public static final short SUBTRACT_SIGNED_NUMBERS = 6;		// S
+			public static final short DIVIDE_SIGNED_NUMBERS = 7;		// S
+		}
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public static final native arrayFillNonAtomicForSensitiveArrays([BSSB)S 0 {
+		}
+
+		.method public <init>()V 1 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static native t1SndBlockRcvAck(SSZZ)S 2 {
+		}
+
+		.method public static native t1RcvBlock(SS)S 3 {
+		}
+
+		.method public static native t1RcvAndDiscardData(SS)S 4 {
+		}
+
+		.method public static native t1Abort()S 5 {
+		}
+
+		.method public static native t1Wait()S 6 {
+		}
+
+		.method public static native t1GetNAD()B 7 {
+		}
+
+		.method public static native t1GetRawNAD()B 8 {
+		}
+
+		.method public static native t1LastBlockReceived()Z 9 {
+		}
+
+		.method public static native t1GetIFSC()S 10 {
+		}
+
+		.method public static native t1GetIFSD()S 11 {
+		}
+
+		.method public static native getSecondaryInterfaceEvent()B 12 {
+		}
+
+		.method public static native getCommProtocol(B)B 13 {
+		}
+
+		.method public static native getActiveInterface()B 14 {
+		}
+
+		.method public static native getCardInterfaceCount()B 15 {
+		}
+
+		.method public static native t0RcvCommand()S 16 {
+		}
+
+		.method public static native t0SndStatusRcvCommand()S 17 {
+		}
+
+		.method public static native t0RcvData(S)S 18 {
+		}
+
+		.method public static native t0SndData([BSSB)S 19 {
+		}
+
+		.method public static native t0SndGetResponse(B)S 20 {
+		}
+
+		.method public static native t0Wait()S 21 {
+		}
+
+		.method public static native t0CopyToAPDUBuffer(SS)V 22 {
+		}
+
+		.method public static native initAPDUBuffer()[B 23 {
+		}
+
+		.method public static native t0InitScratchAPDUBuffer()[B 24 {
+		}
+
+		.method public static native t0SetStatus(S)S 25 {
+		}
+
+		.method public static native clearTransientObjs(BBB)V 26 {
+		}
+
+		.method public static native clearInvalidTransientReferences()V 27 {
+		}
+
+		.method public static native setChannelContext(BBBZ)Z 28 {
+		}
+
+		.method public static native getChannelContext(BB)B 29 {
+		}
+
+		.method public static native getCurrentContext()B 30 {
+		}
+
+		.method public static native getPreviousContext()B 31 {
+		}
+
+		.method public static native checkPreviousContextAccess(Ljava/lang/Object;)V 32 {
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		}
+
+		.method public static native setJCREentry(Ljava/lang/Object;Z)V 33 {
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		}
+
+		.method public static native setObjectContext(Ljava/lang/Object;B)V 34 {
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		}
+
+		.method public static native getObjectContext(Ljava/lang/Object;)S 35 {
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		}
+
+		.method public static native channelManage(BBB)B 36 {
+		}
+
+		.method public static native getChannelStatus(BB)B 37 {
+		}
+
+		.method public static native getMaxChannels()B 38 {
+		}
+
+		.method public static native getContextStatus(B)B 39 {
+		}
+
+		.method public static native setCurrentlySelectedChannel(BB)V 40 {
+		}
+
+		.method public static native getCurrentlySelectedChannel()B 41 {
+		}
+
+		.method public static native getMaxPackageIdentifier()B 42 {
+		}
+
+		.method public static native getPackageExportComponent(B)I 43 {
+		}
+
+		.method public static native beginTransactionNative()V 44 {
+		}
+
+		.method public static native commitTransactionNative()V 45 {
+		}
+
+		.method public static native abortTransactionNative()V 46 {
+		}
+
+		.method public static native allocate(I)I 47 {
+		}
+
+		.method public static native freeHeap(II)V 48 {
+		}
+
+		.method public static native E2P_Available()S 49 {
+		}
+
+		.method public static native dtr_Available()S 50 {
+		}
+
+		.method public static native rtr_Available()S 51 {
+		}
+
+		.method public static native availableEEPROM([SS)V 52 {
+		}
+
+		.method public static native availableDTR([SS)V 53 {
+		}
+
+		.method public static native availableRTR([SS)V 54 {
+		}
+
+		.method public static native writeByte(ISB)V 55 {
+		}
+
+		.method public static native writeShort(ISS)V 56 {
+		}
+
+		.method public static native checkMethod(III)S 57 {
+		}
+
+		.method public static native copyBytes([BSIIS)S 58 {
+		}
+
+		.method public static native readByte(IS)B 59 {
+		}
+
+		.method public static native readShort(IS)S 60 {
+		}
+
+		.method public static native addExcTable(IBB)V 61 {
+		}
+
+		.method public static native callInstall(SB[BSBB)V 62 {
+		}
+
+		.method public static native writeObjectReference(ISLjava/lang/Object;)V 63 {
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		}
+
+		.method public static native installDebugInfo(B[B[I)V 64 {
+		}
+
+		.method public static native setCardInitialized()V 65 {
+		}
+
+		.method public static native isCardInitialized()Z 66 {
+		}
+
+		.method public static native initializeGC()V 67 {
+		}
+
+		.method public static native markAppletRoots(Ljava/lang/Object;)B 68 {
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		}
+
+		.method public static native markStaticRoots(BS)B 69 {
+		}
+
+		.method public static native markNonRootObjects()Z 70 {
+		}
+
+		.method public static native startSweepCycle()V 71 {
+		}
+
+		.method public static native initializeAppletDeletion([BB)V 72 {
+		}
+
+		.method public static native removePackage(BB)B 73 {
+		}
+
+		.method public static native cleanupExportedObjectsArray([S)V 74 {
+		}
+
+		.method public static native getObjectID(Ljava/lang/Object;)S 75 {
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		}
+
+		.method public static native checkAccess(S)V 76 {
+		}
+
+		.method public static native getPkgIDForAddress(I)B 77 {
+		}
+
+		.method public static native checkArrayArgs([BSS)V 78 {
+		}
+
+		.method public static native checkArrayDest([BSS)V 79 {
+		}
+
+		.method public static native checkArraySrc([BSS)V 80 {
+		}
+
+		.method public static native addReferenceAddress(IB)S 81 {
+		}
+
+		.method public static native getReferenceAddress(S)I 82 {
+		}
+
+		.method public static native getMethodReferenceFromMappingTable(BIB)S 83 {
+		}
+
+		.method public static native getMethodTokenForSuperClass(BI)B 84 {
+		}
+
+		.method public static native setComponentInfoForPkg(BZBII)V 85 {
+		}
+
+		.method public static native getPackageComponentLocation(BB)I 86 {
+		}
+
+		.method public static native getMethodBlockOffset(BB)I 87 {
+		}
+
+		.method public static native isBundlePackage(B)Z 88 {
+		}
+
+		.method private static native conversionPreProcessor([BSS[BSS)S {
+		}
+
+		.method private static native mathHelper([BSSB[B[BS)V {
+		}
+
+		.method private static native mathHelperSigned([BBSSB[BBS[BS)V {
+		}
+
+		.method public static convertToHex([BSS[BS)S 89 {
+			.stack 6;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					sload_2;
+					aload_3;
+					sload 4;
+					sconst_2;
+					invokestatic 50;		// com/sun/javacard/impl/NativeMethods.conversionPreProcessor([BSS[BSS)S
+					sreturn;
+		}
+
+		.method public static convertToBCD([BSS[BS)S 90 {
+			.stack 6;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					sload_2;
+					aload_3;
+					sload 4;
+					sconst_1;
+					invokestatic 50;		// com/sun/javacard/impl/NativeMethods.conversionPreProcessor([BSS[BSS)S
+					sreturn;
+		}
+
+		.method public static native isBCDFormat([BSS)Z 91 {
+		}
+
+		.method public static native checkForValidBNSize(SS)V 92 {
+		}
+
+		.method public static native setMaxBNValue([BSSB[B[B)V 93 {
+		}
+
+		.method public static native initBigNumber([BSSB[B[B)V 94 {
+		}
+
+		.method public static addBigNumbers([BSSB[B[B)V 95 {
+			.stack 7;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					sload_2;
+					sload_3;
+					aload 4;
+					aload 5;
+					sconst_1;
+					invokestatic 51;		// com/sun/javacard/impl/NativeMethods.mathHelper([BSSB[B[BS)V
+					return;
+		}
+
+		.method public static subtractBigNumbers([BSSB[B[B)V 96 {
+			.stack 7;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					sload_2;
+					sload_3;
+					aload 4;
+					aload 5;
+					sconst_3;
+					invokestatic 51;		// com/sun/javacard/impl/NativeMethods.mathHelper([BSSB[B[BS)V
+					return;
+		}
+
+		.method public static multiplyBigNumbers([BSSB[B[B)V 97 {
+			.stack 7;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					sload_2;
+					sload_3;
+					aload 4;
+					aload 5;
+					sconst_2;
+					invokestatic 51;		// com/sun/javacard/impl/NativeMethods.mathHelper([BSSB[B[BS)V
+					return;
+		}
+
+		.method public static addSignedBigNumbers([BBSSB[BBS[B)V 98 {
+			.stack 10;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					sload_2;
+					sload_3;
+					sload 4;
+					aload 5;
+					sload 6;
+					sload 7;
+					aload 8;
+					sconst_4;
+					invokestatic 52;		// com/sun/javacard/impl/NativeMethods.mathHelperSigned([BBSSB[BBS[BS)V
+					return;
+		}
+
+		.method public static subtractSignedBigNumbers([BBSSB[BBS[B)V 99 {
+			.stack 10;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					sload_2;
+					sload_3;
+					sload 4;
+					aload 5;
+					sload 6;
+					sload 7;
+					aload 8;
+					bspush 6;
+					invokestatic 52;		// com/sun/javacard/impl/NativeMethods.mathHelperSigned([BBSSB[BBS[BS)V
+					return;
+		}
+
+		.method public static multiplySignedBigNumbers([BBSSB[BBS[B)V 100 {
+			.stack 10;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					sload_2;
+					sload_3;
+					sload 4;
+					aload 5;
+					sload 6;
+					sload 7;
+					aload 8;
+					sconst_5;
+					invokestatic 52;		// com/sun/javacard/impl/NativeMethods.mathHelperSigned([BBSSB[BBS[BS)V
+					return;
+		}
+
+		.method public static divideSignedBigNumbers([BBSSB[BBS[B)V 101 {
+			.stack 10;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					sload_2;
+					sload_3;
+					sload 4;
+					aload 5;
+					sload 6;
+					sload 7;
+					aload 8;
+					bspush 7;
+					invokestatic 52;		// com/sun/javacard/impl/NativeMethods.mathHelperSigned([BBSSB[BBS[BS)V
+					return;
+		}
+
+		.method public static native compareBigNumbers([BSSB[BS)B 102 {
+		}
+
+		.method public static native bigNumberToBytes([BSSB[B)V 103 {
+		}
+
+		.method public static native getBNByteLength([BB)B 104 {
+		}
+
+		.method public static native setValueMonotonicCounter([BSS[B)V 105 {
+		}
+
+		.method public static native incrementByMonotonicCounter(S[B)S 106 {
+		}
+
+		.method public static native isWithinTransactionLogs(S)Z 107 {
+		}
+
+		.method public static native sensitiveResultInitialize([S)V 108 {
+		}
+
+		.method public static native sensitiveResultSetBooleanTrue()V 109 {
+		}
+
+		.method public static native sensitiveResultSetBooleanFalse()V 110 {
+		}
+
+		.method public static native sensitiveResultSet(S)V 111 {
+		}
+
+		.method public static native sensitiveResultSetObject(Ljava/lang/Object;)V 112 {
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		}
+
+		.method public static native sensitiveResultSetTagValUnassigned()V 113 {
+		}
+
+		.method public static native sensitiveResultAssertEqualsObj(Ljava/lang/Object;)V 114 {
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		}
+
+		.method public static native sensitiveResultAssertEquals(S)V 115 {
+		}
+
+		.method public static native sensitiveResultAssertTrue()V 116 {
+		}
+
+		.method public static native sensitiveResultAssertFalse()V 117 {
+		}
+
+		.method public static native sensitiveResultAssertGreaterThan(S)V 118 {
+		}
+
+		.method public static native sensitiveResultAssertLessThan(S)V 119 {
+		}
+
+		.method public static native sensitiveResultAssertNegative()V 120 {
+		}
+
+		.method public static native sensitiveResultAssertPositive()V 121 {
+		}
+
+		.method public static native sensitiveResultAssertZero()V 122 {
+		}
+
+		.method public static native sensitiveResultReset()V 123 {
+		}
+
+		.method public static native arrayCopyNonAtomicForSensitiveArrays([BS[BSS)V 124 {
+		}
+
+		.method public static native makeGlobalArray(BS)Ljava/lang/Object; 125 {
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		}
+
+		.method public static native copyIntoShortArray([BS[SIS)V 126 {
+		}
+
+		.method public static native validateResourceSize(SZSS)Z 127 {
+		}
+
+		.method public static native getLibraryPackageID()B 128 {
+		}
+
+		.method public static native changeArrayViewType([S)[B 129 {
+		}
+
+		.method public static native changeArrayViewLength([SS)V 130 {
+		}
+
+		.method public static native changeArrayViewDataStart([SS)V 131 {
+		}
+
+		.method public static native checkArrayBounds([SSS)V 132 {
+		}
+
+		.method public static native certificateByteMatch(S[BS)S 133 {
+		}
+
+		.method public static native certificateBytesCopy(S[BS)S 134 {
+		}
+
+		.method public static native certificateNameAttrCopy(S[BS)S 135 {
+		}
+
+		.method public static native getBusIOProtocol()B 136 {
+		}
+
+		.method public static native InitBusAsync(S[B)Z 137 {
+		}
+
+		.method public static native WriteBusAsync(S[B)Z 138 {
+		}
+
+		.method public static native CloseBusAsync(S)V 139 {
+		}
+
+		.method public static native NioCopyBytes([BI[BII)V 140 {
+		}
+
+		.method public static native timeGetByteLength([BS)S 141 {
+		}
+
+		.method public static native timeToBytes([B[BSSS)S 142 {
+		}
+
+		.method public static native timeSet([B[BSSS)V 143 {
+		}
+
+		.method public static native timePlusAmount([BSS)V 144 {
+		}
+
+		.method public static native timePlusObj([B[B)V 145 {
+		}
+
+		.method public static native timeMinusAmount([BSS)V 146 {
+		}
+
+		.method public static native timeMinusObj([B[B)V 147 {
+		}
+
+		.method public static native timeCompareToAmount([BSS)S 148 {
+		}
+
+		.method public static native timeCompareToObj([B[B)S 149 {
+		}
+
+		.method public static native timeNeg([B)V 150 {
+		}
+
+		.method public static native timeAbs([B)V 151 {
+		}
+
+		.method public static native timeUptime([B)V 152 {
+		}
+
+		.method public static native getSignatureRef()S 153 {
+		}
+
+		.method public static native getRandomDataRef()S 154 {
+		}
+
+		.method public static native getEckeyRef()S 155 {
+		}
+
+		.method public static native getCipherRef()S 156 {
+		}
+
+	}
+
+	.class public AppletMgr 7 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final byte DELETE_APPLETS = -60;		// B
+			public static final byte SET_DEFAULT_APPLET = -58;		// B
+			public static final byte APP_NULL = -1;		// B
+			public static final byte APP_FIRST = 0;		// B
+			public static final byte APPS_MAX = 16;		// B
+			public static final byte NO_APPLET_BEING_PROCESSED = -1;		// B
+			public static final byte APPLET_INDEX = 3;		// B
+			static final byte MAX_APPLETS_TO_BE_DELETED = 8;		// B
+			private static final byte CHANNEL_CLOSED = 0;		// B
+			private static final byte CHANNEL_DISABLED = 1;		// B
+			private static final byte CHANNEL_OPEN = 2;		// B
+			private static final byte CHANNEL_OPEN_MS = 3;		// B
+			private static final byte CHANNEL_MS_MASK = 1;		// B
+			private static final byte CHANNEL_OPEN_MASK = 2;		// B
+			static AppTableEntry[] theAppTable;		// [Lcom/sun/javacard/impl/AppTableEntry;
+			static byte[] theAppState;		// [B
+			static byte[] defaultApplets;		// [B
+			static byte currentAppletIndex = -1;		// B
+			private static byte[] AppletMgrBuffer;		// [B
+			private static byte[] currentAppAID;		// [B
+			private static byte appInProcess = -1;		// B
+			static boolean installTransactionFlag;		// Z
+		}
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public static getInstallTransactionFlag()Z 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_b 53;		// boolean com/sun/javacard/impl/AppletMgr.installTransactionFlag
+					sreturn;
+		}
+
+		.method  <init>()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method static addAppletEntry(B)B {
+			.stack 4;
+			.locals 1;
+
+				L0:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					ifnonnull L3;
+				L1:	bspush 16;
+					anewarray 54;		// com/sun/javacard/impl/AppTableEntry
+					putstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					bspush 16;
+					newarray 11;
+					putstatic_a 55;		// reference com/sun/javacard/impl/AppletMgr.theAppState
+					bspush 25;
+					sconst_2;
+					invokestatic 56;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putstatic_a 57;		// reference com/sun/javacard/impl/AppletMgr.AppletMgrBuffer
+					bspush 16;
+					newarray 11;
+					putstatic_a 58;		// reference com/sun/javacard/impl/AppletMgr.currentAppAID
+					getstatic_a 58;		// reference com/sun/javacard/impl/AppletMgr.currentAppAID
+					sconst_0;
+					invokestatic 59;		// com/sun/javacard/impl/NativeMethods.setJCREentry(Ljava/lang/Object;Z)V
+					bspush 20;
+					invokestatic 60;		// com/sun/javacard/impl/NativeMethods.getCardInterfaceCount()B
+					smul;
+					sstore_1;
+				L2:	sload_1;
+					newarray 11;
+					putstatic_a 61;		// reference com/sun/javacard/impl/AppletMgr.defaultApplets
+					getstatic_a 61;		// reference com/sun/javacard/impl/AppletMgr.defaultApplets
+					sconst_0;
+					sconst_0;
+					bastore;
+					getstatic_a 61;		// reference com/sun/javacard/impl/AppletMgr.defaultApplets
+					sconst_1;
+					sload_1;
+					sconst_1;
+					ssub;
+					s2b;
+					sconst_m1;
+					invokestatic 62;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+				L3:	sconst_0;
+					sstore_1;
+				L4:	sload_1;
+					bspush 16;
+					if_scmpge L8;
+				L5:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_1;
+					aaload;
+					ifnonnull L7;
+				L6:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_1;
+					new 54;		// com/sun/javacard/impl/AppTableEntry
+					dup;
+					invokespecial 63;		// com/sun/javacard/impl/AppTableEntry.<init>()V
+					aastore;
+					getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_1;
+					aaload;
+					sload_0;
+					putfield_b 10;		// byte com/sun/javacard/impl/AppTableEntry.theContext
+					sload_1;
+					putstatic_b 65;		// byte com/sun/javacard/impl/AppletMgr.appInProcess
+					sload_1;
+					sreturn;
+				L7:	sload_1;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_1;
+					goto L4;
+				L8:	sconst_m1;
+					sreturn;
+		}
+
+		.method public static createApplet([BSBB)Ljavacard/framework/AID; 1 {
+			.stack 8;
+			.locals 12;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+				L0:	sconst_0;
+					sstore 4;
+				L1:	sconst_0;
+					sstore 7;
+				L2:	invokestatic 67;		// com/sun/javacard/impl/NativeMethods.getActiveInterface()B
+					sstore 8;
+				L3:	sconst_0;
+					sstore 9;
+				L4:	sconst_0;
+					sstore 11;
+				L5:	sconst_1;
+					sstore 12;
+				L6:	invokestatic 153;		// javacard/framework/JCSystem.beginTransaction()V
+					sconst_1;
+					putstatic_b 53;		// boolean com/sun/javacard/impl/AppletMgr.installTransactionFlag
+					sload_3;
+					invokestatic 68;		// com/sun/javacard/impl/AppletMgr.addAppletEntry(B)B
+					sstore 4;
+					sload 4;
+					sconst_m1;
+					if_scmpne L9;
+				L7:	sconst_0;
+					putstatic_b 53;		// boolean com/sun/javacard/impl/AppletMgr.installTransactionFlag
+					invokestatic 157;		// javacard/framework/JCSystem.abortTransaction()V
+					aconst_null;
+				L8:	areturn;
+				L9:	invokestatic 69;		// com/sun/javacard/impl/NativeMethods.getCurrentlySelectedChannel()B
+					sstore 7;
+					sload 4;
+					invokestatic 70;		// com/sun/javacard/impl/PrivAccess.getContextId(B)B
+					sstore 10;
+				L10:	sload 7;
+					sload 8;
+					invokestatic 71;		// com/sun/javacard/impl/NativeMethods.getChannelContext(BB)B
+					sstore 9;
+					sload 7;
+					sload 8;
+					invokestatic 72;		// com/sun/javacard/impl/NativeMethods.getChannelStatus(BB)B
+					sconst_3;
+					if_scmpne L12;
+				L11:	sconst_1;
+					goto L13;
+				L12:	sconst_0;
+				L13:	sstore 11;
+					sload_1;
+					sload_2;
+					sadd;
+					sstore 5;
+				L14:	aload_0;
+					sload 5;
+					sinc 5 1;
+					baload;
+					sstore 6;
+				L15:	sload 6;
+					ifne L17;
+				L16:	sconst_3;
+					sstore 6;
+					aload_0;
+					sload 5;
+					aload_0;
+					sload 5;
+					sconst_1;
+					sadd;
+					s2b;
+					aload_0;
+					sload 5;
+					sconst_2;
+					sadd;
+					s2b;
+					sconst_0;
+					dup_x 19;
+					bastore;
+					dup_x 19;
+					bastore;
+					bastore;
+				L17:	aload_0;
+					sload_1;
+					sload_2;
+					sconst_1;
+					invokestatic 73;		// com/sun/javacard/impl/PackageMgr.getAppletInfo([BSBB)S
+					sstore 13;
+				L18:	sload 10;
+					invokestatic 74;		// com/sun/javacard/impl/NativeMethods.getContextStatus(B)B
+					sconst_1;
+					sand;
+					ifne L20;
+				L19:	sconst_1;
+					goto L21;
+				L20:	sconst_0;
+				L21:	sstore 14;
+				L22:	sload 7;
+					sload 8;
+					sconst_2;
+					invokestatic 75;		// com/sun/javacard/impl/NativeMethods.clearTransientObjs(BBB)V
+					sload 9;
+					bspush 15;
+					if_scmpeq L24;
+				L23:	sload 7;
+					sload 8;
+					bspush 15;
+					sconst_0;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+				L24:	sload 7;
+					sload 8;
+					sload 10;
+					sload 14;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+					sload 13;
+					sload 10;
+					aload_0;
+					sload 5;
+					sload 6;
+					sload_3;
+					invokestatic 77;		// com/sun/javacard/impl/PackageMgr.getPkgIdForContext(B)B
+					invokestatic 78;		// com/sun/javacard/impl/NativeMethods.callInstall(SB[BSBB)V
+				L25:	goto L27;
+				L26:	astore 15;
+				L27:	sconst_0;
+					putstatic_b 53;		// boolean com/sun/javacard/impl/AppletMgr.installTransactionFlag
+					getstatic_b 65;		// byte com/sun/javacard/impl/AppletMgr.appInProcess
+					sconst_m1;
+					if_scmpeq L29;
+				L28:	sconst_0;
+					sstore 12;
+				L29:	invokestatic 79;		// javacard/framework/JCSystem.getTransactionDepth()B
+					ifeq L31;
+				L30:	invokestatic 157;		// javacard/framework/JCSystem.abortTransaction()V
+					invokestatic 80;		// com/sun/javacard/impl/NativeMethods.clearInvalidTransientReferences()V
+				L31:	sload 7;
+					sload 8;
+					sconst_2;
+					invokestatic 75;		// com/sun/javacard/impl/NativeMethods.clearTransientObjs(BBB)V
+					sload 7;
+					sload 8;
+					bspush 15;
+					sconst_0;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+					sload 9;
+					bspush 15;
+					if_scmpeq L33;
+				L32:	sload 7;
+					sload 8;
+					sload 9;
+					sload 11;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+				L33:	sload 12;
+					ifeq L35;
+				L34:	invokestatic 109;		// com/sun/javacard/impl/PrivAccess.getPrivAccess()Lcom/sun/javacard/impl/PrivAccess;
+					sload 4;
+					invokevirtual 81;		// getAID(B)Ljavacard/framework/AID;
+					areturn;
+				L35:	aconst_null;
+					areturn;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L6 L8 L26 66;
+				L9 L25 L26 66;
+			}
+		}
+
+		.method public static findApplet([BSB)B 2 {
+			.stack 4;
+			.locals 2;
+
+				L0:	sconst_0;
+					sstore_3;
+				L1:	sload_3;
+					bspush 16;
+					if_scmpge L8;
+				L2:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_3;
+					aaload;
+					astore 4;
+				L3:	aload 4;
+					ifnull L7;
+				L4:	aload 4;
+					getfield_a 11;		// reference com/sun/javacard/impl/AppTableEntry.theAID
+					ifnull L7;
+				L5:	aload 4;
+					getfield_a 11;		// reference com/sun/javacard/impl/AppTableEntry.theAID
+					aload_0;
+					sload_1;
+					sload_2;
+					invokevirtual 83;		// equals([BSB)Z
+					ifeq L7;
+				L6:	sload_3;
+					sreturn;
+				L7:	sload_3;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_3;
+					goto L1;
+				L8:	sconst_m1;
+					sreturn;
+		}
+
+		.method static findApplet(Ljavacard/framework/AID;)B {
+			.stack 2;
+			.locals 2;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+				L0:	sconst_0;
+					sstore_1;
+				L1:	sload_1;
+					bspush 16;
+					if_scmpge L8;
+				L2:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_1;
+					aaload;
+					astore_2;
+				L3:	aload_2;
+					ifnull L7;
+				L4:	aload_2;
+					getfield_a 11;		// reference com/sun/javacard/impl/AppTableEntry.theAID
+					ifnull L7;
+				L5:	aload_2;
+					getfield_a 11;		// reference com/sun/javacard/impl/AppTableEntry.theAID
+					aload_0;
+					invokevirtual 84;		// equals(Ljava/lang/Object;)Z
+					ifeq L7;
+				L6:	sload_1;
+					sreturn;
+				L7:	sload_1;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_1;
+					goto L1;
+				L8:	sconst_m1;
+					sreturn;
+		}
+
+		.method static register(Ljavacard/framework/Applet;Ljavacard/framework/AID;)V {
+			.stack 2;
+			.locals 3;
+
+			.descriptor	Ljavacard/framework/Applet;	1.3;
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+				L0:	invokestatic 85;		// com/sun/javacard/impl/PrivAccess.getPreviousAppID()B
+					sstore_2;
+				L1:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_2;
+					aaload;
+					getfield_a 11;		// reference com/sun/javacard/impl/AppTableEntry.theAID
+					ifnull L3;
+				L2:	sconst_4;
+					invokestatic 86;		// javacard/framework/SystemException.throwIt(S)V
+				L3:	aload_1;
+					ifnonnull L9;
+				L4:	sconst_0;
+					sstore_3;
+				L5:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_2;
+					aaload;
+					getfield_b 10;		// byte com/sun/javacard/impl/AppTableEntry.theContext
+					sstore 4;
+				L6:	sload 4;
+					invokestatic 77;		// com/sun/javacard/impl/PackageMgr.getPkgIdForContext(B)B
+					sstore_3;
+					sload_3;
+					getstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					if_scmpne L8;
+				L7:	getstatic_a 87;		// reference com/sun/javacard/impl/PackageMgr.g_newPackage
+					getfield_a 12;		// reference com/sun/javacard/impl/PackageEntry.applets
+					getstatic_b 89;		// byte com/sun/javacard/impl/AppletMgr.currentAppletIndex
+					aaload;
+					getfield_a 5;		// reference com/sun/javacard/impl/AppletInfo.theClassAID
+					astore_1;
+					goto L9;
+				L8:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_3;
+					aaload;
+					getfield_a 12;		// reference com/sun/javacard/impl/PackageEntry.applets
+					getstatic_b 89;		// byte com/sun/javacard/impl/AppletMgr.currentAppletIndex
+					aaload;
+					getfield_a 5;		// reference com/sun/javacard/impl/AppletInfo.theClassAID
+					astore_1;
+				L9:	aload_1;
+					invokestatic 90;		// com/sun/javacard/impl/AppletMgr.findApplet(Ljavacard/framework/AID;)B
+					sconst_m1;
+					if_scmpeq L11;
+				L10:	sconst_4;
+					invokestatic 86;		// javacard/framework/SystemException.throwIt(S)V
+				L11:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_2;
+					aaload;
+					aload_0;
+					putfield_a 13;		// reference com/sun/javacard/impl/AppTableEntry.theApplet
+					getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_2;
+					aaload;
+					aload_1;
+					putfield_a 11;		// reference com/sun/javacard/impl/AppTableEntry.theAID
+					sload_2;
+					invokestatic 92;		// com/sun/javacard/impl/AppletMgr.commit(B)V
+					return;
+		}
+
+		.method public static setCurrentAppletIndex([BSBB)V 3 {
+			.stack 4;
+			.locals 3;
+
+				L0:	sconst_m1;
+					putstatic_b 89;		// byte com/sun/javacard/impl/AppletMgr.currentAppletIndex
+					getstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					sload_3;
+					if_scmpne L4;
+				L1:	getstatic_a 87;		// reference com/sun/javacard/impl/PackageMgr.g_newPackage
+					ifnull L4;
+				L2:	getstatic_a 87;		// reference com/sun/javacard/impl/PackageMgr.g_newPackage
+					astore 4;
+				L3:	goto L5;
+				L4:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_3;
+					aaload;
+					astore 4;
+				L5:	sconst_0;
+					sstore 5;
+				L6:	sload 5;
+					aload 4;
+					getfield_b 9;		// byte com/sun/javacard/impl/PackageEntry.appletCount
+					if_scmpge L11;
+				L7:	aload 4;
+					getfield_a 12;		// reference com/sun/javacard/impl/PackageEntry.applets
+					sload 5;
+					aaload;
+					astore 6;
+				L8:	aload 6;
+					getfield_a 5;		// reference com/sun/javacard/impl/AppletInfo.theClassAID
+					aload_0;
+					sload_1;
+					sload_2;
+					invokevirtual 83;		// equals([BSB)Z
+					ifeq L10;
+				L9:	sload 5;
+					putstatic_b 89;		// byte com/sun/javacard/impl/AppletMgr.currentAppletIndex
+					return;
+				L10:	sload 5;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 5;
+					goto L6;
+				L11:	return;
+		}
+
+		.method public static commit(B)V 4 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getstatic_a 55;		// reference com/sun/javacard/impl/AppletMgr.theAppState
+					sload_0;
+					sconst_1;
+					bastore;
+					sconst_m1;
+					putstatic_b 65;		// byte com/sun/javacard/impl/AppletMgr.appInProcess
+					invokestatic 93;		// com/sun/javacard/impl/PackageMgr.commit()V
+					sconst_0;
+					putstatic_b 53;		// boolean com/sun/javacard/impl/AppletMgr.installTransactionFlag
+					invokestatic 161;		// javacard/framework/JCSystem.commitTransaction()V
+					return;
+		}
+
+		.method public static callUninstallMethods([BB)V 5 {
+			.stack 4;
+			.locals 7;
+
+				L0:	sconst_0;
+					sstore_2;
+				L1:	invokestatic 94;		// javacard/framework/APDU.getCLAChannel()B
+					sstore_3;
+				L2:	invokestatic 67;		// com/sun/javacard/impl/NativeMethods.getActiveInterface()B
+					sstore 4;
+				L3:	sconst_0;
+					sstore 5;
+				L4:	sload 5;
+					sload_1;
+					if_scmpge L8;
+				L5:	aload_0;
+					sload 5;
+					baload;
+					invokestatic 74;		// com/sun/javacard/impl/NativeMethods.getContextStatus(B)B
+					sconst_4;
+					sand;
+					sconst_4;
+					if_scmpne L7;
+				L6:	sspush 25681;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L7:	sload 5;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 5;
+					goto L4;
+				L8:	sload_3;
+					sload 4;
+					sconst_2;
+					invokestatic 75;		// com/sun/javacard/impl/NativeMethods.clearTransientObjs(BBB)V
+					sconst_0;
+					sstore 5;
+				L9:	sload 5;
+					sload_1;
+					if_scmpge_w L24;
+				L10:	aload_0;
+					sload 5;
+					baload;
+					bspush 15;
+					sand;
+					sstore_2;
+					getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_2;
+					aaload;
+					getfield_a 13;		// reference com/sun/javacard/impl/AppTableEntry.theApplet
+					astore 6;
+				L11:	aload 6;
+					instanceof 0 95;		// T_CLASSORINTERFACE javacard/framework/AppletEvent
+					ifeq_w L23;
+				L12:	sload_3;
+					sload 4;
+					bspush 15;
+					sconst_0;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+					sload_3;
+					sload 4;
+					aload_0;
+					sload 5;
+					baload;
+					aload 6;
+					instanceof 0 96;		// T_CLASSORINTERFACE javacard/framework/MultiSelectable
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+				L13:	aload 6;
+					checkcast 0 95;		// T_CLASSORINTERFACE javacard/framework/AppletEvent
+					invokeinterface 1 95 0;		// javacard/framework/AppletEvent
+				L14:	sload_3;
+					sload 4;
+					sconst_2;
+					invokestatic 75;		// com/sun/javacard/impl/NativeMethods.clearTransientObjs(BBB)V
+					sload_3;
+					sload 4;
+					bspush 15;
+					sconst_0;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+					sload_3;
+					sload 4;
+					sconst_0;
+					sconst_0;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+					invokestatic 79;		// javacard/framework/JCSystem.getTransactionDepth()B
+					ifeq L23;
+				L15:	invokestatic 157;		// javacard/framework/JCSystem.abortTransaction()V
+					goto L23;
+				L16:	astore 7;
+				L17:	sload_3;
+					sload 4;
+					sconst_2;
+					invokestatic 75;		// com/sun/javacard/impl/NativeMethods.clearTransientObjs(BBB)V
+					sload_3;
+					sload 4;
+					bspush 15;
+					sconst_0;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+					sload_3;
+					sload 4;
+					sconst_0;
+					sconst_0;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+					invokestatic 79;		// javacard/framework/JCSystem.getTransactionDepth()B
+					ifeq L23;
+				L18:	invokestatic 157;		// javacard/framework/JCSystem.abortTransaction()V
+					goto L23;
+				L19:	astore 8;
+				L20:	sload_3;
+					sload 4;
+					sconst_2;
+					invokestatic 75;		// com/sun/javacard/impl/NativeMethods.clearTransientObjs(BBB)V
+					sload_3;
+					sload 4;
+					bspush 15;
+					sconst_0;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+					sload_3;
+					sload 4;
+					sconst_0;
+					sconst_0;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+					invokestatic 79;		// javacard/framework/JCSystem.getTransactionDepth()B
+					ifeq L22;
+				L21:	invokestatic 157;		// javacard/framework/JCSystem.abortTransaction()V
+				L22:	aload 8;
+					athrow;
+				L23:	sload 5;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 5;
+					goto_w L9;
+				L24:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L13 L14 L16 66;
+				L13 L14 L19 0;
+				L16 L17 L19 0;
+				L19 L20 L19 0;
+			}
+		}
+
+		.method public static getAppletsForPackage([BBB)B 6 {
+			.stack 4;
+			.locals 3;
+
+				L0:	sload_2;
+					invokestatic 188;		// com/sun/javacard/impl/PackageMgr.getPkgContext(B)B
+					sstore_3;
+				L1:	sconst_0;
+					sstore 4;
+				L2:	sconst_0;
+					sstore 5;
+				L3:	sload 5;
+					bspush 16;
+					if_scmpge L10;
+				L4:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload 5;
+					aaload;
+					ifnull L9;
+				L5:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload 5;
+					aaload;
+					getfield_b 10;		// byte com/sun/javacard/impl/AppTableEntry.theContext
+					sload_3;
+					if_scmpne L9;
+				L6:	aload_0;
+					ifnull L8;
+				L7:	aload_0;
+					sload_1;
+					sload_1;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_1;
+					sload_3;
+					sconst_4;
+					sshl;
+					sload 5;
+					sor;
+					s2b;
+					bastore;
+				L8:	sload 4;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 4;
+				L9:	sload 5;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 5;
+					goto L3;
+				L10:	sload 4;
+					sreturn;
+		}
+
+		.method public static handleAppletDeletion(Ljavacard/framework/APDU;)V 7 {
+			.stack 5;
+			.locals 10;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	sconst_0;
+					sstore_1;
+				L1:	sconst_0;
+					sstore_2;
+				L2:	sconst_m1;
+					sstore_3;
+				L3:	sconst_0;
+					sstore 4;
+				L4:	aload_0;
+					invokevirtual 98;		// getBuffer()[B
+					astore 5;
+				L5:	aload 5;
+					sconst_2;
+					baload;
+					sstore 6;
+				L6:	sload 6;
+					sconst_1;
+					if_scmplt L8;
+				L7:	sload 6;
+					bspush 8;
+					if_scmple L9;
+				L8:	sspush 27270;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L9:	aload 5;
+					sconst_4;
+					baload;
+					sspush 255;
+					sand;
+					sstore 7;
+				L10:	sload 7;
+					bspush 7;
+					if_scmplt L12;
+				L11:	sload 7;
+					sspush 136;
+					if_scmple L13;
+				L12:	sspush 26368;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L13:	aload_0;
+					invokevirtual 99;		// setIncomingAndReceive()S
+					sstore 8;
+				L14:	getstatic_a 57;		// reference com/sun/javacard/impl/AppletMgr.AppletMgrBuffer
+					sconst_0;
+					getstatic_a 57;		// reference com/sun/javacard/impl/AppletMgr.AppletMgrBuffer
+					arraylength;
+					sconst_0;
+					invokestatic 62;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+				L15:	sload 8;
+					ifle L28;
+				L16:	sconst_5;
+					sstore 9;
+				L17:	sload 9;
+					sload 8;
+					sconst_5;
+					sadd;
+					if_scmpge L27;
+				L18:	sload_3;
+					sconst_m1;
+					if_scmpne L20;
+				L19:	aload 5;
+					sload 9;
+					baload;
+					sstore_3;
+					goto L21;
+				L20:	getstatic_a 57;		// reference com/sun/javacard/impl/AppletMgr.AppletMgrBuffer
+					sload 4;
+					sinc 4 1;
+					aload 5;
+					sload 9;
+					baload;
+					bastore;
+					sload_2;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_2;
+				L21:	sload_2;
+					sload_3;
+					if_scmpne L26;
+				L22:	getstatic_a 57;		// reference com/sun/javacard/impl/AppletMgr.AppletMgrBuffer
+					sload_1;
+					sload_3;
+					invokestatic 100;		// com/sun/javacard/impl/AppletMgr.findApplet([BSB)B
+					sstore 10;
+				L23:	sload 10;
+					sconst_m1;
+					if_scmpne L25;
+				L24:	sspush 25667;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L25:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload 10;
+					aaload;
+					getfield_b 10;		// byte com/sun/javacard/impl/AppTableEntry.theContext
+					sconst_4;
+					sshl;
+					s2b;
+					sload 10;
+					sor;
+					sstore 10;
+					getstatic_a 57;		// reference com/sun/javacard/impl/AppletMgr.AppletMgrBuffer
+					sload_1;
+					sload 10;
+					bastore;
+					sconst_0;
+					sstore_2;
+					sload_1;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_1;
+					sload_1;
+					sstore 4;
+					sconst_m1;
+					sstore_3;
+				L26:	sinc 9 1;
+					goto L17;
+				L27:	aload_0;
+					sconst_5;
+					invokevirtual 101;		// receiveBytes(S)S
+					sstore 8;
+					goto L15;
+				L28:	getstatic_a 57;		// reference com/sun/javacard/impl/AppletMgr.AppletMgrBuffer
+					sconst_0;
+					aload 5;
+					sconst_0;
+					sload 6;
+					invokestatic 102;		// javacard/framework/Util.arrayCopyNonAtomic([BS[BSS)S
+					pop;
+					aload 5;
+					sload 6;
+					invokestatic 103;		// com/sun/javacard/impl/AppletMgr.callUninstallMethods([BB)V
+					aload 5;
+					sload 6;
+					invokestatic 48;		// com/sun/javacard/impl/GarbageCollector.deleteApplets([BB)V
+				L29:	goto L35;
+				L30:	astore 7;
+				L31:	aload 7;
+					invokevirtual 159;		// getReason()S
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L32:	goto L35;
+				L33:	astore 7;
+				L34:	sspush 25636;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L35:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L6 L29 L30 148;
+				L6 L29 L33 97;
+			}
+		}
+
+		.method public static removeApplet(B)V 8 {
+			.stack 3;
+			.locals 1;
+
+				L0:	getstatic_a 55;		// reference com/sun/javacard/impl/AppletMgr.theAppState
+					sload_0;
+					sconst_0;
+					bastore;
+					getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_0;
+					aconst_null;
+					aastore;
+					sconst_0;
+					sstore_1;
+				L1:	sload_1;
+					getstatic_a 61;		// reference com/sun/javacard/impl/AppletMgr.defaultApplets
+					arraylength;
+					if_scmpge L5;
+				L2:	getstatic_a 61;		// reference com/sun/javacard/impl/AppletMgr.defaultApplets
+					sload_1;
+					baload;
+					sload_0;
+					if_scmpne L4;
+				L3:	getstatic_a 61;		// reference com/sun/javacard/impl/AppletMgr.defaultApplets
+					sload_1;
+					sconst_m1;
+					bastore;
+				L4:	sinc 1 1;
+					goto L1;
+				L5:	return;
+		}
+
+	}
+
+	.class public OwnerPINxImpl 8 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private byte[] pinValue 0;		// [B
+			private byte[] flags 1;		// [B
+			private byte[] triesLeft 2;		// [B
+			private byte tryLimit 3;		// B
+			private byte maxPINSize 4;		// B
+			private byte pinSize 5;		// B
+			private static final byte VALIDATED = 0;		// B
+			private static final byte NUMFLAGS = 1;		// B
+		}
+
+		.publicMethodTable 1 10 {
+			equals(Ljava/lang/Object;)Z 0;
+			getTriesRemaining()B 255;
+			check([BSB)Z 255;
+			isValidated()Z 255;
+			reset()V 255;
+			update([BSB)V 255;
+			resetAndUnblock()V 255;
+			getTryLimit()B 255;
+			setTryLimit(B)V 255;
+			setTriesRemaining(B)V 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.implementedInterfaceInfoTable { 
+			.interface 1.1 { 		// javacard/framework/PIN
+				2;		// check([BSB)Z
+				1;		// getTriesRemaining()B
+				3;		// isValidated()Z
+				4;		// reset()V
+			}
+
+			.interface 1.19 { 		// javacard/framework/OwnerPINx
+				2;		// check([BSB)Z
+				1;		// getTriesRemaining()B
+				3;		// isValidated()Z
+				4;		// reset()V
+				5;		// update([BSB)V
+				7;		// getTryLimit()B
+				8;		// setTryLimit(B)V
+				9;		// setTriesRemaining(B)V
+			}
+
+		}
+
+		.method private getValidatedFlag()Z {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_a_this 14;		// reference com/sun/javacard/impl/OwnerPINxImpl.flags
+					sconst_0;
+					baload;
+					sconst_1;
+					if_scmpne L2;
+				L1:	sconst_1;
+					goto L3;
+				L2:	sconst_0;
+				L3:	sreturn;
+		}
+
+		.method private setValidatedFlag(Z)V {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 14;		// reference com/sun/javacard/impl/OwnerPINxImpl.flags
+					sconst_0;
+					sconst_1;
+					sload_1;
+					ifeq L2;
+				L1:	sconst_1;
+					goto L3;
+				L2:	sconst_0;
+				L3:	invokestatic 105;		// javacard/framework/Util.arrayFill([BSSB)S
+					pop;
+					return;
+		}
+
+		.method private setValidatedFlagNT(Z)V {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 14;		// reference com/sun/javacard/impl/OwnerPINxImpl.flags
+					sconst_0;
+					sconst_1;
+					sload_1;
+					ifeq L2;
+				L1:	sconst_1;
+					goto L3;
+				L2:	sconst_0;
+				L3:	invokestatic 62;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					return;
+		}
+
+		.method private resetTriesRemaining()V {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 15;		// reference com/sun/javacard/impl/OwnerPINxImpl.triesLeft
+					sconst_0;
+					sconst_1;
+					getfield_b_this 16;		// byte com/sun/javacard/impl/OwnerPINxImpl.tryLimit
+					invokestatic 105;		// javacard/framework/Util.arrayFill([BSSB)S
+					pop;
+					return;
+		}
+
+		.method private resetTriesRemainingNT()V {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 15;		// reference com/sun/javacard/impl/OwnerPINxImpl.triesLeft
+					sconst_0;
+					sconst_1;
+					getfield_b_this 16;		// byte com/sun/javacard/impl/OwnerPINxImpl.tryLimit
+					invokestatic 62;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					return;
+		}
+
+		.method private decrementTriesRemainingNT()V {
+			.stack 5;
+			.locals 0;
+
+				L0:	getfield_a_this 15;		// reference com/sun/javacard/impl/OwnerPINxImpl.triesLeft
+					sconst_0;
+					sconst_1;
+					getfield_a_this 15;		// reference com/sun/javacard/impl/OwnerPINxImpl.triesLeft
+					sconst_0;
+					baload;
+					sconst_1;
+					ssub;
+					s2b;
+					invokestatic 62;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					return;
+		}
+
+		.method public <init>(BB)V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					sload_1;
+					sconst_1;
+					if_scmplt L2;
+				L1:	sload_2;
+					sconst_1;
+					if_scmpge L3;
+				L2:	sconst_1;
+					invokestatic 108;		// javacard/framework/PINException.throwIt(S)V
+				L3:	aload_0;
+					sload_2;
+					newarray 11;
+					putfield_a 17;		// reference com/sun/javacard/impl/OwnerPINxImpl.pinValue
+					sload_2;
+					putfield_b_this 18;		// byte com/sun/javacard/impl/OwnerPINxImpl.pinSize
+					sload_2;
+					putfield_b_this 19;		// byte com/sun/javacard/impl/OwnerPINxImpl.maxPINSize
+					sload_1;
+					putfield_b_this 16;		// byte com/sun/javacard/impl/OwnerPINxImpl.tryLimit
+					aload_0;
+					sconst_1;
+					newarray 11;
+					putfield_a 15;		// reference com/sun/javacard/impl/OwnerPINxImpl.triesLeft
+					aload_0;
+					invokespecial 112;		// com/sun/javacard/impl/OwnerPINxImpl.resetTriesRemaining()V
+					aload_0;
+					sconst_1;
+					sconst_1;
+					invokestatic 56;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 14;		// reference com/sun/javacard/impl/OwnerPINxImpl.flags
+					aload_0;
+					sconst_0;
+					invokespecial 113;		// com/sun/javacard/impl/OwnerPINxImpl.setValidatedFlag(Z)V
+					return;
+		}
+
+		.method public getTriesRemaining()B 1 {
+			.stack 2;
+			.locals 1;
+
+				L0:	getfield_a_this 15;		// reference com/sun/javacard/impl/OwnerPINxImpl.triesLeft
+					sconst_0;
+					baload;
+					sstore_1;
+				L1:	sload_1;
+					invokestatic 114;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload_1;
+					sreturn;
+		}
+
+		.method public check([BSB)Z 2 {
+			.stack 5;
+			.locals 2;
+
+				L0:	sconst_0;
+					sstore 4;
+				L1:	aload_0;
+					sconst_0;
+					invokespecial 115;		// com/sun/javacard/impl/OwnerPINxImpl.setValidatedFlagNT(Z)V
+					aload_0;
+					invokevirtual 116;		// getTriesRemaining()B
+					ifne L3;
+				L2:	sconst_1;
+					sstore 4;
+					goto L4;
+				L3:	aload_0;
+					invokespecial 117;		// com/sun/javacard/impl/OwnerPINxImpl.decrementTriesRemainingNT()V
+				L4:	sload_3;
+					ifle L9;
+				L5:	aload_1;
+					sload_2;
+					sload_3;
+					sadd;
+					sconst_1;
+					ssub;
+					baload;
+					sstore 5;
+				L6:	sload_3;
+					getfield_b_this 18;		// byte com/sun/javacard/impl/OwnerPINxImpl.pinSize
+					if_scmpne L8;
+				L7:	sload 4;
+					ifeq L9;
+				L8:	invokestatic 118;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+					sconst_0;
+					sreturn;
+				L9:	aload_1;
+					sload_2;
+					getfield_a_this 17;		// reference com/sun/javacard/impl/OwnerPINxImpl.pinValue
+					sconst_0;
+					sload_3;
+					invokestatic 119;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifne L12;
+				L10:	sload_3;
+					getfield_b_this 18;		// byte com/sun/javacard/impl/OwnerPINxImpl.pinSize
+					if_scmpne L12;
+				L11:	aload_0;
+					sconst_1;
+					invokespecial 115;		// com/sun/javacard/impl/OwnerPINxImpl.setValidatedFlagNT(Z)V
+					aload_0;
+					invokespecial 120;		// com/sun/javacard/impl/OwnerPINxImpl.resetTriesRemainingNT()V
+					invokestatic 121;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanTrue()V
+					sconst_1;
+					sreturn;
+				L12:	invokestatic 118;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+					sconst_0;
+					sreturn;
+		}
+
+		.method public isValidated()Z 3 {
+			.stack 1;
+			.locals 1;
+
+				L0:	aload_0;
+					invokespecial 122;		// com/sun/javacard/impl/OwnerPINxImpl.getValidatedFlag()Z
+					sstore_1;
+				L1:	sload_1;
+					ifeq L3;
+				L2:	invokestatic 121;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanTrue()V
+					goto L4;
+				L3:	invokestatic 118;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+				L4:	sload_1;
+					sreturn;
+		}
+
+		.method public reset()V 4 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokevirtual 123;		// isValidated()Z
+					ifeq L2;
+				L1:	aload_0;
+					invokevirtual 124;		// resetAndUnblock()V
+				L2:	return;
+		}
+
+		.method public update([BSB)V 5 {
+			.stack 5;
+			.locals 0;
+
+				L0:	sload_3;
+					getfield_b_this 19;		// byte com/sun/javacard/impl/OwnerPINxImpl.maxPINSize
+					if_scmple L2;
+				L1:	sconst_1;
+					invokestatic 108;		// javacard/framework/PINException.throwIt(S)V
+				L2:	aload_1;
+					sload_2;
+					getfield_a_this 17;		// reference com/sun/javacard/impl/OwnerPINxImpl.pinValue
+					sconst_0;
+					sload_3;
+					invokestatic 130;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sload_3;
+					putfield_b_this 18;		// byte com/sun/javacard/impl/OwnerPINxImpl.pinSize
+					getfield_a_this 15;		// reference com/sun/javacard/impl/OwnerPINxImpl.triesLeft
+					sconst_0;
+					getfield_b_this 16;		// byte com/sun/javacard/impl/OwnerPINxImpl.tryLimit
+					bastore;
+					aload_0;
+					sconst_0;
+					invokespecial 113;		// com/sun/javacard/impl/OwnerPINxImpl.setValidatedFlag(Z)V
+					return;
+		}
+
+		.method public resetAndUnblock()V 6 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 112;		// com/sun/javacard/impl/OwnerPINxImpl.resetTriesRemaining()V
+					aload_0;
+					sconst_0;
+					invokespecial 113;		// com/sun/javacard/impl/OwnerPINxImpl.setValidatedFlag(Z)V
+					return;
+		}
+
+		.method public getTryLimit()B 7 {
+			.stack 1;
+			.locals 1;
+
+				L0:	getfield_b_this 16;		// byte com/sun/javacard/impl/OwnerPINxImpl.tryLimit
+					sstore_1;
+				L1:	sload_1;
+					invokestatic 114;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload_1;
+					sreturn;
+		}
+
+		.method public setTryLimit(B)V 8 {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_1;
+					sconst_1;
+					if_scmpge L2;
+				L1:	sconst_1;
+					invokestatic 108;		// javacard/framework/PINException.throwIt(S)V
+				L2:	aload_0;
+					sconst_0;
+					invokespecial 113;		// com/sun/javacard/impl/OwnerPINxImpl.setValidatedFlag(Z)V
+					sload_1;
+					putfield_b_this 16;		// byte com/sun/javacard/impl/OwnerPINxImpl.tryLimit
+					aload_0;
+					invokespecial 112;		// com/sun/javacard/impl/OwnerPINxImpl.resetTriesRemaining()V
+					return;
+		}
+
+		.method public setTriesRemaining(B)V 9 {
+			.stack 4;
+			.locals 0;
+
+				L0:	sload_1;
+					iflt L2;
+				L1:	sload_1;
+					getfield_b_this 16;		// byte com/sun/javacard/impl/OwnerPINxImpl.tryLimit
+					if_scmple L3;
+				L2:	sconst_1;
+					invokestatic 108;		// javacard/framework/PINException.throwIt(S)V
+				L3:	aload_0;
+					sconst_0;
+					invokespecial 113;		// com/sun/javacard/impl/OwnerPINxImpl.setValidatedFlag(Z)V
+					getfield_a_this 15;		// reference com/sun/javacard/impl/OwnerPINxImpl.triesLeft
+					sconst_0;
+					sconst_1;
+					sload_1;
+					invokestatic 105;		// javacard/framework/Util.arrayFill([BSSB)S
+					pop;
+					return;
+		}
+
+	}
+
+	.class public OwnerPINxWithPredecrementImpl 9 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private byte[] pinValue 0;		// [B
+			private byte[] flags 1;		// [B
+			private byte[] triesLeft 2;		// [B
+			private byte tryLimit 3;		// B
+			private byte maxPINSize 4;		// B
+			private byte pinSize 5;		// B
+			private static final byte VALIDATED = 0;		// B
+			private static final byte PREDECREMENTED = 1;		// B
+			private static final byte NUMFLAGS = 2;		// B
+		}
+
+		.publicMethodTable 1 11 {
+			equals(Ljava/lang/Object;)Z 0;
+			getTriesRemaining()B 255;
+			check([BSB)Z 255;
+			isValidated()Z 255;
+			reset()V 255;
+			update([BSB)V 255;
+			resetAndUnblock()V 255;
+			getTryLimit()B 255;
+			setTryLimit(B)V 255;
+			setTriesRemaining(B)V 255;
+			decrementTriesRemaining()B 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.implementedInterfaceInfoTable { 
+			.interface 1.1 { 		// javacard/framework/PIN
+				2;		// check([BSB)Z
+				1;		// getTriesRemaining()B
+				3;		// isValidated()Z
+				4;		// reset()V
+			}
+
+			.interface 1.19 { 		// javacard/framework/OwnerPINx
+				2;		// check([BSB)Z
+				1;		// getTriesRemaining()B
+				3;		// isValidated()Z
+				4;		// reset()V
+				5;		// update([BSB)V
+				7;		// getTryLimit()B
+				8;		// setTryLimit(B)V
+				9;		// setTriesRemaining(B)V
+			}
+
+			.interface 1.20 { 		// javacard/framework/OwnerPINxWithPredecrement
+				2;		// check([BSB)Z
+				1;		// getTriesRemaining()B
+				3;		// isValidated()Z
+				4;		// reset()V
+				5;		// update([BSB)V
+				7;		// getTryLimit()B
+				8;		// setTryLimit(B)V
+				9;		// setTriesRemaining(B)V
+				10;		// decrementTriesRemaining()B
+			}
+
+		}
+
+		.method private getValidatedFlag()Z {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_a_this 20;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.flags
+					sconst_0;
+					baload;
+					sconst_1;
+					if_scmpne L2;
+				L1:	sconst_1;
+					goto L3;
+				L2:	sconst_0;
+				L3:	sreturn;
+		}
+
+		.method private setValidatedFlag(Z)V {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 20;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.flags
+					sconst_0;
+					sconst_1;
+					sload_1;
+					ifeq L2;
+				L1:	sconst_1;
+					goto L3;
+				L2:	sconst_0;
+				L3:	invokestatic 105;		// javacard/framework/Util.arrayFill([BSSB)S
+					pop;
+					return;
+		}
+
+		.method private setValidatedFlagNT(Z)V {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 20;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.flags
+					sconst_0;
+					sconst_1;
+					sload_1;
+					ifeq L2;
+				L1:	sconst_1;
+					goto L3;
+				L2:	sconst_0;
+				L3:	invokestatic 62;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					return;
+		}
+
+		.method private setPredecrementedFlag(Z)V {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 20;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.flags
+					sconst_1;
+					sconst_1;
+					sload_1;
+					ifeq L2;
+				L1:	sconst_1;
+					goto L3;
+				L2:	sconst_0;
+				L3:	invokestatic 105;		// javacard/framework/Util.arrayFill([BSSB)S
+					pop;
+					return;
+		}
+
+		.method private setPredecrementedFlagNT(Z)V {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 20;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.flags
+					sconst_1;
+					sconst_1;
+					sload_1;
+					ifeq L2;
+				L1:	sconst_1;
+					goto L3;
+				L2:	sconst_0;
+				L3:	invokestatic 62;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					return;
+		}
+
+		.method private resetTriesRemaining()V {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 21;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.triesLeft
+					sconst_0;
+					sconst_1;
+					getfield_b_this 22;		// byte com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.tryLimit
+					invokestatic 105;		// javacard/framework/Util.arrayFill([BSSB)S
+					pop;
+					return;
+		}
+
+		.method private resetTriesRemainingNT()V {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 21;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.triesLeft
+					sconst_0;
+					sconst_1;
+					getfield_b_this 22;		// byte com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.tryLimit
+					invokestatic 62;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					return;
+		}
+
+		.method private decrementTriesRemainingInternal()V {
+			.stack 5;
+			.locals 0;
+
+				L0:	getfield_a_this 21;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.triesLeft
+					sconst_0;
+					sconst_1;
+					getfield_a_this 21;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.triesLeft
+					sconst_0;
+					baload;
+					sconst_1;
+					ssub;
+					s2b;
+					invokestatic 105;		// javacard/framework/Util.arrayFill([BSSB)S
+					pop;
+					return;
+		}
+
+		.method private decrementTriesRemainingInternalNT()V {
+			.stack 5;
+			.locals 0;
+
+				L0:	getfield_a_this 21;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.triesLeft
+					sconst_0;
+					sconst_1;
+					getfield_a_this 21;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.triesLeft
+					sconst_0;
+					baload;
+					sconst_1;
+					ssub;
+					s2b;
+					invokestatic 62;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					return;
+		}
+
+		.method public <init>(BB)V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					sload_1;
+					sconst_1;
+					if_scmplt L2;
+				L1:	sload_2;
+					sconst_1;
+					if_scmpge L3;
+				L2:	sconst_1;
+					invokestatic 108;		// javacard/framework/PINException.throwIt(S)V
+				L3:	aload_0;
+					sload_2;
+					newarray 11;
+					putfield_a 23;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.pinValue
+					sload_2;
+					putfield_b_this 24;		// byte com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.pinSize
+					sload_2;
+					putfield_b_this 25;		// byte com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.maxPINSize
+					sload_1;
+					putfield_b_this 22;		// byte com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.tryLimit
+					aload_0;
+					sconst_1;
+					newarray 11;
+					putfield_a 21;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.triesLeft
+					aload_0;
+					invokespecial 131;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.resetTriesRemaining()V
+					aload_0;
+					sconst_2;
+					sconst_1;
+					invokestatic 56;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 20;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.flags
+					aload_0;
+					sconst_0;
+					invokespecial 132;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setValidatedFlag(Z)V
+					aload_0;
+					sconst_0;
+					invokespecial 133;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setPredecrementedFlag(Z)V
+					return;
+		}
+
+		.method public getTriesRemaining()B 1 {
+			.stack 2;
+			.locals 1;
+
+				L0:	getfield_a_this 21;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.triesLeft
+					sconst_0;
+					baload;
+					ifge L2;
+				L1:	sconst_0;
+					goto L3;
+				L2:	getfield_a_this 21;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.triesLeft
+					sconst_0;
+					baload;
+				L3:	sstore_1;
+				L4:	sload_1;
+					invokestatic 114;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload_1;
+					sreturn;
+		}
+
+		.method public check([BSB)Z 2 {
+			.stack 5;
+			.locals 1;
+
+				L0:	getfield_a_this 20;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.flags
+					sconst_1;
+					baload;
+					sconst_1;
+					if_scmpeq L2;
+				L1:	sconst_2;
+					invokestatic 108;		// javacard/framework/PINException.throwIt(S)V
+				L2:	aload_0;
+					sconst_0;
+					invokespecial 134;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setValidatedFlagNT(Z)V
+					aload_0;
+					sconst_0;
+					invokespecial 135;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setPredecrementedFlagNT(Z)V
+					getfield_a_this 21;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.triesLeft
+					sconst_0;
+					baload;
+					ifge L4;
+				L3:	invokestatic 118;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+					sconst_0;
+					sreturn;
+				L4:	sload_3;
+					ifle L8;
+				L5:	aload_1;
+					sload_2;
+					sload_3;
+					sadd;
+					sconst_1;
+					ssub;
+					baload;
+					sstore 4;
+				L6:	sload_3;
+					getfield_b_this 24;		// byte com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.pinSize
+					if_scmpeq L8;
+				L7:	invokestatic 118;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+					sconst_0;
+					sreturn;
+				L8:	aload_1;
+					sload_2;
+					getfield_a_this 23;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.pinValue
+					sconst_0;
+					sload_3;
+					invokestatic 119;		// javacard/framework/Util.arrayCompare([BS[BSS)B
+					ifne L11;
+				L9:	sload_3;
+					getfield_b_this 24;		// byte com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.pinSize
+					if_scmpne L11;
+				L10:	aload_0;
+					sconst_1;
+					invokespecial 134;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setValidatedFlagNT(Z)V
+					aload_0;
+					invokespecial 136;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.resetTriesRemainingNT()V
+					invokestatic 121;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanTrue()V
+					sconst_1;
+					sreturn;
+				L11:	invokestatic 118;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+					sconst_0;
+					sreturn;
+		}
+
+		.method public isValidated()Z 3 {
+			.stack 1;
+			.locals 1;
+
+				L0:	aload_0;
+					invokespecial 137;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.getValidatedFlag()Z
+					sstore_1;
+				L1:	sload_1;
+					ifeq L3;
+				L2:	invokestatic 121;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanTrue()V
+					goto L4;
+				L3:	invokestatic 118;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+				L4:	sload_1;
+					sreturn;
+		}
+
+		.method public reset()V 4 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					sconst_0;
+					invokespecial 133;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setPredecrementedFlag(Z)V
+					aload_0;
+					invokevirtual 138;		// isValidated()Z
+					ifeq L2;
+				L1:	aload_0;
+					invokevirtual 139;		// resetAndUnblock()V
+				L2:	return;
+		}
+
+		.method public update([BSB)V 5 {
+			.stack 5;
+			.locals 0;
+
+				L0:	sload_3;
+					getfield_b_this 25;		// byte com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.maxPINSize
+					if_scmple L2;
+				L1:	sconst_1;
+					invokestatic 108;		// javacard/framework/PINException.throwIt(S)V
+				L2:	aload_1;
+					sload_2;
+					getfield_a_this 23;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.pinValue
+					sconst_0;
+					sload_3;
+					invokestatic 130;		// javacard/framework/Util.arrayCopy([BS[BSS)S
+					pop;
+					sload_3;
+					putfield_b_this 24;		// byte com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.pinSize
+					getfield_a_this 21;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.triesLeft
+					sconst_0;
+					getfield_b_this 22;		// byte com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.tryLimit
+					bastore;
+					aload_0;
+					sconst_0;
+					invokespecial 132;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setValidatedFlag(Z)V
+					aload_0;
+					sconst_0;
+					invokespecial 133;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setPredecrementedFlag(Z)V
+					return;
+		}
+
+		.method public resetAndUnblock()V 6 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 131;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.resetTriesRemaining()V
+					aload_0;
+					sconst_0;
+					invokespecial 132;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setValidatedFlag(Z)V
+					aload_0;
+					sconst_0;
+					invokespecial 133;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setPredecrementedFlag(Z)V
+					return;
+		}
+
+		.method public getTryLimit()B 7 {
+			.stack 1;
+			.locals 1;
+
+				L0:	getfield_b_this 22;		// byte com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.tryLimit
+					sstore_1;
+				L1:	sload_1;
+					invokestatic 114;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload_1;
+					sreturn;
+		}
+
+		.method public setTryLimit(B)V 8 {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_1;
+					sconst_1;
+					if_scmpge L2;
+				L1:	sconst_1;
+					invokestatic 108;		// javacard/framework/PINException.throwIt(S)V
+				L2:	aload_0;
+					sconst_0;
+					invokespecial 132;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setValidatedFlag(Z)V
+					aload_0;
+					sconst_0;
+					invokespecial 133;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setPredecrementedFlag(Z)V
+					sload_1;
+					putfield_b_this 22;		// byte com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.tryLimit
+					aload_0;
+					invokespecial 131;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.resetTriesRemaining()V
+					return;
+		}
+
+		.method public setTriesRemaining(B)V 9 {
+			.stack 4;
+			.locals 0;
+
+				L0:	sload_1;
+					iflt L2;
+				L1:	sload_1;
+					getfield_b_this 22;		// byte com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.tryLimit
+					if_scmple L3;
+				L2:	sconst_1;
+					invokestatic 108;		// javacard/framework/PINException.throwIt(S)V
+				L3:	aload_0;
+					sconst_0;
+					invokespecial 132;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setValidatedFlag(Z)V
+					aload_0;
+					sconst_0;
+					invokespecial 133;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setPredecrementedFlag(Z)V
+					getfield_a_this 21;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.triesLeft
+					sconst_0;
+					sconst_1;
+					sload_1;
+					invokestatic 105;		// javacard/framework/Util.arrayFill([BSSB)S
+					pop;
+					return;
+		}
+
+		.method public decrementTriesRemaining()B 10 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_a_this 21;		// reference com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.triesLeft
+					sconst_0;
+					baload;
+					iflt L2;
+				L1:	aload_0;
+					invokespecial 140;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.decrementTriesRemainingInternalNT()V
+				L2:	aload_0;
+					sconst_1;
+					invokespecial 135;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setPredecrementedFlagNT(Z)V
+					aload_0;
+					sconst_0;
+					invokespecial 134;		// com/sun/javacard/impl/OwnerPINxWithPredecrementImpl.setValidatedFlagNT(Z)V
+					aload_0;
+					invokevirtual 141;		// getTriesRemaining()B
+					sreturn;
+		}
+
+	}
+
+	.class public PackageEntry 10 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			 1.6 pkgAID 0;		// Ljavacard/framework/AID;
+			 short[] importedPackages 1;		// [S
+			 AppletInfo[] applets 2;		// [Lcom/sun/javacard/impl/AppletInfo;
+			 BundlePackageEntry[] bundlePackages 3;		// [Lcom/sun/javacard/impl/BundlePackageEntry;
+			 StaticResourceEntry[] staticResources 4;		// [Lcom/sun/javacard/impl/StaticResourceEntry;
+			 1.23 resources 5;		// Ljavacard/framework/Resources;
+			 byte[] pkgName 6;		// [B
+			 byte pkgMinor 7;		// B
+			 byte pkgMajor 8;		// B
+			 short pkgStaticReferenceCount 9;		// S
+			 byte importCount 10;		// B
+			 byte appletCount 11;		// B
+			 byte pkgNamelength 12;		// B
+			 byte bundlePackageCount 13;		// B
+			private byte appCount 14;		// B
+		}
+
+		.publicMethodTable 1 22 {
+			equals(Ljava/lang/Object;)Z 0;
+			addBundlePackage([BBBB)V 255;
+			setStaticCount(S)V 255;
+			setImportInfo([SBB)V 255;
+			getImportInfo(B)S 255;
+			initializeAppletArray(B)V 255;
+			addAppletInfo(Ljavacard/framework/AID;SB)V 255;
+			getAppletInstallMethodAddress([BSB)S 255;
+			getAppletInstallMethodByIndex(B)S 255;
+			getAppletMethodBlockByIndex(B)B 255;
+			resetAppletMethodByIndex(BS)S 255;
+			getAppCount()B 255;
+			setPkgNameAndLength([BB)V 255;
+			setBundlePkgNameAndLength(B[BB)V 255;
+			getPackageName([BB)V 255;
+			initStaticResources(S)V 255;
+			addStaticResourceEntry(SSSZ)V 255;
+			getStaticResourceEntryData(S)[S 255;
+			getStaticResources()[Lcom/sun/javacard/impl/StaticResourceEntry; 255;
+			getResourceObject()Ljavacard/framework/Resources; 255;
+			setResourceObject(Ljavacard/framework/Resources;)V 255;
+			isThisPackage([BSB)Z 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(Ljavacard/framework/AID;BBBB)V 0 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					sconst_0;
+					putfield_b_this 26;		// byte com/sun/javacard/impl/PackageEntry.bundlePackageCount
+					sconst_0;
+					putfield_b_this 27;		// byte com/sun/javacard/impl/PackageEntry.appCount
+					aload_1;
+					putfield_a_this 28;		// reference com/sun/javacard/impl/PackageEntry.pkgAID
+					sload 5;
+					ifle L2;
+				L1:	sload 5;
+					putfield_b_this 26;		// byte com/sun/javacard/impl/PackageEntry.bundlePackageCount
+					aload_0;
+					sload 5;
+					anewarray 145;		// com/sun/javacard/impl/BundlePackageEntry
+					putfield_a 29;		// reference com/sun/javacard/impl/PackageEntry.bundlePackages
+					goto L3;
+				L2:	sload_2;
+					putfield_b_this 30;		// byte com/sun/javacard/impl/PackageEntry.pkgMajor
+					sload_3;
+					putfield_b_this 31;		// byte com/sun/javacard/impl/PackageEntry.pkgMinor
+				L3:	sconst_0;
+					putfield_b_this 27;		// byte com/sun/javacard/impl/PackageEntry.appCount
+					sconst_0;
+					putfield_b_this 9;		// byte com/sun/javacard/impl/PackageEntry.appletCount
+					return;
+		}
+
+		.method public addBundlePackage([BBBB)V 1 {
+			.stack 9;
+			.locals 0;
+
+				L0:	getfield_a_this 29;		// reference com/sun/javacard/impl/PackageEntry.bundlePackages
+					sload 4;
+					new 145;		// com/sun/javacard/impl/BundlePackageEntry
+					dup;
+					new 149;		// javacard/framework/AID
+					dup;
+					aload_1;
+					sconst_0;
+					aload_1;
+					arraylength;
+					s2b;
+					invokespecial 150;		// javacard/framework/AID.<init>([BSB)V
+					sload_2;
+					sload_3;
+					invokespecial 151;		// com/sun/javacard/impl/BundlePackageEntry.<init>(Ljavacard/framework/AID;BB)V
+					aastore;
+					return;
+		}
+
+		.method public setStaticCount(S)V 2 {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_1;
+					putfield_s_this 8;		// short com/sun/javacard/impl/PackageEntry.pkgStaticReferenceCount
+					return;
+		}
+
+		.method public setImportInfo([SBB)V 3 {
+			.stack 5;
+			.locals 1;
+
+				L0:	sload_3;
+					putfield_b_this 32;		// byte com/sun/javacard/impl/PackageEntry.importCount
+					aload_0;
+					getfield_b_this 32;		// byte com/sun/javacard/impl/PackageEntry.importCount
+					newarray 12;
+					putfield_a 33;		// reference com/sun/javacard/impl/PackageEntry.importedPackages
+					sconst_0;
+					sstore 4;
+				L1:	sload 4;
+					sload_3;
+					if_scmpge L3;
+				L2:	getfield_a_this 33;		// reference com/sun/javacard/impl/PackageEntry.importedPackages
+					sload 4;
+					aload_1;
+					sload_2;
+					sload 4;
+					sadd;
+					saload;
+					sastore;
+					sload 4;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 4;
+					goto L1;
+				L3:	return;
+		}
+
+		.method public getImportInfo(B)S 4 {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_1;
+					iflt L2;
+				L1:	sload_1;
+					getfield_b_this 32;		// byte com/sun/javacard/impl/PackageEntry.importCount
+					if_scmple L3;
+				L2:	sconst_m1;
+					sreturn;
+				L3:	getfield_a_this 33;		// reference com/sun/javacard/impl/PackageEntry.importedPackages
+					sload_1;
+					saload;
+					sreturn;
+		}
+
+		.method public initializeAppletArray(B)V 5 {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_1;
+					putfield_b_this 9;		// byte com/sun/javacard/impl/PackageEntry.appletCount
+					aload_0;
+					sload_1;
+					anewarray 154;		// com/sun/javacard/impl/AppletInfo
+					putfield_a 12;		// reference com/sun/javacard/impl/PackageEntry.applets
+					return;
+		}
+
+		.method public addAppletInfo(Ljavacard/framework/AID;SB)V 6 {
+			.stack 7;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+				L0:	getfield_a_this 12;		// reference com/sun/javacard/impl/PackageEntry.applets
+					aload_0;
+					dup;
+					getfield_b 27;		// byte com/sun/javacard/impl/PackageEntry.appCount
+					dup_x 18;
+					sconst_1;
+					sadd;
+					s2b;
+					putfield_b 27;		// byte com/sun/javacard/impl/PackageEntry.appCount
+					new 154;		// com/sun/javacard/impl/AppletInfo
+					dup;
+					aload_1;
+					sload_2;
+					sload_3;
+					invokespecial 155;		// com/sun/javacard/impl/AppletInfo.<init>(Ljavacard/framework/AID;SB)V
+					aastore;
+					return;
+		}
+
+		.method public getAppletInstallMethodAddress([BSB)S 7 {
+			.stack 4;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore 4;
+				L1:	sload 4;
+					getfield_b_this 9;		// byte com/sun/javacard/impl/PackageEntry.appletCount
+					if_scmpge L6;
+				L2:	getfield_a_this 12;		// reference com/sun/javacard/impl/PackageEntry.applets
+					sload 4;
+					aaload;
+					ifnull L5;
+				L3:	getfield_a_this 12;		// reference com/sun/javacard/impl/PackageEntry.applets
+					sload 4;
+					aaload;
+					getfield_a 5;		// reference com/sun/javacard/impl/AppletInfo.theClassAID
+					aload_1;
+					sload_2;
+					sload_3;
+					invokevirtual 83;		// equals([BSB)Z
+					ifeq L5;
+				L4:	getfield_a_this 12;		// reference com/sun/javacard/impl/PackageEntry.applets
+					sload 4;
+					aaload;
+					getfield_s 6;		// short com/sun/javacard/impl/AppletInfo.installMethodAddr
+					sreturn;
+				L5:	sload 4;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 4;
+					goto L1;
+				L6:	sconst_m1;
+					sreturn;
+		}
+
+		.method public getAppletInstallMethodByIndex(B)S 8 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_a_this 12;		// reference com/sun/javacard/impl/PackageEntry.applets
+					sload_1;
+					aaload;
+					getfield_s 6;		// short com/sun/javacard/impl/AppletInfo.installMethodAddr
+					sreturn;
+		}
+
+		.method public getAppletMethodBlockByIndex(B)B 9 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_a_this 12;		// reference com/sun/javacard/impl/PackageEntry.applets
+					sload_1;
+					aaload;
+					getfield_b 7;		// byte com/sun/javacard/impl/AppletInfo.installMethodBlock
+					sreturn;
+		}
+
+		.method public resetAppletMethodByIndex(BS)S 10 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getfield_a_this 12;		// reference com/sun/javacard/impl/PackageEntry.applets
+					sload_1;
+					aaload;
+					sload_2;
+					dup_x 18;
+					putfield_s 6;		// short com/sun/javacard/impl/AppletInfo.installMethodAddr
+					sreturn;
+		}
+
+		.method public getAppCount()B 11 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_b_this 27;		// byte com/sun/javacard/impl/PackageEntry.appCount
+					sreturn;
+		}
+
+		.method public setPkgNameAndLength([BB)V 12 {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_2;
+					putfield_b_this 34;		// byte com/sun/javacard/impl/PackageEntry.pkgNamelength
+					aload_1;
+					putfield_a_this 35;		// reference com/sun/javacard/impl/PackageEntry.pkgName
+					return;
+		}
+
+		.method public setBundlePkgNameAndLength(B[BB)V 13 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_a_this 29;		// reference com/sun/javacard/impl/PackageEntry.bundlePackages
+					sload_1;
+					aaload;
+					sload_3;
+					putfield_b 3;		// byte com/sun/javacard/impl/BundlePackageEntry.pkgNamelength
+					getfield_a_this 29;		// reference com/sun/javacard/impl/PackageEntry.bundlePackages
+					sload_1;
+					aaload;
+					aload_2;
+					putfield_a 4;		// reference com/sun/javacard/impl/BundlePackageEntry.pkgName
+					return;
+		}
+
+		.method public getPackageName([BB)V 14 {
+			.stack 4;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore_3;
+				L1:	sload_3;
+					getfield_b_this 34;		// byte com/sun/javacard/impl/PackageEntry.pkgNamelength
+					if_scmpge L3;
+				L2:	aload_1;
+					sload_2;
+					sload_3;
+					sadd;
+					getfield_a_this 35;		// reference com/sun/javacard/impl/PackageEntry.pkgName
+					sload_3;
+					baload;
+					bastore;
+					sload_3;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_3;
+					goto L1;
+				L3:	return;
+		}
+
+		.method public initStaticResources(S)V 15 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					anewarray 158;		// com/sun/javacard/impl/StaticResourceEntry
+					putfield_a 36;		// reference com/sun/javacard/impl/PackageEntry.staticResources
+					return;
+		}
+
+		.method public addStaticResourceEntry(SSSZ)V 16 {
+			.stack 7;
+			.locals 0;
+
+				L0:	getfield_a_this 36;		// reference com/sun/javacard/impl/PackageEntry.staticResources
+					sload_3;
+					new 158;		// com/sun/javacard/impl/StaticResourceEntry
+					dup;
+					sload_1;
+					sload_2;
+					sload 4;
+					invokespecial 160;		// com/sun/javacard/impl/StaticResourceEntry.<init>(SSZ)V
+					aastore;
+					return;
+		}
+
+		.method public getStaticResourceEntryData(S)[S 17 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_a_this 36;		// reference com/sun/javacard/impl/PackageEntry.staticResources
+					sload_1;
+					aaload;
+					getfield_a 37;		// reference com/sun/javacard/impl/StaticResourceEntry.data
+					areturn;
+		}
+
+		.method public getStaticResources()[Lcom/sun/javacard/impl/StaticResourceEntry; 18 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 36;		// reference com/sun/javacard/impl/PackageEntry.staticResources
+					areturn;
+		}
+
+		.method public getResourceObject()Ljavacard/framework/Resources; 19 {
+			.stack 1;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/Resources;	1.23;
+
+				L0:	getfield_a_this 38;		// reference com/sun/javacard/impl/PackageEntry.resources
+					areturn;
+		}
+
+		.method public setResourceObject(Ljavacard/framework/Resources;)V 20 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/Resources;	1.23;
+
+				L0:	aload_1;
+					putfield_a_this 38;		// reference com/sun/javacard/impl/PackageEntry.resources
+					return;
+		}
+
+		.method public isThisPackage([BSB)Z 21 {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 28;		// reference com/sun/javacard/impl/PackageEntry.pkgAID
+					aload_1;
+					sload_2;
+					sload_3;
+					invokevirtual 83;		// equals([BSB)Z
+					sreturn;
+		}
+
+	}
+
+	.class public PackageMgr 11 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final byte PKG_COMPONENT_COUNT = 5;		// B
+			public static final byte PKG_COMPONENT_CLASS = 0;		// B
+			public static final byte PKG_COMPONENT_METHOD = 1;		// B
+			public static final byte PKG_COMPONENT_STATICFIELD = 2;		// B
+			public static final byte PKG_COMPONENT_EXPORT = 3;		// B
+			public static final byte PKG_COMPONENT_COMPACT_CP = 4;		// B
+			public static final byte ILLEGAL_ADDRESS = 0;		// B
+			public static final byte ILLEGAL_ID = -1;		// B
+			public static final short ON_CARD_PKG_MAX = 50;		// S
+			public static final byte CLASS_COMPONENT_INDEX = 0;		// B
+			public static final byte METHOD_COMPONENT_INDEX = 1;		// B
+			public static final byte STATIC_FIELD_COMPONENT_INDEX = 2;		// B
+			public static final byte EXPORT_COMPONENT_INDEX = 3;		// B
+			public static final byte COMPONENT_COUNT = 4;		// B
+			public static final byte DELETE_PACKAGE = -64;		// B
+			public static final byte DELETE_PACKAGE_AND_APPLETS = -62;		// B
+			public static final byte INSTALL_METHOD_ADDRESS = 1;		// B
+			public static final byte PACKAGE_ID = 2;		// B
+			public static final byte FAILURE = 0;		// B
+			public static final byte SUCCESS = 1;		// B
+			public static final byte NO_DEPENDENCIES = 2;		// B
+			public static final byte DEPENDENCIES_PRESENT = 3;		// B
+			public static final byte APPLETS_PRESENT = 4;		// B
+			public static final byte DEPENDENCIES_ON_APPLETS = 5;		// B
+			public static final byte ON_CARD_APPLET_PKG_MAX = 16;		// B
+			public static PackageEntry[] f_pkgTable 0;		// [Lcom/sun/javacard/impl/PackageEntry;
+			public static byte[] packageContextTable 1;		// [B
+			static final short COMP_HEADER_SIZE = 3;		// S
+			static final byte MASK_PKG_HAS_APPLET = 4;		// B
+			static byte g_packageInProcess = -1;		// B
+			static byte CAPInProcessMinorVersion;		// B
+			static int g_tempMemoryAddress;		// I
+			static int g_tempMemorySize;		// I
+			static byte f_firstEEPkgID;		// B
+			static byte g_newPackageIdentifier;		// B
+			static PackageEntry g_newPackage;		// Lcom/sun/javacard/impl/PackageEntry;
+			static byte appletPkgCount;		// B
+		}
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static getGpackageInProcess()B 1 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					sreturn;
+		}
+
+		.method public static setCAPInProcessMinorVersion(B)V 2 {
+			.stack 1;
+			.locals 0;
+
+				L0:	sload_0;
+					putstatic_b 163;		// byte com/sun/javacard/impl/PackageMgr.CAPInProcessMinorVersion
+					return;
+		}
+
+		.method public static getCAPInProcessMinorVersion()B 3 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_b 163;		// byte com/sun/javacard/impl/PackageMgr.CAPInProcessMinorVersion
+					sreturn;
+		}
+
+		.method public static getGtempMemoryAddress()I 4 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_i 164;		// int com/sun/javacard/impl/PackageMgr.g_tempMemoryAddress
+					ireturn;
+		}
+
+		.method public static setGtempMemoryAddress(I)V 5 {
+			.stack 2;
+			.locals 0;
+
+				L0:	iload_0;
+					putstatic_i 164;		// int com/sun/javacard/impl/PackageMgr.g_tempMemoryAddress
+					return;
+		}
+
+		.method public static setGtempMemorySize(I)V 6 {
+			.stack 2;
+			.locals 0;
+
+				L0:	iload_0;
+					putstatic_i 165;		// int com/sun/javacard/impl/PackageMgr.g_tempMemorySize
+					return;
+		}
+
+		.method public static getGnewPackageIdentifier()B 7 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_b 166;		// byte com/sun/javacard/impl/PackageMgr.g_newPackageIdentifier
+					sreturn;
+		}
+
+		.method public static getGnewPackage()Lcom/sun/javacard/impl/PackageEntry; 8 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 87;		// reference com/sun/javacard/impl/PackageMgr.g_newPackage
+					areturn;
+		}
+
+		.method public static setGnewPackage([BBBBBB)V 9 {
+			.stack 7;
+			.locals 0;
+
+				L0:	new 167;		// com/sun/javacard/impl/PackageEntry
+					dup;
+					new 149;		// javacard/framework/AID
+					dup;
+					aload_0;
+					sconst_0;
+					sload_1;
+					invokespecial 150;		// javacard/framework/AID.<init>([BSB)V
+					sload_2;
+					sload_3;
+					sload 4;
+					sload 5;
+					invokespecial 168;		// com/sun/javacard/impl/PackageEntry.<init>(Ljavacard/framework/AID;BBBB)V
+					putstatic_a 87;		// reference com/sun/javacard/impl/PackageMgr.g_newPackage
+					return;
+		}
+
+		.method public static getAppletPkgCount()B 10 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_b 243;		// byte com/sun/javacard/impl/PackageMgr.appletPkgCount
+					sreturn;
+		}
+
+		.method public static init()V 11 {
+			.stack 2;
+			.locals 1;
+
+				L0:	sconst_m1;
+					putstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					sconst_0;
+					putstatic_b 163;		// byte com/sun/javacard/impl/PackageMgr.CAPInProcessMinorVersion
+					invokestatic 169;		// com/sun/javacard/impl/NativeMethods.getMaxPackageIdentifier()B
+					putstatic_b 170;		// byte com/sun/javacard/impl/PackageMgr.f_firstEEPkgID
+					sconst_0;
+					sstore_0;
+				L1:	sload_0;
+					bspush 16;
+					if_scmpge L4;
+				L2:	getstatic_a 187;		// reference com/sun/javacard/impl/PackageMgr.packageContextTable
+					sload_0;
+					baload;
+					sconst_m1;
+					if_scmpeq L4;
+				L3:	getstatic_b 243;		// byte com/sun/javacard/impl/PackageMgr.appletPkgCount
+					sconst_1;
+					sadd;
+					s2b;
+					putstatic_b 243;		// byte com/sun/javacard/impl/PackageMgr.appletPkgCount
+					sload_0;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_0;
+					goto L1;
+				L4:	return;
+		}
+
+		.method public static reset()V 12 {
+			.stack 2;
+			.locals 1;
+
+				L0:	invokestatic 171;		// com/sun/javacard/impl/PackageMgr.restore()V
+					aconst_null;
+					putstatic_a 87;		// reference com/sun/javacard/impl/PackageMgr.g_newPackage
+					sconst_m1;
+					putstatic_b 166;		// byte com/sun/javacard/impl/PackageMgr.g_newPackageIdentifier
+					sconst_0;
+					putstatic_b 163;		// byte com/sun/javacard/impl/PackageMgr.CAPInProcessMinorVersion
+					getstatic_b 170;		// byte com/sun/javacard/impl/PackageMgr.f_firstEEPkgID
+					sstore_0;
+				L1:	sload_0;
+					bspush 50;
+					if_scmpge L5;
+				L2:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_0;
+					aaload;
+					ifnonnull L4;
+				L3:	sload_0;
+					putstatic_b 166;		// byte com/sun/javacard/impl/PackageMgr.g_newPackageIdentifier
+					goto L5;
+				L4:	sload_0;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_0;
+					goto L1;
+				L5:	getstatic_b 166;		// byte com/sun/javacard/impl/PackageMgr.g_newPackageIdentifier
+					putstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					iconst_0;
+					putstatic_i 164;		// int com/sun/javacard/impl/PackageMgr.g_tempMemoryAddress
+					iconst_0;
+					putstatic_i 165;		// int com/sun/javacard/impl/PackageMgr.g_tempMemorySize
+					return;
+		}
+
+		.method public static restore()V 13 {
+			.stack 4;
+			.locals 1;
+
+				L0:	getstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					sconst_m1;
+					if_scmpne L2;
+				L1:	return;
+				L2:	getstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					sconst_1;
+					invokestatic 45;		// com/sun/javacard/impl/NativeMethods.removePackage(BB)B
+					pop;
+					invokestatic 153;		// javacard/framework/JCSystem.beginTransaction()V
+					getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					getstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					aaload;
+					ifnonnull L4;
+				L3:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					getstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					getstatic_a 87;		// reference com/sun/javacard/impl/PackageMgr.g_newPackage
+					aastore;
+					aconst_null;
+					putstatic_a 87;		// reference com/sun/javacard/impl/PackageMgr.g_newPackage
+				L4:	sconst_0;
+					putstatic_b 163;		// byte com/sun/javacard/impl/PackageMgr.CAPInProcessMinorVersion
+					getstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					invokestatic 46;		// com/sun/javacard/impl/GarbageCollector.cleanupTables(B)V
+					getstatic_i 164;		// int com/sun/javacard/impl/PackageMgr.g_tempMemoryAddress
+					iconst_0;
+					icmp;
+					ifeq L6;
+				L5:	invokestatic 173;		// com/sun/javacard/impl/PackageMgr.freeTempMemory()V
+				L6:	sconst_m1;
+					putstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					invokestatic 161;		// javacard/framework/JCSystem.commitTransaction()V
+				L7:	goto L10;
+				L8:	astore_0;
+				L9:	invokestatic 157;		// javacard/framework/JCSystem.abortTransaction()V
+					sspush 25683;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L2 L7 L8 172;
+			}
+		}
+
+		.method public static freeTempMemory()V 14 {
+			.stack 4;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore_0;
+				L1:	invokestatic 79;		// javacard/framework/JCSystem.getTransactionDepth()B
+					ifne L3;
+				L2:	invokestatic 153;		// javacard/framework/JCSystem.beginTransaction()V
+					sconst_1;
+					sstore_0;
+				L3:	getstatic_i 164;		// int com/sun/javacard/impl/PackageMgr.g_tempMemoryAddress
+					getstatic_i 165;		// int com/sun/javacard/impl/PackageMgr.g_tempMemorySize
+					invokestatic 174;		// com/sun/javacard/impl/NativeMethods.freeHeap(II)V
+					iconst_0;
+					putstatic_i 164;		// int com/sun/javacard/impl/PackageMgr.g_tempMemoryAddress
+					iconst_0;
+					putstatic_i 165;		// int com/sun/javacard/impl/PackageMgr.g_tempMemorySize
+					sload_0;
+					ifeq L5;
+				L4:	invokestatic 161;		// javacard/framework/JCSystem.commitTransaction()V
+				L5:	return;
+		}
+
+		.method public static commit()V 15 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getstatic_a 87;		// reference com/sun/javacard/impl/PackageMgr.g_newPackage
+					ifnull L2;
+				L1:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					getstatic_b 166;		// byte com/sun/javacard/impl/PackageMgr.g_newPackageIdentifier
+					getstatic_a 87;		// reference com/sun/javacard/impl/PackageMgr.g_newPackage
+					aastore;
+					sconst_m1;
+					putstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					sconst_0;
+					putstatic_b 163;		// byte com/sun/javacard/impl/PackageMgr.CAPInProcessMinorVersion
+					aconst_null;
+					putstatic_a 87;		// reference com/sun/javacard/impl/PackageMgr.g_newPackage
+				L2:	return;
+		}
+
+		.method public static addAppletPackage(B)V 16 {
+			.stack 3;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore_1;
+				L1:	sload_1;
+					bspush 16;
+					if_scmpge L5;
+				L2:	getstatic_a 187;		// reference com/sun/javacard/impl/PackageMgr.packageContextTable
+					sload_1;
+					baload;
+					sconst_m1;
+					if_scmpne L4;
+				L3:	getstatic_a 187;		// reference com/sun/javacard/impl/PackageMgr.packageContextTable
+					sload_1;
+					getstatic_b 166;		// byte com/sun/javacard/impl/PackageMgr.g_newPackageIdentifier
+					bastore;
+					getstatic_b 243;		// byte com/sun/javacard/impl/PackageMgr.appletPkgCount
+					sconst_1;
+					sadd;
+					s2b;
+					putstatic_b 243;		// byte com/sun/javacard/impl/PackageMgr.appletPkgCount
+					goto L5;
+				L4:	sload_1;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_1;
+					goto L1;
+				L5:	return;
+		}
+
+		.method public static handlePackageDeletion(Ljavacard/framework/APDU;)V 17 {
+			.stack 5;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	sconst_0;
+					sstore_1;
+				L1:	sconst_0;
+					sstore_2;
+				L2:	aload_0;
+					invokevirtual 98;		// getBuffer()[B
+					astore_3;
+				L3:	aload_3;
+					sconst_1;
+					baload;
+					sstore 4;
+				L4:	sconst_0;
+					sstore 5;
+				L5:	aload_0;
+					invokevirtual 99;		// setIncomingAndReceive()S
+					pop;
+					aload_3;
+					sconst_4;
+					baload;
+					bspush 6;
+					if_scmplt L7;
+				L6:	aload_3;
+					sconst_4;
+					baload;
+					bspush 17;
+					if_scmple L8;
+				L7:	sspush 26368;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L8:	aload_3;
+					sconst_5;
+					baload;
+					sstore_2;
+					aload_3;
+					bspush 6;
+					sload_2;
+					sconst_0;
+					sconst_1;
+					invokestatic 175;		// com/sun/javacard/impl/PackageMgr.findPkgID([BSBZZ)B
+					sstore_1;
+					sload_1;
+					ifge L10;
+				L9:	sspush 25675;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+					goto L12;
+				L10:	sload_1;
+					getstatic_b 170;		// byte com/sun/javacard/impl/PackageMgr.f_firstEEPkgID
+					if_scmpge L12;
+				L11:	sspush 25678;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L12:	sload 4;
+					bspush -62;
+					if_scmpne L14;
+				L13:	aload_3;
+					sconst_0;
+					sload_1;
+					invokestatic 176;		// com/sun/javacard/impl/AppletMgr.getAppletsForPackage([BBB)B
+					sstore 5;
+					aload_3;
+					sload 5;
+					invokestatic 103;		// com/sun/javacard/impl/AppletMgr.callUninstallMethods([BB)V
+				L14:	sload 4;
+					bspush -64;
+					if_scmpne L16;
+				L15:	sload_1;
+					invokestatic 177;		// com/sun/javacard/impl/PackageMgr.removePackage(B)V
+					goto L17;
+				L16:	sload_1;
+					aload_3;
+					sload 5;
+					invokestatic 178;		// com/sun/javacard/impl/PackageMgr.removePackageAndApplets(B[BB)V
+				L17:	sconst_m1;
+					putstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+				L18:	goto L21;
+				L19:	astore 6;
+				L20:	aload 6;
+					invokevirtual 159;		// getReason()S
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L21:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L5 L18 L19 148;
+			}
+		}
+
+		.method public static getPkgID([BSBBB)B 18 {
+			.stack 6;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore 5;
+				L1:	sload 5;
+					bspush 50;
+					if_scmpge L11;
+				L2:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 5;
+					aaload;
+					ifnull L10;
+				L3:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 5;
+					aaload;
+					getfield_b 26;		// byte com/sun/javacard/impl/PackageEntry.bundlePackageCount
+					ifle L6;
+				L4:	sload 5;
+					aload_0;
+					sload_1;
+					sload_2;
+					sload_3;
+					sload 4;
+					invokestatic 179;		// com/sun/javacard/impl/PackageMgr.getBundlePkgIndex(B[BSBBB)B
+					iflt L10;
+				L5:	sload 5;
+					sreturn;
+				L6:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 5;
+					aaload;
+					getfield_a 28;		// reference com/sun/javacard/impl/PackageEntry.pkgAID
+					aload_0;
+					sload_1;
+					sload_2;
+					invokevirtual 83;		// equals([BSB)Z
+					ifeq L10;
+				L7:	sload_3;
+					getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 5;
+					aaload;
+					getfield_b 30;		// byte com/sun/javacard/impl/PackageEntry.pkgMajor
+					if_scmpne L10;
+				L8:	sload 4;
+					sspush 255;
+					sand;
+					getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 5;
+					aaload;
+					getfield_b 31;		// byte com/sun/javacard/impl/PackageEntry.pkgMinor
+					sspush 255;
+					sand;
+					if_scmpgt L10;
+				L9:	sload 5;
+					sreturn;
+				L10:	sload 5;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 5;
+					goto L1;
+				L11:	sconst_m1;
+					sreturn;
+		}
+
+		.method public static getBundlePkgIndex(B[BSBBB)B 19 {
+			.stack 4;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore 6;
+				L1:	sload 6;
+					getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_0;
+					aaload;
+					getfield_b 26;		// byte com/sun/javacard/impl/PackageEntry.bundlePackageCount
+					if_scmpge L7;
+				L2:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_0;
+					aaload;
+					getfield_a 29;		// reference com/sun/javacard/impl/PackageEntry.bundlePackages
+					sload 6;
+					aaload;
+					getfield_a 0;		// reference com/sun/javacard/impl/BundlePackageEntry.pkgAID
+					aload_1;
+					sload_2;
+					sload_3;
+					invokevirtual 83;		// equals([BSB)Z
+					ifeq L6;
+				L3:	sload 4;
+					getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_0;
+					aaload;
+					getfield_a 29;		// reference com/sun/javacard/impl/PackageEntry.bundlePackages
+					sload 6;
+					aaload;
+					getfield_b 1;		// byte com/sun/javacard/impl/BundlePackageEntry.pkgMajor
+					if_scmpne L6;
+				L4:	sload 5;
+					sspush 255;
+					sand;
+					getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_0;
+					aaload;
+					getfield_a 29;		// reference com/sun/javacard/impl/PackageEntry.bundlePackages
+					sload 6;
+					aaload;
+					getfield_b 2;		// byte com/sun/javacard/impl/BundlePackageEntry.pkgMinor
+					sspush 255;
+					sand;
+					if_scmpgt L6;
+				L5:	sload 6;
+					sreturn;
+				L6:	sload 6;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 6;
+					goto L1;
+				L7:	sconst_m1;
+					sreturn;
+		}
+
+		.method public static findBundlePkgIndex(B[BSB)B 20 {
+			.stack 4;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore 4;
+				L1:	sload 4;
+					getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_0;
+					aaload;
+					getfield_b 26;		// byte com/sun/javacard/impl/PackageEntry.bundlePackageCount
+					if_scmpge L5;
+				L2:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_0;
+					aaload;
+					getfield_a 29;		// reference com/sun/javacard/impl/PackageEntry.bundlePackages
+					sload 4;
+					aaload;
+					getfield_a 0;		// reference com/sun/javacard/impl/BundlePackageEntry.pkgAID
+					aload_1;
+					sload_2;
+					sload_3;
+					invokevirtual 83;		// equals([BSB)Z
+					ifeq L4;
+				L3:	sload 4;
+					sreturn;
+				L4:	sload 4;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 4;
+					goto L1;
+				L5:	sconst_m1;
+					sreturn;
+		}
+
+		.method public static findPkgID([BSBZZ)B 21 {
+			.stack 4;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore 5;
+				L1:	sload 5;
+					bspush 50;
+					if_scmpge L13;
+				L2:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 5;
+					aaload;
+					ifnull L12;
+				L3:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 5;
+					aaload;
+					getfield_a 28;		// reference com/sun/javacard/impl/PackageEntry.pkgAID
+					aload_0;
+					sload_1;
+					sload_2;
+					invokevirtual 83;		// equals([BSB)Z
+					ifeq L8;
+				L4:	sload 4;
+					ifne L7;
+				L5:	sload_3;
+					ifeq L8;
+				L6:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 5;
+					aaload;
+					getfield_b 26;		// byte com/sun/javacard/impl/PackageEntry.bundlePackageCount
+					ifne L8;
+				L7:	sload 5;
+					sreturn;
+				L8:	sload_3;
+					ifeq L12;
+				L9:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 5;
+					aaload;
+					getfield_b 26;		// byte com/sun/javacard/impl/PackageEntry.bundlePackageCount
+					ifle L12;
+				L10:	sload 5;
+					aload_0;
+					sload_1;
+					sload_2;
+					invokestatic 180;		// com/sun/javacard/impl/PackageMgr.findBundlePkgIndex(B[BSB)B
+					iflt L12;
+				L11:	sload 5;
+					sreturn;
+				L12:	sload 5;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 5;
+					goto L1;
+				L13:	sconst_m1;
+					sreturn;
+		}
+
+		.method public static getExportAddress(B)I 22 {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_0;
+					invokestatic 181;		// com/sun/javacard/impl/NativeMethods.getPackageExportComponent(B)I
+					ireturn;
+		}
+
+		.method static getPkgIDForAddress(I)B {
+			.stack 2;
+			.locals 0;
+
+				L0:	iload_0;
+					invokestatic 182;		// com/sun/javacard/impl/NativeMethods.getPkgIDForAddress(I)B
+					sreturn;
+		}
+
+		.method static getPkgNameForClass(I[BB)B {
+			.stack 4;
+			.locals 1;
+
+				L0:	iload_0;
+					invokestatic 182;		// com/sun/javacard/impl/NativeMethods.getPkgIDForAddress(I)B
+					sstore 4;
+				L1:	sload 4;
+					sconst_m1;
+					if_scmpeq L3;
+				L2:	aload_2;
+					sload_3;
+					sload_3;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_3;
+					getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 4;
+					aaload;
+					getfield_b 34;		// byte com/sun/javacard/impl/PackageEntry.pkgNamelength
+					bastore;
+					getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 4;
+					aaload;
+					aload_2;
+					sload_3;
+					invokevirtual 183;		// getPackageName([BB)V
+					getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 4;
+					aaload;
+					getfield_b 34;		// byte com/sun/javacard/impl/PackageEntry.pkgNamelength
+					sload_3;
+					sadd;
+					s2b;
+					sreturn;
+				L3:	sconst_m1;
+					sreturn;
+		}
+
+		.method public static checkDependencies(B)B 23 {
+			.stack 3;
+			.locals 2;
+
+				L0:	getstatic_b 170;		// byte com/sun/javacard/impl/PackageMgr.f_firstEEPkgID
+					sstore_1;
+				L1:	sload_1;
+					bspush 50;
+					if_scmpge L11;
+				L2:	sload_1;
+					sload_0;
+					if_scmpne L4;
+				L3:	goto L10;
+				L4:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_1;
+					aaload;
+					ifnull L10;
+				L5:	sconst_0;
+					sstore_2;
+				L6:	sload_2;
+					getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_1;
+					aaload;
+					getfield_b 32;		// byte com/sun/javacard/impl/PackageEntry.importCount
+					if_scmpge L10;
+				L7:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_1;
+					aaload;
+					getfield_a 33;		// reference com/sun/javacard/impl/PackageEntry.importedPackages
+					sload_2;
+					saload;
+					bspush 8;
+					sshr;
+					sload_0;
+					if_scmpne L9;
+				L8:	sconst_3;
+					sreturn;
+				L9:	sload_2;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_2;
+					goto L6;
+				L10:	sload_1;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_1;
+					goto L1;
+				L11:	sconst_2;
+					sreturn;
+		}
+
+		.method public static removePackage(B)V 24 {
+			.stack 3;
+			.locals 0;
+
+				L0:	sload_0;
+					invokestatic 184;		// com/sun/javacard/impl/PackageMgr.checkDependencies(B)B
+					sconst_2;
+					if_scmpne L4;
+				L1:	aconst_null;
+					sconst_0;
+					sload_0;
+					invokestatic 176;		// com/sun/javacard/impl/AppletMgr.getAppletsForPackage([BBB)B
+					ifne L3;
+				L2:	sload_0;
+					invokestatic 49;		// com/sun/javacard/impl/GarbageCollector.deletePackage(B)V
+					goto L5;
+				L3:	sspush 25677;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+					goto L5;
+				L4:	sspush 25676;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L5:	return;
+		}
+
+		.method public static removePackageAndApplets(B[BB)V 25 {
+			.stack 3;
+			.locals 0;
+
+				L0:	sload_0;
+					invokestatic 184;		// com/sun/javacard/impl/PackageMgr.checkDependencies(B)B
+					sconst_2;
+					if_scmpeq L2;
+				L1:	sspush 25676;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L2:	sload_0;
+					aload_1;
+					sload_2;
+					invokestatic 185;		// com/sun/javacard/impl/GarbageCollector.deletePackageAndApplets(B[BB)V
+					return;
+		}
+
+		.method public static getPkgContext(B)B 26 {
+			.stack 2;
+			.locals 1;
+
+				L0:	sconst_0;
+					sstore_1;
+				L1:	sload_1;
+					bspush 16;
+					if_scmpge L5;
+				L2:	getstatic_a 187;		// reference com/sun/javacard/impl/PackageMgr.packageContextTable
+					sload_1;
+					baload;
+					sload_0;
+					if_scmpne L4;
+				L3:	sload_1;
+					sreturn;
+				L4:	sload_1;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_1;
+					goto L1;
+				L5:	sconst_m1;
+					sreturn;
+		}
+
+		.method public static getPkgIdForContext(B)B 27 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 187;		// reference com/sun/javacard/impl/PackageMgr.packageContextTable
+					sload_0;
+					baload;
+					sreturn;
+		}
+
+		.method public static getAppletInfo([BSBB)S 28 {
+			.stack 4;
+			.locals 3;
+
+				L0:	sconst_m1;
+					sstore 4;
+				L1:	sconst_0;
+					sstore 5;
+				L2:	getstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					ifle L5;
+				L3:	getstatic_a 87;		// reference com/sun/javacard/impl/PackageMgr.g_newPackage
+					ifnull L5;
+				L4:	getstatic_b 44;		// byte com/sun/javacard/impl/PackageMgr.g_packageInProcess
+					sstore 5;
+					getstatic_a 87;		// reference com/sun/javacard/impl/PackageMgr.g_newPackage
+					aload_0;
+					sload_1;
+					sload_2;
+					invokevirtual 186;		// getAppletInstallMethodAddress([BSB)S
+					sstore 4;
+				L5:	sload 4;
+					sconst_m1;
+					if_scmpne L15;
+				L6:	sconst_0;
+					sstore 6;
+				L7:	sload 6;
+					bspush 50;
+					if_scmpge L15;
+				L8:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					ifnonnull L10;
+				L9:	goto L15;
+				L10:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 6;
+					aaload;
+					ifnull L12;
+				L11:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload 6;
+					aaload;
+					aload_0;
+					sload_1;
+					sload_2;
+					invokevirtual 186;		// getAppletInstallMethodAddress([BSB)S
+					sstore 4;
+				L12:	sload 4;
+					sconst_m1;
+					if_scmpeq L14;
+				L13:	sload 6;
+					sstore 5;
+					goto L15;
+				L14:	sload 6;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 6;
+					goto L7;
+				L15:	sload 4;
+					sconst_m1;
+					if_scmpeq L19;
+				L16:	sload_3;
+					sconst_2;
+					if_scmpne L18;
+				L17:	sload 5;
+					sreturn;
+				L18:	sload 4;
+					sreturn;
+				L19:	sconst_m1;
+					sreturn;
+		}
+
+	}
+
+	.class public PackedBoolean 12 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			protected byte nextId 0;		// B
+			protected byte[] container 1;		// [B
+		}
+
+		.publicMethodTable 1 6 {
+			equals(Ljava/lang/Object;)Z 0;
+			allocate()B 255;
+			get(B)Z 255;
+			access(BB)Z 255;
+			set(B)V 255;
+			reset(B)V 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(B)V 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					aload_0;
+					sload_1;
+					sconst_1;
+					invokestatic 56;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					putfield_a 39;		// reference com/sun/javacard/impl/PackedBoolean.container
+					sconst_0;
+					putfield_b_this 40;		// byte com/sun/javacard/impl/PackedBoolean.nextId
+					return;
+		}
+
+		.method public allocate()B 1 {
+			.stack 4;
+			.locals 0;
+
+				L0:	aload_0;
+					dup;
+					getfield_b 40;		// byte com/sun/javacard/impl/PackedBoolean.nextId
+					dup_x 18;
+					sconst_1;
+					sadd;
+					s2b;
+					putfield_b 40;		// byte com/sun/javacard/impl/PackedBoolean.nextId
+					sreturn;
+		}
+
+		.method public get(B)Z 2 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					sconst_0;
+					invokevirtual 189;		// access(BB)Z
+					sreturn;
+		}
+
+		.method public access(BB)Z 3 {
+			.stack 5;
+			.locals 3;
+
+				L0:	sload_1;
+					sconst_3;
+					sshr;
+					sstore_3;
+				L1:	sload_1;
+					bspush 7;
+					sand;
+					sstore 4;
+				L2:	sspush 128;
+					sload 4;
+					sshr;
+					s2b;
+					sstore 5;
+				L3:	sload_2;
+					slookupswitch L6 2 -1 L5 1 L4;
+				L4:	getfield_a_this 39;		// reference com/sun/javacard/impl/PackedBoolean.container
+					sload_3;
+					dup2;
+					baload;
+					sload 5;
+					sor;
+					bastore;
+					goto L6;
+				L5:	getfield_a_this 39;		// reference com/sun/javacard/impl/PackedBoolean.container
+					sload_3;
+					dup2;
+					baload;
+					sload 5;
+					sconst_m1;
+					sxor;
+					sand;
+					bastore;
+					goto L6;
+				L6:	getfield_a_this 39;		// reference com/sun/javacard/impl/PackedBoolean.container
+					sload_3;
+					baload;
+					sload 5;
+					sand;
+					ifeq L8;
+				L7:	sconst_1;
+					goto L9;
+				L8:	sconst_0;
+				L9:	sreturn;
+		}
+
+		.method public set(B)V 4 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					sconst_1;
+					invokevirtual 189;		// access(BB)Z
+					pop;
+					return;
+		}
+
+		.method public reset(B)V 5 {
+			.stack 3;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					sconst_m1;
+					invokevirtual 189;		// access(BB)Z
+					pop;
+					return;
+		}
+
+	}
+
+	.class public PrivAccess 13 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final byte APP_FIRST = 0;		// B
+			public static final byte APPS_MAX = 16;		// B
+			public static final byte APP_NULL = -1;		// B
+			public static final byte JCRE_CONTEXTID = 0;		// B
+			public static final byte NULL_CONTEXTID = 15;		// B
+			public static final byte APPID_BITMASK = 15;		// B
+			public static final byte INTERFACE_PRIMARY = 0;		// B
+			public static final byte INTERFACE_SECONDARY = 1;		// B
+			public static final byte NUM_ISO_CHANNELS = 20;		// B
+			public static final byte APP_STATE_NONE = 0;		// B
+			public static final byte APP_STATE_REGISTERED = 1;		// B
+			public static final byte APP_STATE_SELECTABLE = 2;		// B
+			private static final byte BASIC_CHANNEL = 0;		// B
+			static final byte APPLET_MULTISELECTED = 8;		// B
+			static final byte APPLET_ACTIVE = 4;		// B
+			static final byte PACKAGE_MULTISELECTED = 2;		// B
+			static final byte PACKAGE_ACTIVE = 1;		// B
+			private static final byte OP_CHANNEL_CLOSE = 0;		// B
+			private static final byte OP_CHANNEL_OPEN = 1;		// B
+			private static final byte OP_CHANNEL_OPEN_AUTOSELECT = 2;		// B
+			private static final byte CHANNEL_CLOSED = 0;		// B
+			private static final byte CHANNEL_DISABLED = 1;		// B
+			private static final byte CHANNEL_OPEN = 2;		// B
+			private static final byte CHANNEL_OPEN_MS = 3;		// B
+			private static final byte CHANNEL_MS_MASK = 1;		// B
+			private static final byte CHANNEL_OPEN_MASK = 2;		// B
+			private static PackedBoolean thePackedBoolean;		// Lcom/sun/javacard/impl/PackedBoolean;
+			private static PrivAccess thePrivAccess;		// Lcom/sun/javacard/impl/PrivAccess;
+			private static final byte NUMBER_SYSTEM_BOOLS = 24;		// B
+			private static byte selectingAppletFlag;		// B
+			private static byte processMethodFlag;		// B
+			private static byte appCurrentlySelected = -1;		// B
+			private static byte newAppBeingSelected = -1;		// B
+			private static byte newAppBeingSelectedOnChannel = -1;		// B
+			private static byte newAppBeingSelectedOnInterface = -1;		// B
+			private static boolean deselectionInProgress;		// Z
+		}
+
+		.publicMethodTable 1 21 {
+			equals(Ljava/lang/Object;)Z 0;
+			register(Ljavacard/framework/Applet;)V 255;
+			register(Ljavacard/framework/Applet;[BSB)V 255;
+			selectingApplet()Z 255;
+			amIBeingReselected()Z 255;
+			inProcessMethod()Z 255;
+			getSharedObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable; 255;
+			getAID([BSB)Ljavacard/framework/AID; 255;
+			getStaticResources(B)[Lcom/sun/javacard/impl/StaticResourceEntry; 255;
+			getResourceObject(B)Ljavacard/framework/Resources; 255;
+			setResourceObject(BLjavacard/framework/Resources;)V 255;
+			getAID(B)Ljavacard/framework/AID; 255;
+			getPkgIDForAddress(I)B 255;
+			getPkgNameForClass(I[BB)B 255;
+			setGCRequestedFlag(Z)V 255;
+			isGarbageCollectionRequested()Z 255;
+			initBio1ToNException()V 255;
+			initBioException()V 255;
+			initTLVException()V 255;
+			initServiceException()V 255;
+			initRemoteObjArray(S)[S 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public final register(Ljavacard/framework/Applet;)V 1 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/Applet;	1.3;
+
+				L0:	aload_1;
+					aconst_null;
+					invokestatic 190;		// com/sun/javacard/impl/AppletMgr.register(Ljavacard/framework/Applet;Ljavacard/framework/AID;)V
+					return;
+		}
+
+		.method public final register(Ljavacard/framework/Applet;[BSB)V 2 {
+			.stack 5;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/Applet;	1.3;
+
+				L0:	new 149;		// javacard/framework/AID
+					dup;
+					aload_2;
+					sload_3;
+					sload 4;
+					invokespecial 150;		// javacard/framework/AID.<init>([BSB)V
+					astore 5;
+				L1:	aload 5;
+					sconst_0;
+					invokestatic 59;		// com/sun/javacard/impl/NativeMethods.setJCREentry(Ljava/lang/Object;Z)V
+					aload_1;
+					aload 5;
+					invokestatic 190;		// com/sun/javacard/impl/AppletMgr.register(Ljavacard/framework/Applet;Ljavacard/framework/AID;)V
+					return;
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					aload_0;
+					putstatic_a 191;		// reference com/sun/javacard/impl/PrivAccess.thePrivAccess
+					return;
+		}
+
+		.method public static getPackedBoolean()Lcom/sun/javacard/impl/PackedBoolean; 1 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getstatic_a 192;		// reference com/sun/javacard/impl/PrivAccess.thePackedBoolean
+					ifnonnull L2;
+				L1:	new 193;		// com/sun/javacard/impl/PackedBoolean
+					dup;
+					sconst_3;
+					invokespecial 194;		// com/sun/javacard/impl/PackedBoolean.<init>(B)V
+					putstatic_a 192;		// reference com/sun/javacard/impl/PrivAccess.thePackedBoolean
+				L2:	getstatic_a 192;		// reference com/sun/javacard/impl/PrivAccess.thePackedBoolean
+					areturn;
+		}
+
+		.method public static getPrivAccess()Lcom/sun/javacard/impl/PrivAccess; 2 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 191;		// reference com/sun/javacard/impl/PrivAccess.thePrivAccess
+					areturn;
+		}
+
+		.method public static setSelectingAppletFlag()V 3 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 192;		// reference com/sun/javacard/impl/PrivAccess.thePackedBoolean
+					getstatic_b 195;		// byte com/sun/javacard/impl/PrivAccess.selectingAppletFlag
+					invokevirtual 196;		// set(B)V
+					return;
+		}
+
+		.method public static resetSelectingAppletFlag()V 4 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 192;		// reference com/sun/javacard/impl/PrivAccess.thePackedBoolean
+					getstatic_b 195;		// byte com/sun/javacard/impl/PrivAccess.selectingAppletFlag
+					invokevirtual 197;		// reset(B)V
+					return;
+		}
+
+		.method public static setProcessMethodFlag()V 5 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 192;		// reference com/sun/javacard/impl/PrivAccess.thePackedBoolean
+					getstatic_b 198;		// byte com/sun/javacard/impl/PrivAccess.processMethodFlag
+					invokevirtual 196;		// set(B)V
+					return;
+		}
+
+		.method public static resetProcessMethodFlag()V 6 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 192;		// reference com/sun/javacard/impl/PrivAccess.thePackedBoolean
+					getstatic_b 198;		// byte com/sun/javacard/impl/PrivAccess.processMethodFlag
+					invokevirtual 197;		// reset(B)V
+					return;
+		}
+
+		.method public static getSelectedAppID(BB)B 7 {
+			.stack 2;
+			.locals 1;
+
+				L0:	sload_0;
+					sload_1;
+					invokestatic 71;		// com/sun/javacard/impl/NativeMethods.getChannelContext(BB)B
+					sstore_2;
+				L1:	sload_2;
+					bspush 15;
+					if_scmpne L3;
+				L2:	sconst_m1;
+					sreturn;
+				L3:	sload_2;
+					bspush 15;
+					sand;
+					sreturn;
+		}
+
+		.method public static getSelectedApplet(BB)Ljavacard/framework/Applet; 8 {
+			.stack 3;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/Applet;	1.3;
+
+				L0:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_0;
+					sload_1;
+					invokestatic 199;		// com/sun/javacard/impl/PrivAccess.getSelectedAppID(BB)B
+					aaload;
+					getfield_a 13;		// reference com/sun/javacard/impl/AppTableEntry.theApplet
+					areturn;
+		}
+
+		.method public static setDefaultApplet(Ljavacard/framework/APDU;)V 9 {
+			.stack 3;
+			.locals 7;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	bspush 20;
+					sstore_1;
+				L1:	invokestatic 60;		// com/sun/javacard/impl/NativeMethods.getCardInterfaceCount()B
+					sconst_2;
+					if_scmpne L4;
+				L2:	bspush 20;
+					sstore_2;
+				L3:	goto L5;
+				L4:	sconst_0;
+					sstore_2;
+				L5:	aload_0;
+					invokevirtual 98;		// getBuffer()[B
+					astore_3;
+				L6:	aload_3;
+					sconst_2;
+					baload;
+					sstore 4;
+				L7:	aload_3;
+					sconst_3;
+					baload;
+					ifeq L10;
+				L8:	aload_3;
+					sconst_3;
+					baload;
+					sconst_1;
+					if_scmpeq L10;
+				L9:	sspush 27270;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L10:	aload_3;
+					sconst_3;
+					baload;
+					ifne L14;
+				L11:	sload 4;
+					iflt L13;
+				L12:	sload 4;
+					sload_1;
+					if_scmplt L17;
+				L13:	sspush 25684;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+					goto L17;
+				L14:	sload 4;
+					iflt L16;
+				L15:	sload 4;
+					sload_2;
+					if_scmplt L17;
+				L16:	sspush 25684;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L17:	aload_3;
+					sconst_3;
+					baload;
+					ifne L19;
+				L18:	sconst_0;
+					goto L20;
+				L19:	sload_1;
+				L20:	sstore 5;
+				L21:	aload_3;
+					sconst_4;
+					baload;
+					sstore 6;
+				L22:	aload_0;
+					invokevirtual 99;		// setIncomingAndReceive()S
+					pop;
+					aload_3;
+					sconst_5;
+					sload 6;
+					invokestatic 100;		// com/sun/javacard/impl/AppletMgr.findApplet([BSB)B
+					sstore 7;
+				L23:	sload 7;
+					sconst_m1;
+					if_scmpne L25;
+				L24:	sspush 25667;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L25:	getstatic_a 61;		// reference com/sun/javacard/impl/AppletMgr.defaultApplets
+					sload 5;
+					sload 4;
+					sadd;
+					sload 7;
+					bastore;
+					return;
+		}
+
+		.method public static powerUpContactless()V 10 {
+			.stack 3;
+			.locals 1;
+
+				L0:	invokestatic 60;		// com/sun/javacard/impl/NativeMethods.getCardInterfaceCount()B
+					sconst_2;
+					if_scmpne L5;
+				L1:	sconst_0;
+					sconst_1;
+					sconst_1;
+					invokestatic 200;		// com/sun/javacard/impl/NativeMethods.channelManage(BBB)B
+					pop;
+				L2:	sconst_0;
+					sconst_1;
+					invokestatic 201;		// com/sun/javacard/impl/PrivAccess.selectDefaultApplet(BB)V
+				L3:	goto L5;
+				L4:	astore_0;
+				L5:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L2 L3 L4 97;
+			}
+		}
+
+		.method public static powerDownContactless()V 11 {
+			.stack 4;
+			.locals 4;
+
+				L0:	invokestatic 60;		// com/sun/javacard/impl/NativeMethods.getCardInterfaceCount()B
+					sconst_2;
+					if_scmpne L12;
+				L1:	sconst_0;
+					sstore_0;
+				L2:	sload_0;
+					bspush 20;
+					if_scmpge L12;
+				L3:	sload_0;
+					sconst_1;
+					invokestatic 72;		// com/sun/javacard/impl/NativeMethods.getChannelStatus(BB)B
+					sstore_1;
+				L4:	sload_1;
+					sconst_2;
+					if_scmpeq L6;
+				L5:	sload_1;
+					sconst_3;
+					if_scmpne L11;
+				L6:	sload_0;
+					sconst_1;
+					invokestatic 71;		// com/sun/javacard/impl/NativeMethods.getChannelContext(BB)B
+					sstore_2;
+				L7:	sload_2;
+					invokestatic 74;		// com/sun/javacard/impl/NativeMethods.getContextStatus(B)B
+					sstore_3;
+				L8:	sload_3;
+					sconst_2;
+					sand;
+					ifne L10;
+				L9:	sload_0;
+					sconst_1;
+					sconst_2;
+					invokestatic 75;		// com/sun/javacard/impl/NativeMethods.clearTransientObjs(BBB)V
+				L10:	sload_0;
+					sconst_1;
+					bspush 15;
+					sconst_0;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+					sload_0;
+					sconst_1;
+					sconst_0;
+					invokestatic 200;		// com/sun/javacard/impl/NativeMethods.channelManage(BBB)B
+					pop;
+				L11:	sload_0;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore_0;
+					goto L2;
+				L12:	return;
+		}
+
+		.method public static selectDefaultApplet(BB)V 12 {
+			.stack 3;
+			.locals 1;
+
+				L0:	sload_0;
+					sload_1;
+					invokestatic 202;		// com/sun/javacard/impl/PrivAccess.deselectOnly(BB)V
+					getstatic_a 61;		// reference com/sun/javacard/impl/AppletMgr.defaultApplets
+					sload_0;
+					baload;
+					sstore_2;
+				L1:	sload_2;
+					sconst_m1;
+					if_scmpeq L3;
+				L2:	sload_0;
+					sload_1;
+					sload_2;
+					invokestatic 203;		// com/sun/javacard/impl/PrivAccess.selectOnly(BBB)V
+				L3:	return;
+		}
+
+		.method public static isMultiSelectionOK(BBB)Z 13 {
+			.stack 2;
+			.locals 7;
+
+				L0:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_2;
+					aaload;
+					getfield_a 13;		// reference com/sun/javacard/impl/AppTableEntry.theApplet
+					astore_3;
+				L1:	aload_3;
+					instanceof 0 96;		// T_CLASSORINTERFACE javacard/framework/MultiSelectable
+					ifeq L3;
+				L2:	sconst_1;
+					sreturn;
+				L3:	sload_2;
+					invokestatic 70;		// com/sun/javacard/impl/PrivAccess.getContextId(B)B
+					sstore 4;
+				L4:	invokestatic 204;		// com/sun/javacard/impl/NativeMethods.getMaxChannels()B
+					sstore 5;
+				L5:	invokestatic 60;		// com/sun/javacard/impl/NativeMethods.getCardInterfaceCount()B
+					sstore 6;
+				L6:	bspush 15;
+					sstore 7;
+				L7:	sconst_0;
+					sstore 8;
+				L8:	sload 8;
+					sload 5;
+					if_scmpge L18;
+				L9:	sconst_0;
+					sstore 9;
+				L10:	sload 9;
+					sload 6;
+					if_scmpge L17;
+				L11:	sload 8;
+					sload_0;
+					if_scmpeq L16;
+				L12:	sload 9;
+					sload_1;
+					if_scmpeq L16;
+				L13:	sload 8;
+					sload 9;
+					invokestatic 71;		// com/sun/javacard/impl/NativeMethods.getChannelContext(BB)B
+					sstore 7;
+					sload 7;
+					bspush 15;
+					if_scmpeq L16;
+				L14:	sload 7;
+					sload 4;
+					sxor;
+					sspush 240;
+					sand;
+					ifne L16;
+				L15:	sconst_0;
+					sreturn;
+				L16:	sload 9;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 9;
+					goto L10;
+				L17:	sload 8;
+					sconst_1;
+					sadd;
+					s2b;
+					sstore 8;
+					goto L8;
+				L18:	sconst_1;
+					sreturn;
+		}
+
+		.method public static selectOnly(BBB)V 14 {
+			.stack 4;
+			.locals 6;
+
+				L0:	sconst_0;
+					sstore_3;
+				L1:	sload_2;
+					invokestatic 70;		// com/sun/javacard/impl/PrivAccess.getContextId(B)B
+					sstore 4;
+				L2:	sconst_0;
+					sstore 5;
+				L3:	sconst_0;
+					sstore 6;
+				L4:	invokestatic 205;		// com/sun/javacard/impl/PrivAccess.setSelectingAppletFlag()V
+				L5:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_2;
+					aaload;
+					getfield_a 13;		// reference com/sun/javacard/impl/AppTableEntry.theApplet
+					astore 7;
+				L6:	sload 4;
+					invokestatic 74;		// com/sun/javacard/impl/NativeMethods.getContextStatus(B)B
+					sstore 6;
+					sload_0;
+					sload_1;
+					sload 4;
+					aload 7;
+					instanceof 0 96;		// T_CLASSORINTERFACE javacard/framework/MultiSelectable
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					ifeq L15;
+				L7:	sload_0;
+					sload_1;
+					invokestatic 206;		// com/sun/javacard/impl/NativeMethods.setCurrentlySelectedChannel(BB)V
+					sload 6;
+					sconst_1;
+					sand;
+					ifeq L14;
+				L8:	sload_0;
+					sload_1;
+					invokestatic 207;		// com/sun/javacard/impl/PrivAccess.getSelectedApplet(BB)Ljavacard/framework/Applet;
+					checkcast 0 96;		// T_CLASSORINTERFACE javacard/framework/MultiSelectable
+					astore 8;
+				L9:	aload 8;
+					sload 6;
+					sconst_4;
+					sand;
+					ifeq L11;
+				L10:	sconst_1;
+					goto L12;
+				L11:	sconst_0;
+				L12:	invokeinterface 2 96 0;		// javacard/framework/MultiSelectable
+					sstore_3;
+				L13:	goto L16;
+				L14:	sload_0;
+					sload_1;
+					invokestatic 207;		// com/sun/javacard/impl/PrivAccess.getSelectedApplet(BB)Ljavacard/framework/Applet;
+					invokevirtual 208;		// select()Z
+					sstore_3;
+					goto L16;
+				L15:	sconst_m1;
+					putstatic_b 209;		// byte com/sun/javacard/impl/PrivAccess.appCurrentlySelected
+					sspush 27013;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L16:	goto L27;
+				L17:	astore 7;
+				L18:	aload 7;
+					invokevirtual 159;		// getReason()S
+					sspush 27013;
+					if_scmpne L20;
+				L19:	aload 7;
+					invokevirtual 159;		// getReason()S
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L20:	goto L27;
+				L21:	astore 7;
+				L22:	sconst_m1;
+					putstatic_b 209;		// byte com/sun/javacard/impl/PrivAccess.appCurrentlySelected
+					aload 7;
+					invokevirtual 210;		// getReason()S
+					sconst_5;
+					if_scmpne L24;
+				L23:	sspush 27265;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+				L24:	goto L27;
+				L25:	astore 7;
+				L26:	sconst_m1;
+					putstatic_b 209;		// byte com/sun/javacard/impl/PrivAccess.appCurrentlySelected
+				L27:	invokestatic 94;		// javacard/framework/APDU.getCLAChannel()B
+					sload_1;
+					invokestatic 206;		// com/sun/javacard/impl/NativeMethods.setCurrentlySelectedChannel(BB)V
+					invokestatic 79;		// javacard/framework/JCSystem.getTransactionDepth()B
+					ifeq L29;
+				L28:	sconst_0;
+					sstore_3;
+					invokestatic 157;		// javacard/framework/JCSystem.abortTransaction()V
+				L29:	sload_3;
+					ifeq L31;
+				L30:	return;
+				L31:	sconst_m1;
+					putstatic_b 209;		// byte com/sun/javacard/impl/PrivAccess.appCurrentlySelected
+					sload_0;
+					sload_1;
+					bspush 15;
+					sconst_0;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+					sspush 27033;
+					invokestatic 126;		// javacard/framework/ISOException.throwIt(S)V
+					return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L5 L16 L17 148;
+				L5 L16 L21 107;
+				L5 L16 L25 66;
+			}
+		}
+
+		.method public static deselectOnly(BB)V 15 {
+			.stack 4;
+			.locals 5;
+
+				L0:	sload_0;
+					sload_1;
+					invokestatic 71;		// com/sun/javacard/impl/NativeMethods.getChannelContext(BB)B
+					bspush 15;
+					if_scmpne L2;
+				L1:	return;
+				L2:	sload_0;
+					sload_1;
+					invokestatic 207;		// com/sun/javacard/impl/PrivAccess.getSelectedApplet(BB)Ljavacard/framework/Applet;
+					astore_2;
+				L3:	aload_2;
+					ifnonnull L5;
+				L4:	return;
+				L5:	sload_0;
+					sload_1;
+					invokestatic 71;		// com/sun/javacard/impl/NativeMethods.getChannelContext(BB)B
+					sstore_3;
+				L6:	sload_3;
+					invokestatic 74;		// com/sun/javacard/impl/NativeMethods.getContextStatus(B)B
+					sstore 4;
+				L7:	sload_0;
+					sload_1;
+					invokestatic 206;		// com/sun/javacard/impl/NativeMethods.setCurrentlySelectedChannel(BB)V
+					sload 4;
+					sconst_2;
+					sand;
+					ifeq L14;
+				L8:	sload_0;
+					sload_1;
+					invokestatic 207;		// com/sun/javacard/impl/PrivAccess.getSelectedApplet(BB)Ljavacard/framework/Applet;
+					checkcast 0 96;		// T_CLASSORINTERFACE javacard/framework/MultiSelectable
+					astore 5;
+				L9:	aload 5;
+					sload 4;
+					bspush 8;
+					sand;
+					ifeq L11;
+				L10:	sconst_1;
+					goto L12;
+				L11:	sconst_0;
+				L12:	invokeinterface 2 96 1;		// javacard/framework/MultiSelectable
+				L13:	goto L15;
+				L14:	aload_2;
+					invokevirtual 211;		// deselect()V
+				L15:	goto L17;
+				L16:	astore 6;
+				L17:	invokestatic 94;		// javacard/framework/APDU.getCLAChannel()B
+					sload_1;
+					invokestatic 206;		// com/sun/javacard/impl/NativeMethods.setCurrentlySelectedChannel(BB)V
+					sload 4;
+					sconst_2;
+					sand;
+					ifne L19;
+				L18:	sload_0;
+					sload_1;
+					sconst_2;
+					invokestatic 75;		// com/sun/javacard/impl/NativeMethods.clearTransientObjs(BBB)V
+				L19:	sload_0;
+					sload_1;
+					bspush 15;
+					sconst_0;
+					invokestatic 76;		// com/sun/javacard/impl/NativeMethods.setChannelContext(BBBZ)Z
+					pop;
+					invokestatic 79;		// javacard/framework/JCSystem.getTransactionDepth()B
+					ifeq L21;
+				L20:	invokestatic 157;		// javacard/framework/JCSystem.abortTransaction()V
+				L21:	return;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L7 L15 L16 66;
+			}
+		}
+
+		.method public static selectApplet(BBB)V 16 {
+			.stack 3;
+			.locals 0;
+
+				L0:	sload_0;
+					sload_1;
+					invokestatic 199;		// com/sun/javacard/impl/PrivAccess.getSelectedAppID(BB)B
+					putstatic_b 209;		// byte com/sun/javacard/impl/PrivAccess.appCurrentlySelected
+					sload_2;
+					putstatic_b 212;		// byte com/sun/javacard/impl/PrivAccess.newAppBeingSelected
+					sload_1;
+					putstatic_b 213;		// byte com/sun/javacard/impl/PrivAccess.newAppBeingSelectedOnInterface
+					sload_0;
+					putstatic_b 214;		// byte com/sun/javacard/impl/PrivAccess.newAppBeingSelectedOnChannel
+					sconst_1;
+					putstatic_b 215;		// boolean com/sun/javacard/impl/PrivAccess.deselectionInProgress
+					sload_0;
+					sload_1;
+					invokestatic 202;		// com/sun/javacard/impl/PrivAccess.deselectOnly(BB)V
+					sconst_0;
+					putstatic_b 215;		// boolean com/sun/javacard/impl/PrivAccess.deselectionInProgress
+					sload_0;
+					sload_1;
+					sload_2;
+					invokestatic 203;		// com/sun/javacard/impl/PrivAccess.selectOnly(BBB)V
+					return;
+		}
+
+		.method public static getAppState(Ljavacard/framework/AID;)B 17 {
+			.stack 2;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+				L0:	aload_0;
+					invokestatic 90;		// com/sun/javacard/impl/AppletMgr.findApplet(Ljavacard/framework/AID;)B
+					sstore_1;
+				L1:	sload_1;
+					sconst_m1;
+					if_scmpeq L3;
+				L2:	getstatic_a 55;		// reference com/sun/javacard/impl/AppletMgr.theAppState
+					sload_1;
+					baload;
+					sreturn;
+				L3:	sconst_0;
+					sreturn;
+		}
+
+		.method public static setAppState(Ljavacard/framework/AID;B)V 18 {
+			.stack 3;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+				L0:	aload_0;
+					invokestatic 90;		// com/sun/javacard/impl/AppletMgr.findApplet(Ljavacard/framework/AID;)B
+					sstore_2;
+				L1:	getstatic_a 55;		// reference com/sun/javacard/impl/AppletMgr.theAppState
+					sload_2;
+					sload_1;
+					bastore;
+					return;
+		}
+
+		.method public static getCurrentAppID()B 19 {
+			.stack 2;
+			.locals 1;
+
+				L0:	invokestatic 216;		// com/sun/javacard/impl/NativeMethods.getCurrentContext()B
+					sstore_0;
+				L1:	sload_0;
+					bspush 15;
+					sand;
+					sreturn;
+		}
+
+		.method public static getPreviousAppID()B 20 {
+			.stack 2;
+			.locals 1;
+
+				L0:	invokestatic 217;		// com/sun/javacard/impl/NativeMethods.getPreviousContext()B
+					sstore_0;
+				L1:	sload_0;
+					bspush 15;
+					sand;
+					sreturn;
+		}
+
+		.method public static getContextId(B)B 21 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_0;
+					aaload;
+					getfield_b 10;		// byte com/sun/javacard/impl/AppTableEntry.theContext
+					sconst_4;
+					sshl;
+					sload_0;
+					sor;
+					s2b;
+					sreturn;
+		}
+
+		.method public static initialize(Ljavacard/framework/APDU;)V 22 {
+			.stack 3;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	invokestatic 218;		// com/sun/javacard/impl/PackageMgr.init()V
+					invokestatic 219;		// com/sun/javacard/impl/PrivAccess.getPackedBoolean()Lcom/sun/javacard/impl/PackedBoolean;
+					invokevirtual 220;		// allocate()B
+					putstatic_b 195;		// byte com/sun/javacard/impl/PrivAccess.selectingAppletFlag
+					invokestatic 219;		// com/sun/javacard/impl/PrivAccess.getPackedBoolean()Lcom/sun/javacard/impl/PackedBoolean;
+					invokevirtual 220;		// allocate()B
+					putstatic_b 198;		// byte com/sun/javacard/impl/PrivAccess.processMethodFlag
+					sconst_0;
+					invokestatic 77;		// com/sun/javacard/impl/PackageMgr.getPkgIdForContext(B)B
+					sstore_1;
+				L1:	sload_1;
+					sconst_m1;
+					if_scmpeq L3;
+				L2:	sload_1;
+					sconst_0;
+					aload_0;
+					invokestatic 221;		// com/sun/javacard/impl/PrivAccess.createRomizedAppInstance(BBLjavacard/framework/APDU;)V
+				L3:	return;
+		}
+
+		.method static createRomizedAppInstance(BBLjavacard/framework/APDU;)V {
+			.stack 4;
+			.locals 7;
+
+			.descriptor	Ljavacard/framework/APDU;	1.10;
+
+				L0:	aload_2;
+					invokevirtual 98;		// getBuffer()[B
+					astore_3;
+				L1:	sconst_0;
+					sstore 4;
+				L2:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_0;
+					aaload;
+					getfield_a 12;		// reference com/sun/javacard/impl/PackageEntry.applets
+					arraylength;
+					sstore 5;
+				L3:	sconst_0;
+					sstore 6;
+				L4:	sload 6;
+					sload 5;
+					if_scmpge L11;
+				L5:	aload_3;
+					sconst_0;
+					aload_3;
+					arraylength;
+					sconst_0;
+					invokestatic 62;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					sconst_0;
+					sstore 7;
+				L6:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_0;
+					aaload;
+					getfield_a 12;		// reference com/sun/javacard/impl/PackageEntry.applets
+					sload 6;
+					aaload;
+					getfield_a 5;		// reference com/sun/javacard/impl/AppletInfo.theClassAID
+					astore 8;
+				L7:	aload 8;
+					aload_3;
+					sload 7;
+					invokevirtual 222;		// getBytes([BS)B
+					dup;
+					sstore 7;
+					sstore 4;
+					sload 6;
+					s2b;
+					putstatic_b 89;		// byte com/sun/javacard/impl/AppletMgr.currentAppletIndex
+					aload_3;
+					sconst_0;
+					sload 4;
+					s2b;
+					sload_1;
+					invokestatic 223;		// com/sun/javacard/impl/AppletMgr.createApplet([BSBB)Ljavacard/framework/AID;
+					astore 9;
+				L8:	aload 9;
+					ifnull L10;
+				L9:	aload 9;
+					sconst_2;
+					invokestatic 224;		// com/sun/javacard/impl/PrivAccess.setAppState(Ljavacard/framework/AID;B)V
+				L10:	sinc 6 1;
+					goto L4;
+				L11:	return;
+		}
+
+		.method public selectingApplet()Z 3 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 192;		// reference com/sun/javacard/impl/PrivAccess.thePackedBoolean
+					getstatic_b 195;		// byte com/sun/javacard/impl/PrivAccess.selectingAppletFlag
+					invokevirtual 225;		// get(B)Z
+					sreturn;
+		}
+
+		.method public amIBeingReselected()Z 4 {
+			.stack 2;
+			.locals 1;
+
+				L0:	getstatic_b 215;		// boolean com/sun/javacard/impl/PrivAccess.deselectionInProgress
+					ifeq L5;
+				L1:	getstatic_b 214;		// byte com/sun/javacard/impl/PrivAccess.newAppBeingSelectedOnChannel
+					getstatic_b 213;		// byte com/sun/javacard/impl/PrivAccess.newAppBeingSelectedOnInterface
+					invokestatic 199;		// com/sun/javacard/impl/PrivAccess.getSelectedAppID(BB)B
+					sstore_1;
+				L2:	sload_1;
+					getstatic_b 212;		// byte com/sun/javacard/impl/PrivAccess.newAppBeingSelected
+					if_scmpne L4;
+				L3:	sconst_1;
+					sreturn;
+				L4:	sconst_0;
+					sreturn;
+				L5:	invokestatic 85;		// com/sun/javacard/impl/PrivAccess.getPreviousAppID()B
+					sstore_1;
+				L6:	getstatic_b 209;		// byte com/sun/javacard/impl/PrivAccess.appCurrentlySelected
+					sload_1;
+					if_scmpne L8;
+				L7:	sconst_1;
+					goto L9;
+				L8:	sconst_0;
+				L9:	sreturn;
+		}
+
+		.method public inProcessMethod()Z 5 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 192;		// reference com/sun/javacard/impl/PrivAccess.thePackedBoolean
+					getstatic_b 198;		// byte com/sun/javacard/impl/PrivAccess.processMethodFlag
+					invokevirtual 225;		// get(B)Z
+					sreturn;
+		}
+
+		.method public getSharedObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable; 6 {
+			.stack 3;
+			.locals 6;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+			.descriptor	Ljavacard/framework/Shareable;	1.2;
+
+				L0:	invokestatic 217;		// com/sun/javacard/impl/NativeMethods.getPreviousContext()B
+					sstore_3;
+				L1:	aload_0;
+					sload_3;
+					bspush 15;
+					sand;
+					invokevirtual 81;		// getAID(B)Ljavacard/framework/AID;
+					astore 4;
+				L2:	aload 4;
+					ifnonnull L4;
+				L3:	aconst_null;
+					areturn;
+				L4:	aload_1;
+					invokestatic 90;		// com/sun/javacard/impl/AppletMgr.findApplet(Ljavacard/framework/AID;)B
+					sstore 5;
+				L5:	sload 5;
+					sconst_m1;
+					if_scmpeq L15;
+				L6:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload 5;
+					aaload;
+					getfield_a 13;		// reference com/sun/javacard/impl/AppTableEntry.theApplet
+					instanceof 0 96;		// T_CLASSORINTERFACE javacard/framework/MultiSelectable
+					ifne L12;
+				L7:	sload 5;
+					invokestatic 70;		// com/sun/javacard/impl/PrivAccess.getContextId(B)B
+					sstore 6;
+				L8:	sload_3;
+					sspush 240;
+					sand;
+					sload 6;
+					sspush 240;
+					sand;
+					if_scmpeq L12;
+				L9:	sload 6;
+					invokestatic 74;		// com/sun/javacard/impl/NativeMethods.getContextStatus(B)B
+					sstore 7;
+				L10:	sload 7;
+					sconst_1;
+					sand;
+					ifeq L12;
+				L11:	invokestatic 226;		// com/sun/javacard/impl/SecurityExceptionHelper.throwSE()V
+				L12:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload 5;
+					aaload;
+					getfield_a 13;		// reference com/sun/javacard/impl/AppTableEntry.theApplet
+					aload 4;
+					sload_2;
+					invokevirtual 227;		// getShareableInterfaceObject(Ljavacard/framework/AID;B)Ljavacard/framework/Shareable;
+				L13:	areturn;
+				L14:	astore 8;
+				L15:	aconst_null;
+					areturn;
+			.exceptionTable {
+				// start_block end_block handler_block catch_type_index
+				L12 L13 L14 97;
+			}
+		}
+
+		.method public getAID([BSB)Ljavacard/framework/AID; 7 {
+			.stack 3;
+			.locals 1;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+				L0:	aload_1;
+					sload_2;
+					sload_3;
+					invokestatic 100;		// com/sun/javacard/impl/AppletMgr.findApplet([BSB)B
+					sstore 4;
+				L1:	sload 4;
+					sconst_m1;
+					if_scmpeq L3;
+				L2:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload 4;
+					aaload;
+					getfield_a 11;		// reference com/sun/javacard/impl/AppTableEntry.theAID
+					areturn;
+				L3:	aconst_null;
+					areturn;
+		}
+
+		.method public getStaticResources(B)[Lcom/sun/javacard/impl/StaticResourceEntry; 8 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_1;
+					aaload;
+					invokevirtual 228;		// getStaticResources()[Lcom/sun/javacard/impl/StaticResourceEntry;
+					areturn;
+		}
+
+		.method public getResourceObject(B)Ljavacard/framework/Resources; 9 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/Resources;	1.23;
+
+				L0:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_1;
+					aaload;
+					invokevirtual 229;		// getResourceObject()Ljavacard/framework/Resources;
+					areturn;
+		}
+
+		.method public setResourceObject(BLjavacard/framework/Resources;)V 10 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/Resources;	1.23;
+
+				L0:	getstatic_a 129;		// reference com/sun/javacard/impl/PackageMgr.f_pkgTable
+					sload_1;
+					aaload;
+					aload_2;
+					invokevirtual 230;		// setResourceObject(Ljavacard/framework/Resources;)V
+					return;
+		}
+
+		.method public getAID(B)Ljavacard/framework/AID; 11 {
+			.stack 2;
+			.locals 0;
+
+			.descriptor	Ljavacard/framework/AID;	1.6;
+
+				L0:	getstatic_a 127;		// reference com/sun/javacard/impl/AppletMgr.theAppTable
+					sload_1;
+					aaload;
+					getfield_a 11;		// reference com/sun/javacard/impl/AppTableEntry.theAID
+					areturn;
+		}
+
+		.method public getPkgIDForAddress(I)B 12 {
+			.stack 2;
+			.locals 0;
+
+				L0:	iload_1;
+					invokestatic 231;		// com/sun/javacard/impl/PackageMgr.getPkgIDForAddress(I)B
+					sreturn;
+		}
+
+		.method public getPkgNameForClass(I[BB)B 13 {
+			.stack 4;
+			.locals 0;
+
+				L0:	iload_1;
+					aload_3;
+					sload 4;
+					invokestatic 232;		// com/sun/javacard/impl/PackageMgr.getPkgNameForClass(I[BB)B
+					sreturn;
+		}
+
+		.method public setGCRequestedFlag(Z)V 14 {
+			.stack 2;
+			.locals 0;
+
+				L0:	sload_1;
+					ifeq L2;
+				L1:	getstatic_a 192;		// reference com/sun/javacard/impl/PrivAccess.thePackedBoolean
+					getstatic_b 64;		// byte com/sun/javacard/impl/GarbageCollector.GCRequested
+					invokevirtual 196;		// set(B)V
+					goto L3;
+				L2:	getstatic_a 192;		// reference com/sun/javacard/impl/PrivAccess.thePackedBoolean
+					getstatic_b 64;		// byte com/sun/javacard/impl/GarbageCollector.GCRequested
+					invokevirtual 197;		// reset(B)V
+				L3:	return;
+		}
+
+		.method public isGarbageCollectionRequested()Z 15 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 192;		// reference com/sun/javacard/impl/PrivAccess.thePackedBoolean
+					getstatic_b 64;		// byte com/sun/javacard/impl/GarbageCollector.GCRequested
+					invokevirtual 225;		// get(B)Z
+					sreturn;
+		}
+
+		.method public initBio1ToNException()V 16 {
+			.stack 3;
+			.locals 1;
+
+				L0:	new 233;		// javacardx/biometry1toN/Bio1toNException
+					dup;
+					sconst_0;
+					invokespecial 234;		// javacardx/biometry1toN/Bio1toNException.<init>(S)V
+					astore_1;
+				L1:	aload_1;
+					sconst_1;
+					invokestatic 59;		// com/sun/javacard/impl/NativeMethods.setJCREentry(Ljava/lang/Object;Z)V
+					return;
+		}
+
+		.method public initBioException()V 17 {
+			.stack 3;
+			.locals 1;
+
+				L0:	new 235;		// javacardx/biometry/BioException
+					dup;
+					sconst_0;
+					invokespecial 236;		// javacardx/biometry/BioException.<init>(S)V
+					astore_1;
+				L1:	aload_1;
+					sconst_1;
+					invokestatic 59;		// com/sun/javacard/impl/NativeMethods.setJCREentry(Ljava/lang/Object;Z)V
+					return;
+		}
+
+		.method public initTLVException()V 18 {
+			.stack 3;
+			.locals 1;
+
+				L0:	new 237;		// javacardx/framework/tlv/TLVException
+					dup;
+					sconst_0;
+					invokespecial 238;		// javacardx/framework/tlv/TLVException.<init>(S)V
+					astore_1;
+				L1:	aload_1;
+					sconst_1;
+					invokestatic 59;		// com/sun/javacard/impl/NativeMethods.setJCREentry(Ljava/lang/Object;Z)V
+					return;
+		}
+
+		.method public initServiceException()V 19 {
+			.stack 3;
+			.locals 1;
+
+				L0:	new 239;		// javacard/framework/service/ServiceException
+					dup;
+					sconst_0;
+					invokespecial 240;		// javacard/framework/service/ServiceException.<init>(S)V
+					astore_1;
+				L1:	aload_1;
+					sconst_1;
+					invokestatic 59;		// com/sun/javacard/impl/NativeMethods.setJCREentry(Ljava/lang/Object;Z)V
+					return;
+		}
+
+		.method public initRemoteObjArray(S)[S 20 {
+			.stack 2;
+			.locals 1;
+
+				L0:	sload_1;
+					newarray 12;
+					astore_2;
+				L1:	aload_2;
+					sconst_0;
+					invokestatic 59;		// com/sun/javacard/impl/NativeMethods.setJCREentry(Ljava/lang/Object;Z)V
+					aload_2;
+					invokestatic 241;		// com/sun/javacard/impl/GarbageCollector.setExpObjArray([S)V
+					aload_2;
+					areturn;
+		}
+
+	}
+
+	.class public SecurityExceptionHelper 14 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private static 0.10 se;		// Ljava/lang/SecurityException;
+		}
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>()V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static initSE(Ljava/lang/SecurityException;)V 1 {
+			.stack 1;
+			.locals 0;
+
+			.descriptor	Ljava/lang/SecurityException;	0.10;
+
+				L0:	aload_0;
+					putstatic_a 242;		// reference com/sun/javacard/impl/SecurityExceptionHelper.se
+					return;
+		}
+
+		.method public static throwSE()V 2 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getstatic_a 242;		// reference com/sun/javacard/impl/SecurityExceptionHelper.se
+					athrow;
+		}
+
+	}
+
+	.class public StaticResourceEntry 15 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			 short[] data 0;		// [S
+			 byte[] dataBytes 1;		// [B
+			 short id 2;		// S
+			 boolean halfWord 3;		// Z
+		}
+
+		.publicMethodTable 1 5 {
+			equals(Ljava/lang/Object;)Z 0;
+			getData()[S 255;
+			getId()S 255;
+			getHalfWord()Z 255;
+			getSize()S 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(SSZ)V 0 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 162;		// java/lang/Object.<init>()V
+					aload_0;
+					sload_2;
+					newarray 12;
+					putfield_a 37;		// reference com/sun/javacard/impl/StaticResourceEntry.data
+					sload_1;
+					putfield_s_this 41;		// short com/sun/javacard/impl/StaticResourceEntry.id
+					sload_3;
+					putfield_b_this 42;		// boolean com/sun/javacard/impl/StaticResourceEntry.halfWord
+					return;
+		}
+
+		.method public getData()[S 1 {
+			.stack 5;
+			.locals 0;
+
+				L0:	getfield_a_this 37;		// reference com/sun/javacard/impl/StaticResourceEntry.data
+					sconst_0;
+					getfield_a_this 37;		// reference com/sun/javacard/impl/StaticResourceEntry.data
+					arraylength;
+					sconst_1;
+					aconst_null;
+					invokestatic 245;		// javacard/framework/JCSystem.makeArrayView(Ljava/lang/Object;SSSLjavacard/framework/Shareable;)Ljava/lang/Object;
+					checkcast 12 0;		// T_SHORT
+					areturn;
+		}
+
+		.method public getId()S 2 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_s_this 41;		// short com/sun/javacard/impl/StaticResourceEntry.id
+					sreturn;
+		}
+
+		.method public getHalfWord()Z 3 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_b_this 42;		// boolean com/sun/javacard/impl/StaticResourceEntry.halfWord
+					sreturn;
+		}
+
+		.method public getSize()S 4 {
+			.stack 2;
+			.locals 1;
+
+				L0:	getfield_a_this 37;		// reference com/sun/javacard/impl/StaticResourceEntry.data
+					arraylength;
+					sspush 16383;
+					if_scmple L2;
+				L1:	sspush 32767;
+					sreturn;
+				L2:	getfield_a_this 37;		// reference com/sun/javacard/impl/StaticResourceEntry.data
+					arraylength;
+					sconst_2;
+					smul;
+					sstore_1;
+				L3:	getfield_b_this 42;		// boolean com/sun/javacard/impl/StaticResourceEntry.halfWord
+					ifeq L5;
+				L4:	sinc 1 -1;
+				L5:	sload_1;
+					sreturn;
+		}
+
+	}
+
+}

@@ -1,0 +1,69 @@
+// converted by version  [v3.1.0]
+// on Tue Jul 06 15:18:04 PDT 2021
+
+.package javacardx/framework/event {
+	.aid 0xA0:0x0:0x0:0x0:0x62:0x2:0x8:0x5;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+	}
+
+	.constantPool {
+		// 0
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+	}
+
+	.interface public abstract EventListener 0 {
+
+	}
+
+	.interface public abstract EventSource 1 {
+
+	}
+
+	.class public abstract EventRegistry 2 extends 0.0 {		// extends java/lang/Object
+
+		.publicMethodTable 1 3 {
+			equals(Ljava/lang/Object;)Z 0;
+			register(Ljavacardx/framework/event/EventListener;)V 255;
+			unregister(Ljavacardx/framework/event/EventListener;)V 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method private <init>()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 0;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static getEventRegistry(Ljavacardx/framework/event/EventSource;)Ljavacardx/framework/event/EventRegistry; 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aconst_null;
+					areturn;
+		}
+
+		.method public register(Ljavacardx/framework/event/EventListener;)V 1 {
+			.stack 0;
+			.locals 0;
+
+				L0:	return;
+		}
+
+		.method public unregister(Ljavacardx/framework/event/EventListener;)V 2 {
+			.stack 0;
+			.locals 0;
+
+				L0:	return;
+		}
+
+	}
+
+}

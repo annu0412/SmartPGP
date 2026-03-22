@@ -1,0 +1,129 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>fr.anssi.smartpgp</groupId>
+	<artifactId>SmartPGP</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+
+	<name>SmartPGP</name>
+	<url>https://github.com/ANSSI-FR/SmartPGP</url>
+
+	<properties>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>dd:'0x'MM:'0x'yy</maven.build.timestamp.format>
+		<buildNumber>${maven.build.timestamp}</buildNumber>
+		<jc.home>${project.basedir}/jck</jc.home>
+		<javacard.major.version>1</javacard.major.version>
+		<javacard.minor.version>0</javacard.minor.version>
+		<MMVersion>0</MMVersion>
+		<IssuerName>ANSSI</IssuerName>
+		<javacard.package.name>fr.anssi.smartpgp</javacard.package.name>
+		<package.name>smartpgp</package.name>
+		<javacard.package.aid>0xd2:0x76:0x00:0x01:0x24:0x01</javacard.package.aid>
+		<javacard.applet.aid>0xd2:0x76:0x00:0x01:0x24:0x01:0x03:0x04:0xAF:0xAF:0x00:0x00:0x00:0x00:0x00:0x00</javacard.applet.aid>
+		<javacard.applet.name>SmartPGPApplet</javacard.applet.name>
+		<java.home.jdk>C:/Program Files/Java/jdk1.8.0_202</java.home.jdk>
+	</properties>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.7.1</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<fork>true</fork>
+					<executable>${java.home.jdk}/bin/javac</executable>
+					<useIncrementalCompilation>false</useIncrementalCompilation>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.0</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+				<!-- Convert to CAP file -->
+				<configuration>
+					<tasks>
+						<delete dir="cap/" />
+						<echo message="Converting to CAP file" />
+						<java classname="com.sun.javacard.converter.Main"
+							failonerror="true" fork="true">
+
+							<arg value="-i" />
+							<arg value="-verbose" />
+							<arg value="-classdir" />
+							<arg value="${project.build.outputDirectory}" />
+							<arg value="-applet" />
+							<arg value="${javacard.applet.aid}" />
+							<arg value="${javacard.applet.name}" />
+							<arg value="${javacard.package.name}" />
+							<arg value="${javacard.package.aid}" />
+							<arg value="${javacard.major.version}.${javacard.minor.version}" />
+							<arg value="-target" />
+							<arg value="3.0.4" />
+							<classpath>
+								<pathelement location="${jc.home}/api_export_files" />
+								<pathelement location="${jc.home}/lib/ant-contrib-1.0b3.jar" />
+								<pathelement location="${jc.home}/lib/asm-all-3.1.jar" />
+								<pathelement location="${jc.home}/lib/commons-cli-1.0.jar" />
+								<pathelement location="${jc.home}/lib/commons-logging-1.1.jar" />
+								<pathelement location="${jc.home}/lib/jctasks_tools.jar" />
+								<pathelement location="${jc.home}/lib/json.jar" />
+								<pathelement location="${jc.home}/lib/tools.jar" />
+								<pathelement location="${jc.home}/lib/api_classic_annotations-3.0.4.jar" />
+							</classpath>
+						</java>
+
+						<copy todir="cap/">
+							<flattenmapper />
+							<fileset dir="${project.build.outputDirectory}">
+								<include name="**/*.cap" />
+							</fileset>
+						</copy>
+						<move file="cap/${package.name}.cap"
+							tofile="cap/JC304_(${IssuerName})_(V${javacard.major.version}-${javacard.minor.version}-${MMVersion})_${javacard.applet.name}.cap" />
+					</tasks>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>java</groupId>
+			<artifactId>java</artifactId>
+			<version>3.0.4</version>
+			<scope>system</scope>
+			<systemPath>${jc.home}/lib/api_classic-3.0.4.jar</systemPath>
+		</dependency>
+	</dependencies>
+</project>

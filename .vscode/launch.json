@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug: Generate Keys Handler",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/windows_context_menu/handlers/generate_keys_handler.py",
+            "cwd": "${workspaceFolder}/bin/windows_context_menu/handlers",
+            "console": "integratedTerminal",
+            "justMyCode": false
+        },
+        {
+            "name": "Attach to AEPGP (context menu)",
+            "type": "debugpy",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 5678
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/bin/windows_context_menu",
+                    "remoteRoot": "${workspaceFolder}/bin/windows_context_menu"
+                }
+            ],
+            "justMyCode": false
+        }
+    ]
+}

@@ -1,0 +1,119 @@
+// converted by version  [v3.1.0]
+// on Tue Jul 06 15:18:14 PDT 2021
+
+.package javacardx/external {
+	.aid 0xA0:0x0:0x0:0x0:0x62:0x2:0x3;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.8;		//javacard/framework
+	}
+
+	.constantPool {
+		// 0
+		staticMethodRef ExternalException/<init>(S)V;
+		// 1
+		.classRef ExternalException;
+		// 2
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 3
+		staticMethodRef 1.5.0(S)V;		// javacard/framework/CardRuntimeException.<init>(S)V
+		// 4
+		staticFieldRef ExternalException ExternalException/systemInstance;
+		// 5
+		virtualMethodRef 1.5.2(S)V;		// setReason(S)V
+	}
+
+	.interface public abstract MemoryAccess 0 {
+
+		.method public abstract writeData([BSS[BSSSS)Z 0 {
+		}
+
+		.method public abstract readData([BS[BSSSSS)S 1 {
+		}
+
+	}
+
+	.class public final Memory 1 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			public static final byte MEMORY_TYPE_MIFARE = 1;		// B
+			public static final byte MEMORY_TYPE_EXTENDED_STORE = 2;		// B
+		}
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public static final getMemoryAccessInstance(B[SS)Ljavacardx/external/MemoryAccess; 0 {
+			.stack 3;
+			.locals 0;
+
+				L0:	new 1;		// javacardx/external/ExternalException
+					dup;
+					sconst_1;
+					invokespecial 0;		// javacardx/external/ExternalException.<init>(S)V
+					athrow;
+		}
+
+		.method  <init>()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 2;		// java/lang/Object.<init>()V
+					return;
+		}
+
+	}
+
+	.class public ExternalException 2 extends 1.5 {		// extends javacard/framework/CardRuntimeException
+
+		.fields {
+			public static final short NO_SUCH_SUBSYSTEM = 1;		// S
+			public static final short INVALID_PARAM = 2;		// S
+			public static final short INTERNAL_ERROR = 3;		// S
+			private static ExternalException systemInstance;		// Ljavacardx/external/ExternalException;
+		}
+
+		.publicMethodTable 3 3 {
+			equals(Ljava/lang/Object;)Z 0;
+			getReason()S 1;
+			setReason(S)V 2;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(S)V 0 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					invokespecial 3;		// javacard/framework/CardRuntimeException.<init>(S)V
+					getstatic_a 4;		// reference javacardx/external/ExternalException.systemInstance
+					ifnonnull L2;
+				L1:	aload_0;
+					putstatic_a 4;		// reference javacardx/external/ExternalException.systemInstance
+				L2:	return;
+		}
+
+		.method public static throwIt(S)V 1 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 4;		// reference javacardx/external/ExternalException.systemInstance
+					sload_0;
+					invokevirtual 5;		// setReason(S)V
+					getstatic_a 4;		// reference javacardx/external/ExternalException.systemInstance
+					athrow;
+		}
+
+	}
+
+}

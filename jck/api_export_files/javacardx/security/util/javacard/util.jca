@@ -1,0 +1,275 @@
+// converted by version  [v3.1.0]
+// on Tue Jul 06 15:18:16 PDT 2021
+
+.package javacardx/security/util {
+	.aid 0xA0:0x0:0x0:0x0:0x62:0x2:0x5:0x3;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.8;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x3:0x1 1.0;		//com/sun/javacard/impl
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef byte[] MonotonicCounter/theValue;
+		// 1
+		staticMethodRef 1.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 2
+		.classRef MonotonicCounter;
+		// 3
+		staticMethodRef MonotonicCounter/<init>([B)V;
+		// 4
+		staticMethodRef 0.0.0()V;		// java/lang/Object.<init>()V
+		// 5
+		staticMethodRef 1.13.1(S)V;		// javacard/framework/SystemException.throwIt(S)V
+		// 6
+		staticMethodRef 1.8.10(Ljava/lang/Object;)B;		// javacard/framework/JCSystem.isTransient(Ljava/lang/Object;)B
+			.descriptor	Ljava/lang/Object;	0.0;
+
+		// 7
+		staticMethodRef 2.6.113()V;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+		// 8
+		staticMethodRef 2.6.105([BSS[B)V;		// com/sun/javacard/impl/NativeMethods.setValueMonotonicCounter([BSS[B)V
+		// 9
+		staticMethodRef 2.6.111(S)V;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+		// 10
+		staticMethodRef 2.6.78([BSS)V;		// com/sun/javacard/impl/NativeMethods.checkArrayArgs([BSS)V
+		// 11
+		staticMethodRef 2.6.103([BSSB[B)V;		// com/sun/javacard/impl/NativeMethods.bigNumberToBytes([BSSB[B)V
+		// 12
+		virtualMethodRef MonotonicCounter/getSize()S;
+		// 13
+		staticMethodRef 2.6.106(S[B)S;		// com/sun/javacard/impl/NativeMethods.incrementByMonotonicCounter(S[B)S
+		// 14
+		staticMethodRef 2.6.102([BSSB[BS)B;		// com/sun/javacard/impl/NativeMethods.compareBigNumbers([BSSB[BS)B
+		// 15
+		staticMethodRef 2.6.110()V;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+		// 16
+		staticMethodRef 2.6.109()V;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanTrue()V
+	}
+
+	.class public final MonotonicCounter 0 extends 0.0 {		// extends java/lang/Object
+
+		.fields {
+			private final byte[] theValue 0;		// [B
+			private static final short MAX_SIZE_SUPPORTED = 8;		// S
+			private static final byte FORMAT_HEX = 2;		// B
+		}
+
+		.publicMethodTable 1 9 {
+			equals(Ljava/lang/Object;)Z 0;
+			getMemoryType()B 255;
+			getSize()S 255;
+			setValue([BSS)S 255;
+			get([BS)S 255;
+			incrementBy(S)S 255;
+			compareTo([BSS)S 255;
+			compareTo(Ljavacardx/security/util/MonotonicCounter;)S 255;
+			equalsMax()Z 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public static final getInstance(SB)Ljavacardx/security/util/MonotonicCounter; 0 {
+			.stack 3;
+			.locals 2;
+
+				L0:	aconst_null;
+					astore_2;
+				L1:	sload_0;
+					ifle L3;
+				L2:	sload_0;
+					bspush 8;
+					if_scmple L4;
+				L3:	sconst_1;
+					invokestatic 5;		// javacard/framework/SystemException.throwIt(S)V
+				L4:	sload_1;
+					stableswitch L7 0 2 L5 L6 L6;
+				L5:	sload_0;
+					newarray 11;
+					astore_2;
+					goto L8;
+				L6:	sload_0;
+					sload_1;
+					invokestatic 1;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					astore_2;
+					goto L8;
+				L7:	sconst_1;
+					invokestatic 5;		// javacard/framework/SystemException.throwIt(S)V
+				L8:	new 2;		// javacardx/security/util/MonotonicCounter
+					dup;
+					aload_2;
+					invokespecial 3;		// javacardx/security/util/MonotonicCounter.<init>([B)V
+					astore_3;
+				L9:	aload_3;
+					areturn;
+		}
+
+		.method private <init>([B)V {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 4;		// java/lang/Object.<init>()V
+					aload_1;
+					putfield_a_this 0;		// reference javacardx/security/util/MonotonicCounter.theValue
+					return;
+		}
+
+		.method public getMemoryType()B 1 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/security/util/MonotonicCounter.theValue
+					invokestatic 6;		// javacard/framework/JCSystem.isTransient(Ljava/lang/Object;)B
+					sreturn;
+		}
+
+		.method public getSize()S 2 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/security/util/MonotonicCounter.theValue
+					arraylength;
+					sreturn;
+		}
+
+		.method public setValue([BSS)S 3 {
+			.stack 4;
+			.locals 1;
+
+				L0:	invokestatic 7;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+					aload_1;
+					sload_2;
+					sload_3;
+					getfield_a_this 0;		// reference javacardx/security/util/MonotonicCounter.theValue
+					invokestatic 8;		// com/sun/javacard/impl/NativeMethods.setValueMonotonicCounter([BSS[B)V
+					sload_2;
+					sload_3;
+					sadd;
+					sstore 4;
+				L1:	sload 4;
+					invokestatic 9;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload 4;
+					sreturn;
+		}
+
+		.method public get([BS)S 4 {
+			.stack 5;
+			.locals 0;
+
+				L0:	aload_1;
+					sload_2;
+					getfield_a_this 0;		// reference javacardx/security/util/MonotonicCounter.theValue
+					arraylength;
+					invokestatic 10;		// com/sun/javacard/impl/NativeMethods.checkArrayArgs([BSS)V
+					aload_1;
+					sload_2;
+					getfield_a_this 0;		// reference javacardx/security/util/MonotonicCounter.theValue
+					arraylength;
+					sconst_2;
+					getfield_a_this 0;		// reference javacardx/security/util/MonotonicCounter.theValue
+					invokestatic 11;		// com/sun/javacard/impl/NativeMethods.bigNumberToBytes([BSSB[B)V
+					sload_2;
+					aload_0;
+					invokevirtual 12;		// getSize()S
+					sadd;
+					sreturn;
+		}
+
+		.method public incrementBy(S)S 5 {
+			.stack 2;
+			.locals 1;
+
+				L0:	invokestatic 7;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+					sload_1;
+					getfield_a_this 0;		// reference javacardx/security/util/MonotonicCounter.theValue
+					invokestatic 13;		// com/sun/javacard/impl/NativeMethods.incrementByMonotonicCounter(S[B)S
+					sstore_2;
+				L1:	sload_2;
+					invokestatic 9;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload_2;
+					sreturn;
+		}
+
+		.method public compareTo([BSS)S 6 {
+			.stack 6;
+			.locals 1;
+
+				L0:	aload_1;
+					sload_2;
+					sload_3;
+					invokestatic 10;		// com/sun/javacard/impl/NativeMethods.checkArrayArgs([BSS)V
+					invokestatic 7;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+					aload_1;
+					sload_2;
+					sload_3;
+					sconst_2;
+					getfield_a_this 0;		// reference javacardx/security/util/MonotonicCounter.theValue
+					sconst_0;
+					invokestatic 14;		// com/sun/javacard/impl/NativeMethods.compareBigNumbers([BSSB[BS)B
+					sstore 4;
+				L1:	sload 4;
+					invokestatic 9;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload 4;
+					sreturn;
+		}
+
+		.method public compareTo(Ljavacardx/security/util/MonotonicCounter;)S 7 {
+			.stack 6;
+			.locals 1;
+
+				L0:	invokestatic 7;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+					aload_1;
+					getfield_a 0;		// reference javacardx/security/util/MonotonicCounter.theValue
+					sconst_0;
+					aload_1;
+					getfield_a 0;		// reference javacardx/security/util/MonotonicCounter.theValue
+					arraylength;
+					sconst_2;
+					getfield_a_this 0;		// reference javacardx/security/util/MonotonicCounter.theValue
+					sconst_0;
+					invokestatic 14;		// com/sun/javacard/impl/NativeMethods.compareBigNumbers([BSSB[BS)B
+					sstore_2;
+				L1:	sload_2;
+					invokestatic 9;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload_2;
+					sreturn;
+		}
+
+		.method public equalsMax()Z 8 {
+			.stack 2;
+			.locals 3;
+
+				L0:	getfield_a_this 0;		// reference javacardx/security/util/MonotonicCounter.theValue
+					astore_1;
+				L1:	invokestatic 7;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+					sconst_0;
+					sstore_2;
+				L2:	aload_1;
+					arraylength;
+					sstore_3;
+				L3:	sload_2;
+					sload_3;
+					if_scmpge L7;
+				L4:	aload_1;
+					sload_2;
+					baload;
+					sconst_m1;
+					if_scmpeq L6;
+				L5:	invokestatic 15;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanFalse()V
+					sconst_0;
+					sreturn;
+				L6:	sinc 2 1;
+					goto L3;
+				L7:	invokestatic 16;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetBooleanTrue()V
+					sconst_1;
+					sreturn;
+		}
+
+	}
+
+}

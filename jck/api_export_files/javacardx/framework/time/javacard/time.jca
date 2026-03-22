@@ -1,0 +1,411 @@
+// converted by version  [v3.1.0]
+// on Tue Jul 06 15:18:18 PDT 2021
+
+.package javacardx/framework/time {
+	.aid 0xA0:0x0:0x0:0x0:0x62:0x2:0x8:0x7;
+	.version 1.0;
+
+	.imports {
+		0xA0:0x0:0x0:0x0:0x62:0x1:0x1 1.8;		//javacard/framework
+		0xA0:0x0:0x0:0x0:0x62:0x0:0x1 1.0;		//java/lang
+		0xA0:0x0:0x0:0x0:0x62:0x3:0x1 1.0;		//com/sun/javacard/impl
+	}
+
+	.constantPool {
+		// 0
+		instanceFieldRef byte[] TimeDuration/time;
+		// 1
+		staticFieldRef DateTimeException DateTimeException/systemInstance;
+		// 2
+		virtualMethodRef 0.5.2(S)V;		// setReason(S)V
+		// 3
+		staticMethodRef 1.0.0()V;		// java/lang/Object.<init>()V
+		// 4
+		staticMethodRef 0.5.0(S)V;		// javacard/framework/CardRuntimeException.<init>(S)V
+		// 5
+		staticMethodRef 2.6.152([B)V;		// com/sun/javacard/impl/NativeMethods.timeUptime([B)V
+		// 6
+		staticMethodRef 0.8.13(SB)[B;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+		// 7
+		staticMethodRef 0.13.1(S)V;		// javacard/framework/SystemException.throwIt(S)V
+		// 8
+		.classRef TimeDuration;
+		// 9
+		staticMethodRef TimeDuration/<init>([B)V;
+		// 10
+		staticMethodRef TimeDuration/getInstance(B)Ljavacardx/framework/time/TimeDuration;;
+		// 11
+		virtualMethodRef TimeDuration/plus(SS)Ljavacardx/framework/time/TimeDuration;;
+		// 12
+		staticMethodRef 0.8.10(Ljava/lang/Object;)B;		// javacard/framework/JCSystem.isTransient(Ljava/lang/Object;)B
+			.descriptor	Ljava/lang/Object;	1.0;
+
+		// 13
+		staticMethodRef 2.6.151([B)V;		// com/sun/javacard/impl/NativeMethods.timeAbs([B)V
+		// 14
+		staticMethodRef 2.6.150([B)V;		// com/sun/javacard/impl/NativeMethods.timeNeg([B)V
+		// 15
+		staticMethodRef 0.16.3([BSSB)S;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+		// 16
+		staticMethodRef 2.6.113()V;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+		// 17
+		staticMethodRef 2.6.149([B[B)S;		// com/sun/javacard/impl/NativeMethods.timeCompareToObj([B[B)S
+		// 18
+		staticMethodRef 2.6.111(S)V;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+		// 19
+		staticMethodRef 2.6.148([BSS)S;		// com/sun/javacard/impl/NativeMethods.timeCompareToAmount([BSS)S
+		// 20
+		staticMethodRef 2.6.147([B[B)V;		// com/sun/javacard/impl/NativeMethods.timeMinusObj([B[B)V
+		// 21
+		staticMethodRef 2.6.146([BSS)V;		// com/sun/javacard/impl/NativeMethods.timeMinusAmount([BSS)V
+		// 22
+		staticMethodRef 2.6.145([B[B)V;		// com/sun/javacard/impl/NativeMethods.timePlusObj([B[B)V
+		// 23
+		staticMethodRef 2.6.144([BSS)V;		// com/sun/javacard/impl/NativeMethods.timePlusAmount([BSS)V
+		// 24
+		staticMethodRef 2.6.143([B[BSSS)V;		// com/sun/javacard/impl/NativeMethods.timeSet([B[BSSS)V
+		// 25
+		staticMethodRef 2.6.142([B[BSSS)S;		// com/sun/javacard/impl/NativeMethods.timeToBytes([B[BSSS)S
+		// 26
+		staticMethodRef 2.6.141([BS)S;		// com/sun/javacard/impl/NativeMethods.timeGetByteLength([BS)S
+	}
+
+	.class public DateTimeException 0 extends 0.5 {		// extends javacard/framework/CardRuntimeException
+
+		.fields {
+			public static final short INVALID_VALUE = 1;		// S
+			public static final short INVALID_UNIT = 2;		// S
+			private static DateTimeException systemInstance;		// Ljavacardx/framework/time/DateTimeException;
+		}
+
+		.publicMethodTable 3 3 {
+			equals(Ljava/lang/Object;)Z 0;
+			getReason()S 1;
+			setReason(S)V 2;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method public <init>(S)V 0 {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					sload_1;
+					invokespecial 4;		// javacard/framework/CardRuntimeException.<init>(S)V
+					getstatic_a 1;		// reference javacardx/framework/time/DateTimeException.systemInstance
+					ifnonnull L2;
+				L1:	aload_0;
+					putstatic_a 1;		// reference javacardx/framework/time/DateTimeException.systemInstance
+				L2:	return;
+		}
+
+		.method public static throwIt(S)V 1 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getstatic_a 1;		// reference javacardx/framework/time/DateTimeException.systemInstance
+					sload_0;
+					invokevirtual 2;		// setReason(S)V
+					getstatic_a 1;		// reference javacardx/framework/time/DateTimeException.systemInstance
+					athrow;
+		}
+
+	}
+
+	.class public final SysTime 1 extends 1.0 {		// extends java/lang/Object
+
+		.publicMethodTable 1 1 {
+			equals(Ljava/lang/Object;)Z 0;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method private <init>()V {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 3;		// java/lang/Object.<init>()V
+					return;
+		}
+
+		.method public static uptime(Ljavacardx/framework/time/TimeDuration;)V 0 {
+			.stack 1;
+			.locals 0;
+
+				L0:	aload_0;
+					getfield_a 0;		// reference javacardx/framework/time/TimeDuration.time
+					invokestatic 5;		// com/sun/javacard/impl/NativeMethods.timeUptime([B)V
+					return;
+		}
+
+	}
+
+	.class public final TimeDuration 2 extends 1.0 {		// extends java/lang/Object
+
+		.fields {
+			 byte[] time 0;		// [B
+			public static final short MICROS = 2;		// S
+			public static final short MILLIS = 3;		// S
+			public static final short SECONDS = 4;		// S
+			public static final short MINUTES = 5;		// S
+			public static final short HOURS = 6;		// S
+			public static final short DAYS = 7;		// S
+			private static final short TIME_SIZE = 8;		// S
+		}
+
+		.publicMethodTable 1 15 {
+			equals(Ljava/lang/Object;)Z 0;
+			getMemoryType()B 255;
+			isNegative()Z 255;
+			abs()Ljavacardx/framework/time/TimeDuration; 255;
+			neg()Ljavacardx/framework/time/TimeDuration; 255;
+			reset()Ljavacardx/framework/time/TimeDuration; 255;
+			compareTo(Ljavacardx/framework/time/TimeDuration;)S 255;
+			compareTo(SS)S 255;
+			minus(Ljavacardx/framework/time/TimeDuration;)Ljavacardx/framework/time/TimeDuration; 255;
+			minus(SS)Ljavacardx/framework/time/TimeDuration; 255;
+			plus(Ljavacardx/framework/time/TimeDuration;)Ljavacardx/framework/time/TimeDuration; 255;
+			plus(SS)Ljavacardx/framework/time/TimeDuration; 255;
+			set([BSSS)Ljavacardx/framework/time/TimeDuration; 255;
+			toBytes([BSSS)S 255;
+			getByteLength(S)S 255;
+		}
+
+		.packageMethodTable 0 {
+		}
+
+		.method private <init>([B)V {
+			.stack 2;
+			.locals 0;
+
+				L0:	aload_0;
+					invokespecial 3;		// java/lang/Object.<init>()V
+					aload_1;
+					putfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					return;
+		}
+
+		.method public static getInstance(B)Ljavacardx/framework/time/TimeDuration; 0 {
+			.stack 3;
+			.locals 1;
+
+				L0:	aconst_null;
+					astore_1;
+				L1:	sload_0;
+					stableswitch L4 0 2 L2 L3 L3;
+				L2:	bspush 8;
+					newarray 11;
+					astore_1;
+					goto L5;
+				L3:	bspush 8;
+					sload_0;
+					invokestatic 6;		// javacard/framework/JCSystem.makeTransientByteArray(SB)[B
+					astore_1;
+					goto L5;
+				L4:	sconst_1;
+					invokestatic 7;		// javacard/framework/SystemException.throwIt(S)V
+				L5:	new 8;		// javacardx/framework/time/TimeDuration
+					dup;
+					aload_1;
+					invokespecial 9;		// javacardx/framework/time/TimeDuration.<init>([B)V
+					areturn;
+		}
+
+		.method public static getInstance(BSS)Ljavacardx/framework/time/TimeDuration; 1 {
+			.stack 3;
+			.locals 0;
+
+				L0:	sload_0;
+					invokestatic 10;		// javacardx/framework/time/TimeDuration.getInstance(B)Ljavacardx/framework/time/TimeDuration;
+					sload_1;
+					sload_2;
+					invokevirtual 11;		// plus(SS)Ljavacardx/framework/time/TimeDuration;
+					areturn;
+		}
+
+		.method public getMemoryType()B 1 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					invokestatic 12;		// javacard/framework/JCSystem.isTransient(Ljava/lang/Object;)B
+					sreturn;
+		}
+
+		.method public isNegative()Z 2 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					sconst_0;
+					baload;
+					bspush 7;
+					sshr;
+					sconst_1;
+					sand;
+					sconst_1;
+					if_scmpne L2;
+				L1:	sconst_1;
+					goto L3;
+				L2:	sconst_0;
+				L3:	sreturn;
+		}
+
+		.method public abs()Ljavacardx/framework/time/TimeDuration; 3 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					invokestatic 13;		// com/sun/javacard/impl/NativeMethods.timeAbs([B)V
+					aload_0;
+					areturn;
+		}
+
+		.method public neg()Ljavacardx/framework/time/TimeDuration; 4 {
+			.stack 1;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					invokestatic 14;		// com/sun/javacard/impl/NativeMethods.timeNeg([B)V
+					aload_0;
+					areturn;
+		}
+
+		.method public reset()Ljavacardx/framework/time/TimeDuration; 5 {
+			.stack 4;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					sconst_0;
+					bspush 8;
+					sconst_0;
+					invokestatic 15;		// javacard/framework/Util.arrayFillNonAtomic([BSSB)S
+					pop;
+					aload_0;
+					areturn;
+		}
+
+		.method public compareTo(Ljavacardx/framework/time/TimeDuration;)S 6 {
+			.stack 2;
+			.locals 1;
+
+				L0:	invokestatic 16;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+					getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					aload_1;
+					getfield_a 0;		// reference javacardx/framework/time/TimeDuration.time
+					invokestatic 17;		// com/sun/javacard/impl/NativeMethods.timeCompareToObj([B[B)S
+					sstore_2;
+				L1:	sload_2;
+					invokestatic 18;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload_2;
+					sreturn;
+		}
+
+		.method public compareTo(SS)S 7 {
+			.stack 3;
+			.locals 1;
+
+				L0:	invokestatic 16;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSetTagValUnassigned()V
+					getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					sload_1;
+					sload_2;
+					invokestatic 19;		// com/sun/javacard/impl/NativeMethods.timeCompareToAmount([BSS)S
+					sstore_3;
+				L1:	sload_3;
+					invokestatic 18;		// com/sun/javacard/impl/NativeMethods.sensitiveResultSet(S)V
+					sload_3;
+					sreturn;
+		}
+
+		.method public minus(Ljavacardx/framework/time/TimeDuration;)Ljavacardx/framework/time/TimeDuration; 8 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					aload_1;
+					getfield_a 0;		// reference javacardx/framework/time/TimeDuration.time
+					invokestatic 20;		// com/sun/javacard/impl/NativeMethods.timeMinusObj([B[B)V
+					aload_0;
+					areturn;
+		}
+
+		.method public minus(SS)Ljavacardx/framework/time/TimeDuration; 9 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					sload_1;
+					sload_2;
+					invokestatic 21;		// com/sun/javacard/impl/NativeMethods.timeMinusAmount([BSS)V
+					aload_0;
+					areturn;
+		}
+
+		.method public plus(Ljavacardx/framework/time/TimeDuration;)Ljavacardx/framework/time/TimeDuration; 10 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					aload_1;
+					getfield_a 0;		// reference javacardx/framework/time/TimeDuration.time
+					invokestatic 22;		// com/sun/javacard/impl/NativeMethods.timePlusObj([B[B)V
+					aload_0;
+					areturn;
+		}
+
+		.method public plus(SS)Ljavacardx/framework/time/TimeDuration; 11 {
+			.stack 3;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					sload_1;
+					sload_2;
+					invokestatic 23;		// com/sun/javacard/impl/NativeMethods.timePlusAmount([BSS)V
+					aload_0;
+					areturn;
+		}
+
+		.method public set([BSSS)Ljavacardx/framework/time/TimeDuration; 12 {
+			.stack 5;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					aload_1;
+					sload_2;
+					sload_3;
+					sload 4;
+					invokestatic 24;		// com/sun/javacard/impl/NativeMethods.timeSet([B[BSSS)V
+					aload_0;
+					areturn;
+		}
+
+		.method public toBytes([BSSS)S 13 {
+			.stack 5;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					aload_1;
+					sload_2;
+					sload_3;
+					sload 4;
+					invokestatic 25;		// com/sun/javacard/impl/NativeMethods.timeToBytes([B[BSSS)S
+					sreturn;
+		}
+
+		.method public getByteLength(S)S 14 {
+			.stack 2;
+			.locals 0;
+
+				L0:	getfield_a_this 0;		// reference javacardx/framework/time/TimeDuration.time
+					sload_1;
+					invokestatic 26;		// com/sun/javacard/impl/NativeMethods.timeGetByteLength([BS)S
+					sreturn;
+		}
+
+	}
+
+}

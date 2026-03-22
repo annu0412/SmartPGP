@@ -15,6 +15,7 @@ try:
 except ImportError:
     class DummyLogger:
         def info(self, msg): pass
+        def warning(self, msg): pass
         def error(self, msg, e=None): pass
         def debug(self, msg): pass
     logger = DummyLogger()
@@ -62,6 +63,11 @@ def parse_tlv_length(data, offset):
         return length, 3
     else:
         return 0, 0
+
+
+class NoKeyOnCardError(Exception):
+    """Raised when the requested key slot on the card is empty (SW=6A88)."""
+    pass
 
 
 def read_public_key_from_card(card, key_slot='encryption'):
@@ -128,8 +134,10 @@ def read_public_key_from_card(card, key_slot='encryption'):
         if sw1 == 0x6A and sw2 == 0x88:
             # Referenced data not found - no key in this slot
             logger.error(f"No key found in {key_slot} slot (SW=6A88)")
-            logger.error("Please generate keys first using 'Generate Keys in Card' option")
-            return None
+            raise NoKeyOnCardError(
+                f"No keys found on card (slot: {key_slot}).\n\n"
+                "Please generate keys first using the 'Generate Keys in Card' option."
+            )
 
         if not response:
             logger.error("Empty response from card")
@@ -145,6 +153,8 @@ def read_public_key_from_card(card, key_slot='encryption'):
 
         return bytes(response)
 
+    except NoKeyOnCardError:
+        raise  # let callers handle the no-key case explicitly
     except Exception as e:
         logger.error(f"Error reading public key from card: {e}", e)
         return None
@@ -212,7 +222,8 @@ def extract_rsa_public_key_components(key_data):
 
                     return bytes(modulus), bytes(exponent)
                 else:
-                    logger.error(f"Expected exponent tag 0x82 at offset {offset}, found: {key_data[offset]:02X if offset < len(key_data) else 'EOF'}")
+                    found_str = f"{key_data[offset]:02X}" if offset < len(key_data) else "EOF"
+                    logger.error(f"Expected exponent tag 0x82 at offset {offset}, found: {found_str}")
             offset += 1
 
         logger.error("Could not find RSA key components in response")

@@ -1,0 +1,45 @@
+{
+    // Android Development Settings for VS Code
+    // Java/Kotlin Configuration
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "java.compile.nullAnalysis.mode": "automatic",
+    "kotlin.languageServer.enabled": true,
+    // Gradle Configuration
+    "gradle.nestedProjects": true,
+    "gradle.autoDetect": "on",
+    // Android SDK Path (update to your actual SDK path)
+    "android-dev-ext.androidSDKPath": "C:\\Users\\${env:USERNAME}\\AppData\\Local\\Android\\Sdk",
+    // ADB Configuration
+    "adb.pathToAdb": "${env:ANDROID_HOME}\\platform-tools\\adb.exe",
+    // File Associations
+    "files.associations": {
+        "*.gradle": "gradle",
+        "*.kt": "kotlin",
+        "*.kts": "kotlin",
+        "AndroidManifest.xml": "xml"
+    },
+    // XML Formatting
+    "xml.format.enabled": true,
+    "xml.format.maxLineWidth": 120,
+    // Editor Settings
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    },
+    // Terminal
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    // Exclude from Explorer
+    "files.exclude": {
+        "**/.gradle": true,
+        "**/build": true,
+        "**/.idea": true,
+        "**/*.iml": true
+    },
+    // Search Exclude
+    "search.exclude": {
+        "**/build": true,
+        "**/.gradle": true
+    },
+    // Git
+    "git.ignoreLimitWarning": true
+}
