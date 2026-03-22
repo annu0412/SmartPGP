@@ -9,7 +9,13 @@
       "Bash(git rm:*)",
       "Bash(rm:*)",
       "Bash(ls:*)",
-      "Bash(git show:*)"
+      "Bash(git show:*)",
+      "Bash(gh api:*)",
+      "WebSearch",
+      "Bash(gh auth:*)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   }
 }
